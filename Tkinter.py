@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QLabel
+from PyQt5.QtWidgets import *
 app = QApplication([])
 label = QLabel('Hi')
 label.show()
