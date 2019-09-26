@@ -3,3 +3,6 @@ app = QApplication([])
 label = QLabel('Hi')
 label.show()
 app.exec_()
+
+def printingmessage():
+    print('hello')
