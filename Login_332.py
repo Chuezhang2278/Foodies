@@ -8,7 +8,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from SignUp_332 import Penis_window
+from SignUp_332 import sign_window
+from FoodMenu_332 import Food_Window
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -62,8 +63,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.Login_button.clicked.connect(self.LoginVeri) #self created event handle for login button
-        self.signup_button.clicked.connect(self.switch)
+        self.Login_button.clicked.connect(self.switch_menu) #self created event handle for login button
+        self.signup_button.clicked.connect(self.switch_sign) #brings up signup page
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -74,15 +75,18 @@ class Ui_MainWindow(object):
         self.Login_button.setText(_translate("MainWindow", "Login"))
         self.signup_button.setText(_translate("MainWindow", "Sign Up"))
 
-    def switch(self):
+    def switch_sign(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = Penis_window()
+        self.ui = sign_window()
         self.ui.setupUi(self.window)
         self.window.show()
 
-    def printMessage(self): #self created function for login button
-        print("hello world")
-    
+    def switch_menu(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Food_Window()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
     def labelUsername(self):
         value = self.lineEdit_Username.text()
         print(value)
@@ -91,7 +95,7 @@ class Ui_MainWindow(object):
         value1 = self.lineEdit_Username.text()
         value2 = self.lineEdit_Password.text()
         if(value1 == "Andy" and value2 == "Zhang"):
-            print("confirmed")
+            self.switch_menu
         else:  
             print("Invalid")
 
