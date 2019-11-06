@@ -6,10 +6,10 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-from SignUp_332 import sign_window
+#from SignUp_332 import sign_window
 from FoodMenu_332 import Food_Window
+import sys
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -79,6 +79,7 @@ class Ui_MainWindow(object):
         self.window = QtWidgets.QMainWindow()
         self.ui = sign_window()
         self.ui.setupUi(self.window)
+        Ui_MainWindow.close()
         self.window.show()
 
     def switch_menu(self):
@@ -87,10 +88,6 @@ class Ui_MainWindow(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
-    def labelUsername(self):
-        value = self.lineEdit_Username.text()
-        print(value)
-
     def LoginVeri(self):
         value1 = self.lineEdit_Username.text()
         value2 = self.lineEdit_Password.text()
@@ -98,9 +95,85 @@ class Ui_MainWindow(object):
             self.switch_menu
         else:  
             print("Invalid")
+##########################################################################################################################################
+class sign_window(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(543, 389)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(180, 80, 281, 111))
+        self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.email_lineEdit = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.email_lineEdit.setObjectName("email_lineEdit")
+        self.verticalLayout_2.addWidget(self.email_lineEdit)
+        self.user_lineEdit = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.user_lineEdit.setObjectName("user_lineEdit")
+        self.verticalLayout_2.addWidget(self.user_lineEdit)
+        self.password_lineEdit = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.password_lineEdit.setObjectName("password_lineEdit")
+        self.verticalLayout_2.addWidget(self.password_lineEdit)
+        self.verticalLayoutWidget_3 = QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(90, 80, 81, 111))
+        self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_3)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.label_3 = QtWidgets.QLabel(self.verticalLayoutWidget_3)
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout.addWidget(self.label_3)
+        self.label = QtWidgets.QLabel(self.verticalLayoutWidget_3)
+        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
+        self.label_2 = QtWidgets.QLabel(self.verticalLayoutWidget_3)
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout.addWidget(self.label_2, 0, QtCore.Qt.AlignLeft)
+        self.verticalLayout_3.addLayout(self.verticalLayout)
+        self.verticalLayoutWidget_4 = QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(220, 210, 160, 30))
+        self.verticalLayoutWidget_4.setObjectName("verticalLayoutWidget_4")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_4)
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.signup_button2 = QtWidgets.QPushButton(self.verticalLayoutWidget_4)
+        self.signup_button2.setObjectName("signup_button")
+        self.verticalLayout_4.addWidget(self.signup_button2)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 543, 26))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.signup_button2.clicked.connect(self.SignButton)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def SignButton(self):
+        MainWindow = QtWidgets.QMainWindow()
+        ui = Ui_MainWindow()
+        ui.setupUi(MainWindow)
+        MainWindow.show()
+        MainWindow.showMinimized()
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("SignWindow", "SignWindow"))
+        self.label_3.setText(_translate("MainWindow", "Email"))
+        self.label.setText(_translate("MainWindow", "Username"))
+        self.label_2.setText(_translate("MainWindow", "Password"))
+        self.signup_button2.setText(_translate("MainWindow", "Sign up"))
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

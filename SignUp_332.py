@@ -7,9 +7,9 @@
 # WARNING! All changes made in this file will be lost!
 
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-
-
+#from PyQt5 import QtCore, QtGui, QtWidgets
+#from Login_332 import Ui_MainWindow
+"""
 class sign_window(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -67,8 +67,17 @@ class sign_window(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        self.signup_button.clicked.connect(self.SignButton)
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def SignButton(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+        MainWindow.close()
 
     def UserCreate(self):
         email = self.email_lineEdit.text()
@@ -92,3 +101,4 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+"""
