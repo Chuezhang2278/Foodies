@@ -7,9 +7,8 @@
 # WARNING! All changes made in this file will be lost!
 
 
-#from PyQt5 import QtCore, QtGui, QtWidgets
-#from Login_332 import Ui_MainWindow
-"""
+from PyQt5 import QtCore, QtGui, QtWidgets
+
 class sign_window(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -72,17 +71,8 @@ class sign_window(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def SignButton(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self.window)
-        self.window.show()
+    def SignButton(self):#WILL REMODEL WITH DATABASE LATER
         MainWindow.close()
-
-    def UserCreate(self):
-        email = self.email_lineEdit.text()
-        username = self.user_lineEdit.text()
-        password = self.password_lineEdit.text()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -101,4 +91,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-"""

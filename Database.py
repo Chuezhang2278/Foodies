@@ -1,3 +1,5 @@
+# DISREGARD, WILL USE FOR FUTURE 
+
 import sqlite3
 
 connectionObject = sqlite3.connect("users.db")
