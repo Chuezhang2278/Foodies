@@ -26,6 +26,7 @@ class Food_Window(object):
         self.listWidget.setFrameShape(QtWidgets.QFrame.HLine)
         self.listWidget.setViewMode(QtWidgets.QListView.ListMode)
         self.listWidget.setObjectName("listWidget")
+        self.listWidget.setSpacing(20)
         item = QtWidgets.QListWidgetItem()
         item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsEditable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
         self.listWidget.addItem(item)
