@@ -88,14 +88,14 @@ class Ui_MainWindow(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
-    def LoginVeri(self): #REMODEL 
+    def LoginVeri(self): 
         value1 = self.lineEdit_Username.text()
         value2 = self.lineEdit_Password.text()
 
-        test = temp.getsize()
+        test = Customer.getsize()
 
         for i in range(test):
-            if(value1 == temp.members[i].getuser()):
+            if(value1 == Customer.Members[i].getuser()):
                 self.switch_menu()
 
 if __name__ == "__main__":
