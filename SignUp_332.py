@@ -1,11 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'SIgnUp_332.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.0
-#
-# WARNING! All changes made in this file will be lost!
-
+from User import *
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -71,8 +64,13 @@ class sign_window(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def SignButton(self):#WILL REMODEL WITH DATABASE LATER
-        MainWindow.close()
+    def SignButton(self):
+        temp1 = self.email_lineEdit.text()
+        temp2 = self.user_lineEdit.text()
+        temp3 = self.password_lineEdit.text()
+
+        eric = Member('test','test2',temp2,temp1)
+        temp.add(eric)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

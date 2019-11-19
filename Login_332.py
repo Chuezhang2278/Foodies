@@ -8,7 +8,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from SignUp_332 import sign_window
-from FoodMenu_332 import Food_Window
+from Food import Food_Window
+from User import *
 import sys
 
 class Ui_MainWindow(object):
@@ -63,7 +64,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.Login_button.clicked.connect(self.switch_menu) #self created event handle for login button
+        self.Login_button.clicked.connect(self.LoginVeri) #self created event handle for login button
         self.signup_button.clicked.connect(self.switch_sign) #brings up signup page
 
     def retranslateUi(self, MainWindow):
@@ -87,13 +88,15 @@ class Ui_MainWindow(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
-    def LoginVeri(self): #REMODEL USING DATABASE LATER
+    def LoginVeri(self): #REMODEL 
         value1 = self.lineEdit_Username.text()
         value2 = self.lineEdit_Password.text()
-        if(value1 == "Andy" and value2 == "Zhang"):
-            self.switch_menu
-        else:  
-            print("Invalid")
+
+        test = temp.getsize()
+
+        for i in range(test):
+            if(value1 == temp.members[i].getuser()):
+                self.switch_menu()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
