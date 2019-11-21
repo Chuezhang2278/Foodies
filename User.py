@@ -33,9 +33,6 @@ class User():
     def get_discount(self):
         return self.discount
     
-    def get_user_type(self):
-        return self.user_type1
-    
     def getFirst(self):
         return self.first_name
     
@@ -51,7 +48,7 @@ class User():
     def getEmail(self):
         return self.email
     
-    def user_type(self):
+    def getType(self):
         return self.user_type
     
     def getDiscount(self):
@@ -69,7 +66,7 @@ class User():
         New = VIP(para1,para2,para3,para4,para5)
         Customer.addVIP(New)
 
-class Member(User): #Inherits Users methods but not admins
+class Member(User): 
     def __init__(self, first_name, last_name, username, password, email):
         super().__init__(first_name, last_name, username, password, email)
         self.discount = 0.85
@@ -87,12 +84,3 @@ eric2 = VIP('Blah','bloo','blee','blop','t')
 Customer.addMember(eric)
 Customer.addVIP(eric2)
 Customer.promoteVIP('Eric')
-print(Customer.findVIP('Blah'))
-
-        
-
-
-
-
-
-

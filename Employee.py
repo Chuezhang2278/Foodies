@@ -7,7 +7,7 @@ class Admin():
         self.Cook = []
         self.Sales = []
 
-    def __DeliveryAdd(self, Delivery):
+    def DeliveryAdd(self, Delivery):
         self.Delivery.append(Delivery)
         
     def CookAdd(self, Cook):
