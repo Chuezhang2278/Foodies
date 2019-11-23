@@ -4,10 +4,16 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class sign_window(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(400, 286)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def __init__(self):
+        self.CurrentWindow = None;
+        self.LoginWindow = None;
+
+    def setupUi(self, CurrentWindow, LoginWindow):
+        self.LoginWindow = LoginWindow
+        self.CurrentWindow = CurrentWindow
+        CurrentWindow.setObjectName("CurrentWindow")
+        CurrentWindow.resize(400, 286)
+        self.centralwidget = QtWidgets.QWidget(CurrentWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.First_Label = QtWidgets.QLabel(self.centralwidget)
         self.First_Label.setGeometry(QtCore.QRect(52, 20, 65, 20))
@@ -48,22 +54,24 @@ class sign_window(object):
         self.signButton = QtWidgets.QPushButton(self.centralwidget)
         self.signButton.setGeometry(QtCore.QRect(60, 220, 271, 28))
         self.signButton.setObjectName("signButton")
-        MainWindow.setCentralWidget(self.centralwidget)
+        CurrentWindow.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(CurrentWindow)
+        QtCore.QMetaObject.connectSlotsByName(CurrentWindow)
 
-    def retranslateUi(self, MainWindow):
+        self.signButton.clicked.connect(self.SignFunc)
+
+    def retranslateUi(self, CurrentWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.First_Label.setText(_translate("MainWindow", "First Name"))
-        self.Last_Label.setText(_translate("MainWindow", "Last Name"))
-        self.User_Label.setText(_translate("MainWindow", "Username"))
-        self.Pass_Label.setText(_translate("MainWindow", "Password"))
-        self.Email_Label.setText(_translate("MainWindow", "Email"))
-        self.signButton.setText(_translate("MainWindow", "Finish Signing Up"))
+        CurrentWindow.setWindowTitle(_translate("CurrentWindow", "CurrentWindow"))
+        self.First_Label.setText(_translate("CurrentWindow", "First Name"))
+        self.Last_Label.setText(_translate("CurrentWindow", "Last Name"))
+        self.User_Label.setText(_translate("CurrentWindow", "Username"))
+        self.Pass_Label.setText(_translate("CurrentWindow", "Password"))
+        self.Email_Label.setText(_translate("CurrentWindow", "Email"))
+        self.signButton.setText(_translate("CurrentWindow", "Finish Signing Up"))
 
-    def SignButton(self):
+    def SignFunc(self):
         temp1 = self.First_lineEdit.text()
         temp2 = self.Last_lineEdit.text()
         temp3 = self.User_lineEdit.text()
@@ -73,11 +81,14 @@ class sign_window(object):
         eric = Member(temp1,temp2,temp3,temp4,temp5)
         Customer.addMember(eric)
 
+        self.CurrentWindow.hide()
+        self.LoginWindow.show()
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
+    CurrentWindow = QtWidgets.QMainWindow()
     ui = sign_window()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    ui.setupUi(CurrentWindow, None)
+    CurrentWindow.show()
     sys.exit(app.exec_())

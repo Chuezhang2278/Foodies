@@ -1,15 +1,16 @@
 from SignUp import sign_window
 from FoodMenu import Food_Window
 from User import *
+from FoodMenu import Food_Window
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(400, 200)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+class LoginWindow(object):
+    def setupUi(self, CurrentWindow):
+        CurrentWindow.setObjectName("CurrentWindow")
+        CurrentWindow.setEnabled(True)
+        CurrentWindow.resize(400, 200)
+        self.centralwidget = QtWidgets.QWidget(CurrentWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.LogUser_Label = QtWidgets.QLabel(self.centralwidget)
         self.LogUser_Label.setGeometry(QtCore.QRect(40, 40, 71, 16))
@@ -32,34 +33,44 @@ class Ui_MainWindow(object):
         self.loginButton = QtWidgets.QPushButton(self.centralwidget)
         self.loginButton.setGeometry(QtCore.QRect(260, 120, 93, 28))
         self.loginButton.setObjectName("loginButton")
-        MainWindow.setCentralWidget(self.centralwidget)
+        CurrentWindow.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(CurrentWindow)
+        QtCore.QMetaObject.connectSlotsByName(CurrentWindow)
 
         self.signUpButton.clicked.connect(self.switch_sign)
         self.loginButton.clicked.connect(self.LoginVeri)
+        self.guestButton.clicked.connect(self.switch_guest)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, CurrentWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.LogUser_Label.setText(_translate("MainWindow", "Username"))
-        self.LogPass_Label.setText(_translate("MainWindow", "Password"))
-        self.guestButton.setText(_translate("MainWindow", "Guest"))
-        self.signUpButton.setText(_translate("MainWindow", "Sign Up"))
-        self.loginButton.setText(_translate("MainWindow", "Login"))
+        CurrentWindow.setWindowTitle(_translate("CurrentWindow", "CurrentWindow"))
+        self.LogUser_Label.setText(_translate("CurrentWindow", "Username"))
+        self.LogPass_Label.setText(_translate("CurrentWindow", "Password"))
+        self.guestButton.setText(_translate("CurrentWindow", "Guest"))
+        self.signUpButton.setText(_translate("CurrentWindow", "Sign Up"))
+        self.loginButton.setText(_translate("CurrentWindow", "Login"))
 
     def switch_sign(self):
-        self.window = QtWidgets.QMainWindow()
+        self.sign_window = QtWidgets.QMainWindow()
         self.ui = sign_window()
-        self.ui.setupUi(self.window)
-        self.window.show()
+        self.ui.setupUi(self.sign_window, CurrentWindow)
+        self.sign_window.show()
+        CurrentWindow.hide()
 
     def switch_menu(self):
-        self.window = QtWidgets.QMainWindow()
+        self.Food_window = QtWidgets.QMainWindow()
         self.ui = Food_Window()
-        self.ui.setupUi(self.window)
-        self.window.show()
+        self.ui.setupUi(self.Food_window)
+        CurrentWindow.hide()
+        self.Food_window.show()
+
+    def switch_guest(self):
+        self.Food_window = QtWidgets.QMainWindow()
+        self.ui = Food_Window()
+        self.ui.setupUi(self.Food_window)
+        CurrentWindow.hide()
+        self.Food_window.show()
 
     def LoginVeri(self): 
         value1 = self.LogUser_lineEdit.text()
@@ -69,18 +80,18 @@ class Ui_MainWindow(object):
 
         for i in range(test):
             if(value1 == Customer.Members[i].getUser() and value2 == Customer.Members[i].getPass()):
-                    print(Customer.Members[i].getType(), "Member")
+                self.switch_menu()
             elif(value1 == Customer.VIP[i].getUser() and value2 == Customer.VIP[i].getPass()):
-                    print(Customer.VIP[i].getType(), "VIP")
+                print(Customer.VIP[i].getType(), "VIP")
             else:
-                print("Guest")
-
+                print("Error!")
+                
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    CurrentWindow = QtWidgets.QMainWindow()
+    ui = LoginWindow()
+    ui.setupUi(CurrentWindow)
+    CurrentWindow.show()
     sys.exit(app.exec_())
