@@ -1,83 +1,155 @@
-from User import *
+# -*- coding: utf-8 -*-
 
+# Form implementation generated from reading ui file 'SignUp.ui',
+# licensing of 'SignUp.ui' applies.
+#
+# Created: Thu Nov  7 23:03:41 2019
+#      by: pyside2-uic  running on PySide2 5.13.2
+#
+# WARNING! All changes made in this file will be lost!
+import sys, icon_rc, qdarkstyle, mysql.connector
 from PyQt5 import QtCore, QtGui, QtWidgets
+from ErrorWindow import ErrorWindow
 
+class SignUpWindow(object):
+    def __init__(self):
+        self.CurrentWindow = None;
+        self.LoginWindow = None;
 
-class sign_window(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(400, 286)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def setupUi(self, CurrentWindow, LoginWindow):
+        self.LoginWindow = LoginWindow
+        self.CurrentWindow = CurrentWindow
+        self.CurrentWindow.setObjectName("CurrentWindow")
+        self.CurrentWindow.resize(446, 306)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(CurrentWindow.sizePolicy().hasHeightForWidth())
+        self.CurrentWindow.setSizePolicy(sizePolicy)
+        self.CurrentWindow.setMinimumSize(QtCore.QSize(446, 306))
+        self.CurrentWindow.setMaximumSize(QtCore.QSize(446, 306))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/newPrefix/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.CurrentWindow.setWindowIcon(icon)
+        self.centralwidget = QtWidgets.QWidget(self.CurrentWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.First_Label = QtWidgets.QLabel(self.centralwidget)
-        self.First_Label.setGeometry(QtCore.QRect(52, 20, 65, 20))
-        self.First_Label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.First_Label.setObjectName("First_Label")
-        self.Last_Label = QtWidgets.QLabel(self.centralwidget)
-        self.Last_Label.setGeometry(QtCore.QRect(52, 60, 65, 20))
-        self.Last_Label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Last_Label.setObjectName("Last_Label")
-        self.User_Label = QtWidgets.QLabel(self.centralwidget)
-        self.User_Label.setGeometry(QtCore.QRect(52, 100, 65, 16))
-        self.User_Label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.User_Label.setObjectName("User_Label")
-        self.Pass_Label = QtWidgets.QLabel(self.centralwidget)
-        self.Pass_Label.setGeometry(QtCore.QRect(52, 140, 65, 16))
-        self.Pass_Label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Pass_Label.setObjectName("Pass_Label")
-        self.Email_Label = QtWidgets.QLabel(self.centralwidget)
-        self.Email_Label.setGeometry(QtCore.QRect(52, 180, 65, 16))
-        self.Email_Label.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.Email_Label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Email_Label.setObjectName("Email_Label")
-        self.First_lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.First_lineEdit.setGeometry(QtCore.QRect(128, 20, 201, 22))
-        self.First_lineEdit.setObjectName("First_lineEdit")
-        self.Last_lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.Last_lineEdit.setGeometry(QtCore.QRect(128, 60, 201, 22))
-        self.Last_lineEdit.setObjectName("Last_lineEdit")
-        self.User_lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.User_lineEdit.setGeometry(QtCore.QRect(128, 100, 201, 22))
-        self.User_lineEdit.setObjectName("User_lineEdit")
-        self.Pass_lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.Pass_lineEdit.setGeometry(QtCore.QRect(128, 140, 201, 22))
-        self.Pass_lineEdit.setObjectName("Pass_lineEdit")
-        self.Email_lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.Email_lineEdit.setGeometry(QtCore.QRect(128, 180, 201, 22))
-        self.Email_lineEdit.setObjectName("Email_lineEdit")
-        self.signButton = QtWidgets.QPushButton(self.centralwidget)
-        self.signButton.setGeometry(QtCore.QRect(60, 220, 271, 28))
-        self.signButton.setObjectName("signButton")
-        MainWindow.setCentralWidget(self.centralwidget)
+        self.fullname_label = QtWidgets.QLabel(self.centralwidget)
+        self.fullname_label.setGeometry(QtCore.QRect(60, 60, 71, 16))
+        self.fullname_label.setObjectName("fullname_label")
+        self.ssn_label = QtWidgets.QLabel(self.centralwidget)
+        self.ssn_label.setGeometry(QtCore.QRect(60, 90, 55, 16))
+        self.ssn_label.setObjectName("ssn_label")
+        self.username_label = QtWidgets.QLabel(self.centralwidget)
+        self.username_label.setGeometry(QtCore.QRect(60, 120, 71, 16))
+        self.username_label.setObjectName("username_label")
+        self.pass_label = QtWidgets.QLabel(self.centralwidget)
+        self.pass_label.setGeometry(QtCore.QRect(60, 150, 71, 16))
+        self.pass_label.setObjectName("pass_label")
+        self.email_label = QtWidgets.QLabel(self.centralwidget)
+        self.email_label.setGeometry(QtCore.QRect(60, 180, 61, 16))
+        self.email_label.setObjectName("email_label")
+        self.fullname_edit = QtWidgets.QLineEdit(self.centralwidget)
+        self.fullname_edit.setGeometry(QtCore.QRect(140, 60, 221, 22))
+        self.fullname_edit.setObjectName("fullname_edit")
+        self.ssn_edit = QtWidgets.QLineEdit(self.centralwidget)
+        self.ssn_edit.setGeometry(QtCore.QRect(140, 90, 221, 22))
+        self.ssn_edit.setObjectName("ssn_edit")
+        self.username_edit = QtWidgets.QLineEdit(self.centralwidget)
+        self.username_edit.setGeometry(QtCore.QRect(140, 120, 221, 22))
+        self.username_edit.setObjectName("username_edit")
+        self.pass_edit = QtWidgets.QLineEdit(self.centralwidget)
+        self.pass_edit.setGeometry(QtCore.QRect(140, 150, 221, 22))
+        self.pass_edit.setObjectName("pass_edit")
+        self.email_edit = QtWidgets.QLineEdit(self.centralwidget)
+        self.email_edit.setGeometry(QtCore.QRect(140, 180, 221, 22))
+        self.email_edit.setObjectName("email_edit")
+        self.finish_button = QtWidgets.QPushButton(self.centralwidget)
+        self.finish_button.setGeometry(QtCore.QRect(180, 240, 93, 28))
+        self.finish_button.setObjectName("finish_button")
+        self.gender_label = QtWidgets.QLabel(self.centralwidget)
+        self.gender_label.setGeometry(QtCore.QRect(60, 210, 61, 16))
+        self.gender_label.setObjectName("gender_label")
+        self.maleRadio = QtWidgets.QRadioButton(self.centralwidget)
+        self.maleRadio.setGeometry(QtCore.QRect(140, 210, 95, 20))
+        self.maleRadio.setObjectName("maleRadio")
+        self.femaleRadio = QtWidgets.QRadioButton(self.centralwidget)
+        self.femaleRadio.setGeometry(QtCore.QRect(205, 210, 95, 20))
+        self.femaleRadio.setObjectName("femaleRadio")
+        self.nonbinaryradio = QtWidgets.QRadioButton(self.centralwidget)
+        self.nonbinaryradio.setGeometry(QtCore.QRect(283, 210, 95, 20))
+        self.nonbinaryradio.setObjectName("nonbinaryradio")
+        self.label_8 = QtWidgets.QLabel(self.centralwidget)
+        self.label_8.setGeometry(QtCore.QRect(378, 0, 71, 71))
+        self.label_8.setText("")
+        self.label_8.setPixmap(QtGui.QPixmap(":/newPrefix/icon.png"))
+        self.label_8.setObjectName("label_8")
+        self.CurrentWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(CurrentWindow)
+        self.statusbar.setObjectName("statusbar")
+        self.CurrentWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(self.CurrentWindow)
+        QtCore.QMetaObject.connectSlotsByName(self.CurrentWindow)
 
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.First_Label.setText(_translate("MainWindow", "First Name"))
-        self.Last_Label.setText(_translate("MainWindow", "Last Name"))
-        self.User_Label.setText(_translate("MainWindow", "Username"))
-        self.Pass_Label.setText(_translate("MainWindow", "Password"))
-        self.Email_Label.setText(_translate("MainWindow", "Email"))
-        self.signButton.setText(_translate("MainWindow", "Finish Signing Up"))
+        self.finish_button.clicked.connect(self.add_user)
 
-    def SignButton(self):
-        temp1 = self.First_lineEdit.text()
-        temp2 = self.Last_lineEdit.text()
-        temp3 = self.User_lineEdit.text()
-        temp4 = self.Pass_lineEdit.text()
-        temp5 = self.Email_lineEdit.text()
+    def show_error(self):
+        self.ErrorWindow = QtWidgets.QMainWindow()
+        self.ui = ErrorWindow()
+        self.ui.setupUi(self.ErrorWindow)
+        self.ErrorWindow.show()
 
-        eric = Member(temp1,temp2,temp3,temp4,temp5)
-        Customer.addMember(eric)
+    def retranslateUi(self, CurrentWindow):
+        self.CurrentWindow.setWindowTitle(QtWidgets.QApplication.translate("CurrentWindow", "Sign Up - Meme Stock Market", None, -1))
+        self.fullname_label.setText(QtWidgets.QApplication.translate("CurrentWindow", "Full Name:", None, -1))
+        self.ssn_label.setText(QtWidgets.QApplication.translate("CurrentWindow", "SSN:", None, -1))
+        self.username_label.setText(QtWidgets.QApplication.translate("CurrentWindow", "Username:", None, -1))
+        self.pass_label.setText(QtWidgets.QApplication.translate("CurrentWindow", "Password:", None, -1))
+        self.email_label.setText(QtWidgets.QApplication.translate("CurrentWindow", "Email:", None, -1))
+        self.finish_button.setText(QtWidgets.QApplication.translate("CurrentWindow", "Finish", None, -1))
+        self.gender_label.setText(QtWidgets.QApplication.translate("CurrentWindow", "Gender:", None, -1))
+        self.maleRadio.setText(QtWidgets.QApplication.translate("CurrentWindow", "Male", None, -1))
+        self.femaleRadio.setText(QtWidgets.QApplication.translate("CurrentWindow", "Female", None, -1))
+        self.nonbinaryradio.setText(QtWidgets.QApplication.translate("CurrentWindow", "Non-Binary", None, -1))
+
+    def add_user(self):
+        mydb = mysql.connector.connect(
+            host='localhost',
+            user='root',
+            password='123password',
+            database='memestock')
+        fullname = self.fullname_edit.text()
+        ssn = self.ssn_edit.text()
+        user = self.username_edit.text()
+        password = self.pass_edit.text()
+        email = self.email_edit.text()
+        if(self.maleRadio.isChecked()):
+            gender = 'Male'
+        elif(self.femaleRadio.isChecked()):
+            gender = 'Female'
+        elif(self.nonbinaryradio.isChecked()):
+            gender = 'Non-Binary'
+        else:
+            gender = None
+        mycursor = mydb.cursor()
+        add_user = ("INSERT INTO memestock.users(fullname, ssn, username, pass, email, gender) VALUES (%s, %s, %s, %s, %s, %s)")
+        data_user = (fullname, ssn, user, password, email, gender)
+        try:
+            mycursor.execute(add_user, data_user)
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            self.show_error()
+        else:
+            self.CurrentWindow.hide()
+            self.LoginWindow.show()
+            mydb.commit()
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = sign_window()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    app.setWindowIcon(QtGui.QIcon("UI_Folder/icon.png"))
+    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+    CurrentWindow = QtWidgets.QMainWindow()
+    ui = SignUpWindow()
+    ui.setupUi(CurrentWindow, None)
+    CurrentWindow.show()
     sys.exit(app.exec_())
