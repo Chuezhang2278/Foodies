@@ -1,18 +1,18 @@
-from Employee import Admin, Cook, Delivery
+from Employee import Manager, Cook, Delivery
 from Food import Food
 from User import Member, VIP
 
 # Employee
-def addDelivery(employee):
-    DeliveryPeople.append(Delivery)
+def addDeliveryPerson(employee):
+    DeliveryPeople.append(employee)
     print("Added " + employee.getFirst() + " to DeliveryPeople")
 
 def addCook(employee):
     Cooks.append(employee)
     print("Added " + employee.getFirst() + " to Cooks")
 
-def addSale(sales):
-    Sales.append(sales)
+def addSalesperson(employee):
+    Sales.append(employee)
     print("Added " + sales.getFirst() + " to Sales")
 
 def findCook(name):
@@ -117,7 +117,6 @@ VIPMembers = []
 
 # Testing Employee.py
 #print("TESTING EMPLOYEE.PY:")
-Admin = Admin('t','t','t')
 John = Cook('John','Username', 'test')
 addCook(John)
 # findCook("John")

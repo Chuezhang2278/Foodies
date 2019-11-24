@@ -1,7 +1,7 @@
 import googlemaps, polyline, GoogleMapParser as Parser
 from datetime import datetime
 
-class Admin():
+class Employee():
     def __init__(self, first_name, username, password):
         self.first_name = first_name.title()
         self.username = username
@@ -28,7 +28,7 @@ class Admin():
     def increaseSalary(self):
         return (self.salary + (self.salary * .10))
 
-class Delivery(Admin):
+class Delivery(Employee):
     def __init__(self, first_name, username, password, address):
         super().__init__(first_name, username, password)
         self.step_by_step = []
@@ -71,15 +71,21 @@ class Delivery(Admin):
                 self.decoded[i][j] = str(self.decoded[i][j]).replace(', ', ', lng:')
                 print(str(self.decoded[i][j]).replace(')', '},'))
 
-class Cook(Admin):
+class Cook(Employee):
     def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)
         self.salary = 10
 
-class Sales(Admin):
+class Salesperson(Employee):
     def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)
         self.salary = 20
         self.budget = 600
 
-DeliveryGuy = Delivery("Jia Ming", "jma8774", "jma8774", "160 Convent Ave, New York, NY 10031")
+class Manager(Employee):
+    def __init__(self,first_name, username, password):
+        super().__init__(first_name,username,password)
+        self.salary = 250
+        self.budget = 1000
+
+# DeliveryGuy = Delivery("Jia Ming", "jma8774", "jma8774", "160 Convent Ave, New York, NY 10031")
