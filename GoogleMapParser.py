@@ -1,5 +1,5 @@
 # Jia Ming Ma
-import re
+import re, polyline
 
 # print functions are there for testing!
 
@@ -36,4 +36,17 @@ def get_step_by_step_directions(direction):
     for i in range(len(direction[0]['legs'][0]['steps'])):
         print(TAG_RE.sub('', direction[0]['legs'][0]['steps'][i]['html_instructions']))
         list.append(TAG_RE.sub('', direction[0]['legs'][0]['steps'][i]['html_instructions']))
+    return list
+
+def get_polyline(direction):
+    # get step by step polylines
+    list = []
+    for i in range(len(direction[0]['legs'][0]['steps'])):
+        list.append(direction[0]['legs'][0]['steps'][i]['polyline']['points'])
+    return list
+
+def decode_polyline(polylines):
+    list = []
+    for i in range(len(polylines)):
+        list.append(polyline.decode(polylines[i]))
     return list

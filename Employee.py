@@ -1,4 +1,4 @@
-import googlemaps, json, GoogleMapParser as Parser
+import googlemaps, polyline, GoogleMapParser as Parser
 from datetime import datetime
 
 class Admin():
@@ -32,6 +32,7 @@ class Delivery(Admin):
     def __init__(self, first_name, username, password, address):
         super().__init__(first_name, username, password)
         self.step_by_step = []
+        self.decoded = []
         self.gmaps = googlemaps.Client(key='API key here')
         self.geocode_result = self.gmaps.geocode(address)
         self.now = datetime.now()
@@ -43,7 +44,6 @@ class Delivery(Admin):
 
         # temporary create_direction_result here for testing
         self.create_direction_result("Grand St, Manhattan, NY")
-        self.create_direction_result("Boulder, CO 80309")
 
     def create_direction_result(self, end_address):
         print("---------------------------------------------------------------------------------\nto: " + end_address)
@@ -51,6 +51,9 @@ class Delivery(Admin):
         self.duration_to_address = Parser.get_duration(self.directions_result)
         self.distance_to_address = Parser.get_distance(self.directions_result)
         self.step_by_step = Parser.get_step_by_step_directions(self.directions_result)
+        self.polylines = Parser.get_polyline(self.directions_result)
+        self.decoded = Parser.decode_polyline(self.polylines)
+        # self.convert_decoded_to_javascript_format()
 
     def get_duration_to_address(self):
         return self.duration_to_address
@@ -61,6 +64,12 @@ class Delivery(Admin):
     def get_step_by_step(self):
         return self.step_by_step
 
+    def convert_decoded_to_javascript_format(self):
+        for i in range(len(self.decoded)):
+            for j in range(len(self.decoded[i])):
+                self.decoded[i][j] = str(self.decoded[i][j]).replace('(', '{lat:')
+                self.decoded[i][j] = str(self.decoded[i][j]).replace(', ', ', lng:')
+                print(str(self.decoded[i][j]).replace(')', '},'))
 
 class Cook(Admin):
     def __init__(self,first_name, username, password):
@@ -72,3 +81,5 @@ class Sales(Admin):
         super().__init__(first_name,username,password)
         self.salary = 20
         self.budget = 600
+
+DeliveryGuy = Delivery("Jia Ming", "jma8774", "jma8774", "160 Convent Ave, New York, NY 10031")
