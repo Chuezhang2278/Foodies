@@ -1,4 +1,4 @@
-from User import *
+from Main import *
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -79,7 +79,7 @@ class sign_window(object):
         temp5 = self.Email_lineEdit.text()
 
         eric = Member(temp1,temp2,temp3,temp4,temp5)
-        Customer.addMember(eric)
+        addMember(eric)
 
         self.CurrentWindow.hide()
         self.LoginWindow.show()

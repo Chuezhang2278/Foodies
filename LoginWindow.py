@@ -1,7 +1,7 @@
-from SignUp import sign_window
-from FoodMenu import Food_Window
+from SignUpWindow import sign_window
+from FoodStackWidget import Food_Window
 from User import *
-from FoodMenu import Food_Window
+from Main import *
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -76,16 +76,20 @@ class LoginWindow(object):
         value1 = self.LogUser_lineEdit.text()
         value2 = self.LogPass_lineEdit.text()
 
-        test = Customer.getsize()
+        test = getMemberSize()
+        test2 = getVIPsize()
 
         for i in range(test):
-            if(value1 == Customer.Members[i].getUser() and value2 == Customer.Members[i].getPass()):
+            if(value1 == Members[i].getUser() and value2 == Members[i].getPass()):
                 self.switch_menu()
-            elif(value1 == Customer.VIP[i].getUser() and value2 == Customer.VIP[i].getPass()):
-                print(Customer.VIP[i].getType(), "VIP")
-            else:
-                print("Error!")
-                
+                break
+        for i in range(test2):
+            if(value1 == VIPMembers[i].getUser() and value2 == VIPMembers[i].getPass()):
+                self.switch_menu()
+                break
+
+            
+              
 
 if __name__ == "__main__":
     import sys

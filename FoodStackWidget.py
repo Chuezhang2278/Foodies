@@ -1,4 +1,4 @@
-from Food import *
+from Main import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -23,9 +23,9 @@ class Food_Window(object):
         self.Name_listWidget.setLineWidth(0)
         self.Name_listWidget.setSpacing(15)
         self.Name_listWidget.setObjectName("Name_listWidget")
-        
-        for i in range(MainMenu.getMenuSize()): # adding name of food from food.py
-            self.Name_listWidget.addItem(MainMenu.Menu[i].getFood_name())
+
+        for i in range(len(Menu)):
+            self.Name_listWidget.addItem(Menu[i].getFood_name())
 
         self.Price_listWidget = QtWidgets.QListWidget(self.page)
         self.Price_listWidget.setGeometry(QtCore.QRect(260, 25, 91, 561))
@@ -33,10 +33,9 @@ class Food_Window(object):
         self.Price_listWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.Price_listWidget.setSpacing(15)
         self.Price_listWidget.setObjectName("Price_listWidget")
-        
-        for i in range(MainMenu.getMenuSize()): # adding price of food from food.py
-            self.Price_listWidget.addItem(str(MainMenu.Menu[i].getFood_price()))
 
+        for i in range(len(Menu)):
+            self.Price_listWidget.addItem(str(Menu[i].getFood_price()))
 
         self.AddButton2 = QtWidgets.QPushButton(self.page)
         self.AddButton2.setGeometry(QtCore.QRect(360, 90, 93, 28))
@@ -91,11 +90,6 @@ class Food_Window(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.label.setBuddy(self.Cart)
 
-        self.AddButton5.clicked.connect(self.Print)
-        self.AddButton1.clicked.connect(self.PurchaseAdd1)
-        self.AddButton2.clicked.connect(self.PurchaseAdd2)
-        self.AddButton3.clicked.connect(self.PurchaseAdd3)
-        self.AddButton4.clicked.connect(self.PurchaseAdd4)
         self.Checkout_Button.clicked.connect(self.Checkout)
 
         self.retranslateUi(MainWindow)
@@ -124,21 +118,6 @@ class Food_Window(object):
         self.AddButton7.setText(_translate("MainWindow", "Add"))
         self.AddButton3.setText(_translate("MainWindow", "Add"))
         self.label_2.setText(_translate("MainWindow", "CHECK OUT PAGE| UNDER CONSTRUCTION"))
-
-                                        ####CURSED EFFICIENCY#####
-    def PurchaseAdd1(self): 
-        self.Cart.addItem(MainMenu.Menu[0].getFood_name() + "\t" + str(MainMenu.Menu[0].getFood_price()))
-        MainMenu.Purchases.append(MainMenu.Menu[0])
-    def PurchaseAdd2(self):
-        self.Cart.addItem(MainMenu.Menu[1].getFood_name() + "\t" + str(MainMenu.Menu[1].getFood_price()))    
-        MainMenu.Purchases.append(MainMenu.Menu[1])
-    def PurchaseAdd3(self):
-        self.Cart.addItem(MainMenu.Menu[2].getFood_name() + "\t" + str(MainMenu.Menu[2].getFood_price()))
-        MainMenu.Purchases.append(MainMenu.Menu[2])
-    def PurchaseAdd4(self):
-        self.Cart.addItem(MainMenu.Menu[3].getFood_name() + "\t" + str(MainMenu.Menu[3].getFood_price()))        
-        MainMenu.Purchases.append(MainMenu.Menu[3])
-                                        ####CURSED EFFICIENCY####
 
     def Checkout(self):
         self.stackedWidget.setCurrentIndex(1)

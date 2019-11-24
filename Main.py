@@ -45,6 +45,12 @@ def printMenu():
             print('\t' + Menu[i].getCate(), Menu[i].getFood_name(), Menu[i].getSpice())
 
 # User
+def getMemberSize():
+    return len(Members)
+
+def getVIPsize():
+    return len(VIPMembers)
+
 def addMember(member):
     Members.append(member)
     print("Added " + member.getFirst() + " to Members")
@@ -108,17 +114,18 @@ Menu = []
 Members = []
 VIPMembers = []
 
+
 # Testing Employee.py
-print("TESTING EMPLOYEE.PY:")
+#print("TESTING EMPLOYEE.PY:")
 Admin = Admin('t','t','t')
 John = Cook('John','Username', 'test')
 addCook(John)
-findCook("John")
-printCooks()
+# findCook("John")
+# printCooks()
 # DeliveryGuy = Delivery("Jia Ming", "jma8774", "jma8774", "160 Convent Ave, New York, NY 10031")
 
 # Testing Food.py
-print("\nTESTING FOOD.PY:")
+#print("\nTESTING FOOD.PY:")
 Chicken = Food('Chicken', 10, 'Entree', True)
 addMenuItem(Chicken)
 Fish = Food('Fish', 10, 'Entree', True)
@@ -127,15 +134,15 @@ Duck = Food('Duck', 10, 'Entree', True)
 addMenuItem(Duck)
 Dog = Food('Dog', 10, 'Entree', True)
 addMenuItem(Dog)
-printMenu()
+#printMenu()
 
 # Testing User.py
-print("\nTESTING USER.PY:")
+#print("\nTESTING USER.PY:")
 eric = Member('eric','test2','t','t','t')
 chue = VIP('chue','bloo','blee','blop','t')
 addMember(eric)
 addVIP(chue)
-printAllMembers()
+#printAllMembers()
 # removed 'Eric' who was originally a Member, and moved him to VIPMembers
 promoteVIP('eric'.title())
-printAllMembers()
+#printAllMembers()
