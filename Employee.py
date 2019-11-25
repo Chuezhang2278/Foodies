@@ -19,12 +19,6 @@ class Employee():
     def getBudget(self):
         return self.budget
 
-    def getX(self):
-        return self.x
-
-    def getY(self):
-        return self.y
-
     def increaseSalary(self):
         return (self.salary + (self.salary * .10))
 
@@ -70,6 +64,12 @@ class Delivery(Employee):
                 self.decoded[i][j] = str(self.decoded[i][j]).replace('(', '{lat:')
                 self.decoded[i][j] = str(self.decoded[i][j]).replace(', ', ', lng:')
                 print(str(self.decoded[i][j]).replace(')', '},'))
+                
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self.y
 
 class Cook(Employee):
     def __init__(self,first_name, username, password):
