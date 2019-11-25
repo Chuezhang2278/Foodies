@@ -5,10 +5,10 @@ class Food():
         self.cate = cate
         self.spicy = spicy
 
-    def getFood_name(self):
+    def getName(self):
         return self.name
 
-    def getFood_price(self):
+    def getPrice(self):
         return self.price
 
     def getCate(self):
