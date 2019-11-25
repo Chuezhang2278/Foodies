@@ -34,7 +34,7 @@ def printCooks():
 # Food
 def addMenuItem(food):
     Menu.append(food)
-    print("Added " + food.getFood_name() + " to Foods")
+    print("Added " + food.getName() + " to Foods")
 
 def printMenu():
     print("Printing list of Foods...")
@@ -111,6 +111,7 @@ DeliveryPeople = []
 Cooks = []
 Sales = []
 Menu = []
+IngredientList = []
 Members = []
 VIPMembers = []
 
@@ -125,13 +126,13 @@ addCook(John)
 
 # Testing Food.py
 #print("\nTESTING FOOD.PY:")
-Chicken = Food('Chicken', 10, 'Entree', True)
+Chicken = Food('Chicken', 10, 'Entree', True, 100, 2)
 addMenuItem(Chicken)
-Fish = Food('Fish', 10, 'Entree', True)
+Fish = Food('Fish', 10, 'Entree', True, 500, 3)
 addMenuItem(Fish)
-Duck = Food('Duck', 10, 'Entree', True)
+Duck = Food('Duck', 10, 'Entree', True, 122, 5)
 addMenuItem(Duck)
-Dog = Food('Dog', 10, 'Entree', True)
+Dog = Food('Dog', 10, 'Entree', True, 5, 5)
 addMenuItem(Dog)
 #printMenu()
 

@@ -1,4 +1,5 @@
 import googlemaps, polyline, GoogleMapParser as Parser
+from Food import Food
 from datetime import datetime
 
 class Employee():
@@ -20,7 +21,8 @@ class Employee():
         return self.budget
 
     def increaseSalary(self):
-        return (self.salary + (self.salary * .10))
+        self.salary = self.salary * 1.1
+        return self.salary
 
 class Delivery(Employee):
     def __init__(self, first_name, username, password, address):
@@ -64,7 +66,7 @@ class Delivery(Employee):
                 self.decoded[i][j] = str(self.decoded[i][j]).replace('(', '{lat:')
                 self.decoded[i][j] = str(self.decoded[i][j]).replace(', ', ', lng:')
                 print(str(self.decoded[i][j]).replace(')', '},'))
-                
+
     def getX(self):
         return self.x
 
@@ -75,6 +77,24 @@ class Cook(Employee):
     def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)
         self.salary = 10
+
+    def addFood(menuList, Food):
+        menuList.append(Food)
+
+    def removeFood(menuList, name):
+        for i in range(len(menuList)):
+            if menuList[i].getName() == name:
+                menuList.remove(menuList[i])
+
+    def changeFoodQuantity(menuList, name, quantity):
+        for i in range(len(menuList)):
+            if menuList[i].getName() == name:
+                menuList[i].setQuantity(quantity)
+
+    def changeFoodQuality(menuList, name, quality):
+        for i in range(len(menuList)):
+            if menuList[i].getName() == name:
+                menuList[i].setQuality(quality)
 
 class Salesperson(Employee):
     def __init__(self,first_name, username, password):
