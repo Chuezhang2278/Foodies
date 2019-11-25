@@ -29,7 +29,7 @@ class Delivery(Employee):
         super().__init__(first_name, username, password)
         self.step_by_step = []
         self.decoded = []
-        self.gmaps = googlemaps.Client(key='AIzaSyCvBCdTccBh2TnKm23_Xc1BHOLpXn3ExVI')
+        self.gmaps = googlemaps.Client(key='key')
         self.geocode_result = self.gmaps.geocode(address)
         self.now = datetime.now()
         # using my parser to get google formatted address, returns a better formatted address for use
@@ -47,8 +47,9 @@ class Delivery(Employee):
         self.duration_to_address = Parser.get_duration(self.directions_result)
         self.distance_to_address = Parser.get_distance(self.directions_result)
         self.step_by_step = Parser.get_step_by_step_directions(self.directions_result)
-        self.polylines = Parser.get_polyline(self.directions_result)
-        self.decoded = Parser.decode_polyline(self.polylines)
+        # ended up not needing the polyline coordinates
+        # self.polylines = Parser.get_polyline(self.directions_result)
+        # self.decoded = Parser.decode_polyline(self.polylines)
         # self.convert_decoded_to_javascript_format()
 
     def get_duration_to_address(self):
