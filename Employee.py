@@ -33,7 +33,7 @@ class Delivery(Admin):
         super().__init__(first_name, username, password)
         self.step_by_step = []
         self.decoded = []
-        self.gmaps = googlemaps.Client(key='API key here')
+        self.gmaps = googlemaps.Client(key='AIzaSyCvBCdTccBh2TnKm23_Xc1BHOLpXn3ExVI')
         self.geocode_result = self.gmaps.geocode(address)
         self.now = datetime.now()
         # using my parser to get google formatted address, returns a better formatted address for use

@@ -1,6 +1,5 @@
 from SignUpWindow import sign_window
 from FoodStackWidget import Food_Window
-from User import *
 from Main import *
 
 from PyQt5 import QtCore, QtGui, QtWidgets
