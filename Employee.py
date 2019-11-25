@@ -1,7 +1,8 @@
 import googlemaps, polyline, GoogleMapParser as Parser
+from Food import Food
 from datetime import datetime
 
-class Admin():
+class Employee():
     def __init__(self, first_name, username, password):
         self.first_name = first_name.title()
         self.username = username
@@ -19,16 +20,11 @@ class Admin():
     def getBudget(self):
         return self.budget
 
-    def getX(self):
-        return self.x
-
-    def getY(self):
-        return self.y
-
     def increaseSalary(self):
-        return (self.salary + (self.salary * .10))
+        self.salary = self.salary * 1.1
+        return self.salary
 
-class Delivery(Admin):
+class Delivery(Employee):
     def __init__(self, first_name, username, password, address):
         super().__init__(first_name, username, password)
         self.step_by_step = []
@@ -71,15 +67,45 @@ class Delivery(Admin):
                 self.decoded[i][j] = str(self.decoded[i][j]).replace(', ', ', lng:')
                 print(str(self.decoded[i][j]).replace(')', '},'))
 
-class Cook(Admin):
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self.y
+
+class Cook(Employee):
     def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)
         self.salary = 10
 
-class Sales(Admin):
+    def addFood(menuList, Food):
+        menuList.append(Food)
+
+    def removeFood(menuList, name):
+        for i in range(len(menuList)):
+            if menuList[i].getName() == name:
+                menuList.remove(menuList[i])
+
+    def changeFoodQuantity(menuList, name, quantity):
+        for i in range(len(menuList)):
+            if menuList[i].getName() == name:
+                menuList[i].setQuantity(quantity)
+
+    def changeFoodQuality(menuList, name, quality):
+        for i in range(len(menuList)):
+            if menuList[i].getName() == name:
+                menuList[i].setQuality(quality)
+
+class Salesperson(Employee):
     def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)
         self.salary = 20
         self.budget = 600
 
-DeliveryGuy = Delivery("Jia Ming", "jma8774", "jma8774", "160 Convent Ave, New York, NY 10031")
+class Manager(Employee):
+    def __init__(self,first_name, username, password):
+        super().__init__(first_name,username,password)
+        self.salary = 250
+        self.budget = 1000
+
+# DeliveryGuy = Delivery("Jia Ming", "jma8774", "jma8774", "160 Convent Ave, New York, NY 10031")
