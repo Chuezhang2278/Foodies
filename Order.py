@@ -34,12 +34,14 @@ class Order():
 
     def bid(self, Delivery, bidAmount):
         # Delivery is a Delivery object
+        print("\n\n" + Delivery.getFirst() + " bidded $" + str(bidAmount))
         if self.bidCompleted == False:
             if bidAmount < self.currentBid:
                 self.delivery = Delivery
                 self.currentBid = bidAmount
-            print("\n\n" + Delivery.getFirst() + " bidded $" + str(bidAmount))
-            print("currentBid: " + str(self.currentBid), end="\n\n")
+            else:
+                print("currentBid not updated because the bidAmount is bigger than currentBid")
+            print("currentBid: $" + str(self.currentBid), end="\n\n")
         if self.timerStarted == False:
             self.timeThread = Thread(target=self.startTimer)
             self.timeThread.start()
@@ -69,6 +71,7 @@ class Order():
             return str(min) + ":" + str(sec)
         else:
             return str(min) + ":0" + str(sec)
+
 customer = Member("Jia Ming", "Ma", "jma8774", "password", "jma8774@bths.edu", "2369 W 11th St, NY")
 chue = Delivery("Chue", "chue1", "password", "City College of New York")
 eric = Delivery("Eric", "chue1", "password", "Hunter College")
@@ -85,6 +88,14 @@ sleep(5)
 order.bid(jd, 20)
 sleep(5)
 order.bid(wilson, 15)
+sleep(5)
+order.bid(jeemong, 11)
+sleep(5)
+order.bid(wilson, 10)
+sleep(5)
+order.bid(jeemong, 9.5)
+sleep(5)
+order.bid(wilson, 7)
 sleep(5)
 order.bid(jeemong, 6)
 sleep(5)

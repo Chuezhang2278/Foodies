@@ -9,7 +9,7 @@ class User():
         self.email = email
         self.password = password
 
-        print("\ninitializing User address...")
+        print("\ninitializing User " + self.first_name + "'s address...")
         self.gmaps = Parser.gmaps
         self.geocode_result = self.gmaps.geocode(address)
         # using my parser to get google formatted address, returns a better formatted address for use

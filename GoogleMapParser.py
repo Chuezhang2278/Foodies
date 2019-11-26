@@ -32,7 +32,7 @@ def get_step_by_step_directions(direction):
     # get the set of step by step directions(driving) for the delivery guy with html tags removed
     TAG_RE = re.compile(r'<[^>]+>')
     list = []
-    print("step by step directions for delivery guy (driving): ")
+    print("\n\nstep by step directions for delivery guy (driving): ")
     for i in range(len(direction[0]['legs'][0]['steps'])):
         print(TAG_RE.sub('', direction[0]['legs'][0]['steps'][i]['html_instructions']))
         list.append(TAG_RE.sub('', direction[0]['legs'][0]['steps'][i]['html_instructions']))
@@ -55,4 +55,4 @@ def decode_polyline(polylines):
 #########################################################################################################
 
 
-gmaps = googlemaps.Client(key='')
+gmaps = googlemaps.Client(key='key')
