@@ -1,6 +1,10 @@
+#SIDE NOTE
+#YOU CANNOT JUST RUN THIS FILE ANYMORE FOR TESTING, YOU WILL GET AN ERROR ABOUT LISTS 
+#RUN THE LOGIN FILE AND REFER TO MAIN.PY FOR USERLOGIN AND PASSWORD
+#ALTERNIATIVELY USE GUEST OR MAKE AN ACCOUNT THROUGH SIGNUP
+
 from Main import *
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Food_Window(object):
     def setupUi(self, MainWindow):
@@ -33,8 +37,8 @@ class Food_Window(object):
         self.Price_listWidget.setObjectName("Price_listWidget")
 
         for i in range(len(Menu)):
-                self.Name_listWidget.addItem(Menu[i].getFood_name())
-                self.Price_listWidget.addItem(str(Menu[i].getFood_price()))
+                self.Name_listWidget.addItem(Menu[i].getName())
+                self.Price_listWidget.addItem(str(Menu[i].getPrice()*CurrentUser[0].getDiscount()))
 
         self.AddButton2 = QtWidgets.QPushButton(self.page)
         self.AddButton2.setGeometry(QtCore.QRect(360, 90, 93, 28))

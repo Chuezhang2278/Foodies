@@ -1,5 +1,5 @@
-from SignUpWindow import sign_window
-from FoodStackWidget import Food_Window
+from WindowSignUp import sign_window
+from WindowFoodStackWidget import Food_Window
 from Main import *
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -39,7 +39,7 @@ class LoginWindow(object):
 
         self.signUpButton.clicked.connect(self.switch_sign)
         self.loginButton.clicked.connect(self.LoginVeri)
-        self.guestButton.clicked.connect(self.switch_guest)
+        self.guestButton.clicked.connect(self.GuestLogin)
 
     def retranslateUi(self, CurrentWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -75,21 +75,19 @@ class LoginWindow(object):
         value1 = self.LogUser_lineEdit.text()
         value2 = self.LogPass_lineEdit.text()
 
-        test = getMemberSize()
-        test2 = getVIPsize()
+        test = getCustomerSize()
 
         for i in range(test):
-            if(value1 == Members[i].getUser() and value2 == Members[i].getPass()):
+            if(value1 == Customer[i].getUser() and value2 == Customer[i].getPass()):
+                addCurrentUser(Customer[i])
                 self.switch_menu()
-                break
-        for i in range(test2):
-            if(value1 == VIPMembers[i].getUser() and value2 == VIPMembers[i].getPass()):
-                self.switch_menu()
+                print(CurrentUser[0].getDiscount())
                 break
 
-            
+    def GuestLogin(self):
+        addCurrentUser(void)
+        self.switch_menu()
               
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

@@ -79,7 +79,7 @@ class sign_window(object):
         temp5 = self.Email_lineEdit.text()
 
         eric = Member(temp1,temp2,temp3,temp4,temp5)
-        addMember(eric)
+        addCustomer(eric)
 
         self.CurrentWindow.hide()
         self.LoginWindow.show()
