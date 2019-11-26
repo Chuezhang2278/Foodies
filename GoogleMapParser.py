@@ -38,6 +38,8 @@ def get_step_by_step_directions(direction):
         list.append(TAG_RE.sub('', direction[0]['legs'][0]['steps'][i]['html_instructions']))
     return list
 
+
+##### ended up not needing the polyline stuff because I was able to integrate a webview instead directly
 def get_polyline(direction):
     # get step by step polylines
     list = []
@@ -50,3 +52,4 @@ def decode_polyline(polylines):
     for i in range(len(polylines)):
         list.append(polyline.decode(polylines[i]))
     return list
+#########################################################################################################
