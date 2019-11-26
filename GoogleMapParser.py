@@ -1,5 +1,5 @@
 # Jia Ming Ma
-import re, polyline
+import re, polyline, googlemaps
 
 # print functions are there for testing!
 
@@ -53,3 +53,6 @@ def decode_polyline(polylines):
         list.append(polyline.decode(polylines[i]))
     return list
 #########################################################################################################
+
+
+gmaps = googlemaps.Client(key='key')

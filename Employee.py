@@ -27,22 +27,23 @@ class Employee():
 class Delivery(Employee):
     def __init__(self, first_name, username, password, address):
         super().__init__(first_name, username, password)
+        self.currentOrder = None
         self.step_by_step = []
         self.decoded = []
-        self.gmaps = googlemaps.Client(key='key')
+        self.gmaps = Parser.gmaps
         self.geocode_result = self.gmaps.geocode(address)
         self.now = datetime.now()
         # using my parser to get google formatted address, returns a better formatted address for use
+        print("\n\ninitializing Delivery person " + self.first_name + "'s address...")
         self.address = Parser.get_formatted_address(self.geocode_result)
         # using my own parser to parse longtitude and latitude from google
         self.x = Parser.get_lat(self.geocode_result)
         self.y = Parser.get_long(self.geocode_result)
-
         # temporary create_direction_result here for testing
-        self.create_direction_result("Grand St, Manhattan, NY")
+        # self.create_direction_result("Grand St, Manhattan, NY")
 
     def create_direction_result(self, end_address):
-        print("---------------------------------------------------------------------------------\nto: " + end_address)
+        print("\ncollecting google maps directions and information for delivery person to " + end_address + "... ")
         self.directions_result = self.gmaps.directions(self.address, end_address, departure_time=self.now)
         self.duration_to_address = Parser.get_duration(self.directions_result)
         self.distance_to_address = Parser.get_distance(self.directions_result)
@@ -51,6 +52,10 @@ class Delivery(Employee):
         # self.polylines = Parser.get_polyline(self.directions_result)
         # self.decoded = Parser.decode_polyline(self.polylines)
         # self.convert_decoded_to_javascript_format()
+
+    def startNewOrder(self, Order):
+        self.currentOrder = Order
+        self.create_direction_result(Order.getCustomer().getAddress())
 
     def get_duration_to_address(self):
         return self.duration_to_address

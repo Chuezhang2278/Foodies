@@ -2,6 +2,7 @@ from WindowSignUp import sign_window
 from WindowFoodStackWidget import Food_Window
 from Main import *
 
+import qdarkstyle
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class LoginWindow(object):
@@ -43,7 +44,7 @@ class LoginWindow(object):
 
     def retranslateUi(self, CurrentWindow):
         _translate = QtCore.QCoreApplication.translate
-        CurrentWindow.setWindowTitle(_translate("CurrentWindow", "CurrentWindow"))
+        CurrentWindow.setWindowTitle(_translate("CurrentWindow", "Login"))
         self.LogUser_Label.setText(_translate("CurrentWindow", "Username"))
         self.LogPass_Label.setText(_translate("CurrentWindow", "Password"))
         self.guestButton.setText(_translate("CurrentWindow", "Guest"))
@@ -71,7 +72,7 @@ class LoginWindow(object):
         CurrentWindow.hide()
         self.Food_window.show()
 
-    def LoginVeri(self): 
+    def LoginVeri(self):
         value1 = self.LogUser_lineEdit.text()
         value2 = self.LogPass_lineEdit.text()
 
@@ -87,10 +88,11 @@ class LoginWindow(object):
     def GuestLogin(self):
         addCurrentUser(void)
         self.switch_menu()
-              
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
+    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
     CurrentWindow = QtWidgets.QMainWindow()
     ui = LoginWindow()
     ui.setupUi(CurrentWindow)
