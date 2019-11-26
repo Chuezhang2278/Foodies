@@ -12,7 +12,7 @@ from WindowDecidesCommissions import Ui_Form_Commissions
 from WindowEmployeeSalary import Ui_Form_Pay
 
 
-class Ui_MainWindow(object):
+class ManagerWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(603, 568)
@@ -88,3 +88,12 @@ class Ui_MainWindow(object):
         self.HandlesComplaintsB.setText(_translate("MainWindow", "Handles complaints"))
         self.pushButton.setText(_translate("MainWindow", "Management stuff"))
         self.exitbutton.setText(_translate("MainWindow", "Exit"))
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    CurrentWindow = QtWidgets.QMainWindow()
+    ui = ManagerWindow()
+    ui.setupUi(CurrentWindow)
+    CurrentWindow.show()
+    sys.exit(app.exec_())

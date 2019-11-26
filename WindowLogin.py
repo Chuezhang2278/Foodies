@@ -1,5 +1,8 @@
 from WindowSignUp import sign_window
 from WindowFoodStackWidget import Food_Window
+from WindowChef import Ui_WindowChef
+from WindowManager import ManagerWindow
+from WindowSalesperson import Sales_Window
 from Main import *
 
 import qdarkstyle
@@ -64,26 +67,52 @@ class LoginWindow(object):
         self.ui.setupUi(self.Food_window)
         CurrentWindow.hide()
         self.Food_window.show()
-
-    def switch_guest(self):
-        self.Food_window = QtWidgets.QMainWindow()
-        self.ui = Food_Window()
-        self.ui.setupUi(self.Food_window)
+    
+    def switch_cook(self):
+        self.Cook_window = QtWidgets.QMainWindow()
+        self.ui = Ui_WindowChef()
+        self.ui.setupUi(self.Cook_window)
         CurrentWindow.hide()
-        self.Food_window.show()
+        self.Cook_window.show()
+    
+    def switch_sales(self):
+        self.sales_window = QtWidgets.QMainWindow()
+        self.ui = Sales_Window()
+        self.ui.setupUi(self.sales_window)
+        CurrentWindow.hide()
+        self.sales_window.show()
+
+    def switch_admin(self):
+        self.Manager_Window = QtWidgets.QMainWindow()
+        self.ui = ManagerWindow()
+        self.ui.setupUi(self.Manager_Window)
+        CurrentWindow.hide()
+        self.Manager_Window.show()
 
     def LoginVeri(self):
         value1 = self.LogUser_lineEdit.text()
         value2 = self.LogPass_lineEdit.text()
 
-        test = getCustomerSize()
+        test = getUserSize()
 
         for i in range(test):
-            if(value1 == Customer[i].getUser() and value2 == Customer[i].getPass()):
-                addCurrentUser(Customer[i])
-                self.switch_menu()
-                print(CurrentUser[0].getDiscount())
-                break
+            if(value1 == User[i].getUser() and value2 == User[i].getPass()):
+                if(User[i].getType() == 1 or User[i].getType() == 2):
+                    addCurrentUser(User[i]) 
+                    self.switch_menu()
+                    break
+                elif(User[i].getType() == 3):
+                    print("Delivery")
+                elif(User[i].getType() == 4):
+                    self.switch_cook()
+                    break
+                elif(User[i].getType() == 5):
+                    self.switch_sales()
+                    break
+                elif(User[i].getType() == 6):
+                    self.switch_admin()
+                    break
+        
 
     def GuestLogin(self):
         addCurrentUser(void)

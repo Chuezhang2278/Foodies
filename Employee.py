@@ -7,6 +7,12 @@ class Employee():
         self.first_name = first_name.title()
         self.username = username
         self.password = password
+    
+    def getPass(self):
+        return self.password
+
+    def getType(self):
+        return self.user_type
 
     def getFirst(self):
         return self.first_name
@@ -27,6 +33,7 @@ class Employee():
 class Delivery(Employee):
     def __init__(self, first_name, username, password, address):
         super().__init__(first_name, username, password)
+        self.user_type = 3
         self.currentOrder = None
         self.step_by_step = []
         self.decoded = []
@@ -83,6 +90,7 @@ class Cook(Employee):
     def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)
         self.salary = 10
+        self.user_type = 4
 
     def addFood(menuList, Food):
         menuList.append(Food)
@@ -105,12 +113,14 @@ class Cook(Employee):
 class Salesperson(Employee):
     def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)
+        self.user_type = 5
         self.salary = 20
         self.budget = 600
 
 class Manager(Employee):
     def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)
+        self.user_type = 6
         self.salary = 250
         self.budget = 1000
 

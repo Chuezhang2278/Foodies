@@ -1,4 +1,4 @@
-from Employee import Manager, Cook, Delivery
+from Employee import Manager, Cook, Delivery, Salesperson
 from Food import Food
 from User import Member, VIP, Guest
 
@@ -35,7 +35,7 @@ def printCooks():
 def addMenuItem(food):
     Menu.append(food)
     print("Added " + food.getName() + " to Foods")
-
+    
 def printMenu():
     print("Printing list of Foods...")
     if(len(Menu) == 0):
@@ -45,37 +45,33 @@ def printMenu():
             print('\t' + Menu[i].getCate(), Menu[i].getFood_name(), Menu[i].getSpice())
 
 # User
-def getCustomerSize():
-    return len(Customer)
+def getUserSize():
+    return len(User)
 
-def addCustomer(customer):
-    Customer.append(customer)
-    print("Added " + customer.getFirst() + " to Members")
+def removeMember(user):
+    User.remove(user)
+    print("Removed " + user.getFirst() + " from VIP")
 
-def removeMember(customer):
-    Customer.remove(customer)
-    print("Removed " + customer.getFirst() + " from VIP")
-
-def findCustomer(name):
-    for i in range(len(Customer)):
-        if(Customer[i].getFirst() == name):
-            print('Member ' + Customer[i].getFirst() + ' has been found')
-            return Customer[i]
+def findUser(name):
+    for i in range(len(User)):
+        if(User[i].getFirst() == name):
+            print('Member ' + user[i].getFirst() + ' has been found')
+            return User[i]
 
 def promoteVIP(name):
-    for i in range(len(Customer)):
-        if(Customer[i].getFirst() == name):
-            print(Customer[i].getFirst() + " found, promoting to VIP")
-            para1 = Customer[i].getFirst()
-            para2 = Customer[i].getLast()
-            para3 = Customer[i].getUser()
-            para4 = Customer[i].getEmail()
-            para5 = Customer[i].getPass()
-            removeMember(Customer[i])
+    for i in range(len(User)):
+        if(User[i].getFirst() == name):
+            print(User[i].getFirst() + " found, promoting to VIP")
+            para1 = User[i].getFirst()
+            para2 = User[i].getLast()
+            para3 = User[i].getUser()
+            para4 = User[i].getEmail()
+            para5 = User[i].getPass()
+            removeMember(User[i])
             new = VIP(para1, para2, para3, para4, para5)
-            addCustomer(new)
+            addUser(new)
             break
-#NEEDS REWORKINg, DO LATER
+#NEEDS REWORKING, DO LATER
 ''' 
 def printAllCustomer():
     print("Printing list of Members and VIPMembers...")
@@ -97,14 +93,24 @@ def printAllCustomer():
 def addCurrentUser(name):
     CurrentUser.append(name)
     
+def addCurrentCart(name):
+    CurrentCart.append(name)
+
+def addEmployee(name):
+    Employee.append(name)
+    
+def addUser(user):
+    User.append(user)
+    
 DeliveryPeople = []
 Cooks = []
 Sales = []
 Menu = []
 IngredientList = []
-Customer = []
+User = []
+Employee = []
 CurrentUser = []
-
+CurrentCart = []
 
 
 # Testing Employee.py
@@ -127,13 +133,18 @@ Dog = Food('Dog', 20.99, 'Entree', True, 5, 5)
 addMenuItem(Dog)
 #printMenu()
 
-# Testing User.py
-#print("\nTESTING USER.PY:")
+manager = Manager('y','y','y')
+saleguy = Salesperson('x','x','x')
+deli = Delivery('z','z','z','z')
 void = Guest('t')
-eric = Member('eric','test2','t','t','t')
-chue = VIP('chue','bloo','blee','blee','blop')
-addCustomer(chue)
-addCustomer(eric)
+eric = Member('eric','test2','t','t','t','t')
+chue = VIP('chue','bloo','blee','blee','blop','t')
+addUser(chue)
+addUser(eric)
+addUser(John)
+addUser(manager)
+addUser(saleguy)
+addUser(deli)
 #printAllMembers()
 # removed 'Eric' who was originally a Member, and moved him to VIPMembers
 #promoteVIP('eric'.title())

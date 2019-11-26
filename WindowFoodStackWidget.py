@@ -23,7 +23,6 @@ class Food_Window(object):
         self.Name_listWidget.setEnabled(True)
         self.Name_listWidget.setGeometry(QtCore.QRect(30, 25, 221, 561))
         self.Name_listWidget.setAutoFillBackground(False)
-        self.Name_listWidget.setStyleSheet("background-color: rgb(240, 240, 240);")
         self.Name_listWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.Name_listWidget.setLineWidth(0)
         self.Name_listWidget.setSpacing(15)
@@ -31,7 +30,6 @@ class Food_Window(object):
 
         self.Price_listWidget = QtWidgets.QListWidget(self.page)
         self.Price_listWidget.setGeometry(QtCore.QRect(260, 25, 91, 561))
-        self.Price_listWidget.setStyleSheet("background-color: rgb(240, 240, 240);")
         self.Price_listWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.Price_listWidget.setSpacing(15)
         self.Price_listWidget.setObjectName("Price_listWidget")
@@ -178,51 +176,51 @@ class Food_Window(object):
         if not listItems: return
         for item in listItems:
             self.Cart.takeItem(self.Cart.row(item))
-            self.finalCart.takeItem(self.Cart.row(1))
+            self.finalCart.takeItem(self.Cart.row(item))
         
     #Need a better method of implementing stuff below, VERY BAD EFFICIENCY
     #problem stems from the generation of buttons
     
     def Add_Button1(self):
-        self.Cart.addItem(Menu[0].getFood_name() + '\t\t\t' + str(Menu[0].getFood_price()))    
-        self.finalCart.addItem(Menu[0].getFood_name() + '\t\t\t' + str(Menu[0].getFood_price()))
-        self.temp += (Menu[0].getFood_price())
+        self.Cart.addItem(Menu[0].getName() + '\t\t\t' + str(Menu[0].getPrice()))    
+        self.finalCart.addItem(Menu[0].getName() + '\t\t\t' + str(Menu[0].getPrice()))
+        self.temp += (Menu[0].getPrice())
     def Add_Button2(self):
-        self.Cart.addItem(Menu[1].getFood_name() + '\t\t\t' + str(Menu[1].getFood_price()))  
-        self.finalCart.addItem(Menu[1].getFood_name() + '\t\t\t' + str(Menu[1].getFood_price()))
-        self.temp += (Menu[1].getFood_price())
+        self.Cart.addItem(Menu[1].getName() + '\t\t\t' + str(Menu[1].getPrice()))  
+        self.finalCart.addItem(Menu[1].getName() + '\t\t\t' + str(Menu[1].getPrice()))
+        self.temp += (Menu[1].getPrice())
     def Add_Button3(self):
-        self.Cart.addItem(Menu[2].getFood_name() + '\t\t\t' + str(Menu[2].getFood_price()))  
-        self.finalCart.addItem(Menu[2].getFood_name() + '\t\t\t' + str(Menu[2].getFood_price()))
-        self.temp += (Menu[2].getFood_price())
+        self.Cart.addItem(Menu[2].getName() + '\t\t\t' + str(Menu[2].getPrice()))  
+        self.finalCart.addItem(Menu[2].getName() + '\t\t\t' + str(Menu[2].getPrice()))
+        self.temp += (Menu[2].getPrice())
     def Add_Button4(self):
-        self.Cart.addItem(Menu[3].getFood_name() + '\t\t\t' + str(Menu[3].getFood_price()))  
-        self.finalCart.addItem(Menu[3].getFood_name() + '\t\t\t' + str(Menu[3].getFood_price()))
-        self.temp += (Menu[3].getFood_price())
+        self.Cart.addItem(Menu[3].getName() + '\t\t\t' + str(Menu[3].getPrice()))  
+        self.finalCart.addItem(Menu[3].getName() + '\t\t\t' + str(Menu[3].getPrice()))
+        self.temp += (Menu[3].getPrice())
     def Add_Button5(self):
-        self.Cart.addItem(Menu[4].getFood_name() + '\t\t\t' + str(Menu[4].getFood_price())) 
-        self.finalCart.addItem(Menu[4].getFood_name() + '\t\t\t' + str(Menu[4].getFood_price())) 
-        self.temp += (Menu[4].getFood_price())
+        self.Cart.addItem(Menu[4].getName() + '\t\t\t' + str(Menu[4].getPrice())) 
+        self.finalCart.addItem(Menu[4].getName() + '\t\t\t' + str(Menu[4].getPrice())) 
+        self.temp += (Menu[4].getPrice())
     def Add_Button6(self):
-        self.Cart.addItem(Menu[5].getFood_name() + '\t\t\t' + str(Menu[5].getFood_price())) 
-        self.finalCart.addItem(Menu[5].getFood_name() + '\t\t\t' + str(Menu[5].getFood_price())) 
-        self.temp += (Menu[5].getFood_price())
+        self.Cart.addItem(Menu[5].getName() + '\t\t\t' + str(Menu[5].getNrice())) 
+        self.finalCart.addItem(Menu[5].getName() + '\t\t\t' + str(Menu[5].getPrice())) 
+        self.temp += (Menu[5].getPrice())
     def Add_Button7(self):
-        self.Cart.addItem(Menu[6].getFood_name() + '\t\t\t' + str(Menu[6].getFood_price()))  
-        self.finalCart.addItem(Menu[6].getFood_name() + '\t\t\t' + str(Menu[6].getFood_price()))
-        self.temp += (Menu[6].getFood_price())
+        self.Cart.addItem(Menu[6].getName() + '\t\t\t' + str(Menu[6].getPrice()))  
+        self.finalCart.addItem(Menu[6].getName() + '\t\t\t' + str(Menu[6].getPrice()))
+        self.temp += (Menu[6].getPrice())
     def Add_Button8(self):
-        self.Cart.addItem(Menu[7].getFood_name() + '\t\t\t' + str(Menu[7].getFood_price())) 
-        self.finalCart.addItem(Menu[7].getFood_name() + '\t\t\t' + str(Menu[7].getFood_price())) 
-        self.temp += (Menu[7].getFood_price())
+        self.Cart.addItem(Menu[7].getName() + '\t\t\t' + str(Menu[7].getPrice())) 
+        self.finalCart.addItem(Menu[7].getName() + '\t\t\t' + str(Menu[7].getPrice())) 
+        self.temp += (Menu[7].getPrice())
     def Add_Button9(self):
-        self.Cart.addItem(Menu[8].getFood_name() + '\t\t\t' + str(Menu[8].getFood_price()))
-        self.finalCart.addItem(Menu[8].getFood_name() + '\t\t\t' + str(Menu[8].getFood_price())) 
-        self.temp += (Menu[8].getFood_price())
+        self.Cart.addItem(Menu[8].getName() + '\t\t\t' + str(Menu[8].getPrice()))
+        self.finalCart.addItem(Menu[8].getName() + '\t\t\t' + str(Menu[8].getPrice())) 
+        self.temp += (Menu[8].getPrice())
     def Add_Button10(self):
-        self.Cart.addItem(Menu[9].getFood_name() + '\t\t\t' + str(Menu[9].getFood_price()))  
-        self.finalCart.addItem(Menu[9].getFood_name() + '\t\t\t' + str(Menu[9].getFood_price()))
-        self.temp += (Menu[9].getFood_price())
+        self.Cart.addItem(Menu[9].getName() + '\t\t\t' + str(Menu[9].getPrice()))  
+        self.finalCart.addItem(Menu[9].getName() + '\t\t\t' + str(Menu[9].getPrice()))
+        self.temp += (Menu[9].getPrice())
     
     
 if __name__ == "__main__":

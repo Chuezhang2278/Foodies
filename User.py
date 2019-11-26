@@ -42,7 +42,7 @@ class User():
 class Guest(User):
     def __init__(self, void):
         self.discount = 1
-        self.user_type = 1
+        self.user_type = 0
 
 class Member(User):
     def __init__(self, first_name, last_name, username, password, email, address):
