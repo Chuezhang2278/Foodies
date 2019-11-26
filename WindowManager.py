@@ -8,8 +8,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from DecidesCommissions import Ui_Form_Commissions
-from EmployeeSalary import Ui_Form_Pay
+from WindowDecidesCommissions import Ui_Form_Commissions
+from WindowEmployeeSalary import Ui_Form_Pay
 
 
 class Ui_MainWindow(object):
