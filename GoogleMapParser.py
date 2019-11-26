@@ -55,4 +55,4 @@ def decode_polyline(polylines):
 #########################################################################################################
 
 
-gmaps = googlemaps.Client(key='key')
+gmaps = googlemaps.Client(key='')

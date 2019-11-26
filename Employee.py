@@ -43,7 +43,7 @@ class Delivery(Employee):
         # self.create_direction_result("Grand St, Manhattan, NY")
 
     def create_direction_result(self, end_address):
-        print("\ncollecting google maps directions and information for delivery person to " + end_address + "... ")
+        print("\ncollecting google maps directions and information for delivery person " + self.first_name + " to " + end_address + "... ")
         self.directions_result = self.gmaps.directions(self.address, end_address, departure_time=self.now)
         self.duration_to_address = Parser.get_duration(self.directions_result)
         self.distance_to_address = Parser.get_distance(self.directions_result)

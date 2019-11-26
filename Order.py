@@ -23,7 +23,7 @@ class Order():
         self.time = 120
         self.timerStarted = False
 
-        print("\norder started...")
+        print("\n\norder started...")
         print("startingBid: 10 + (.2 * " + str(self.totalCost) + ") = $" + str(self.startingBid))
         print("currentBid: $" + str(self.currentBid))
         print("autoWin: $" + str(self.autoWin))
@@ -38,8 +38,8 @@ class Order():
             if bidAmount < self.currentBid:
                 self.delivery = Delivery
                 self.currentBid = bidAmount
-            print("\n" + Delivery.getFirst() + " bidded $" + str(bidAmount))
-            print("currentBid: " + str(self.currentBid))
+            print("\n\n" + Delivery.getFirst() + " bidded $" + str(bidAmount))
+            print("currentBid: " + str(self.currentBid), end="\n\n")
         if self.timerStarted == False:
             self.timeThread = Thread(target=self.startTimer)
             self.timeThread.start()
@@ -69,16 +69,23 @@ class Order():
             return str(min) + ":" + str(sec)
         else:
             return str(min) + ":0" + str(sec)
+customer = Member("Jia Ming", "Ma", "jma8774", "password", "jma8774@bths.edu", "2369 W 11th St, NY")
+chue = Delivery("Chue", "chue1", "password", "City College of New York")
+eric = Delivery("Eric", "chue1", "password", "Hunter College")
+jd = Delivery("JD", "chue1", "password", "Coney Island")
+wilson = Delivery("Wilson", "chue1", "password", "Barclay Center")
+jeemong = Delivery("Jeemong", "chue1", "password", "Brooklyn Bridge")
+mohammed = Delivery("Mohammed", "chue1", "password", "Grand St")
 
-order = Order(Member("Jia Ming", "Ma", "jma8774", "password", "jma8774@bths.edu", "2369 W 11th St, NY"), [Food("Peanut", 100, "Entree", True, 100, 4)])
-order.bid(Delivery("Chue", "chue1", "password", "City College of New York"), 26)
+order = Order(customer, [Food("Peanut", 100, "Entree", True, 100, 4)])
+order.bid(chue, 26)
 sleep(5)
-order.bid(Delivery("Eric", "chue1", "password", "Hunter College"), 27)
+order.bid(eric, 27)
 sleep(5)
-order.bid(Delivery("JD", "chue1", "password", "Coney Island"), 20)
+order.bid(jd, 20)
 sleep(5)
-order.bid(Delivery("Wilson", "chue1", "password", "Barclay Center"), 15)
+order.bid(wilson, 15)
 sleep(5)
-order.bid(Delivery("Jeemong", "chue1", "password", "Brooklyn Bridge"), 6)
+order.bid(jeemong, 6)
 sleep(5)
-order.bid(Delivery("Mohammed", "chue1", "password", "Grand St"), 5)
+order.bid(mohammed, 5)
