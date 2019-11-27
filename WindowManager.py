@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Manager.ui'
+# Form implementation generated from reading ui file 'WindowManager.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
@@ -28,20 +28,20 @@ class  ManagerWindow(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.DecidesCommissionsB = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.DecidesCommissionsB.setStyleSheet("color: rgb(0, 0, 255);\n"
-"background-color: rgb(255, 255, 0);")
+       # self.DecidesCommissionsB.setStyleSheet("color: rgb(0, 0, 255);\n"
+#"background-color: rgb(255, 255, 0);")
         self.DecidesCommissionsB.setObjectName("DecidesCommissionsB")
         self.verticalLayout.addWidget(self.DecidesCommissionsB)
         self.DecidesPayB = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.DecidesPayB.setStyleSheet("background-color: rgb(85, 255, 255);")
+        #self.DecidesPayB.setStyleSheet("background-color: rgb(85, 255, 255);")
         self.DecidesPayB.setObjectName("DecidesPayB")
         self.verticalLayout.addWidget(self.DecidesPayB)
         self.HandlesComplaintsB = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.HandlesComplaintsB.setStyleSheet("background-color: rgb(85, 255, 0);")
+        #self.HandlesComplaintsB.setStyleSheet("background-color: rgb(85, 255, 0);")
         self.HandlesComplaintsB.setObjectName("HandlesComplaintsB")
         self.verticalLayout.addWidget(self.HandlesComplaintsB)
         self.ManagementStaffB = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.ManagementStaffB.setStyleSheet("background-color: rgb(255, 170, 255);")
+        #self.ManagementStaffB.setStyleSheet("background-color: rgb(255, 170, 255);")
         self.ManagementStaffB.setObjectName("ManagementStaffB")
         self.verticalLayout.addWidget(self.ManagementStaffB)
         self.CustomerInforB = QtWidgets.QPushButton(self.verticalLayoutWidget)
