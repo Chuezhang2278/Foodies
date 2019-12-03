@@ -64,7 +64,7 @@ class LoginWindow(object):
     def switch_menu(self):
         self.Food_window = QtWidgets.QMainWindow()
         self.ui = Food_Window()
-        self.ui.setupUi(self.Food_window)
+        self.ui.setupUi(self.Food_window, CurrentWindow)
         CurrentWindow.hide()
         self.Food_window.show()
     
@@ -99,6 +99,7 @@ class LoginWindow(object):
             if(value1 == User[i].getUser() and value2 == User[i].getPass()):
                 if(User[i].getType() == 1 or User[i].getType() == 2):
                     addCurrentUser(User[i]) 
+                    addCurrentUser(i)
                     self.switch_menu()
                     break
                 elif(User[i].getType() == 3):

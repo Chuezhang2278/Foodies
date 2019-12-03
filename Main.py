@@ -45,6 +45,7 @@ def printMenu():
             print('\t' + Menu[i].getCate(), Menu[i].getFood_name(), Menu[i].getSpice())
 
 # User
+
 def getUserSize():
     return len(User)
 
@@ -71,25 +72,10 @@ def promoteVIP(name):
             new = VIP(para1, para2, para3, para4, para5)
             addUser(new)
             break
-#NEEDS REWORKING, DO LATER
-''' 
-def printAllCustomer():
-    print("Printing list of Members and VIPMembers...")
-    if(len(Customer) == 0):
-        print("\tMembers is empty")
-    else:
-        print("\tMembers: ", end='')
-        for i in range(len(Customer)):
-            print(Customer[i].getFirst(), end=' ')
-        print('')
-    if(len(Customer) == 0):
-        print("\tVIPMembers is empty")
-    else:
-        print("\tVIP Members: ", end='')
-        for i in range(len(Customer)):
-            print(Customer[i].getFirst(), end=' ')
-        print('')
-'''
+
+    self.order.append(Food)
+    self.order.append(Price)
+
 def addCurrentUser(name):
     CurrentUser.append(name)
     
@@ -102,6 +88,7 @@ def addEmployee(name):
 def addUser(user):
     User.append(user)
     
+ #====For_Storage====#   
 DeliveryPeople = []
 Cooks = []
 Sales = []
@@ -111,41 +98,28 @@ User = []
 Employee = []
 CurrentUser = []
 CurrentCart = []
+#====For_Storage====#
 
 
-# Testing Employee.py
-#print("TESTING EMPLOYEE.PY:")
-John = Cook('John','Username', 'test')
-addCook(John)
-# findCook("John")
-# printCooks()
-# DeliveryGuy = Delivery("Jia Ming", "jma8774", "jma8774", "160 Convent Ave, New York, NY 10031")
-
-# Testing Food.py
-#print("\nTESTING FOOD.PY:")
 Chicken = Food('Chicken', 12.99, 'Entree', True, 100, 2)
-addMenuItem(Chicken)
 Fish = Food('Fish', 10.99, 'Entree', True, 500, 3)
-addMenuItem(Fish)
 Duck = Food('Duck', 9.49, 'Entree', True, 122, 5)
-addMenuItem(Duck)
 Dog = Food('Dog', 20.99, 'Entree', True, 5, 5)
-addMenuItem(Dog)
-#printMenu()
-
+John = Cook('John','Username', 'test')
 manager = Manager('y','y','y')
 saleguy = Salesperson('x','x','x')
 deli = Delivery('z','z','z','z')
 void = Guest('t')
 eric = Member('eric','test2','t','t','t','t')
 chue = VIP('chue','bloo','blee','blee','blop','t')
+
 addUser(chue)
 addUser(eric)
 addUser(John)
 addUser(manager)
 addUser(saleguy)
 addUser(deli)
-#printAllMembers()
-# removed 'Eric' who was originally a Member, and moved him to VIPMembers
-#promoteVIP('eric'.title())
-#printAllMembers()
+addMenuItem(Duck)
+addMenuItem(Dog)
+addMenuItem(Fish)
+addMenuItem(Chicken)

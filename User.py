@@ -8,7 +8,7 @@ class User():
         self.username = username
         self.email = email
         self.password = password
-
+        
         print("\ninitializing User " + self.first_name + "'s address...")
         self.gmaps = Parser.gmaps
         self.geocode_result = self.gmaps.geocode(address)
@@ -39,6 +39,13 @@ class User():
     def getAddress(self):
         return self.address
 
+    def addOrder(self,Food,Price):
+        self.order.append(Food)
+        self.order.append(Price)
+    
+    def printOrder(self):
+        print(self.order[0] + " " + str(self.order[1]))
+        
 class Guest(User):
     def __init__(self, void):
         self.discount = 1
@@ -49,17 +56,12 @@ class Member(User):
         super().__init__(first_name, last_name, username, password, email, address)
         self.discount = 0.85
         self.user_type = 1
-
+        self.order = []
+        
 class VIP(User): #Inherits VIP methods as well as user, polymorphism
     def __init__(self, first_name, last_name, username, password, email, address):
         super().__init__(first_name,last_name,username, password, email, address)
         self.discount = 0.75
         self.user_type = 2
+        self.order = []
 
-# MOVED TO MAIN.PY
-# Customer = User('t','t','t','t','t')
-# eric = Member('eric','test2','t','t','t')
-# eric2 = VIP('Blah','bloo','blee','blop','t')
-# Customer.addMember(eric)
-# Customer.addVIP(eric2)
-# Customer.promoteVIP('Eric')
