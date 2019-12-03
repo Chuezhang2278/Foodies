@@ -82,11 +82,15 @@ def addCurrentUser(name):
 def addCurrentCart(name):
     CurrentCart.append(name)
 
+def currentCartSize():
+    return len(CurrentCart)*2
+
 def addEmployee(name):
     Employee.append(name)
     
 def addUser(user):
     User.append(user)
+
     
  #====For_Storage====#   
 DeliveryPeople = []
@@ -113,6 +117,7 @@ void = Guest('t')
 eric = Member('eric','test2','t','t','t','t')
 chue = VIP('chue','bloo','blee','blee','blop','t')
 
+addUser(void)
 addUser(chue)
 addUser(eric)
 addUser(John)

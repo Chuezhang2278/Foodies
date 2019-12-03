@@ -42,14 +42,22 @@ class User():
     def addOrder(self,Food,Price):
         self.order.append(Food)
         self.order.append(Price)
+        
+    def removeOrder(self,Food,Price):
+        self.order.remove(Food)
+        self.order.remove(Price)
     
     def printOrder(self):
-        print(self.order[0] + " " + str(self.order[1]))
+        i=0
+        while (i < (len(self.order))):
+            print(self.order[i] + " " + str(self.order[i+1]))
+            i += 2
         
 class Guest(User):
     def __init__(self, void):
         self.discount = 1
         self.user_type = 0
+        self.order = []
 
 class Member(User):
     def __init__(self, first_name, last_name, username, password, email, address):

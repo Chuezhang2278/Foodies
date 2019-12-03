@@ -7,11 +7,17 @@ from Main import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Food_Window(object):
-    def setupUi(self, MainWindow):
+    def __init__(self):
+        self.CurrentWindow = None;
+        self.LoginWindow = None;
+    
+    def setupUi(self, CurrentWindow, LoginWindow):
         self.temp = 0
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.LoginWindow = LoginWindow
+        self.CurrentWindow = CurrentWindow
+        CurrentWindow.setObjectName("MainWindow")
+        CurrentWindow.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(CurrentWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
         self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 800, 600))
@@ -31,7 +37,7 @@ class Food_Window(object):
         self.Price_listWidget = QtWidgets.QListWidget(self.page)
         self.Price_listWidget.setGeometry(QtCore.QRect(260, 25, 91, 561))
         self.Price_listWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.Price_listWidget.setSpacing(15)
+        self.Price_listWidget.setSpacing(17)
         self.Price_listWidget.setObjectName("Price_listWidget")
 
         for i in range(len(Menu)):
@@ -108,10 +114,10 @@ class Food_Window(object):
         self.returnButton.setGeometry(QtCore.QRect(10, 10, 93, 28))
         self.returnButton.setObjectName("returnButton")
         self.stackedWidget.addWidget(self.page_2)
-        MainWindow.setCentralWidget(self.centralwidget)
+        CurrentWindow.setCentralWidget(self.centralwidget)
         self.label.setBuddy(self.Cart)
 
-        #page1
+        #====page1====#
         self.Remove_Button.clicked.connect(self.Remove)
         self.Checkout_Button.clicked.connect(self.Checkout)
         self.AddButton1.clicked.connect(self.Add_Button1)
@@ -125,18 +131,22 @@ class Food_Window(object):
         self.AddButton8.hide()
         self.AddButton9.hide()
         self.AddButton10.hide()
+        #====page1====#
         
-        #page2
+        #====page2====#
 
+        self.finalCheckOut.clicked.connect(self.Logout)
         self.returnButton.clicked.connect(self.Return)
 
-        self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        #====page2====#
 
-    def retranslateUi(self, MainWindow):
+        self.retranslateUi(CurrentWindow)
+        self.stackedWidget.setCurrentIndex(0)
+        QtCore.QMetaObject.connectSlotsByName(CurrentWindow)
+
+    def retranslateUi(self, CurrentWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        CurrentWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         __sortingEnabled = self.Name_listWidget.isSortingEnabled()
         self.Name_listWidget.setSortingEnabled(False)
         self.Name_listWidget.setSortingEnabled(__sortingEnabled)
@@ -164,70 +174,88 @@ class Food_Window(object):
         self.returnButton.setText(_translate("MainWindow", "Return"))
 
     
+    def Logout(self):
+        self.CurrentWindow.hide()
+        self.LoginWindow.show()
+        self.finalCart.clear()
+        CurrentUser.pop()
+        CurrentUser.pop()
+    
     def Checkout(self):
+        i = 0
         self.stackedWidget.setCurrentIndex(1)
         self.finalCost.setText(str(self.temp))
-        
+        while i < currentCartSize():
+            self.finalCart.addItem((User[CurrentUser[1]].order[i]) + "\t\t\t " + str(User[CurrentUser[1]].order[i+1]))
+            i += 2
+            
     def Return(self):
         self.stackedWidget.setCurrentIndex(0)
+        self.finalCart.clear()
     
-    def Remove(self): #WIP 
+    def Remove(self): 
         listItems = self.Cart.selectedItems()
         if not listItems: return
         for item in listItems:
             self.Cart.takeItem(self.Cart.row(item))
-            self.finalCart.takeItem(self.Cart.row(item))
+            CurrentCart.pop(self.Cart.currentRow()+1)
+            #User[CurrentUser[1]].removeOrder()
         
     #Need a better method of implementing stuff below, VERY BAD EFFICIENCY
     #problem stems from the generation of buttons
+    #when logging out, cart needs to still show 
     
     def Add_Button1(self):
         self.Cart.addItem(Menu[0].getName() + '\t\t\t' + str(Menu[0].getPrice()))    
-        self.finalCart.addItem(Menu[0].getName() + '\t\t\t' + str(Menu[0].getPrice()))
+        addCurrentCart(Menu[0])
         self.temp += (Menu[0].getPrice())
+        User[CurrentUser[1]].addOrder(Menu[0].getName(),Menu[0].getPrice())
     def Add_Button2(self):
         self.Cart.addItem(Menu[1].getName() + '\t\t\t' + str(Menu[1].getPrice()))  
-        self.finalCart.addItem(Menu[1].getName() + '\t\t\t' + str(Menu[1].getPrice()))
+        addCurrentCart(Menu[1])
         self.temp += (Menu[1].getPrice())
+        User[CurrentUser[1]].addOrder(Menu[1].getName(),Menu[1].getPrice())
     def Add_Button3(self):
         self.Cart.addItem(Menu[2].getName() + '\t\t\t' + str(Menu[2].getPrice()))  
-        self.finalCart.addItem(Menu[2].getName() + '\t\t\t' + str(Menu[2].getPrice()))
+        addCurrentCart(Menu[2])
         self.temp += (Menu[2].getPrice())
+        User[CurrentUser[1]].addOrder(Menu[2].getName(),Menu[2].getPrice())
     def Add_Button4(self):
         self.Cart.addItem(Menu[3].getName() + '\t\t\t' + str(Menu[3].getPrice()))  
-        self.finalCart.addItem(Menu[3].getName() + '\t\t\t' + str(Menu[3].getPrice()))
+        addCurrentCart(Menu[3])
         self.temp += (Menu[3].getPrice())
+        User[CurrentUser[1]].addOrder(Menu[3].getName(),Menu[3].getPrice())
     def Add_Button5(self):
         self.Cart.addItem(Menu[4].getName() + '\t\t\t' + str(Menu[4].getPrice())) 
-        self.finalCart.addItem(Menu[4].getName() + '\t\t\t' + str(Menu[4].getPrice())) 
+        addCurrentCart(Menu[4])
         self.temp += (Menu[4].getPrice())
     def Add_Button6(self):
         self.Cart.addItem(Menu[5].getName() + '\t\t\t' + str(Menu[5].getNrice())) 
-        self.finalCart.addItem(Menu[5].getName() + '\t\t\t' + str(Menu[5].getPrice())) 
+        addCurrentCart(Menu[5])
         self.temp += (Menu[5].getPrice())
     def Add_Button7(self):
         self.Cart.addItem(Menu[6].getName() + '\t\t\t' + str(Menu[6].getPrice()))  
-        self.finalCart.addItem(Menu[6].getName() + '\t\t\t' + str(Menu[6].getPrice()))
+        addCurrentCart(Menu[6])
         self.temp += (Menu[6].getPrice())
     def Add_Button8(self):
         self.Cart.addItem(Menu[7].getName() + '\t\t\t' + str(Menu[7].getPrice())) 
-        self.finalCart.addItem(Menu[7].getName() + '\t\t\t' + str(Menu[7].getPrice())) 
+        addCurrentCart(Menu[7])
         self.temp += (Menu[7].getPrice())
     def Add_Button9(self):
         self.Cart.addItem(Menu[8].getName() + '\t\t\t' + str(Menu[8].getPrice()))
-        self.finalCart.addItem(Menu[8].getName() + '\t\t\t' + str(Menu[8].getPrice())) 
+        addCurrentCart(Menu[8]) 
         self.temp += (Menu[8].getPrice())
     def Add_Button10(self):
         self.Cart.addItem(Menu[9].getName() + '\t\t\t' + str(Menu[9].getPrice()))  
-        self.finalCart.addItem(Menu[9].getName() + '\t\t\t' + str(Menu[9].getPrice()))
+        addCurrentCart(Menu[9])
         self.temp += (Menu[9].getPrice())
     
     
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
+    CurrentWindow = QtWidgets.QMainWindow()
     ui = Food_Window()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    ui.setupUi(CurrentWindow, None)
+    CurrentWindow.show()
     sys.exit(app.exec_())

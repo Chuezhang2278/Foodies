@@ -43,7 +43,7 @@ class LoginWindow(object):
 
         self.signUpButton.clicked.connect(self.switch_sign)
         self.loginButton.clicked.connect(self.LoginVeri)
-        self.guestButton.clicked.connect(self.GuestLogin)
+        self.guestButton.clicked.connect(self.guestVeri)
 
     def retranslateUi(self, CurrentWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -89,6 +89,11 @@ class LoginWindow(object):
         CurrentWindow.hide()
         self.Manager_Window.show()
 
+    def guestVeri(self):
+        addCurrentUser(User[0])
+        addCurrentUser(0)
+        self.switch_menu()
+        
     def LoginVeri(self):
         value1 = self.LogUser_lineEdit.text()
         value2 = self.LogPass_lineEdit.text()
@@ -113,11 +118,7 @@ class LoginWindow(object):
                 elif(User[i].getType() == 6):
                     self.switch_admin()
                     break
-        
-
-    def GuestLogin(self):
-        addCurrentUser(void)
-        self.switch_menu()
+            
 
 if __name__ == "__main__":
     import sys
