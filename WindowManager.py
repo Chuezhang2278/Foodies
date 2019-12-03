@@ -1,57 +1,58 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Manager.ui'
+# Form implementation generated from reading ui file 'WindowManager.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from WindowDecidesCommissions import Ui_Form_Commissions
 from WindowEmployeeSalary import Ui_Form_Pay
 
-
-class ManagerWindow(object):
+class  ManagerWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(603, 568)
-        MainWindow.setStyleSheet("background-image: url(C:/Users/alexl/Downloads/ab.jpg);\n"
-"")
+        MainWindow.resize(604, 493)
+        #MainWindow.setStyleSheet()
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet("background-image: url(:/newPrefix/mb.png);")
+        #self.centralwidget.setStyleSheet()
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(10, 10, 141, 31))
+        self.label.setGeometry(QtCore.QRect(10, 10, 201, 41))
         self.label.setObjectName("label")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(160, 140, 153, 121))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(92, 120, 291, 181))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.DecidesCommissionsB = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.DecidesCommissionsB.setStyleSheet("color: rgb(0, 0, 255);\n"
-"background-color: rgb(255, 255, 0);")
-        self.DecidesCommissionsB.setObjectName("DecidesCommissions")
+       # self.DecidesCommissionsB.setStyleSheet("color: rgb(0, 0, 255);\n"
+#"background-color: rgb(255, 255, 0);")
+        self.DecidesCommissionsB.setObjectName("DecidesCommissionsB")
         self.verticalLayout.addWidget(self.DecidesCommissionsB)
         self.DecidesPayB = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.DecidesPayB.setStyleSheet("background-color: rgb(85, 255, 255);")
-        self.DecidesPayB.setObjectName("DecidesPay")
+        #self.DecidesPayB.setStyleSheet("background-color: rgb(85, 255, 255);")
+        self.DecidesPayB.setObjectName("DecidesPayB")
         self.verticalLayout.addWidget(self.DecidesPayB)
         self.HandlesComplaintsB = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.HandlesComplaintsB.setStyleSheet("background-color: rgb(85, 255, 0);")
-        self.HandlesComplaintsB.setObjectName("HandlesComplaints")
+        #self.HandlesComplaintsB.setStyleSheet("background-color: rgb(85, 255, 0);")
+        self.HandlesComplaintsB.setObjectName("HandlesComplaintsB")
         self.verticalLayout.addWidget(self.HandlesComplaintsB)
-        self.pushButton = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.pushButton.setObjectName("pushButton")
-        self.verticalLayout.addWidget(self.pushButton)
+        self.ManagementStaffB = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        #self.ManagementStaffB.setStyleSheet("background-color: rgb(255, 170, 255);")
+        self.ManagementStaffB.setObjectName("ManagementStaffB")
+        self.verticalLayout.addWidget(self.ManagementStaffB)
+        self.CustomerInforB = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.CustomerInforB.setObjectName("CustomerInforB")
+        self.verticalLayout.addWidget(self.CustomerInforB)
         self.exitbutton = QtWidgets.QPushButton(self.centralwidget)
         self.exitbutton.setGeometry(QtCore.QRect(455, 350, 91, 31))
         self.exitbutton.setObjectName("exitbutton")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 603, 18))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 604, 18))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -65,19 +66,19 @@ class ManagerWindow(object):
         self.exitbutton.clicked.connect(lambda: self.closescr(MainWindow))
 
     def DecidesCommissionsscr(self):
-            self.Form = QtWidgets.QWidget()
-            self.ui = Ui_Form_Commissions()
-            self.ui.setupUi(self.Form)
-            self.Form.show()
+        self.Form = QtWidgets.QWidget()
+        self.ui = Ui_Form_Commissions()
+        self.ui.setupUi(self.Form)
+        self.Form.show()
 
     def DecidesPayscr(self):
-            self.Form = QtWidgets.QWidget()
-            self.ui = Ui_Form_Pay()
-            self.ui.setupUi(self.Form)
-            self.Form.show()
+        self.Form = QtWidgets.QWidget()
+        self.ui = Ui_Form_Pay()
+        self.ui.setupUi(self.Form)
+        self.Form.show()
 
     def closescr(self, MainWindow):
-            MainWindow.hide()
+        MainWindow.hide()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -86,7 +87,8 @@ class ManagerWindow(object):
         self.DecidesCommissionsB.setText(_translate("MainWindow", "Decides commissions of salespeople "))
         self.DecidesPayB.setText(_translate("MainWindow", "Decides pay for stuffs"))
         self.HandlesComplaintsB.setText(_translate("MainWindow", "Handles complaints"))
-        self.pushButton.setText(_translate("MainWindow", "Management stuff"))
+        self.ManagementStaffB.setText(_translate("MainWindow", "Management stuff"))
+        self.CustomerInforB.setText(_translate("MainWindow", "Customer Information Mangement"))
         self.exitbutton.setText(_translate("MainWindow", "Exit"))
 
 if __name__ == "__main__":

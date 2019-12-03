@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>603</width>
-    <height>768</height>
+    <width>604</width>
+    <height>493</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,8 +26,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>141</width>
-      <height>31</height>
+      <width>201</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -37,15 +37,15 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>140</y>
-      <width>153</width>
-      <height>121</height>
+      <x>92</x>
+      <y>120</y>
+      <width>291</width>
+      <height>181</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="DecidesCommissions">
+      <widget class="QPushButton" name="DecidesCommissionsB">
        <property name="styleSheet">
         <string notr="true">color: rgb(0, 0, 255);
 background-color: rgb(255, 255, 0);</string>
@@ -56,7 +56,7 @@ background-color: rgb(255, 255, 0);</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="DecidesPay">
+      <widget class="QPushButton" name="DecidesPayB">
        <property name="styleSheet">
         <string notr="true">background-color: rgb(85, 255, 255);</string>
        </property>
@@ -66,7 +66,7 @@ background-color: rgb(255, 255, 0);</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="HandlesComplaints">
+      <widget class="QPushButton" name="HandlesComplaintsB">
        <property name="styleSheet">
         <string notr="true">background-color: rgb(85, 255, 0);</string>
        </property>
@@ -76,9 +76,19 @@ background-color: rgb(255, 255, 0);</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="ManagementStaff">
+      <widget class="QPushButton" name="ManagementStaffB">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 170, 255);</string>
+       </property>
        <property name="text">
-        <string>Management staff</string>
+        <string>Management stuff</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="CustomerInforB">
+       <property name="text">
+        <string>Customer Information Mangement</string>
        </property>
       </widget>
      </item>
@@ -103,7 +113,7 @@ background-color: rgb(255, 255, 0);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>603</width>
+     <width>604</width>
      <height>18</height>
     </rect>
    </property>
