@@ -91,6 +91,17 @@ def addEmployee(name):
 def addUser(user):
     User.append(user)
 
+def sortMenu(): #Bubble sort algorithm for most relevant items, May change for only top 3 
+    swapped = True
+    while swapped:
+        swapped = False
+        for i in range(len(Menu)-1):
+            if(Menu[i].getSold() < Menu[i+1].getSold()):
+                Menu[i], Menu[i+1] = Menu[i+1], Menu[i]
+
+def printMenu():
+    for i in range(len(Menu)):
+        print(Menu[i].getName())
     
  #====For_Storage====#   
 DeliveryPeople = []
@@ -105,15 +116,15 @@ CurrentCart = []
 #====For_Storage====#
 
 
-Chicken = Food('Chicken', 12.99, 'Entree', True, 100, 2)
-Fish = Food('Fish', 10.99, 'Entree', True, 500, 3)
-Duck = Food('Duck', 9.49, 'Entree', True, 122, 5)
-Dog = Food('Dog', 20.99, 'Entree', True, 5, 5)
+Chicken = Food('Chicken', 12.99, 'Entree', True, 100, 2, 4)
+Fish = Food('Fish', 10.99, 'Entree', True, 500, 3, 5)
+Duck = Food('Duck', 9.49, 'Entree', True, 122, 5, 6)
+Dog = Food('Dog', 20.99, 'Entree', True, 5, 5, 7)
 John = Cook('John','Username', 'test')
 manager = Manager('y','y','y')
 saleguy = Salesperson('x','x','x')
 deli = Delivery('z','z','z','z')
-void = Guest('t')
+void = Guest('void1','void2')
 eric = Member('eric','test2','t','t','t','t')
 chue = VIP('chue','bloo','blee','blee','blop','t')
 
@@ -128,3 +139,5 @@ addMenuItem(Duck)
 addMenuItem(Dog)
 addMenuItem(Fish)
 addMenuItem(Chicken)
+
+ 

@@ -1,5 +1,5 @@
 class Food():
-    def __init__(self, name, price, cate, spicy, quantity, quality):
+    def __init__(self, name, price, cate, spicy, quantity, quality, sold):
         self.name = name
         self.price = price
         self.cate = cate
@@ -7,6 +7,7 @@ class Food():
         self.quantity = quantity
         # quality rated from 1 to 5
         self.quality = quality
+        self.sold = sold
 
     def getName(self):
         return self.name
@@ -31,6 +32,9 @@ class Food():
 
     def setQuantity(self, quantity):
         self.quantity = quantity
+    
+    def getSold(self):
+        return self.sold
 
 # MOVED TO MAIN FILE
 # MainMenu = Food('Test',1,'1',True)

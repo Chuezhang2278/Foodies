@@ -54,12 +54,14 @@ class User():
             i += 2
         
 class Guest(User):
-    def __init__(self, void):
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
         self.discount = 1
         self.user_type = 0
         self.order = []
 
-class Member(User):
+class Member(User): #Inherits VIP methods as well as user, polymorphism
     def __init__(self, first_name, last_name, username, password, email, address):
         super().__init__(first_name, last_name, username, password, email, address)
         self.discount = 0.85

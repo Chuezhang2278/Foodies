@@ -41,6 +41,7 @@ class Food_Window(object):
         self.Price_listWidget.setObjectName("Price_listWidget")
 
         for i in range(len(Menu)):
+                sortMenu()
                 self.Name_listWidget.addItem(Menu[i].getName())
                 self.Price_listWidget.addItem(str(Menu[i].getPrice()*CurrentUser[0].getDiscount()))
 
@@ -180,6 +181,7 @@ class Food_Window(object):
         self.finalCart.clear()
         CurrentUser.pop()
         CurrentUser.pop()
+        self.finalCart.clear()
     
     def Checkout(self):
         i = 0
@@ -199,7 +201,7 @@ class Food_Window(object):
         for item in listItems:
             self.Cart.takeItem(self.Cart.row(item))
             CurrentCart.pop(self.Cart.currentRow()+1)
-            #User[CurrentUser[1]].removeOrder()
+            User[CurrentUser[1]].removeOrder()
         
     #Need a better method of implementing stuff below, VERY BAD EFFICIENCY
     #problem stems from the generation of buttons
