@@ -111,11 +111,19 @@ class Cook(Employee):
                 menuList[i].setQuality(quality)
 
 class Salesperson(Employee):
-    def __init__(self,first_name, username, password):
+    def __init__(self,first_name, username, password, budget, restaurant, rating):
         super().__init__(first_name,username,password)
         self.user_type = 5
         self.salary = 20
-        self.budget = 600
+        self.budget = budget
+        self.restaurant=restaurant
+        self.rating=rating
+
+    def getRestuarant(self):
+        return self.restaurant
+
+    def getRating(self):
+        return self.rating
 
 class Manager(Employee):
     def __init__(self,first_name, username, password):
