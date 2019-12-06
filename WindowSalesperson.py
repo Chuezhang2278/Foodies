@@ -1032,8 +1032,43 @@ class Sales_Window(object):
         #page 8 index 7 (check list for inventory)
         self.return_check_list.clicked.connect(self.return_previous)
 
+        #connect all the add to cart buttons
+        ##########################################################################################################
+        #supplier 1 add to cart buttons
+        self.add1_1.clicked.connect()
+        self.add1_2.clicked.connect()
+        self.add1_3.clicked.connect()
+        self.add1_4.clicked.connect()
+        self.add1_5.clicked.connect()
+        self.add1_6.clicked.connect()
+        self.add1_7.clicked.connect()
+        self.add1_8.clicked.connect()
+        self.add1_9.clicked.connect()
+        self.add1_10.clicked.connect()
 
+        #supplier 2 add to cart buttons
+        self.add2_1.clicked.connect()
+        self.add2_2.clicked.connect()
+        self.add2_3.clicked.connect()
+        self.add2_4.clicked.connect()
+        self.add2_5.clicked.connect()
+        self.add2_6.clicked.connect()
+        self.add2_7.clicked.connect()
+        self.add2_8.clicked.connect()
+        self.add2_9.clicked.connect()
+        self.add2_10.clicked.connect()
 
+        #supplier 3 add to cart buttons
+        self.add3_1.clicked.connect()
+        self.add3_2.clicked.connect()
+        self.add3_3.clicked.connect()
+        self.add3_4.clicked.connect()
+        self.add3_5.clicked.connect()
+        self.add3_6.clicked.connect()
+        self.add3_7.clicked.connect()
+        self.add3_8.clicked.connect()
+        self.add3_9.clicked.connect()
+        self.add3_10.clicked.connect()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -1452,8 +1487,7 @@ class Sales_Window(object):
         self.mark10.setText(_translate("MainWindow", "Mark"))
 
     #define the button functions to navigate through the pages
-    #######################################################
-
+    #################################################################################
 
     #define logout function to be connected to each button
     def logout(self):
@@ -1488,11 +1522,21 @@ class Sales_Window(object):
         self.set_current_for_cart()
         self.stackedWidget.setCurrentIndex(6)
 
+    #return to previous from checklist
     def return_previous(self):
         self.stackedWidget.setCurrentIndex(current_index)
 
+    #return to previous from cart - different from checklist because they can return to different indexes
     def return_previous_cart(self):
         self.stackedWidget.setCurrentIndex(current_index1)
+
+
+    ###define the add buttons here
+    ########################################################################################################
+
+
+    #check if budget if added item is going over budget
+    #def check_budget(self):
 
 if __name__ == "__main__":
     import sys

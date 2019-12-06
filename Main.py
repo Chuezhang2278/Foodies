@@ -1,6 +1,7 @@
 from Employee import Manager, Cook, Delivery, Salesperson
 from Food import Food
 from User import Member, VIP, Guest
+from Supplies import Supplies
 
 # Employee
 def addDeliveryPerson(employee):
@@ -13,7 +14,7 @@ def addCook(employee):
 
 def addSalesperson(employee):
     Sales.append(employee)
-    print("Added " + sales.getFirst() + " to Sales")
+    print("Added " + employee.getFirst() + " to Sales")
 
 def findCook(name):
     for i in range(len(Cooks)):
@@ -102,6 +103,11 @@ def sortMenu(): #Bubble sort algorithm for most relevant items, May change for o
 def printMenu():
     for i in range(len(Menu)):
         print(Menu[i].getName())
+
+#Salesperson
+def addSupplies(Supplies):
+    SuppliesList.append(Supplies)
+    print("Added " + Supplies.getName + " to Supplies List")
     
  #====For_Storage====#   
 DeliveryPeople = []
@@ -113,6 +119,7 @@ User = []
 Employee = []
 CurrentUser = []
 CurrentCart = []
+SuppliesList = []
 #====For_Storage====#
 
 
@@ -128,16 +135,54 @@ void = Guest('void1','void2')
 eric = Member('eric','test2','t','t','t','t')
 chue = VIP('chue','bloo','blee','blee','blop','t')
 
+#Define some supplies
+####3reminder to maybe add randomnized quality
+Salmon = Supplies('Salmon', 'Best', 39.99)
+Tuna = Supplies('Tuna', 'Good', 39.99)
+freshChicken = Supplies('Chicken', 'Good',15.99)
+Broccoli = Supplies('Broccoli','Bad', 5.99 )
+freshDuck = ('Duck','Best',25.99)
+Lettuce = ('Lettuce','Bad',4.99)
+Mushroom = ('Mushroom','Best',9.99 )
+Asparagus = ('Asparagus','Bad',6.99 )
+Rice = ('Rice','Good,',1.99)
+Pasta = ('Pasta','Good',1.99 )
+whiteWine = ('White Wine','Best',13.99 )
+redWine = ('Red Wine','Good',29.99 )
+Tomato = ('Tomato','Good', 2.99)
+Onion = ('Onion','Best',3.99)
+Pepper = ('Pepper', 'Good',2.99)
+freshDog = ('Dog','Best', 299.99) #????????
+
+
+
 addUser(void)
 addUser(chue)
 addUser(eric)
 addUser(John)
 addUser(manager)
-addUser(saleguy)
+addUser(Anderson)
 addUser(deli)
 addMenuItem(Duck)
 addMenuItem(Dog)
 addMenuItem(Fish)
 addMenuItem(Chicken)
 
- 
+addSupplies(Salmon)
+addSupplies(Tuna)
+addSupplies(freshChicken)
+addSupplies(Broccoli)
+addSupplies(freshDuck)
+addSupplies(Lettuce)
+addSupplies(Mushroom)
+addSupplies(Asparagus)
+addSupplies(Rice)
+addSupplies(Pasta)
+addSupplies(whiteWine)
+addSupplies(redWine)
+addSupplies(Tomato)
+addSupplies(Onion)
+addSupplies(Pepper)
+addSupplies(freshDog)
+
+
