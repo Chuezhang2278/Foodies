@@ -6,10 +6,19 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+#from Main import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Sales_Window(object):
+
+
+    def __init__(self):
+        self.CurrentWindow = None;
+        self.LoginWindow = None;
+
     def setupUi(self, MainWindow):
+
+        #page 1- profile page index 0============================================================================================================
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 697)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -65,16 +74,18 @@ class Sales_Window(object):
         self.deal_of_the_day = QtWidgets.QLabel(self.profile)
         self.deal_of_the_day.setGeometry(QtCore.QRect(540, 100, 131, 16))
         self.deal_of_the_day.setObjectName("deal_of_the_day")
-        self.pushButton_39 = QtWidgets.QPushButton(self.profile)
-        self.pushButton_39.setGeometry(QtCore.QRect(230, 30, 113, 32))
-        self.pushButton_39.setObjectName("pushButton_39")
+        self.log_profile = QtWidgets.QPushButton(self.profile)
+        self.log_profile.setGeometry(QtCore.QRect(230, 30, 113, 32))
+        self.log_profile.setObjectName("log_profile")
         self.deal_of_the_day_list = QtWidgets.QListWidget(self.profile)
         self.deal_of_the_day_list.setGeometry(QtCore.QRect(490, 120, 221, 471))
         self.deal_of_the_day_list.setObjectName("deal_of_the_day_list")
-        self.pushButton = QtWidgets.QPushButton(self.profile)
-        self.pushButton.setGeometry(QtCore.QRect(590, 30, 113, 32))
-        self.pushButton.setObjectName("pushButton")
+        self.shop_suppliers = QtWidgets.QPushButton(self.profile)
+        self.shop_suppliers.setGeometry(QtCore.QRect(590, 30, 113, 32))
+        self.shop_suppliers.setObjectName("shop_suppliers")
         self.stackedWidget.addWidget(self.profile)
+
+        #page 2 - inventory required by cook - index 1============================================================================================================
         self.inventory_required = QtWidgets.QWidget()
         self.inventory_required.setObjectName("inventory_required")
         self.label_3 = QtWidgets.QLabel(self.inventory_required)
@@ -116,6 +127,7 @@ class Sales_Window(object):
         self.items_required.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.items_required.addItem(item)
+        self.items_required.setSpacing(15) #changed spacing
         self.amounts_required = QtWidgets.QListWidget(self.inventory_required)
         self.amounts_required.setGeometry(QtCore.QRect(390, 160, 331, 471))
         self.amounts_required.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -140,13 +152,16 @@ class Sales_Window(object):
         self.amounts_required.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.amounts_required.addItem(item)
-        self.pushButton_40 = QtWidgets.QPushButton(self.inventory_required)
-        self.pushButton_40.setGeometry(QtCore.QRect(20, 10, 113, 32))
-        self.pushButton_40.setObjectName("pushButton_40")
+        self.amounts_required.setSpacing(15) #changed spacing
+        self.return_inventory = QtWidgets.QPushButton(self.inventory_required)
+        self.return_inventory.setGeometry(QtCore.QRect(20, 10, 113, 32))
+        self.return_inventory.setObjectName("return_inventory")
         self.choose_suppliers = QtWidgets.QPushButton(self.inventory_required)
         self.choose_suppliers.setGeometry(QtCore.QRect(590, 10, 131, 32))
         self.choose_suppliers.setObjectName("choose_suppliers")
         self.stackedWidget.addWidget(self.inventory_required)
+
+        #page 3 - select between the 3 suppliers - index 2============================================================================================================
         self.select_supplier = QtWidgets.QWidget()
         self.select_supplier.setObjectName("select_supplier")
         self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.select_supplier)
@@ -158,7 +173,7 @@ class Sales_Window(object):
         self.supplier_1 = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
         self.supplier_1.setObjectName("supplier_1")
         self.horizontalLayout_2.addWidget(self.supplier_1)
-        self.shop_supplier_1 = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)
+        self.shop_supplier_1 = QtWidgets.QPushButton(self.horizontalLayoutWidget_2)  #button to go to supplier 1
         self.shop_supplier_1.setObjectName("shop_supplier_1")
         self.horizontalLayout_2.addWidget(self.shop_supplier_1)
         self.horizontalLayoutWidget_3 = QtWidgets.QWidget(self.select_supplier)
@@ -170,7 +185,7 @@ class Sales_Window(object):
         self.supplier_4 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
         self.supplier_4.setObjectName("supplier_4")
         self.horizontalLayout_3.addWidget(self.supplier_4)
-        self.shop_supplier_2 = QtWidgets.QPushButton(self.horizontalLayoutWidget_3)
+        self.shop_supplier_2 = QtWidgets.QPushButton(self.horizontalLayoutWidget_3) # button to go to supplier 2
         self.shop_supplier_2.setObjectName("shop_supplier_2")
         self.horizontalLayout_3.addWidget(self.shop_supplier_2)
         self.horizontalLayoutWidget_4 = QtWidgets.QWidget(self.select_supplier)
@@ -182,7 +197,7 @@ class Sales_Window(object):
         self.supplier_5 = QtWidgets.QLabel(self.horizontalLayoutWidget_4)
         self.supplier_5.setObjectName("supplier_5")
         self.horizontalLayout_4.addWidget(self.supplier_5)
-        self.shop_supplier_3 = QtWidgets.QPushButton(self.horizontalLayoutWidget_4)
+        self.shop_supplier_3 = QtWidgets.QPushButton(self.horizontalLayoutWidget_4) #button to go to supplier 3
         self.shop_supplier_3.setObjectName("shop_supplier_3")
         self.horizontalLayout_4.addWidget(self.shop_supplier_3)
         self.supplier_label = QtWidgets.QLabel(self.select_supplier)
@@ -198,6 +213,9 @@ class Sales_Window(object):
         self.log_suppliers.setObjectName("log_suppliers")
         self.verticalLayout_7.addWidget(self.log_suppliers)
         self.stackedWidget.addWidget(self.select_supplier)
+
+
+        #page 4 - supplier 1 - index 3 ============================================================================================================
         self.suppler_1 = QtWidgets.QWidget()
         self.suppler_1.setObjectName("suppler_1")
         self.supplier1_name = QtWidgets.QLabel(self.suppler_1)
@@ -248,6 +266,7 @@ class Sales_Window(object):
         self.item_list_1.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.item_list_1.addItem(item)
+        self.item_list_1.setSpacing(15) # changed spacing
         self.quality_list_1 = QtWidgets.QListWidget(self.suppler_1)
         self.quality_list_1.setGeometry(QtCore.QRect(160, 80, 151, 541))
         self.quality_list_1.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -272,6 +291,7 @@ class Sales_Window(object):
         self.quality_list_1.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.quality_list_1.addItem(item)
+        self.quality_list_1.setSpacing(15) #changed spacing
         self.price_list_1 = QtWidgets.QListWidget(self.suppler_1)
         self.price_list_1.setGeometry(QtCore.QRect(310, 80, 161, 541))
         self.price_list_1.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -296,6 +316,7 @@ class Sales_Window(object):
         self.price_list_1.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.price_list_1.addItem(item)
+        self.price_list_1.setSpacing(15)#changed spacing
         self.verticalLayoutWidget_3 = QtWidgets.QWidget(self.suppler_1)
         self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(619, 80, 151, 501))
         self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
@@ -341,7 +362,7 @@ class Sales_Window(object):
         self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_9)
         self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
-        self.label_31 = QtWidgets.QLabel(self.horizontalLayoutWidget_9)
+        self.label_31 = QtWidgets.QLabel(self.horizontalLayoutWidget_9) # budget remaining
         self.label_31.setObjectName("label_31")
         self.horizontalLayout_9.addWidget(self.label_31)
         self.label_30 = QtWidgets.QLabel(self.horizontalLayoutWidget_9)
@@ -386,10 +407,12 @@ class Sales_Window(object):
         self.go_cart_1 = QtWidgets.QPushButton(self.suppler_1)
         self.go_cart_1.setGeometry(QtCore.QRect(620, 10, 113, 32))
         self.go_cart_1.setObjectName("go_cart_1")
-        self.check_list_1 = QtWidgets.QPushButton(self.suppler_1)
+        self.check_list_1 = QtWidgets.QPushButton(self.suppler_1) #button to go to check list and then return after
         self.check_list_1.setGeometry(QtCore.QRect(470, 10, 113, 32))
         self.check_list_1.setObjectName("check_list_1")
         self.stackedWidget.addWidget(self.suppler_1)
+
+        #page 5 - supplier 2 - index 4============================================================================================================
         self.supplier_2 = QtWidgets.QWidget()
         self.supplier_2.setObjectName("supplier_2")
         self.supplier2_name = QtWidgets.QLabel(self.supplier_2)
@@ -440,6 +463,7 @@ class Sales_Window(object):
         self.item_list_2.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.item_list_2.addItem(item)
+        self.item_list_2.setSpacing(15)#changed spacing
         self.quality_list_2 = QtWidgets.QListWidget(self.supplier_2)
         self.quality_list_2.setGeometry(QtCore.QRect(160, 80, 151, 541))
         self.quality_list_2.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -464,6 +488,7 @@ class Sales_Window(object):
         self.quality_list_2.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.quality_list_2.addItem(item)
+        self.quality_list_2.setSpacing(15)#changed spacing
         self.price_list_2 = QtWidgets.QListWidget(self.supplier_2)
         self.price_list_2.setGeometry(QtCore.QRect(310, 80, 161, 541))
         self.price_list_2.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -488,6 +513,7 @@ class Sales_Window(object):
         self.price_list_2.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.price_list_2.addItem(item)
+        self.price_list_2.setSpacing(15)#changed spacing
         self.verticalLayoutWidget_5 = QtWidgets.QWidget(self.supplier_2)
         self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(620, 80, 151, 501))
         self.verticalLayoutWidget_5.setObjectName("verticalLayoutWidget_5")
@@ -533,7 +559,7 @@ class Sales_Window(object):
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_8)
         self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
-        self.label_33 = QtWidgets.QLabel(self.horizontalLayoutWidget_8)
+        self.label_33 = QtWidgets.QLabel(self.horizontalLayoutWidget_8) # budget remaining - label 33
         self.label_33.setObjectName("label_33")
         self.horizontalLayout_8.addWidget(self.label_33)
         self.label_32 = QtWidgets.QLabel(self.horizontalLayoutWidget_8)
@@ -582,6 +608,8 @@ class Sales_Window(object):
         self.check_list_2.setGeometry(QtCore.QRect(470, 10, 113, 32))
         self.check_list_2.setObjectName("check_list_2")
         self.stackedWidget.addWidget(self.supplier_2)
+
+        #page 6 - supplier 3 - index 5============================================================================================================
         self.supplier_3 = QtWidgets.QWidget()
         self.supplier_3.setObjectName("supplier_3")
         self.supplier3_name = QtWidgets.QLabel(self.supplier_3)
@@ -632,6 +660,7 @@ class Sales_Window(object):
         self.item_list_3.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.item_list_3.addItem(item)
+        self.item_list_3.setSpacing(15)#changed spacing
         self.quality_list_3 = QtWidgets.QListWidget(self.supplier_3)
         self.quality_list_3.setGeometry(QtCore.QRect(160, 80, 151, 541))
         self.quality_list_3.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -656,6 +685,7 @@ class Sales_Window(object):
         self.quality_list_3.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.quality_list_3.addItem(item)
+        self.quality_list_3.setSpacing(15)#changed spacing
         self.price_list_3 = QtWidgets.QListWidget(self.supplier_3)
         self.price_list_3.setGeometry(QtCore.QRect(310, 80, 161, 541))
         self.price_list_3.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -680,6 +710,7 @@ class Sales_Window(object):
         self.price_list_3.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.price_list_3.addItem(item)
+        self.price_list_3.setSpacing(15)#changed spacing
         self.verticalLayoutWidget_6 = QtWidgets.QWidget(self.supplier_3)
         self.verticalLayoutWidget_6.setGeometry(QtCore.QRect(619, 80, 151, 501))
         self.verticalLayoutWidget_6.setObjectName("verticalLayoutWidget_6")
@@ -725,7 +756,7 @@ class Sales_Window(object):
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_7)
         self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.label_35 = QtWidgets.QLabel(self.horizontalLayoutWidget_7)
+        self.label_35 = QtWidgets.QLabel(self.horizontalLayoutWidget_7) #budget remaining - label 35
         self.label_35.setObjectName("label_35")
         self.horizontalLayout_7.addWidget(self.label_35)
         self.label_34 = QtWidgets.QLabel(self.horizontalLayoutWidget_7)
@@ -774,12 +805,14 @@ class Sales_Window(object):
         self.check_list_3.setGeometry(QtCore.QRect(470, 10, 113, 32))
         self.check_list_3.setObjectName("check_list_3")
         self.stackedWidget.addWidget(self.supplier_3)
+
+        #page 7 - check out page - index 6============================================================================================================
         self.check_out = QtWidgets.QWidget()
         self.check_out.setObjectName("check_out")
         self.label_8 = QtWidgets.QLabel(self.check_out)
         self.label_8.setGeometry(QtCore.QRect(340, 40, 71, 16))
         self.label_8.setObjectName("label_8")
-        self.check_out_list = QtWidgets.QListWidget(self.check_out)
+        self.check_out_list = QtWidgets.QListWidget(self.check_out) #the checkout list / cart list widget
         self.check_out_list.setGeometry(QtCore.QRect(100, 70, 261, 511))
         self.check_out_list.setObjectName("check_out_list")
         self.return_check_out = QtWidgets.QPushButton(self.check_out)
@@ -832,6 +865,8 @@ class Sales_Window(object):
         self.confirm_order.setObjectName("confirm_order")
         self.verticalLayout_13.addWidget(self.confirm_order)
         self.stackedWidget.addWidget(self.check_out)
+
+        #page 8 - check list - index 7 ============================================================================================================
         self.check_list = QtWidgets.QWidget()
         self.check_list.setObjectName("check_list")
         self.return_check_list = QtWidgets.QPushButton(self.check_list)
@@ -876,6 +911,7 @@ class Sales_Window(object):
         self.item_check_list.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.item_check_list.addItem(item)
+        self.item_check_list.setSpacing(10)
         self.amount_check_list = QtWidgets.QListWidget(self.check_list)
         self.amount_check_list.setGeometry(QtCore.QRect(370, 150, 311, 471))
         self.amount_check_list.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -900,6 +936,7 @@ class Sales_Window(object):
         self.amount_check_list.addItem(item)
         item = QtWidgets.QListWidgetItem()
         self.amount_check_list.addItem(item)
+        self.amount_check_list.setSpacing(10)
         self.verticalLayoutWidget_11 = QtWidgets.QWidget(self.check_list)
         self.verticalLayoutWidget_11.setGeometry(QtCore.QRect(10, 140, 61, 401))
         self.verticalLayoutWidget_11.setObjectName("verticalLayoutWidget_11")
@@ -948,9 +985,55 @@ class Sales_Window(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        #sets profile page to be the first page
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        #connect each button to the functions==============================================
+
+        #page 1 index 0 (profile page)
+        self.log_profile.clicked.connect(self.logout)
+        self.shop_suppliers.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
+
+        #page 2 index 1 (inventory required by cook)
+        self.return_inventory.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.choose_suppliers.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+
+        #page 3 index 2 (choose suppliers)
+        self.shop_supplier_1.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
+        self.shop_supplier_2.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
+        self.shop_supplier_3.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+        self.log_suppliers.clicked.connect(self.logout)
+
+        #page 4 index 3 (supplier 1)
+        self.return_supplier_1.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.go_cart_1.clicked.connect(self.go_to_cart)
+        self.check_list_1.clicked.connect(self.go_to_check_list)
+
+        #page 5 index 4 (supplier 2)
+        self.return_supplier_2.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.go_cart_2.clicked.connect(self.go_to_cart)
+        self.check_list_2.clicked.connect(self.go_to_check_list)
+
+        #page 6 index 5 (supplier 3)
+        self.return_supplier_3.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.go_cart_3.clicked.connect(self.go_to_cart)
+        self.check_list_3.clicked.connect(self.go_to_check_list)
+
+        #page 7 index 6 ( check out page )
+        self.return_check_out.clicked.connect(self.return_previous_cart)
+        self.log_check_out.clicked.connect(self.logout)
+        self.check_out_check_list.clicked.connect(self.go_to_check_list)
+        self.check_out_supplier.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        #self.check_out_remove.clicked.connect(self.remove)
+        #self.confirm_order.clicked.connect(self.)
+
+        #page 8 index 7 (check list for inventory)
+        self.return_check_list.clicked.connect(self.return_previous)
+
+
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -963,10 +1046,10 @@ class Sales_Window(object):
         self.name.setText(_translate("MainWindow", "name example"))
         self.restaurant.setText(_translate("MainWindow", "Restuarant example"))
         self.budget.setText(_translate("MainWindow", "$1000.00"))
-        self.rating.setText(_translate("MainWindow", "1 "))
+        self.rating.setText(_translate("MainWindow", "☆"))
         self.deal_of_the_day.setText(_translate("MainWindow", "DEALS OF THE DAY"))
-        self.pushButton_39.setText(_translate("MainWindow", "Log Out"))
-        self.pushButton.setText(_translate("MainWindow", "Shop"))
+        self.log_profile.setText(_translate("MainWindow", "Log Out"))
+        self.shop_suppliers.setText(_translate("MainWindow", "Shop"))
         self.label_3.setText(_translate("MainWindow", "Inventory Required by Cook"))
         self.items_required_label_2.setText(_translate("MainWindow", "Amount by lb"))
         self.items_required_label.setText(_translate("MainWindow", "Item"))
@@ -1016,7 +1099,7 @@ class Sales_Window(object):
         item = self.amounts_required.item(9)
         item.setText(_translate("MainWindow", "New Item"))
         self.amounts_required.setSortingEnabled(__sortingEnabled)
-        self.pushButton_40.setText(_translate("MainWindow", "Return"))
+        self.return_inventory.setText(_translate("MainWindow", "Return"))
         self.choose_suppliers.setText(_translate("MainWindow", "Choose Suppliers"))
         self.supplier_1.setText(_translate("MainWindow", "Supplier 1"))
         self.shop_supplier_1.setText(_translate("MainWindow", "Shop Here"))
@@ -1368,6 +1451,48 @@ class Sales_Window(object):
         self.mark9.setText(_translate("MainWindow", "Mark"))
         self.mark10.setText(_translate("MainWindow", "Mark"))
 
+    #define the button functions to navigate through the pages
+    #######################################################
+
+
+    #define logout function to be connected to each button
+    def logout(self):
+        self.CurrentWindow.hide()
+        self.LoginWindow.show()
+        self.finalCart.clear()
+        CurrentUser.pop()
+        CurrentUser.pop()
+        self.finalCart.clear()
+
+    global current_index
+    current_index=0
+
+    def set_current(self):
+        global current_index
+        current_index=self.stackedWidget.currentIndex()
+
+    global current_index1
+    current_index1=0
+
+    def set_current_for_cart(self):
+        global current_index1
+        current_index1 = self.stackedWidget.currentIndex()
+
+    #method to go to check list while keeping the previous index so we can return to it
+    def go_to_check_list(self):
+        self.set_current()
+        self.stackedWidget.setCurrentIndex(7)
+
+    #method to go to cart while keeping previous supplier index
+    def go_to_cart(self):
+        self.set_current_for_cart()
+        self.stackedWidget.setCurrentIndex(6)
+
+    def return_previous(self):
+        self.stackedWidget.setCurrentIndex(current_index)
+
+    def return_previous_cart(self):
+        self.stackedWidget.setCurrentIndex(current_index1)
 
 if __name__ == "__main__":
     import sys
