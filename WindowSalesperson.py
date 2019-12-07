@@ -6,7 +6,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-#from Main import *
+from Main import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Sales_Window(object):
@@ -17,6 +17,9 @@ class Sales_Window(object):
         self.LoginWindow = None;
 
     def setupUi(self, MainWindow):
+
+        self.total = 0 # total cost for the cart
+        self.budget_remaining = 1000
 
         #page 1- profile page index 0============================================================================================================
         MainWindow.setObjectName("MainWindow")
@@ -246,77 +249,24 @@ class Sales_Window(object):
         self.item_list_1.setGeometry(QtCore.QRect(0, 80, 161, 541))
         self.item_list_1.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.item_list_1.setObjectName("item_list_1")
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_1.addItem(item)
         self.item_list_1.setSpacing(15) # changed spacing
         self.quality_list_1 = QtWidgets.QListWidget(self.suppler_1)
         self.quality_list_1.setGeometry(QtCore.QRect(160, 80, 151, 541))
         self.quality_list_1.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.quality_list_1.setObjectName("quality_list_1")
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_1.addItem(item)
         self.quality_list_1.setSpacing(15) #changed spacing
         self.price_list_1 = QtWidgets.QListWidget(self.suppler_1)
         self.price_list_1.setGeometry(QtCore.QRect(310, 80, 161, 541))
         self.price_list_1.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.price_list_1.setObjectName("price_list_1")
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_1.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_1.addItem(item)
         self.price_list_1.setSpacing(15)#changed spacing
+
+
+        for i in range(len(SuppliesList1)):
+                self.item_list_1.addItem(SuppliesList1[i].getName())
+                self.quality_list_1.addItem(SuppliesList1[i].getQuality())
+                self.price_list_1.addItem(str(SuppliesList1[i].getPrice()))
+
         self.verticalLayoutWidget_3 = QtWidgets.QWidget(self.suppler_1)
         self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(619, 80, 151, 501))
         self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
@@ -443,77 +393,23 @@ class Sales_Window(object):
         self.item_list_2.setGeometry(QtCore.QRect(0, 80, 161, 541))
         self.item_list_2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.item_list_2.setObjectName("item_list_2")
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_2.addItem(item)
         self.item_list_2.setSpacing(15)#changed spacing
         self.quality_list_2 = QtWidgets.QListWidget(self.supplier_2)
         self.quality_list_2.setGeometry(QtCore.QRect(160, 80, 151, 541))
         self.quality_list_2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.quality_list_2.setObjectName("quality_list_2")
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_2.addItem(item)
         self.quality_list_2.setSpacing(15)#changed spacing
         self.price_list_2 = QtWidgets.QListWidget(self.supplier_2)
         self.price_list_2.setGeometry(QtCore.QRect(310, 80, 161, 541))
         self.price_list_2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.price_list_2.setObjectName("price_list_2")
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_2.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_2.addItem(item)
         self.price_list_2.setSpacing(15)#changed spacing
+
+        for i in range(len(SuppliesList2)):
+                self.item_list_2.addItem(SuppliesList2[i].getName())
+                self.quality_list_2.addItem(SuppliesList2[i].getQuality())
+                self.price_list_2.addItem(str(SuppliesList2[i].getPrice()))
+
         self.verticalLayoutWidget_5 = QtWidgets.QWidget(self.supplier_2)
         self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(620, 80, 151, 501))
         self.verticalLayoutWidget_5.setObjectName("verticalLayoutWidget_5")
@@ -640,77 +536,23 @@ class Sales_Window(object):
         self.item_list_3.setGeometry(QtCore.QRect(0, 80, 161, 541))
         self.item_list_3.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.item_list_3.setObjectName("item_list_3")
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_list_3.addItem(item)
         self.item_list_3.setSpacing(15)#changed spacing
         self.quality_list_3 = QtWidgets.QListWidget(self.supplier_3)
         self.quality_list_3.setGeometry(QtCore.QRect(160, 80, 151, 541))
         self.quality_list_3.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.quality_list_3.setObjectName("quality_list_3")
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.quality_list_3.addItem(item)
         self.quality_list_3.setSpacing(15)#changed spacing
         self.price_list_3 = QtWidgets.QListWidget(self.supplier_3)
         self.price_list_3.setGeometry(QtCore.QRect(310, 80, 161, 541))
         self.price_list_3.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.price_list_3.setObjectName("price_list_3")
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_3.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.price_list_3.addItem(item)
         self.price_list_3.setSpacing(15)#changed spacing
+
+        for i in range(len(SuppliesList3)):
+                self.item_list_3.addItem(SuppliesList3[i].getName())
+                self.quality_list_3.addItem(SuppliesList3[i].getQuality())
+                self.price_list_3.addItem(str(SuppliesList3[i].getPrice()))
+
         self.verticalLayoutWidget_6 = QtWidgets.QWidget(self.supplier_3)
         self.verticalLayoutWidget_6.setGeometry(QtCore.QRect(619, 80, 151, 501))
         self.verticalLayoutWidget_6.setObjectName("verticalLayoutWidget_6")
@@ -1152,72 +994,14 @@ class Sales_Window(object):
         self.item_1.setText(_translate("MainWindow", "Item"))
         __sortingEnabled = self.item_list_1.isSortingEnabled()
         self.item_list_1.setSortingEnabled(False)
-        item = self.item_list_1.item(0)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_1.item(1)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_1.item(2)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_1.item(3)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_1.item(4)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_1.item(5)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_1.item(6)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_1.item(7)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_1.item(8)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_1.item(9)
-        item.setText(_translate("MainWindow", "New Item"))
+
         self.item_list_1.setSortingEnabled(__sortingEnabled)
         __sortingEnabled = self.quality_list_1.isSortingEnabled()
         self.quality_list_1.setSortingEnabled(False)
-        item = self.quality_list_1.item(0)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_1.item(1)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_1.item(2)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_1.item(3)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_1.item(4)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_1.item(5)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_1.item(6)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_1.item(7)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_1.item(8)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_1.item(9)
-        item.setText(_translate("MainWindow", "New Item"))
+
         self.quality_list_1.setSortingEnabled(__sortingEnabled)
         __sortingEnabled = self.price_list_1.isSortingEnabled()
-        self.price_list_1.setSortingEnabled(False)
-        item = self.price_list_1.item(0)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_1.item(1)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_1.item(2)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_1.item(3)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_1.item(4)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_1.item(5)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_1.item(6)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_1.item(7)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_1.item(8)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_1.item(9)
-        item.setText(_translate("MainWindow", "New Item"))
+
         self.price_list_1.setSortingEnabled(__sortingEnabled)
         self.add1_1.setText(_translate("MainWindow", "Add to Cart"))
         self.add1_2.setText(_translate("MainWindow", "Add to Cart"))
@@ -1230,7 +1014,7 @@ class Sales_Window(object):
         self.add1_9.setText(_translate("MainWindow", "Add to Cart"))
         self.add1_10.setText(_translate("MainWindow", "Add to Cart"))
         self.return_supplier_1.setText(_translate("MainWindow", "Return"))
-        self.label_31.setText(_translate("MainWindow", "$1000.00"))
+        self.label_31.setText(_translate("MainWindow", self.budget_remaining))
         self.label_30.setText(_translate("MainWindow", "Budget Remaining:"))
         self.go_cart_1.setText(_translate("MainWindow", "Go to Cart"))
         self.check_list_1.setText(_translate("MainWindow", "Check List"))
@@ -1242,72 +1026,15 @@ class Sales_Window(object):
         self.item_2.setText(_translate("MainWindow", "Item"))
         __sortingEnabled = self.item_list_2.isSortingEnabled()
         self.item_list_2.setSortingEnabled(False)
-        item = self.item_list_2.item(0)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_2.item(1)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_2.item(2)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_2.item(3)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_2.item(4)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_2.item(5)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_2.item(6)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_2.item(7)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_2.item(8)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_2.item(9)
-        item.setText(_translate("MainWindow", "New Item"))
+
         self.item_list_2.setSortingEnabled(__sortingEnabled)
         __sortingEnabled = self.quality_list_2.isSortingEnabled()
         self.quality_list_2.setSortingEnabled(False)
-        item = self.quality_list_2.item(0)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_2.item(1)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_2.item(2)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_2.item(3)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_2.item(4)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_2.item(5)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_2.item(6)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_2.item(7)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_2.item(8)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_2.item(9)
-        item.setText(_translate("MainWindow", "New Item"))
+
         self.quality_list_2.setSortingEnabled(__sortingEnabled)
         __sortingEnabled = self.price_list_2.isSortingEnabled()
         self.price_list_2.setSortingEnabled(False)
-        item = self.price_list_2.item(0)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_2.item(1)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_2.item(2)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_2.item(3)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_2.item(4)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_2.item(5)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_2.item(6)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_2.item(7)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_2.item(8)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_2.item(9)
-        item.setText(_translate("MainWindow", "New Item"))
+
         self.price_list_2.setSortingEnabled(__sortingEnabled)
         self.add2_1.setText(_translate("MainWindow", "Add to Cart"))
         self.add2_2.setText(_translate("MainWindow", "Add to Cart"))
@@ -1320,7 +1047,7 @@ class Sales_Window(object):
         self.add2_9.setText(_translate("MainWindow", "Add to Cart"))
         self.add2_10.setText(_translate("MainWindow", "Add to Cart"))
         self.return_supplier_2.setText(_translate("MainWindow", "Return"))
-        self.label_33.setText(_translate("MainWindow", "$1000.00"))
+        self.label_33.setText(_translate("MainWindow", self.budget_remaining))
         self.label_32.setText(_translate("MainWindow", "Budget Remaining:"))
         self.go_cart_2.setText(_translate("MainWindow", "Go to Cart"))
         self.check_list_2.setText(_translate("MainWindow", "Check List"))
@@ -1332,72 +1059,15 @@ class Sales_Window(object):
         self.item_3.setText(_translate("MainWindow", "Item"))
         __sortingEnabled = self.item_list_3.isSortingEnabled()
         self.item_list_3.setSortingEnabled(False)
-        item = self.item_list_3.item(0)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_3.item(1)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_3.item(2)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_3.item(3)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_3.item(4)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_3.item(5)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_3.item(6)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_3.item(7)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_3.item(8)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.item_list_3.item(9)
-        item.setText(_translate("MainWindow", "New Item"))
+
         self.item_list_3.setSortingEnabled(__sortingEnabled)
         __sortingEnabled = self.quality_list_3.isSortingEnabled()
         self.quality_list_3.setSortingEnabled(False)
-        item = self.quality_list_3.item(0)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_3.item(1)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_3.item(2)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_3.item(3)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_3.item(4)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_3.item(5)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_3.item(6)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_3.item(7)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_3.item(8)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.quality_list_3.item(9)
-        item.setText(_translate("MainWindow", "New Item"))
+
         self.quality_list_3.setSortingEnabled(__sortingEnabled)
         __sortingEnabled = self.price_list_3.isSortingEnabled()
         self.price_list_3.setSortingEnabled(False)
-        item = self.price_list_3.item(0)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_3.item(1)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_3.item(2)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_3.item(3)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_3.item(4)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_3.item(5)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_3.item(6)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_3.item(7)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_3.item(8)
-        item.setText(_translate("MainWindow", "New Item"))
-        item = self.price_list_3.item(9)
-        item.setText(_translate("MainWindow", "New Item"))
+
         self.price_list_3.setSortingEnabled(__sortingEnabled)
         self.add3_1.setText(_translate("MainWindow", "Add to Cart"))
         self.add3_2.setText(_translate("MainWindow", "Add to Cart"))
@@ -1410,7 +1080,7 @@ class Sales_Window(object):
         self.add3_9.setText(_translate("MainWindow", "Add to Cart"))
         self.add3_10.setText(_translate("MainWindow", "Add to Cart"))
         self.return_supplier_3.setText(_translate("MainWindow", "Return"))
-        self.label_35.setText(_translate("MainWindow", "$1000.00"))
+        self.label_35.setText(_translate("MainWindow", self.budget_remaining))
         self.label_34.setText(_translate("MainWindow", "Budget Remaining:"))
         self.go_cart_3.setText(_translate("MainWindow", "Go to Cart"))
         self.check_list_3.setText(_translate("MainWindow", "Check List"))
@@ -1420,7 +1090,7 @@ class Sales_Window(object):
         self.total_amount.setText(_translate("MainWindow", "$0.00"))
         self.total_amount_label.setText(_translate("MainWindow", "Total:"))
         self.check_out_budget_label.setText(_translate("MainWindow", "Budget Remaining:"))
-        self.check_out_budget.setText(_translate("MainWindow", "$1000.00"))
+        self.check_out_budget.setText(_translate("MainWindow", self.budget_remaining))
         self.check_out_check_list.setText(_translate("MainWindow", "Check List"))
         self.check_out_supplier.setText(_translate("MainWindow", "Choose Supplier"))
         self.check_out_remove.setText(_translate("MainWindow", "Remove"))
@@ -1494,8 +1164,6 @@ class Sales_Window(object):
         self.CurrentWindow.hide()
         self.LoginWindow.show()
         self.finalCart.clear()
-        CurrentUser.pop()
-        CurrentUser.pop()
         self.finalCart.clear()
 
     global current_index
@@ -1530,13 +1198,92 @@ class Sales_Window(object):
     def return_previous_cart(self):
         self.stackedWidget.setCurrentIndex(current_index1)
 
+    # check if budget if added item is going over budget
+    def check_budget(self,price_of):
+        if price_of > self.budget_remaining:
+            return False
+        else:
+            return True
 
-    ###define the add buttons here
+    #function used to update the budget remaining
+    def update_budget(self):
+        self.budget_remaining-=self.total
+
+    ### Define the add buttons here
     ########################################################################################################
+    # For Supplier 1
+    def addButton1_1(self):
+        if self.check_budget(SuppliesList1[0].getPrice()*self.amount1_1.text()):
+            self.check_out_list.addItem(SuppliesList1[0].getName() + '\t\t\t' + SuppliesList1[0].getQuality() + \
+                                    '\t\t\t' + self.amount1_1.text() + '\t\t\t' + str(SuppliesList1[0].getPrice())*int(self.amount1_1.text()))
 
+            self.total += (SuppliesList1[0].getPrice()*self.amount1_1.text())
+            self.update_budget()
+            addCurrentCart_SalesPerson(SuppliesList1[0])
+        else:
+            #pop out window to show error
+            print("Amount exceeds Budget!")
+    """
+    def addButton1_2(self):
 
-    #check if budget if added item is going over budget
-    #def check_budget(self):
+    def addButton1_3(self):
+
+    def addButton1_4(self):
+
+    def addButton1_5(self):
+
+    def addButton1_6(self):
+
+    def addButton1_7(self):
+
+    def addButton1_8(self):
+
+    def addButton1_9(self):
+
+    def addButton1_10(self):
+
+    # For Supplier 2
+    def addButton2_1(self):
+
+    def addButton2_2(self):
+
+    def addButton2_3(self):
+
+    def addButton2_4(self):
+
+    def addButton2_5(self):
+
+    def addButton2_6(self):
+
+    def addButton2_7(self):
+
+    def addButton2_8(self):
+
+    def addButton2_9(self):
+
+    def addButton2_10(self):
+
+    # For Supplier 3
+    def addButton3_1(self):
+
+    def addButton3_2(self):
+
+    def addButton3_3(self):
+
+    def addButton3_4(self):
+
+    def addButton3_5(self):
+
+    def addButton3_6(self):
+
+    def addButton3_7(self):
+
+    def addButton3_8(self):
+
+    def addButton3_9(self):
+
+    def addButton3_10(self):
+    """
 
 if __name__ == "__main__":
     import sys
