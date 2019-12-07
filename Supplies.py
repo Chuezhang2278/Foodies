@@ -7,7 +7,7 @@ class Supplies():
 
         if quality=='Bad': #if quality is bad then cut default price by 50%
             self.price = price * .50
-        elif quality=='Best' #if quality is the best than increase by 120%
+        elif quality=='Best': #if quality is the best than increase by 120%
             self.price = price * 1.20
         else: #if quality is neither bad or best than it is just the default price
             self.price=price
@@ -22,6 +22,23 @@ class Supplies():
 
     def getPrice(self):
         return self.price
+
+    # Update the price if the price changes or if quality is changed
+    def updatePrice(self):
+        if self.quality=='Bad': #if quality is bad then cut default price by 50%
+            self.price = self.price * .50
+        elif selfquality=='Best': #if quality is the best than increase by 120%
+            self.price = self.price * 1.20
+        else: #if quality is neither bad or best than it is just the default price
+            self.price=self.price
+
+    def changePrice(self,price):
+        self.price=price
+        self.updatePrice()
+
+    def changeQuality(self,quality):
+        self.quality=quality
+        self.updatePrice()
 
 
 
