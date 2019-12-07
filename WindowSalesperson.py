@@ -1,11 +1,27 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'WindowSalesperson.ui'
-#
-# Created by: PyQt5 UI code generator 5.9.2
-#
-# WARNING! All changes made in this file will be lost!
-
+        #====CHANGES MADE BY CHUE====#
+        
+        # DELETE ME WHEN RESOLVED
+        
+        # line 887
+        
+        # You need to give the buttons an action what happens when they are clicked
+        # otherwise you get errors all over the place, make sure each 'button.clicked.connect(function)
+        # has that function inside
+        
+        # line 475, there are others but i forgot where they were, only text labels
+        
+        # For text labels, they need to be string values so do concatenate 
+        # example would be if you want an int to show in a text label, do str(10)
+        # simple type conversion
+        # Furthermore, don't change text label text in retranslateUI area like that, it leads to bugs and can get messy quick
+        # instead do it outside of that retranslateUI area
+        # What i mean is right where it is instantiated or wherver you want to change the text label
+        # just do text_label.setText(str(10)) 
+        # 
+        
+         #====CHANGES MADE BY CHUE====#
+        
+        
 from Main import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -457,6 +473,9 @@ class Sales_Window(object):
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.label_33 = QtWidgets.QLabel(self.horizontalLayoutWidget_8) # budget remaining - label 33
         self.label_33.setObjectName("label_33")
+        
+        self.label_33.setText(str(self.budget_remaining))
+        
         self.horizontalLayout_8.addWidget(self.label_33)
         self.label_32 = QtWidgets.QLabel(self.horizontalLayoutWidget_8)
         self.label_32.setObjectName("label_32")
@@ -877,6 +896,8 @@ class Sales_Window(object):
         #connect all the add to cart buttons
         ##########################################################################################################
         #supplier 1 add to cart buttons
+        
+        '''
         self.add1_1.clicked.connect()
         self.add1_2.clicked.connect()
         self.add1_3.clicked.connect()
@@ -911,7 +932,8 @@ class Sales_Window(object):
         self.add3_8.clicked.connect()
         self.add3_9.clicked.connect()
         self.add3_10.clicked.connect()
-
+        '''
+    
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -1014,7 +1036,7 @@ class Sales_Window(object):
         self.add1_9.setText(_translate("MainWindow", "Add to Cart"))
         self.add1_10.setText(_translate("MainWindow", "Add to Cart"))
         self.return_supplier_1.setText(_translate("MainWindow", "Return"))
-        self.label_31.setText(_translate("MainWindow", self.budget_remaining))
+        self.label_31.setText(_translate("MainWindow", "text")) #here
         self.label_30.setText(_translate("MainWindow", "Budget Remaining:"))
         self.go_cart_1.setText(_translate("MainWindow", "Go to Cart"))
         self.check_list_1.setText(_translate("MainWindow", "Check List"))
@@ -1047,7 +1069,7 @@ class Sales_Window(object):
         self.add2_9.setText(_translate("MainWindow", "Add to Cart"))
         self.add2_10.setText(_translate("MainWindow", "Add to Cart"))
         self.return_supplier_2.setText(_translate("MainWindow", "Return"))
-        self.label_33.setText(_translate("MainWindow", self.budget_remaining))
+        self.label_33.setText(_translate("MainWindow", "text"))
         self.label_32.setText(_translate("MainWindow", "Budget Remaining:"))
         self.go_cart_2.setText(_translate("MainWindow", "Go to Cart"))
         self.check_list_2.setText(_translate("MainWindow", "Check List"))
@@ -1080,7 +1102,7 @@ class Sales_Window(object):
         self.add3_9.setText(_translate("MainWindow", "Add to Cart"))
         self.add3_10.setText(_translate("MainWindow", "Add to Cart"))
         self.return_supplier_3.setText(_translate("MainWindow", "Return"))
-        self.label_35.setText(_translate("MainWindow", self.budget_remaining))
+        self.label_35.setText(_translate("MainWindow", "text"))
         self.label_34.setText(_translate("MainWindow", "Budget Remaining:"))
         self.go_cart_3.setText(_translate("MainWindow", "Go to Cart"))
         self.check_list_3.setText(_translate("MainWindow", "Check List"))
@@ -1090,7 +1112,7 @@ class Sales_Window(object):
         self.total_amount.setText(_translate("MainWindow", "$0.00"))
         self.total_amount_label.setText(_translate("MainWindow", "Total:"))
         self.check_out_budget_label.setText(_translate("MainWindow", "Budget Remaining:"))
-        self.check_out_budget.setText(_translate("MainWindow", self.budget_remaining))
+        self.check_out_budget.setText(_translate("MainWindow", "text"))
         self.check_out_check_list.setText(_translate("MainWindow", "Check List"))
         self.check_out_supplier.setText(_translate("MainWindow", "Choose Supplier"))
         self.check_out_remove.setText(_translate("MainWindow", "Remove"))
