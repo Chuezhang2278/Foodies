@@ -8,11 +8,15 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtWidgets import QMessageBox, QPushButton
 from WindowMenuModification import Ui_WindowMenuModification
 
 
 class Ui_WindowChef(object):
+    def __init__(self):
+        self.WindowChef = None;
+        self.LoginWindow = None;
+
     def setupUi(self, WindowChef):
         WindowChef.setObjectName("WindowChef")
         WindowChef.resize(800, 600)
@@ -78,24 +82,19 @@ class Ui_WindowChef(object):
         msg = QMessageBox()
         msg.setWindowTitle("Logout")
         msg.setText("Are you sure you want to logout?")
-        # this creates a question icon
         msg.setIcon(QMessageBox.Question)
-        # this creates 2 buttons for the message box
         msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
-        # this determines which button is highlighted initially
         msg.setDefaultButton(QMessageBox.No)
-        # TODO: figure out how to bind actions to Yes/No buttons
-        # this should log the user out if yes is pressed
-        #msg.buttonClicked.connect(msgbtn)
-        # this shows the message box
+
+        msg.buttonClicked.connect(self.popup_button)
+
         x = msg.exec_()
 
-        #if (QMessageBox.Yes):
-            # Yes was clicked
-         #   print("yes was clicked")
-        #elif (QMessageBox.No):
-            # No was clicked
-         #   print("no was clicked")
+    def popup_button(self, i):
+        if(i.text() == "&Yes"):
+            print("Yes")
+        else:
+            print("No")
 
     #def open_manageSupplies(self):
 
