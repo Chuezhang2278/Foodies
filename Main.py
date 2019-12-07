@@ -107,7 +107,7 @@ def printMenu():
 #Salesperson
 def addSupplies(Supplies):
     SuppliesList.append(Supplies)
-    print("Added " + Supplies.getName + " to Supplies List")
+    print(f"Added {Supplies} to Supplies List")
     
  #====For_Storage====#   
 DeliveryPeople = []
