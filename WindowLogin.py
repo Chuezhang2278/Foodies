@@ -71,7 +71,7 @@ class LoginWindow(object):
     def switch_cook(self):
         self.Cook_window = QtWidgets.QMainWindow()
         self.ui = Ui_WindowChef()
-        self.ui.setupUi(self.Cook_window)
+        self.ui.setupUi(self.Cook_window, CurrentWindow)
         CurrentWindow.hide()
         self.Cook_window.show()
     
