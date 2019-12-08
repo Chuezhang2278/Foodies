@@ -150,7 +150,7 @@ John = Cook('John','Username', 'test')
 manager = Manager('y','y','y')
 
 # Salesperson
-Anderson = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname','☆☆☆☆☆') #sales person example
+Anderson = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname') #sales person example
 
 # Users
 deli = Delivery('z','z','z','z')
@@ -246,6 +246,7 @@ addSupplies3(chuckSteak)
 addSupplies3(ribeyeSteak)
 addSupplies3(kobeBeef)
 
-
-
+print(Anderson.getRating())
+Anderson.setRating(3)
+print(Anderson.getRating())
 
