@@ -93,6 +93,8 @@ class Ui_WindowChef(object):
     def popup_button(self, i):
         if(i.text() == "&Yes"):
             print("Yes")
+            self.WindowChef.hide()
+            self.LoginWindow.show()
         else:
             print("No")
 
