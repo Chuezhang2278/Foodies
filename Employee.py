@@ -119,6 +119,7 @@ class Salesperson(Employee):
         self.restaurant=restaurant
         self.rating=rating
 
+
     def getRestuarant(self):
         return self.restaurant
 

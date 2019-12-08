@@ -340,7 +340,7 @@ class Sales_Window(object):
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_8)
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.amount1_1 = QtWidgets.QLineEdit(self.verticalLayoutWidget_8)
+        self.amount1_1 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_8)
         self.amount1_1.setObjectName("amount1_1")
         self.verticalLayout_8.addWidget(self.amount1_1)
         self.amount1_2 = QtWidgets.QLineEdit(self.verticalLayoutWidget_8)
@@ -897,8 +897,9 @@ class Sales_Window(object):
         ##########################################################################################################
         #supplier 1 add to cart buttons
         
+
+        #self.add1_1.clicked.connect(self.addButton1_1())
         '''
-        self.add1_1.clicked.connect()
         self.add1_2.clicked.connect()
         self.add1_3.clicked.connect()
         self.add1_4.clicked.connect()
@@ -933,6 +934,7 @@ class Sales_Window(object):
         self.add3_9.clicked.connect()
         self.add3_10.clicked.connect()
         '''
+
     
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -1036,7 +1038,7 @@ class Sales_Window(object):
         self.add1_9.setText(_translate("MainWindow", "Add to Cart"))
         self.add1_10.setText(_translate("MainWindow", "Add to Cart"))
         self.return_supplier_1.setText(_translate("MainWindow", "Return"))
-        self.label_31.setText(_translate("MainWindow", "text")) #here
+        self.label_31.setText(_translate("MainWindow", "$1000")) #here
         self.label_30.setText(_translate("MainWindow", "Budget Remaining:"))
         self.go_cart_1.setText(_translate("MainWindow", "Go to Cart"))
         self.check_list_1.setText(_translate("MainWindow", "Check List"))
@@ -1069,7 +1071,7 @@ class Sales_Window(object):
         self.add2_9.setText(_translate("MainWindow", "Add to Cart"))
         self.add2_10.setText(_translate("MainWindow", "Add to Cart"))
         self.return_supplier_2.setText(_translate("MainWindow", "Return"))
-        self.label_33.setText(_translate("MainWindow", "text"))
+        self.label_33.setText(_translate("MainWindow", "$1000"))
         self.label_32.setText(_translate("MainWindow", "Budget Remaining:"))
         self.go_cart_2.setText(_translate("MainWindow", "Go to Cart"))
         self.check_list_2.setText(_translate("MainWindow", "Check List"))
@@ -1102,7 +1104,7 @@ class Sales_Window(object):
         self.add3_9.setText(_translate("MainWindow", "Add to Cart"))
         self.add3_10.setText(_translate("MainWindow", "Add to Cart"))
         self.return_supplier_3.setText(_translate("MainWindow", "Return"))
-        self.label_35.setText(_translate("MainWindow", "text"))
+        self.label_35.setText(_translate("MainWindow", "$1000"))
         self.label_34.setText(_translate("MainWindow", "Budget Remaining:"))
         self.go_cart_3.setText(_translate("MainWindow", "Go to Cart"))
         self.check_list_3.setText(_translate("MainWindow", "Check List"))
@@ -1112,7 +1114,7 @@ class Sales_Window(object):
         self.total_amount.setText(_translate("MainWindow", "$0.00"))
         self.total_amount_label.setText(_translate("MainWindow", "Total:"))
         self.check_out_budget_label.setText(_translate("MainWindow", "Budget Remaining:"))
-        self.check_out_budget.setText(_translate("MainWindow", "text"))
+        self.check_out_budget.setText(_translate("MainWindow", "$1000"))
         self.check_out_check_list.setText(_translate("MainWindow", "Check List"))
         self.check_out_supplier.setText(_translate("MainWindow", "Choose Supplier"))
         self.check_out_remove.setText(_translate("MainWindow", "Remove"))
@@ -1178,6 +1180,14 @@ class Sales_Window(object):
         self.mark9.setText(_translate("MainWindow", "Mark"))
         self.mark10.setText(_translate("MainWindow", "Mark"))
 
+
+
+    #get all profile information to display
+    """
+    self.name.setText(get)
+
+    """
+
     #define the button functions to navigate through the pages
     #################################################################################
 
@@ -1185,8 +1195,6 @@ class Sales_Window(object):
     def logout(self):
         self.CurrentWindow.hide()
         self.LoginWindow.show()
-        self.finalCart.clear()
-        self.finalCart.clear()
 
     global current_index
     current_index=0
@@ -1231,16 +1239,26 @@ class Sales_Window(object):
     def update_budget(self):
         self.budget_remaining-=self.total
 
+    def update_budget_remaining(self):
+        self.label_31.setText(str(self.budget_remaining))
+        self.label_33.setText(str(self.budget_remaining))
+        self.label_35.setText(str(self.budget_remaining))
+        self.check_out_budget.setText(str(self.budget_remaining))
+
+    def budget(self):
+        self.update_budget()
+        self.update_budget_remaining()
+
     ### Define the add buttons here
     ########################################################################################################
     # For Supplier 1
     def addButton1_1(self):
-        if self.check_budget(SuppliesList1[0].getPrice()*self.amount1_1.text()):
+        if self.check_budget(SuppliesList1[0].getPrice()*int(self.amount1_1.value())):
             self.check_out_list.addItem(SuppliesList1[0].getName() + '\t\t\t' + SuppliesList1[0].getQuality() + \
-                                    '\t\t\t' + self.amount1_1.text() + '\t\t\t' + str(SuppliesList1[0].getPrice())*int(self.amount1_1.text()))
+                                    '\t\t\t' + self.amount1_1.text() + '\t\t\t' + str(SuppliesList1[0].getPrice())*int(self.amount1_1.value()))
 
-            self.total += (SuppliesList1[0].getPrice()*self.amount1_1.text())
-            self.update_budget()
+            self.total += (SuppliesList1[0].getPrice()*int(self.amount1_1.value()))
+            self.budget()
             addCurrentCart_SalesPerson(SuppliesList1[0])
         else:
             #pop out window to show error
