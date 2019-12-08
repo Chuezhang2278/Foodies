@@ -8,8 +8,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Food_Window(object):
     def __init__(self):
-        self.CurrentWindow = None;
-        self.LoginWindow = None;
+        self.CurrentWindow = None
+        self.LoginWindow = None
     
     def setupUi(self, CurrentWindow, LoginWindow):
         self.temp = 0
