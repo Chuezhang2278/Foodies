@@ -52,6 +52,18 @@ class User():
         while (i < (len(self.order))):
             print(self.order[i] + " " + str(self.order[i+1]))
             i += 2
+    
+    def getRating(self):
+        i = len(self.rating)
+        j = 0
+        
+        for avg in range(len(self.rating)):
+            j += self.rating[avg]
+        
+        return (j/i)
+
+    def setRating(self, value):
+        self.rating.append(value)
         
 class Guest(User):
     def __init__(self, username, password):
@@ -67,6 +79,7 @@ class Member(User): #Inherits VIP methods as well as user, polymorphism
         self.discount = 0.85
         self.user_type = 1
         self.order = []
+        self.rating = []
         
 class VIP(User): #Inherits VIP methods as well as user, polymorphism
     def __init__(self, first_name, last_name, username, password, email, address):
@@ -74,4 +87,5 @@ class VIP(User): #Inherits VIP methods as well as user, polymorphism
         self.discount = 0.75
         self.user_type = 2
         self.order = []
+        self.rating = []
 

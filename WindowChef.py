@@ -1,3 +1,5 @@
+from Main import *
+from Employee import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QPushButton
 from WindowMenuModification import Ui_WindowMenuModification
@@ -16,7 +18,7 @@ class Ui_WindowChef(object):
         self.centralwidget = QtWidgets.QWidget(CurrentWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.welcomeLabel = QtWidgets.QLabel(self.centralwidget)
-        self.welcomeLabel.setGeometry(QtCore.QRect(0, 0, 141, 31))
+        self.welcomeLabel.setGeometry(QtCore.QRect(0, 0, 501, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
@@ -56,17 +58,14 @@ class Ui_WindowChef(object):
         self.retranslateUi(CurrentWindow)
         QtCore.QMetaObject.connectSlotsByName(CurrentWindow)
 
-        # TODO: create a method to logout of account show sign in page
         self.logoutButton.clicked.connect(self.open_logoutConfirmation)
-        # TODO: create a method to open the suppliesMenu.ui window
-        # self.managesuppliesButton.clicked.connect(self.open_manageSupplies)
-        # TODO: create a method to open the foodMenu.ui window
+        self.managesuppliesButton.clicked.connect(self.open_manageSupplies)
         self.managemenuButton.clicked.connect(self.open_manageMenu)
 
     def retranslateUi(self, CurrentWindow):
         _translate = QtCore.QCoreApplication.translate
         CurrentWindow.setWindowTitle(_translate("WindowChef", "MainWindow"))
-        self.welcomeLabel.setText(_translate("WindowChef", "Welcome, chef"))
+        self.welcomeLabel.setText(_translate("WindowChef", "Welcome, chef!"))
         self.logoutButton.setText(_translate("WindowChef", "Logout"))
         self.managesuppliesButton.setText(_translate("WindowChef", "Manage Restaurant Supplies"))
         self.managemenuButton.setText(_translate("WindowChef", "Manage Restaurant Food Menu"))
@@ -86,17 +85,16 @@ class Ui_WindowChef(object):
     def popup_button(self, i):
         if(i.text() == "&Yes"):
             self.CurrentWindow.hide()
-            self.LoginWindow.show()            
-        else:
-            print("No")
+            self.LoginWindow.show()
 
-    #def open_manageSupplies(self):
+    def open_manageSupplies(self):
+        print("manage supplies clicked")
 
     def open_manageMenu(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_WindowMenuModification()
         self.ui.setupUi(self.window)
-        CurrentWindow.hide()
+        self.CurrentWindow.hide()
         self.window.show()
 
 if __name__ == "__main__":

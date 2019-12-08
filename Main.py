@@ -109,19 +109,19 @@ def printMenu():
 # For each supplier they will have an array of different supplies in them.
 def addSupplies(Supplies):
     SuppliesList.append(Supplies)
-    print(f"Added {Supplies.getName()} to Supplies List ")
+    print(f"Added {Supplies.getName()} to Supplies List")
 
 def addSupplies1(Supplies):
     SuppliesList1.append(Supplies)
-    #print(f"Added {Supplies.getName()} to Supplies List for Supplier 1")
+    print(f"Added {Supplies.getName()} to Supplies List for Supplier 1")
 
 def addSupplies2(Supplies):
     SuppliesList2.append(Supplies)
-    #print(f"Added {Supplies.getName()} to Supplies List for Supplier 2")
+    print(f"Added {Supplies.getName()} to Supplies List for Supplier 2")
 
 def addSupplies3(Supplies):
     SuppliesList3.append(Supplies)
-    #print(f"Added {Supplies.getName()} to Supplies List for Supplier 3")
+    print(f"Added {Supplies.getName()} to Supplies List for Supplier 3")
 
 def addCurrentCart_SalesPerson(Supplies):
     CurrentCart_SalesPerson.append(Supplies)
@@ -136,7 +136,7 @@ User = []
 Employee = []
 CurrentUser = []
 CurrentCart = []
-SuppliesList = []
+SuppliesList=[]
 SuppliesList1 = []
 SuppliesList2 = []
 SuppliesList3 = []
@@ -150,13 +150,13 @@ Duck = Food('Duck', 9.49, 'Entree', True, 122, 5, 6)
 Dog = Food('Dog', 20.99, 'Entree', True, 5, 5, 7)
 
 # Cook
-John = Cook('John','Username', 'test')
+John = Cook('John','john', 'test')
 
 # Manager
 manager = Manager('y','y','y')
 
 # Salesperson
-Anderson = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname','☆☆☆☆☆') #sales person example
+Anderson = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname') #sales person example
 
 # Users
 deli = Delivery('z','z','z','z')
@@ -164,8 +164,8 @@ void = Guest('void1','void2')
 eric = Member('eric','test2','t','t','t','t')
 chue = VIP('chue','bloo','blee','blee','blop','t')
 
-
 # Define some supplies
+#### reminder to maybe add randomnized quality
 Meat = Supplies('Meat','Good', 24.99)
 Fish = Supplies('Fish', 'Good', 31.99)
 Vegetables = Supplies('Vegetables', 'Good', 9.99)
@@ -202,8 +202,9 @@ for i in range(0, 9):
     addSupplies3(Supplies(SuppliesList[i].getName(), random_quality[rand_int3], SuppliesList[i].getPrice()))
 
 
+
+
 """
-#### reminder to maybe add randomnized quality
 # Supplier 1 - 10 sample supplies
 freshChicken = Supplies('Chicken', 'Good',15.99)
 Broccoli = Supplies('Broccoli', 'Bad', 5.99 )
@@ -292,5 +293,7 @@ addSupplies3(ribeyeSteak)
 addSupplies3(kobeBeef)
 """
 
-
+print(Anderson.getRating())
+Anderson.setRating(3)
+print(Anderson.getRating())
 

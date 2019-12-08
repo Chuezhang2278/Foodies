@@ -1245,7 +1245,7 @@ class Sales_Window(object):
         self.label_35.setText(str(self.budget_remaining))
         self.check_out_budget.setText(str(self.budget_remaining))
 
-    def budget(self):
+    def budget_connected(self):
         self.update_budget()
         self.update_budget_remaining()
 
@@ -1258,7 +1258,7 @@ class Sales_Window(object):
                                     '\t\t\t' + self.amount1_1.text() + '\t\t\t' + str(SuppliesList1[0].getPrice())*int(self.amount1_1.value()))
 
             self.total += (SuppliesList1[0].getPrice()*int(self.amount1_1.value()))
-            self.budget()
+            self.budget_connected()
             addCurrentCart_SalesPerson(SuppliesList1[0])
         else:
             #pop out window to show error

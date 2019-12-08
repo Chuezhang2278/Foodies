@@ -447,8 +447,16 @@ class Ui_WindowMenuModification(object):
         self.retranslateUi(WindowMenuModification)
         QtCore.QMetaObject.connectSlotsByName(WindowMenuModification)
 
-        # method that goes back to the chef window on "go back" button clicked
+        # Button functionality to go back to chef page
         self.gobackButton.clicked.connect(self.open_chef)
+        # Button to add item to menu
+        self.addButton.clicked.connect(self.addtoMenu)
+        # Button to remove item from menu
+        self.removeButton.clicked.connect(self.removefromMenu)
+        # Button to reset fields on add item side
+        self.addresetButton.clicked.connect(self.resetAdd)
+        # Button to reset fields on remove item side
+        self.removeresetButton.clicked.connect(self.resetRemove)
 
     def retranslateUi(self, WindowMenuModification):
         _translate = QtCore.QCoreApplication.translate
@@ -482,11 +490,32 @@ class Ui_WindowMenuModification(object):
         self.gobackButton.setText(_translate("WindowMenuModification", "Go back"))
 
     def open_chef(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_WindowChef()
-        self.ui.setupUi(self.window)
-        WindowMenuModification.hide()
-        self.window.show()
+        print("go back")
+
+    def addtoMenu(self):
+        print(self.additemLine.text())
+        print(self.addclassificationCombo.currentText())
+        print(self.addpriceLine.text())
+        print(self.addspicyCheckbox.isChecked())
+
+    def removefromMenu(self):
+        print(self.removeitemLine.text())
+        print(self.removeclassificationCombo.currentText())
+        print(self.removepriceLine.text())
+        print(self.removespicyCheckbox.isChecked())
+    
+    def resetAdd(self):
+        self.additemLine.clear()
+        self.addclassificationCombo.setCurrentIndex(0)
+        self.addpriceLine.clear()
+        self.addspicyCheckbox.setChecked(0)
+
+    def resetRemove(self):
+        self.removeitemLine.clear()
+        self.removeclassificationCombo.setCurrentIndex(0)
+        self.removepriceLine.clear()
+        self.removespicyCheckbox.setChecked(0)
+
 
 if __name__ == "__main__":
     import sys

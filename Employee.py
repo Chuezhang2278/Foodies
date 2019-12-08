@@ -29,11 +29,24 @@ class Employee():
     def increaseSalary(self):
         self.salary = self.salary * 1.1
         return self.salary
+    
+    def getRating(self):
+        i = len(self.rating)
+        j = 0
+        
+        for avg in range(len(self.rating)):
+            j += self.rating[avg]
+        
+        return (j/i)
+
+    def setRating(self, value):
+        self.rating.append(value)
 
 class Delivery(Employee):
     def __init__(self, first_name, username, password, address):
         super().__init__(first_name, username, password)
         self.user_type = 3
+        self.rating = []
         self.currentOrder = None
         self.step_by_step = []
         self.decoded = []
@@ -91,6 +104,7 @@ class Cook(Employee):
         super().__init__(first_name,username,password)
         self.salary = 10
         self.user_type = 4
+        self.rating = []
 
     def addFood(menuList, Food):
         menuList.append(Food)
@@ -111,20 +125,18 @@ class Cook(Employee):
                 menuList[i].setQuality(quality)
 
 class Salesperson(Employee):
-    def __init__(self,first_name, username, password, budget, restaurant, rating):
+    def __init__(self,first_name, username, password, budget, restaurant):
         super().__init__(first_name,username,password)
         self.user_type = 5
         self.salary = 20
         self.budget = budget
         self.restaurant=restaurant
-        self.rating=rating
+        self.rating = [5,4]
 
 
     def getRestuarant(self):
+        
         return self.restaurant
-
-    def getRating(self):
-        return self.rating
 
 class Manager(Employee):
     def __init__(self,first_name, username, password):
@@ -133,4 +145,4 @@ class Manager(Employee):
         self.salary = 250
         self.budget = 1000
 
-# DeliveryGuy = Delivery("Jia Ming", "jma8774", "jma8774", "160 Convent Ave, New York, NY 10031")
+    
