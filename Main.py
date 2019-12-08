@@ -2,6 +2,7 @@ from Employee import Manager, Cook, Delivery, Salesperson
 from Food import Food
 from User import Member, VIP, Guest
 from Supplies import Supplies
+import random
 
 # Employee
 def addDeliveryPerson(employee):
@@ -106,6 +107,10 @@ def printMenu():
 
 # Salesperson
 # For each supplier they will have an array of different supplies in them.
+def addSupplies(Supplies):
+    SuppliesList.append(Supplies)
+    print(f"Added {Supplies.getName()} to Supplies List")
+
 def addSupplies1(Supplies):
     SuppliesList1.append(Supplies)
     print(f"Added {Supplies.getName()} to Supplies List for Supplier 1")
@@ -131,6 +136,7 @@ User = []
 Employee = []
 CurrentUser = []
 CurrentCart = []
+SuppliesList=[]
 SuppliesList1 = []
 SuppliesList2 = []
 SuppliesList3 = []
@@ -151,7 +157,7 @@ Jim = Cook('Jim', 'jim', 'test')
 manager = Manager('y','y','y')
 
 # Salesperson
-Anderson = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname','☆☆☆☆☆') #sales person example
+Anderson = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname') #sales person example
 
 # Users
 deli = Delivery('z','z','z','z')
@@ -161,6 +167,45 @@ chue = VIP('chue','bloo','blee','blee','blop','t')
 
 # Define some supplies
 #### reminder to maybe add randomnized quality
+Meat = Supplies('Meat','Good', 24.99)
+Fish = Supplies('Fish', 'Good', 31.99)
+Vegetables = Supplies('Vegetables', 'Good', 9.99)
+Flour = Supplies('Flour', 'Good', 5.99)
+Yeast = Supplies('Yeast', 'Good', 6.99)
+Salt = Supplies('Salt', 'Good', 3.99)
+Spices = Supplies('Spices', 'Good', 15.99)
+Sugar = Supplies('Sugar', 'Good', 4.99)
+Egg = Supplies('Egg', 'Good', 5.99)
+Dairy = Supplies('Dairy', 'Good', 8.99)
+
+addSupplies(Meat)
+addSupplies(Fish)
+addSupplies(Vegetables)
+addSupplies(Flour)
+addSupplies(Yeast)
+addSupplies(Salt)
+addSupplies(Spices)
+addSupplies(Sugar)
+addSupplies(Egg)
+addSupplies(Dairy)
+
+random_quality = ['Bad', 'Good', 'Best']
+
+
+# Add the Supplies into each supplier inventory with them each having random qualities
+for i in range(0, 9):
+    rand_int1 = random.randint(0, 2)
+    rand_int2 = random.randint(0, 2)
+    rand_int3 = random.randint(0, 2)
+
+    addSupplies1(Supplies(SuppliesList[i].getName(), random_quality[rand_int1], SuppliesList[i].getPrice()))
+    addSupplies2(Supplies(SuppliesList[i].getName(), random_quality[rand_int2], SuppliesList[i].getPrice()))
+    addSupplies3(Supplies(SuppliesList[i].getName(), random_quality[rand_int3], SuppliesList[i].getPrice()))
+
+
+
+
+"""
 # Supplier 1 - 10 sample supplies
 freshChicken = Supplies('Chicken', 'Good',15.99)
 Broccoli = Supplies('Broccoli', 'Bad', 5.99 )
@@ -197,7 +242,7 @@ tenderloin = Supplies('Beef Tenderloin', 'Good', 44.99)
 chuckSteak = Supplies('Chuck Steak', 'Best', 13.99)
 ribeyeSteak = Supplies('Ribeye Steak', 'Good', 55.99)
 kobeBeef = Supplies('Kobe Beef', 'Best', 119.99)
-
+"""
 
 addUser(void)
 addUser(chue)
@@ -212,6 +257,7 @@ addMenuItem(Dog)
 addMenuItem(Fish)
 addMenuItem(Chicken)
 
+"""
 # Add to supplies list 1
 addSupplies1(freshChicken)
 addSupplies1(Broccoli)
@@ -247,7 +293,9 @@ addSupplies3(tenderloin)
 addSupplies3(chuckSteak)
 addSupplies3(ribeyeSteak)
 addSupplies3(kobeBeef)
+"""
 
-
-
+print(Anderson.getRating())
+Anderson.setRating(3)
+print(Anderson.getRating())
 
