@@ -145,6 +145,7 @@ Dog = Food('Dog', 20.99, 'Entree', True, 5, 5, 7)
 
 # Cook
 John = Cook('John','john', 'test')
+Jim = Cook('Jim', 'jim', 'test')
 
 # Manager
 manager = Manager('y','y','y')
@@ -202,6 +203,7 @@ addUser(void)
 addUser(chue)
 addUser(eric)
 addUser(John)
+addUser(Jim)
 addUser(manager)
 addUser(Anderson)
 addUser(deli)
