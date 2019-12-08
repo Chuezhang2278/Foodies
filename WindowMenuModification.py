@@ -11,10 +11,16 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_WindowMenuModification(object):
-    def setupUi(self, WindowMenuModification):
-        WindowMenuModification.setObjectName("WindowMenuModification")
-        WindowMenuModification.resize(800, 600)
-        self.centralwidget = QtWidgets.QWidget(WindowMenuModification)
+    def __init__(self):
+        self.CurrentWindow = None
+        self.WindowChef = None
+    
+    def setupUi(self, CurrentWindow, WindowChef):
+        self.WindowChef = WindowChef
+        self.CurrentWindow = CurrentWindow
+        CurrentWindow.setObjectName("WindowMenuModification")
+        CurrentWindow.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(CurrentWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.foodmenuLabel = QtWidgets.QLabel(self.centralwidget)
         self.foodmenuLabel.setGeometry(QtCore.QRect(0, 0, 801, 51))
@@ -435,17 +441,17 @@ class Ui_WindowMenuModification(object):
         font.setWeight(75)
         self.gobackButton.setFont(font)
         self.gobackButton.setObjectName("gobackButton")
-        WindowMenuModification.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(WindowMenuModification)
+        CurrentWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(CurrentWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
-        WindowMenuModification.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(WindowMenuModification)
+        CurrentWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(CurrentWindow)
         self.statusbar.setObjectName("statusbar")
-        WindowMenuModification.setStatusBar(self.statusbar)
+        CurrentWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(WindowMenuModification)
-        QtCore.QMetaObject.connectSlotsByName(WindowMenuModification)
+        self.retranslateUi(CurrentWindow)
+        QtCore.QMetaObject.connectSlotsByName(CurrentWindow)
 
         # Button functionality to go back to chef page
         self.gobackButton.clicked.connect(self.open_chef)
@@ -457,10 +463,12 @@ class Ui_WindowMenuModification(object):
         self.addresetButton.clicked.connect(self.resetAdd)
         # Button to reset fields on remove item side
         self.removeresetButton.clicked.connect(self.resetRemove)
+        # Button to preview menu
+        self.previewButton.clicked.connect(self.previewMenu)
 
-    def retranslateUi(self, WindowMenuModification):
+    def retranslateUi(self, CurrentWindow):
         _translate = QtCore.QCoreApplication.translate
-        WindowMenuModification.setWindowTitle(_translate("WindowMenuModification", "MainWindow"))
+        CurrentWindow.setWindowTitle(_translate("WindowMenuModification", "MainWindow"))
         self.foodmenuLabel.setText(_translate("WindowMenuModification", "Food Menu Modification"))
         self.addgroupBox.setTitle(_translate("WindowMenuModification", "Add an item"))
         self.addButton.setText(_translate("WindowMenuModification", "Add it"))
@@ -490,7 +498,8 @@ class Ui_WindowMenuModification(object):
         self.gobackButton.setText(_translate("WindowMenuModification", "Go back"))
 
     def open_chef(self):
-        print("go back")
+        self.CurrentWindow.hide()
+        self.LoginWindow.show()    
 
     def addtoMenu(self):
         print(self.additemLine.text())
@@ -516,12 +525,15 @@ class Ui_WindowMenuModification(object):
         self.removepriceLine.clear()
         self.removespicyCheckbox.setChecked(0)
 
+    def previewMenu(self):
+        pass
+
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    WindowMenuModification = QtWidgets.QMainWindow()
+    CurrentWindow = QtWidgets.QMainWindow()
     ui = Ui_WindowMenuModification()
-    ui.setupUi(WindowMenuModification)
-    WindowMenuModification.show()
+    ui.setupUi(CurrentWindow, None)
+    CurrentWindow.show()
     sys.exit(app.exec_())
