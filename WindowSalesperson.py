@@ -265,17 +265,17 @@ class Sales_Window(object):
         self.item_list_1.setGeometry(QtCore.QRect(0, 80, 161, 541))
         self.item_list_1.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.item_list_1.setObjectName("item_list_1")
-        self.item_list_1.setSpacing(15) # changed spacing
+        self.item_list_1.setSpacing(18) # changed spacing
         self.quality_list_1 = QtWidgets.QListWidget(self.suppler_1)
         self.quality_list_1.setGeometry(QtCore.QRect(160, 80, 151, 541))
         self.quality_list_1.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.quality_list_1.setObjectName("quality_list_1")
-        self.quality_list_1.setSpacing(15) #changed spacing
+        self.quality_list_1.setSpacing(18) #changed spacing
         self.price_list_1 = QtWidgets.QListWidget(self.suppler_1)
         self.price_list_1.setGeometry(QtCore.QRect(310, 80, 161, 541))
         self.price_list_1.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.price_list_1.setObjectName("price_list_1")
-        self.price_list_1.setSpacing(15)#changed spacing
+        self.price_list_1.setSpacing(18)#changed spacing
 
 
         for i in range(len(SuppliesList1)):
@@ -343,31 +343,31 @@ class Sales_Window(object):
         self.amount1_1 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_8)
         self.amount1_1.setObjectName("amount1_1")
         self.verticalLayout_8.addWidget(self.amount1_1)
-        self.amount1_2 = QtWidgets.QLineEdit(self.verticalLayoutWidget_8)
+        self.amount1_2 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_8)
         self.amount1_2.setObjectName("amount1_2")
         self.verticalLayout_8.addWidget(self.amount1_2)
-        self.amount1_3 = QtWidgets.QLineEdit(self.verticalLayoutWidget_8)
+        self.amount1_3 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_8)
         self.amount1_3.setObjectName("amount1_3")
         self.verticalLayout_8.addWidget(self.amount1_3)
-        self.amount1_4 = QtWidgets.QLineEdit(self.verticalLayoutWidget_8)
+        self.amount1_4 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_8)
         self.amount1_4.setObjectName("amount1_4")
         self.verticalLayout_8.addWidget(self.amount1_4)
-        self.amount1_5 = QtWidgets.QLineEdit(self.verticalLayoutWidget_8)
+        self.amount1_5 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_8)
         self.amount1_5.setObjectName("amount1_5")
         self.verticalLayout_8.addWidget(self.amount1_5)
-        self.amount1_6 = QtWidgets.QLineEdit(self.verticalLayoutWidget_8)
+        self.amount1_6 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_8)
         self.amount1_6.setObjectName("amount1_6")
         self.verticalLayout_8.addWidget(self.amount1_6)
-        self.amount1_7 = QtWidgets.QLineEdit(self.verticalLayoutWidget_8)
+        self.amount1_7 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_8)
         self.amount1_7.setObjectName("amount1_7")
         self.verticalLayout_8.addWidget(self.amount1_7)
-        self.amount1_8 = QtWidgets.QLineEdit(self.verticalLayoutWidget_8)
+        self.amount1_8 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_8)
         self.amount1_8.setObjectName("amount1_8")
         self.verticalLayout_8.addWidget(self.amount1_8)
-        self.amount1_9 = QtWidgets.QLineEdit(self.verticalLayoutWidget_8)
+        self.amount1_9 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_8)
         self.amount1_9.setObjectName("amount1_9")
         self.verticalLayout_8.addWidget(self.amount1_9)
-        self.amount1_10 = QtWidgets.QLineEdit(self.verticalLayoutWidget_8)
+        self.amount1_10 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_8)
         self.amount1_10.setObjectName("amount1_10")
         self.verticalLayout_8.addWidget(self.amount1_10)
         self.go_cart_1 = QtWidgets.QPushButton(self.suppler_1)
@@ -409,17 +409,17 @@ class Sales_Window(object):
         self.item_list_2.setGeometry(QtCore.QRect(0, 80, 161, 541))
         self.item_list_2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.item_list_2.setObjectName("item_list_2")
-        self.item_list_2.setSpacing(15)#changed spacing
+        self.item_list_2.setSpacing(18)#changed spacing
         self.quality_list_2 = QtWidgets.QListWidget(self.supplier_2)
         self.quality_list_2.setGeometry(QtCore.QRect(160, 80, 151, 541))
         self.quality_list_2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.quality_list_2.setObjectName("quality_list_2")
-        self.quality_list_2.setSpacing(15)#changed spacing
+        self.quality_list_2.setSpacing(18)#changed spacing
         self.price_list_2 = QtWidgets.QListWidget(self.supplier_2)
         self.price_list_2.setGeometry(QtCore.QRect(310, 80, 161, 541))
         self.price_list_2.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.price_list_2.setObjectName("price_list_2")
-        self.price_list_2.setSpacing(15)#changed spacing
+        self.price_list_2.setSpacing(18)#changed spacing
 
         for i in range(len(SuppliesList2)):
                 self.item_list_2.addItem(SuppliesList2[i].getName())
@@ -486,34 +486,34 @@ class Sales_Window(object):
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_9)
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.amount2_1 = QtWidgets.QLineEdit(self.verticalLayoutWidget_9)
+        self.amount2_1 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_9)
         self.amount2_1.setObjectName("amount2_1")
         self.verticalLayout_9.addWidget(self.amount2_1)
-        self.amount2_2 = QtWidgets.QLineEdit(self.verticalLayoutWidget_9)
+        self.amount2_2 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_9)
         self.amount2_2.setObjectName("amount2_2")
         self.verticalLayout_9.addWidget(self.amount2_2)
-        self.amount2_3 = QtWidgets.QLineEdit(self.verticalLayoutWidget_9)
+        self.amount2_3 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_9)
         self.amount2_3.setObjectName("amount2_3")
         self.verticalLayout_9.addWidget(self.amount2_3)
-        self.amount2_4 = QtWidgets.QLineEdit(self.verticalLayoutWidget_9)
+        self.amount2_4 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_9)
         self.amount2_4.setObjectName("amount2_4")
         self.verticalLayout_9.addWidget(self.amount2_4)
-        self.amount2_5 = QtWidgets.QLineEdit(self.verticalLayoutWidget_9)
+        self.amount2_5 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_9)
         self.amount2_5.setObjectName("amount2_5")
         self.verticalLayout_9.addWidget(self.amount2_5)
-        self.amount2_6 = QtWidgets.QLineEdit(self.verticalLayoutWidget_9)
+        self.amount2_6 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_9)
         self.amount2_6.setObjectName("amount2_6")
         self.verticalLayout_9.addWidget(self.amount2_6)
-        self.amount2_7 = QtWidgets.QLineEdit(self.verticalLayoutWidget_9)
+        self.amount2_7 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_9)
         self.amount2_7.setObjectName("amount2_7")
         self.verticalLayout_9.addWidget(self.amount2_7)
-        self.amount2_8 = QtWidgets.QLineEdit(self.verticalLayoutWidget_9)
+        self.amount2_8 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_9)
         self.amount2_8.setObjectName("amount2_8")
         self.verticalLayout_9.addWidget(self.amount2_8)
-        self.amount2_9 = QtWidgets.QLineEdit(self.verticalLayoutWidget_9)
+        self.amount2_9 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_9)
         self.amount2_9.setObjectName("amount2_9")
         self.verticalLayout_9.addWidget(self.amount2_9)
-        self.amount2_10 = QtWidgets.QLineEdit(self.verticalLayoutWidget_9)
+        self.amount2_10 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_9)
         self.amount2_10.setObjectName("amount2_10")
         self.verticalLayout_9.addWidget(self.amount2_10)
         self.go_cart_2 = QtWidgets.QPushButton(self.supplier_2)
@@ -555,17 +555,17 @@ class Sales_Window(object):
         self.item_list_3.setGeometry(QtCore.QRect(0, 80, 161, 541))
         self.item_list_3.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.item_list_3.setObjectName("item_list_3")
-        self.item_list_3.setSpacing(15)#changed spacing
+        self.item_list_3.setSpacing(18)#changed spacing
         self.quality_list_3 = QtWidgets.QListWidget(self.supplier_3)
         self.quality_list_3.setGeometry(QtCore.QRect(160, 80, 151, 541))
         self.quality_list_3.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.quality_list_3.setObjectName("quality_list_3")
-        self.quality_list_3.setSpacing(15)#changed spacing
+        self.quality_list_3.setSpacing(18)#changed spacing
         self.price_list_3 = QtWidgets.QListWidget(self.supplier_3)
         self.price_list_3.setGeometry(QtCore.QRect(310, 80, 161, 541))
         self.price_list_3.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.price_list_3.setObjectName("price_list_3")
-        self.price_list_3.setSpacing(15)#changed spacing
+        self.price_list_3.setSpacing(18)#changed spacing
 
         for i in range(len(SuppliesList3)):
                 self.item_list_3.addItem(SuppliesList3[i].getName())
@@ -629,36 +629,37 @@ class Sales_Window(object):
         self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_10)
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.amount3_1 = QtWidgets.QLineEdit(self.verticalLayoutWidget_10)
+        self.verticalLayout_10.setSpacing(-1)
+        self.amount3_1 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_10)
         self.amount3_1.setObjectName("amount3_1")
         self.verticalLayout_10.addWidget(self.amount3_1)
-        self.amount3_2 = QtWidgets.QLineEdit(self.verticalLayoutWidget_10)
+        self.amount3_2 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_10)
         self.amount3_2.setObjectName("amount3_2")
         self.verticalLayout_10.addWidget(self.amount3_2)
-        self.amount3_3 = QtWidgets.QLineEdit(self.verticalLayoutWidget_10)
+        self.amount3_3 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_10)
         self.amount3_3.setObjectName("amount3_3")
         self.verticalLayout_10.addWidget(self.amount3_3)
-        self.amount3_4 = QtWidgets.QLineEdit(self.verticalLayoutWidget_10)
+        self.amount3_4 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_10)
         self.amount3_4.setObjectName("amount3_4")
         self.verticalLayout_10.addWidget(self.amount3_4)
-        self.amount3_5 = QtWidgets.QLineEdit(self.verticalLayoutWidget_10)
+        self.amount3_5 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_10)
         self.amount3_5.setObjectName("amount3_5")
         self.verticalLayout_10.addWidget(self.amount3_5)
-        self.amount3_6 = QtWidgets.QLineEdit(self.verticalLayoutWidget_10)
+        self.amount3_6 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_10)
         self.amount3_6.setObjectName("amount3_6")
         self.verticalLayout_10.addWidget(self.amount3_6)
-        self.amount3_7 = QtWidgets.QLineEdit(self.verticalLayoutWidget_10)
+        self.amount3_7 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_10)
         self.amount3_7.setObjectName("amount3_7")
         self.verticalLayout_10.addWidget(self.amount3_7)
-        self.amount3_8 = QtWidgets.QLineEdit(self.verticalLayoutWidget_10)
+        self.amount3_8 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_10)
         self.amount3_8.setObjectName("amount3_8")
         self.verticalLayout_10.addWidget(self.amount3_8)
-        self.amount3_9 = QtWidgets.QLineEdit(self.verticalLayoutWidget_10)
+        self.amount3_9 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_10)
         self.amount3_9.setObjectName("amount3_9")
         self.verticalLayout_10.addWidget(self.amount3_9)
-        self.lineEdit_30 = QtWidgets.QLineEdit(self.verticalLayoutWidget_10)
-        self.lineEdit_30.setObjectName("lineEdit_30")
-        self.verticalLayout_10.addWidget(self.lineEdit_30)
+        self.amount3_10 = QtWidgets.QDoubleSpinBox(self.verticalLayoutWidget_10)
+        self.amount3_10.setObjectName("amount3_10")
+        self.verticalLayout_10.addWidget(self.amount3_10)
         self.go_cart_3 = QtWidgets.QPushButton(self.supplier_3)
         self.go_cart_3.setGeometry(QtCore.QRect(620, 10, 113, 32))
         self.go_cart_3.setObjectName("go_cart_3")
@@ -898,7 +899,7 @@ class Sales_Window(object):
         #supplier 1 add to cart buttons
         
 
-        #self.add1_1.clicked.connect(self.addButton1_1())
+        self.add1_1.clicked.connect(self.addButton1_1)
         '''
         self.add1_2.clicked.connect()
         self.add1_3.clicked.connect()
@@ -947,7 +948,7 @@ class Sales_Window(object):
         self.name.setText(_translate("MainWindow", "name example"))
         self.restaurant.setText(_translate("MainWindow", "Restuarant example"))
         self.budget.setText(_translate("MainWindow", "$1000.00"))
-        self.rating.setText(_translate("MainWindow", "☆"))
+        self.rating.setText(_translate("MainWindow", "4"))
         self.deal_of_the_day.setText(_translate("MainWindow", "DEALS OF THE DAY"))
         self.log_profile.setText(_translate("MainWindow", "Log Out"))
         self.shop_suppliers.setText(_translate("MainWindow", "Shop"))
@@ -1245,20 +1246,24 @@ class Sales_Window(object):
         self.label_35.setText(str(self.budget_remaining))
         self.check_out_budget.setText(str(self.budget_remaining))
 
-    def budget_connected(self):
+    def budget_connected_total(self):
         self.update_budget()
         self.update_budget_remaining()
+        self.total_amount.setText(str(self.total))
+
 
     ### Define the add buttons here
     ########################################################################################################
     # For Supplier 1
     def addButton1_1(self):
+        print(str(self.check_budget(SuppliesList1[0].getPrice()*int(self.amount1_1.value()))))
+
         if self.check_budget(SuppliesList1[0].getPrice()*int(self.amount1_1.value())):
-            self.check_out_list.addItem(SuppliesList1[0].getName() + '\t\t\t' + SuppliesList1[0].getQuality() + \
-                                    '\t\t\t' + self.amount1_1.text() + '\t\t\t' + str(SuppliesList1[0].getPrice())*int(self.amount1_1.value()))
+            self.check_out_list.addItem(SuppliesList1[0].getName() + '\t' + SuppliesList1[0].getQuality() + \
+                                    '\t' + self.amount1_1.text() + '\t' + str(SuppliesList1[0].getPrice()*int(self.amount1_1.value())))
 
             self.total += (SuppliesList1[0].getPrice()*int(self.amount1_1.value()))
-            self.budget_connected()
+            self.budget_connected_total()
             addCurrentCart_SalesPerson(SuppliesList1[0])
         else:
             #pop out window to show error
