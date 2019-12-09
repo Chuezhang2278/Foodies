@@ -3,6 +3,7 @@ from WindowFoodStackWidget import Food_Window
 from WindowChef import Ui_WindowChef
 from WindowManager import ManagerWindow
 from WindowSalesperson import Sales_Window
+from WindowDeliveryMain import DeliveryMainWindow
 from Main import *
 
 import qdarkstyle
@@ -10,6 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class LoginWindow(object):
     def setupUi(self, CurrentWindow):
+        self.CurrentWindow = CurrentWindow
         CurrentWindow.setObjectName("CurrentWindow")
         CurrentWindow.setEnabled(True)
         CurrentWindow.resize(400, 200)
@@ -54,6 +56,11 @@ class LoginWindow(object):
         self.signUpButton.setText(_translate("CurrentWindow", "Sign Up"))
         self.loginButton.setText(_translate("CurrentWindow", "Login"))
 
+    def logOut(self):
+        self.LogUser_lineEdit.setText('')
+        self.LogPass_lineEdit.setText('')
+        CurrentUser.clear()
+
     def switch_sign(self):
         self.sign_window = QtWidgets.QMainWindow()
         self.ui = sign_window()
@@ -67,14 +74,14 @@ class LoginWindow(object):
         self.ui.setupUi(self.Food_window, CurrentWindow)
         CurrentWindow.hide()
         self.Food_window.show()
-    
+
     def switch_cook(self):
         self.Cook_window = QtWidgets.QMainWindow()
         self.ui = Ui_WindowChef()
         self.ui.setupUi(self.Cook_window, CurrentWindow)
         CurrentWindow.hide()
         self.Cook_window.show()
-    
+
     def switch_sales(self):
         self.sales_window = QtWidgets.QMainWindow()
         self.ui = Sales_Window()
@@ -89,11 +96,18 @@ class LoginWindow(object):
         CurrentWindow.hide()
         self.Manager_Window.show()
 
+    def switch_delivery(self):
+        self.DeliveryWindow = QtWidgets.QMainWindow()
+        self.ui = DeliveryMainWindow(self)
+        self.ui.setupUi(self.DeliveryWindow)
+        CurrentWindow.hide()
+        self.DeliveryWindow.show()
+
     def guestVeri(self):
         addCurrentUser(User[0])
         addCurrentUser(0)
         self.switch_menu()
-        
+
     def LoginVeri(self):
         value1 = self.LogUser_lineEdit.text()
         value2 = self.LogPass_lineEdit.text()
@@ -103,30 +117,31 @@ class LoginWindow(object):
         for i in range(test):
             if(value1 == User[i].getUser() and value2 == User[i].getPass()):
                 if(User[i].getType() == 1 or User[i].getType() == 2):
-                    addCurrentUser(User[i]) 
+                    addCurrentUser(User[i])
                     addCurrentUser(i)
                     self.switch_menu()
                     break
                 elif(User[i].getType() == 3):
-                    addCurrentUser(User[i]) 
+                    addCurrentUser(User[i])
                     addCurrentUser(i)
-                    print("Delivery")
+                    self.switch_delivery()
+                    break
                 elif(User[i].getType() == 4):
-                    addCurrentUser(User[i]) 
+                    addCurrentUser(User[i])
                     addCurrentUser(i)
                     self.switch_cook()
                     break
                 elif(User[i].getType() == 5):
-                    addCurrentUser(User[i]) 
+                    addCurrentUser(User[i])
                     addCurrentUser(i)
                     self.switch_sales()
                     break
                 elif(User[i].getType() == 6):
-                    addCurrentUser(User[i]) 
+                    addCurrentUser(User[i])
                     addCurrentUser(i)
                     self.switch_admin()
                     break
-            
+
 
 if __name__ == "__main__":
     import sys

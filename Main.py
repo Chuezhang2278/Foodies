@@ -34,6 +34,10 @@ def printCooks():
             print(Cooks[i].getFirst(), end=' ')
         print('')
 
+def checkLaidOff(Delivery):
+    if Delivery.getWarnings() > 2:
+        print(Delivery.getFirst() + " has been laid off")
+        DeliveryPeople.remove(Delivery)
 # Food
 def addMenuItem(food):
     Menu.append(food)
@@ -141,7 +145,7 @@ Menu = []
 IngredientList = []
 User = []
 Employee = []
-CurrentUser = None # There should only be 1 CurrrentUser, not a List... This should be an User object
+CurrentUser = []
 CurrentCart = []
 SuppliesList=[]
 SuppliesList1 = []
@@ -162,7 +166,7 @@ for i in range(5):
     CurrentCart.append(foodTest1)
     CurrentCart.append(foodTest2)
     CurrentCart.append(foodTest3)
-addOrder()
+# addOrder()
 
 # Cook
 John = Cook('John','john', 'test')
@@ -175,10 +179,23 @@ manager = Manager('y','y','y')
 Anderson = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname') #sales person example
 
 # Users
-deli = Delivery('z','z','z','z')
+deliveryBot = Delivery('Delivery Bot','u','p','City College of New York')
+deliveryBot2 = Delivery('Delivery Bot 2','u2','p2','JFK Airport')
 void = Guest('void1','void2')
-eric = Member('eric','test2','t','t','t','t')
-chue = VIP('chue','bloo','blee','blee','blop','t')
+eric = Member('eric','test2','t','t','t','Coney Island')
+chue = VIP('chue','bloo','blee','blee','blop','Empire State Building')
+
+addDeliveryPerson(deliveryBot)
+deliveryBot.setRating(1)
+deliveryBot.setRating(2)
+deliveryBot.setRating(1)
+deliveryBot.setRating(4)
+deliveryBot.setRating(5)
+checkLaidOff(deliveryBot)
+deliveryBot2.setRating(1)
+deliveryBot2.startNewOrder(Order(chue, CurrentCart))
+deliveryBot.startNewOrder(Order(eric, CurrentCart))
+
 
 # Define some supplies
 #### reminder to maybe add randomnized quality
@@ -266,7 +283,8 @@ addUser(John)
 addUser(Jim)
 addUser(manager)
 addUser(Anderson)
-addUser(deli)
+addUser(deliveryBot)
+addUser(deliveryBot2)
 
 addMenuItem(foodTest1)
 addMenuItem(foodTest2)
