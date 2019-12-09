@@ -1,6 +1,7 @@
 from WindowSignUp import sign_window
 from WindowFoodStackWidget import Food_Window
-from WindowChef import Ui_WindowChef
+#from WindowChef import Ui_WindowChef
+from WindowCookStackedWidget import Ui_CookWindow
 from WindowManager import ManagerWindow
 from WindowSalesperson import Sales_Window
 from WindowDeliveryMain import DeliveryMainWindow
@@ -76,7 +77,7 @@ class LoginWindow(object):
 
     def switch_cook(self):
         self.Cook_window = QtWidgets.QMainWindow()
-        self.ui = Ui_WindowChef()
+        self.ui = Ui_CookWindow()
         self.ui.setupUi(self.Cook_window, CurrentWindow)
         CurrentWindow.hide()
         self.Cook_window.show()
