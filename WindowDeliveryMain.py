@@ -1,5 +1,6 @@
 import qdarkstyle, Main
 from PyQt5 import QtCore, QtGui, QtWidgets, QtWebKit, QtWebKitWidgets
+from PyQt5.QtWidgets import QMessageBox, QPushButton
 from WindowMap import MapWindow
 
 class DeliveryMainWindow(object):
@@ -44,7 +45,7 @@ class DeliveryMainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.currentOrder_button.clicked.connect(self.switch_currentOrder)
-        self.logout_button.clicked.connect(self.switch_login)
+        self.logout_button.clicked.connect(self.open_logoutConfirmation)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -93,10 +94,31 @@ class DeliveryMainWindow(object):
             self.MainWindow.hide()
             self.NewWindow.show()
 
-    def switch_login(self):
-        self.MainWindow.hide()
-        self.LoginWindow.logOut()
-        self.LoginWindow.CurrentWindow.show()
+    def open_logoutConfirmation(self):
+        try:
+            msg = QMessageBox()
+            msg.setWindowTitle("Logout")
+            msg.setText("Are you sure you want to logout?")
+            msg.setIcon(QMessageBox.Question)
+            msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
+            msg.setDefaultButton(QMessageBox.No)
+
+            msg.buttonClicked.connect(self.switch_login)
+
+            x = msg.exec_()
+        except Exception:
+            import traceback
+            print(traceback.format_exc())
+
+    def switch_login(self, i):
+        try:
+            if(i.text() == "&Yes"):
+                Main.CurrentUser.clear()
+                self.MainWindow.hide()
+                self.LoginWindow.show()
+        except Exception:
+            import traceback
+            print(traceback.format_exc())
 
 if __name__ == "__main__":
     import sys

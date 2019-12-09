@@ -56,10 +56,9 @@ class LoginWindow(object):
         self.signUpButton.setText(_translate("CurrentWindow", "Sign Up"))
         self.loginButton.setText(_translate("CurrentWindow", "Login"))
 
-    def logOut(self):
+    def clearFields(self):
         self.LogUser_lineEdit.setText('')
         self.LogPass_lineEdit.setText('')
-        CurrentUser.clear()
 
     def switch_sign(self):
         self.sign_window = QtWidgets.QMainWindow()
@@ -98,7 +97,7 @@ class LoginWindow(object):
 
     def switch_delivery(self):
         self.DeliveryWindow = QtWidgets.QMainWindow()
-        self.ui = DeliveryMainWindow(self)
+        self.ui = DeliveryMainWindow(CurrentWindow)
         self.ui.setupUi(self.DeliveryWindow)
         CurrentWindow.hide()
         self.DeliveryWindow.show()
@@ -120,26 +119,31 @@ class LoginWindow(object):
                     addCurrentUser(User[i])
                     addCurrentUser(i)
                     self.switch_menu()
+                    self.clearFields()
                     break
                 elif(User[i].getType() == 3):
                     addCurrentUser(User[i])
                     addCurrentUser(i)
                     self.switch_delivery()
+                    self.clearFields()
                     break
                 elif(User[i].getType() == 4):
                     addCurrentUser(User[i])
                     addCurrentUser(i)
                     self.switch_cook()
+                    self.clearFields()
                     break
                 elif(User[i].getType() == 5):
                     addCurrentUser(User[i])
                     addCurrentUser(i)
                     self.switch_sales()
+                    self.clearFields()
                     break
                 elif(User[i].getType() == 6):
                     addCurrentUser(User[i])
                     addCurrentUser(i)
                     self.switch_admin()
+                    self.clearFields()
                     break
 
 
