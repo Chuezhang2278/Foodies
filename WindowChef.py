@@ -91,11 +91,11 @@ class Ui_WindowChef(object):
         print("manage supplies clicked")
 
     def open_manageMenu(self):
-        self.window = QtWidgets.QMainWindow()
+        window = QtWidgets.QMainWindow()
         self.ui = Ui_WindowMenuModification()
-        self.ui.setupUi(self.window)
+        self.ui.setupUi(window, None)
         self.CurrentWindow.hide()
-        self.window.show()
+        window.show()
 
 if __name__ == "__main__":
     import sys

@@ -9,6 +9,9 @@ class Food():
         self.quality = quality
         self.sold = sold
 
+    def __str__(self):
+        return self.name
+
     def getName(self):
         return self.name
 
@@ -32,7 +35,7 @@ class Food():
 
     def setQuantity(self, quantity):
         self.quantity = quantity
-    
+
     def getSold(self):
         return self.sold
 

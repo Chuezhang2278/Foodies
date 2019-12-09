@@ -1,5 +1,5 @@
 #SIDE NOTE
-#YOU CANNOT JUST RUN THIS FILE ANYMORE FOR TESTING, YOU WILL GET AN ERROR ABOUT LISTS 
+#YOU CANNOT JUST RUN THIS FILE ANYMORE FOR TESTING, YOU WILL GET AN ERROR ABOUT LISTS
 #RUN THE LOGIN FILE AND REFER TO MAIN.PY FOR USERLOGIN AND PASSWORD
 #ALTERNIATIVELY USE GUEST OR MAKE AN ACCOUNT THROUGH SIGNUP
 
@@ -10,7 +10,7 @@ class Food_Window(object):
     def __init__(self):
         self.CurrentWindow = None
         self.LoginWindow = None
-    
+
     def setupUi(self, CurrentWindow, LoginWindow):
         self.temp = 0
         self.LoginWindow = LoginWindow
@@ -73,7 +73,7 @@ class Food_Window(object):
         self.Cart = QtWidgets.QListWidget(self.page)
         self.Cart.setGeometry(QtCore.QRect(480, 39, 271, 441))
         self.Cart.setObjectName("Cart")
-        
+
         self.AddButton5 = QtWidgets.QPushButton(self.page)
         self.AddButton5.setGeometry(QtCore.QRect(360, 244, 93, 28))
         self.AddButton5.setObjectName("AddButton5")
@@ -97,8 +97,8 @@ class Food_Window(object):
         self.finalCart = QtWidgets.QListWidget(self.page_2)
         self.finalCart.setGeometry(QtCore.QRect(230, 50, 301, 531))
         self.finalCart.setObjectName("finalCart")
-        
-        
+
+
         self.finalCheckOut = QtWidgets.QPushButton(self.page_2)
         self.finalCheckOut.setGeometry(QtCore.QRect(540, 150, 241, 31))
         self.finalCheckOut.setObjectName("finalCheckOut")
@@ -133,7 +133,7 @@ class Food_Window(object):
         self.AddButton9.hide()
         self.AddButton10.hide()
         #====page1====#
-        
+
         #====page2====#
 
         self.finalCheckOut.clicked.connect(self.Logout)
@@ -174,7 +174,7 @@ class Food_Window(object):
         self.label_4.setText(_translate("MainWindow", "My Cart"))
         self.returnButton.setText(_translate("MainWindow", "Return"))
 
-    
+
     def Logout(self):
         self.CurrentWindow.hide()
         self.LoginWindow.show()
@@ -182,7 +182,7 @@ class Food_Window(object):
         CurrentUser.pop()
         CurrentUser.pop()
         self.finalCart.clear()
-    
+
     def Checkout(self):
         i = 0
         self.stackedWidget.setCurrentIndex(1)
@@ -190,69 +190,69 @@ class Food_Window(object):
         while i < currentCartSize():
             self.finalCart.addItem((User[CurrentUser[1]].order[i]) + "\t\t\t " + str(User[CurrentUser[1]].order[i+1]))
             i += 2
-            
+
     def Return(self):
         self.stackedWidget.setCurrentIndex(0)
         self.finalCart.clear()
-    
-    def Remove(self): 
+
+    def Remove(self):
         listItems = self.Cart.selectedItems()
         if not listItems: return
         for item in listItems:
             self.Cart.takeItem(self.Cart.row(item))
             CurrentCart.pop(self.Cart.currentRow()+1)
             User[CurrentUser[1]].removeOrder()
-        
+
     #Need a better method of implementing stuff below, VERY BAD EFFICIENCY
     #problem stems from the generation of buttons
-    #when logging out, cart needs to still show 
-    
+    #when logging out, cart needs to still show
+
     def Add_Button1(self):
-        self.Cart.addItem(Menu[0].getName() + '\t\t\t' + str(Menu[0].getPrice()))    
+        self.Cart.addItem(Menu[0].getName() + '\t\t\t' + str(Menu[0].getPrice()))
         addCurrentCart(Menu[0])
         self.temp += (Menu[0].getPrice())
         User[CurrentUser[1]].addOrder(Menu[0].getName(),Menu[0].getPrice())
     def Add_Button2(self):
-        self.Cart.addItem(Menu[1].getName() + '\t\t\t' + str(Menu[1].getPrice()))  
+        self.Cart.addItem(Menu[1].getName() + '\t\t\t' + str(Menu[1].getPrice()))
         addCurrentCart(Menu[1])
         self.temp += (Menu[1].getPrice())
         User[CurrentUser[1]].addOrder(Menu[1].getName(),Menu[1].getPrice())
     def Add_Button3(self):
-        self.Cart.addItem(Menu[2].getName() + '\t\t\t' + str(Menu[2].getPrice()))  
+        self.Cart.addItem(Menu[2].getName() + '\t\t\t' + str(Menu[2].getPrice()))
         addCurrentCart(Menu[2])
         self.temp += (Menu[2].getPrice())
         User[CurrentUser[1]].addOrder(Menu[2].getName(),Menu[2].getPrice())
     def Add_Button4(self):
-        self.Cart.addItem(Menu[3].getName() + '\t\t\t' + str(Menu[3].getPrice()))  
+        self.Cart.addItem(Menu[3].getName() + '\t\t\t' + str(Menu[3].getPrice()))
         addCurrentCart(Menu[3])
         self.temp += (Menu[3].getPrice())
         User[CurrentUser[1]].addOrder(Menu[3].getName(),Menu[3].getPrice())
     def Add_Button5(self):
-        self.Cart.addItem(Menu[4].getName() + '\t\t\t' + str(Menu[4].getPrice())) 
+        self.Cart.addItem(Menu[4].getName() + '\t\t\t' + str(Menu[4].getPrice()))
         addCurrentCart(Menu[4])
         self.temp += (Menu[4].getPrice())
     def Add_Button6(self):
-        self.Cart.addItem(Menu[5].getName() + '\t\t\t' + str(Menu[5].getNrice())) 
+        self.Cart.addItem(Menu[5].getName() + '\t\t\t' + str(Menu[5].getNrice()))
         addCurrentCart(Menu[5])
         self.temp += (Menu[5].getPrice())
     def Add_Button7(self):
-        self.Cart.addItem(Menu[6].getName() + '\t\t\t' + str(Menu[6].getPrice()))  
+        self.Cart.addItem(Menu[6].getName() + '\t\t\t' + str(Menu[6].getPrice()))
         addCurrentCart(Menu[6])
         self.temp += (Menu[6].getPrice())
     def Add_Button8(self):
-        self.Cart.addItem(Menu[7].getName() + '\t\t\t' + str(Menu[7].getPrice())) 
+        self.Cart.addItem(Menu[7].getName() + '\t\t\t' + str(Menu[7].getPrice()))
         addCurrentCart(Menu[7])
         self.temp += (Menu[7].getPrice())
     def Add_Button9(self):
         self.Cart.addItem(Menu[8].getName() + '\t\t\t' + str(Menu[8].getPrice()))
-        addCurrentCart(Menu[8]) 
+        addCurrentCart(Menu[8])
         self.temp += (Menu[8].getPrice())
     def Add_Button10(self):
-        self.Cart.addItem(Menu[9].getName() + '\t\t\t' + str(Menu[9].getPrice()))  
+        self.Cart.addItem(Menu[9].getName() + '\t\t\t' + str(Menu[9].getPrice()))
         addCurrentCart(Menu[9])
         self.temp += (Menu[9].getPrice())
-    
-    
+
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -261,4 +261,3 @@ if __name__ == "__main__":
     ui.setupUi(CurrentWindow, None)
     CurrentWindow.show()
     sys.exit(app.exec_())
-

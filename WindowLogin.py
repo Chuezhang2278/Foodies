@@ -108,14 +108,22 @@ class LoginWindow(object):
                     self.switch_menu()
                     break
                 elif(User[i].getType() == 3):
+                    addCurrentUser(User[i]) 
+                    addCurrentUser(i)
                     print("Delivery")
                 elif(User[i].getType() == 4):
+                    addCurrentUser(User[i]) 
+                    addCurrentUser(i)
                     self.switch_cook()
                     break
                 elif(User[i].getType() == 5):
+                    addCurrentUser(User[i]) 
+                    addCurrentUser(i)
                     self.switch_sales()
                     break
                 elif(User[i].getType() == 6):
+                    addCurrentUser(User[i]) 
+                    addCurrentUser(i)
                     self.switch_admin()
                     break
             

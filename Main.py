@@ -2,6 +2,7 @@ from Employee import Manager, Cook, Delivery, Salesperson
 from Food import Food
 from User import Member, VIP, Guest
 from Supplies import Supplies
+from Order import Order
 import random
 
 # Employee
@@ -37,7 +38,7 @@ def printCooks():
 def addMenuItem(food):
     Menu.append(food)
     print("Added " + food.getName() + " to Foods")
-    
+
 def printMenu():
     print("Printing list of Foods...")
     if(len(Menu) == 0):
@@ -80,7 +81,7 @@ def promoteVIP(name):
 
 def addCurrentUser(name):
     CurrentUser.append(name)
-    
+
 def addCurrentCart(name):
     CurrentCart.append(name)
 
@@ -89,11 +90,11 @@ def currentCartSize():
 
 def addEmployee(name):
     Employee.append(name)
-    
+
 def addUser(user):
     User.append(user)
 
-def sortMenu(): #Bubble sort algorithm for most relevant items, May change for only top 3 
+def sortMenu(): #Bubble sort algorithm for most relevant items, May change for only top 3
     swapped = True
     while swapped:
         swapped = False
@@ -126,7 +127,13 @@ def addSupplies3(Supplies):
 def addCurrentCart_SalesPerson(Supplies):
     CurrentCart_SalesPerson.append(Supplies)
 
- #====For_Storage====#   
+# Customer Checking Out Stuff
+def addOrder():
+    Orders.append(Order(CurrentUser, CurrentCart))
+    CurrentCart.clear()
+
+#====For_Storage====
+Orders = []
 DeliveryPeople = []
 Cooks = []
 Sales = []
@@ -134,7 +141,7 @@ Menu = []
 IngredientList = []
 User = []
 Employee = []
-CurrentUser = []
+CurrentUser = None # There should only be 1 CurrrentUser, not a List... This should be an User object
 CurrentCart = []
 SuppliesList=[]
 SuppliesList1 = []
@@ -143,11 +150,19 @@ SuppliesList3 = []
 CurrentCart_SalesPerson=[]
 #====For_Storage====#
 
+################################################### TESTING BELOW #################################################################
 # Foods
-Chicken = Food('Chicken', 12.99, 'Entree', True, 100, 2, 4)
-Fish = Food('Fish', 10.99, 'Entree', True, 500, 3, 5)
-Duck = Food('Duck', 9.49, 'Entree', True, 122, 5, 6)
-Dog = Food('Dog', 20.99, 'Entree', True, 5, 5, 7)
+foodTest1 = Food('Chicken', 12.99, 'Entree', True, 100, 2, 4)
+foodTest2 = Food('Fish', 10.99, 'Entree', True, 500, 3, 5)
+foodTest3 = Food('Duck', 9.49, 'Entree', True, 122, 5, 6)
+foodTest4 = Food('Dog', 20.99, 'Entree', True, 5, 5, 7)
+
+# Cart
+for i in range(5):
+    CurrentCart.append(foodTest1)
+    CurrentCart.append(foodTest2)
+    CurrentCart.append(foodTest3)
+addOrder()
 
 # Cook
 John = Cook('John','john', 'test')
@@ -252,10 +267,13 @@ addUser(Jim)
 addUser(manager)
 addUser(Anderson)
 addUser(deli)
-addMenuItem(Duck)
-addMenuItem(Dog)
-addMenuItem(Fish)
-addMenuItem(Chicken)
+
+addMenuItem(foodTest1)
+addMenuItem(foodTest2)
+addMenuItem(foodTest3)
+addMenuItem(foodTest4)
+
+
 
 """
 # Add to supplies list 1
@@ -298,4 +316,3 @@ addSupplies3(kobeBeef)
 print(Anderson.getRating())
 Anderson.setRating(3)
 print(Anderson.getRating())
-
