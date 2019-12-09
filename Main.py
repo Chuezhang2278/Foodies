@@ -157,15 +157,12 @@ CurrentCart_SalesPerson=[]
 ################################################### TESTING BELOW #################################################################
 # Foods
 foodTest1 = Food('Chicken', 12.99, 'Entree', True, 100, 2, 4)
-foodTest2 = Food('Fish', 10.99, 'Entree', True, 500, 3, 5)
-foodTest3 = Food('Duck', 9.49, 'Entree', True, 122, 5, 6)
+foodTest2 = Food('Fish', 10.99, 'Entree', False, 500, 3, 5)
+foodTest3 = Food('Duck', 9.49, 'Entree', False, 122, 5, 6)
 foodTest4 = Food('Dog', 20.99, 'Entree', True, 5, 5, 7)
 
 # Cart
-for i in range(5):
-    CurrentCart.append(foodTest1)
-    CurrentCart.append(foodTest2)
-    CurrentCart.append(foodTest3)
+
 # addOrder()
 
 # Cook
@@ -177,6 +174,8 @@ manager = Manager('y','y','y')
 
 # Salesperson
 Anderson = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname') #sales person example
+And = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname') #sales person example
+Ander = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname') #sales person example
 
 # Users
 deliveryBot = Delivery('Delivery Bot','u','p','City College of New York')
@@ -283,6 +282,8 @@ addUser(John)
 addUser(Jim)
 addUser(manager)
 addUser(Anderson)
+addUser(And)
+addUser(Ander)
 addUser(deliveryBot)
 addUser(deliveryBot2)
 
@@ -331,6 +332,6 @@ addSupplies3(ribeyeSteak)
 addSupplies3(kobeBeef)
 """
 
-print(Anderson.getRating())
-Anderson.setRating(3)
-print(Anderson.getRating())
+for i in range(len(User)):
+    if(User[i].getType() == 5):
+        print(User[i].getFirst())
