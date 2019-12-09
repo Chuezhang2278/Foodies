@@ -2294,6 +2294,7 @@ class Ui_CookWindow(object):
 
     # Function that shows the "Chef Welcome" page (0)
     def open_cookWelcome(self):
+        self.clearallFields()
         self.stackedWidget.setCurrentIndex(0)
 
     # Function that shows the "Best Supplies" page (2)
@@ -2310,16 +2311,49 @@ class Ui_CookWindow(object):
 
     # Function that gives a rating to a chosen Salesperson on the "Rate your Salesperson" page (5)
     def giveRating(self):
-        if(self.ratingcomboBox.currentText() == ""):
-            print("Please give a valid rating!")
+        if(self.salespersoncomboBox.currentText() == "" or self.ratingcomboBox.currentText() == ""):
+            msg = QMessageBox()
+            msg.setWindowTitle("Invalid input!")
+            msg.setText("Please select a valid salesperson and rating!")
+            msg.setIcon(QMessageBox.Critical)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
+            print("Please select a valid salesperson and rating!")
         else:
-            print("You just gave Chef", self.salespersoncomboBox.currentText(), "a rating of", self.ratingcomboBox.currentText(), "out of 5!")
+            msg = QMessageBox()
+            msg.setWindowTitle("Thank you!")
+            msg.setText("Thank you for rating chef", self.salespersoncomboBox.currentText())
+            msg.setInformativeText("with a rating of", self.ratingcomboBox.currentText(), "out of 5!")
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
+            print("Thank you for rating chef", self.salespersoncomboBox.currentText(), "with a rating of", self.ratingcomboBox.currentText(), "out of 5!")
 
     # Function that adds a Food object to the Menu List
     def addtoMenu(self):
+        # Also make pricelien only accept numbers
+        # Have a qmessagebox popup
         if(self.additemLine.text() == "" or self.addclassificationCombo.currentText() == "" or self.addpriceLine.text() == ""):
-           print("Please add a valid item!")
+            msg = QMessageBox()
+            msg.setWindowTitle("Invalid input!")
+            msg.setText("Please input a valid name, classification, and price!")
+            msg.setIcon(QMessageBox.Critical)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
+            print("Please input a valid name, classification, and price!")
         else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Added!")
+            msg.setText(f"You just added {self.additemLine.text()} into {self.addclassificationCombo.currentText()}")
+            if(self.addspicyCheckbox.isChecked() == True):
+                msg.setInformativeText(f"with a price of ${self.addpriceLine.text()}. This item is spicy!")
+            else:
+                msg.setInformativeText(f"with a price of ${self.addpriceLine.text()}.")
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()        
             print("You just added:", self.additemLine.text(), 
                   "\nwith a classification of:", self.addclassificationCombo.currentText(),
                   "\nwith a price of:", self.addpriceLine.text(),
@@ -2328,15 +2362,34 @@ class Ui_CookWindow(object):
     # Function that clears the "Add an Item" field
     def resetAdd(self):
         self.additemLine.clear()
-        self.addclassificationCombo.setCurrentIndex(0)
+        self.addclassificationCombo.setCurrentIndex(-1)
         self.addpriceLine.clear()
         self.addspicyCheckbox.setChecked(0)
 
     # Function that removes a Food object from the Menu List (if it exists)
     def removefromMenu(self):
+        # Also make priceline only accept numbers
+        # have a qmessagebox popup
         if(self.removeitemLine.text() == "" or self.removeclassificationCombo.currentText() == "" or self.removepriceLine == ""):
-           print("Please remove a valid item!")
+            msg = QMessageBox()
+            msg.setWindowTitle("Invalid input!")
+            msg.setText("Please input a valid name, classification, and price!")
+            msg.setIcon(QMessageBox.Critical)
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
+            print("Please input a valid name, classification, and price!")
         else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Removed!")
+            msg.setText(f"You just removed {self.removeitemLine.text()} from {self.removeclassificationCombo.currentText()}")
+            if(self.removespicyCheckbox.isChecked() == True):
+                msg.setInformativeText(f"with a price of ${self.removepriceLine.text()}. This item is spicy!")
+            else:
+                msg.setInformativeText(f"with a price of ${self.removepriceLine.text()}.")
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()       
             print("You just removed:", self.removeitemLine.text(), 
                   "\nwith a classification of:", self.removeclassificationCombo.currentText(),
                   "\nwith a price of:", self.removepriceLine.text(),
@@ -2345,13 +2398,27 @@ class Ui_CookWindow(object):
     # Function that clears the "Remove an Item" field
     def resetRemove(self):
         self.removeitemLine.clear()
-        self.removeclassificationCombo.setCurrentIndex(0)
+        self.removeclassificationCombo.setCurrentIndex(-1)
         self.removepriceLine.clear()
         self.removespicyCheckbox.setChecked(0)
 
     # Function that shows the "Menu Preview" page (7)
     def open_previewMenu(self):
+        self.clearallFields()
         self.stackedWidget.setCurrentIndex(7)
+
+    # Function that clears all fields on page change
+    def clearallFields(self):
+        self.salespersoncomboBox.setCurrentIndex(-1)
+        self.ratingcomboBox.setCurrentIndex(-1)
+        self.additemLine.clear()
+        self.addclassificationCombo.setCurrentIndex(-1)
+        self.addpriceLine.clear()
+        self.addspicyCheckbox.setChecked(0)
+        self.removeitemLine.clear()
+        self.removeclassificationCombo.setCurrentIndex(-1)
+        self.removepriceLine.clear()
+        self.removespicyCheckbox.setChecked(0)
 
 if __name__ == "__main__":
     import sys
