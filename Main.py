@@ -144,10 +144,10 @@ CurrentCart_SalesPerson=[]
 #====For_Storage====#
 
 # Foods
-Chicken = Food('Chicken', 12.99, 'Entree', True, 100, 2, 4)
-Fish = Food('Fish', 10.99, 'Entree', True, 500, 3, 5)
-Duck = Food('Duck', 9.49, 'Entree', True, 122, 5, 6)
-Dog = Food('Dog', 20.99, 'Entree', True, 5, 5, 7)
+foodTest1 = Food('Chicken', 12.99, 'Entree', True, 100, 2, 4)
+foodTest2 = Food('Fish', 10.99, 'Entree', True, 500, 3, 5)
+foodTest3 = Food('Duck', 9.49, 'Entree', True, 122, 5, 6)
+foodTest4 = Food('Dog', 20.99, 'Entree', True, 5, 5, 7)
 
 # Cook
 John = Cook('John','john', 'test')
@@ -252,10 +252,13 @@ addUser(Jim)
 addUser(manager)
 addUser(Anderson)
 addUser(deli)
-addMenuItem(Duck)
-addMenuItem(Dog)
-addMenuItem(Fish)
-addMenuItem(Chicken)
+
+addMenuItem(foodTest1)
+addMenuItem(foodTest2)
+addMenuItem(foodTest3)
+addMenuItem(foodTest4)
+
+
 
 """
 # Add to supplies list 1
