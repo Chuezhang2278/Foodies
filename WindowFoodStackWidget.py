@@ -5,6 +5,7 @@
 
 from Main import *
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
 class Food_Window(object):
     def __init__(self):
@@ -117,6 +118,70 @@ class Food_Window(object):
         self.stackedWidget.addWidget(self.page_2)
         CurrentWindow.setCentralWidget(self.centralwidget)
         self.label.setBuddy(self.Cart)
+        self.Page2_logout = QtWidgets.QPushButton(self.page_2)
+        self.Page2_logout.setGeometry(QtCore.QRect(700, 10, 75, 23))
+        self.Page2_logout.setObjectName("Page2_logout")
+
+        self.page_3 = QtWidgets.QWidget()
+        self.page_3.setObjectName("page_3")
+        self.Page3_listView = QtWidgets.QListWidget(self.page_3)
+        self.Page3_listView.setGeometry(QtCore.QRect(20, 50, 301, 531))
+        self.Page3_listView.setObjectName("Page3_listView")
+        
+        
+        self.Page3_label3 = QtWidgets.QLabel(self.page_3)
+        self.Page3_label3.setGeometry(QtCore.QRect(30, 20, 81, 16))
+        self.Page3_label3.setObjectName("Page3_label3")
+        self.Page3_label1 = QtWidgets.QLabel(self.page_3)
+        self.Page3_label1.setGeometry(QtCore.QRect(470, 90, 221, 21))
+        self.Page3_label1.setObjectName("Page3_label1")
+        self.Page3_label2 = QtWidgets.QLabel(self.page_3)
+        self.Page3_label2.setGeometry(QtCore.QRect(470, 110, 191, 16))
+        self.Page3_label2.setObjectName("Page3_label2")
+        self.Page3_logout = QtWidgets.QPushButton(self.page_3)
+        self.Page3_logout.setGeometry(QtCore.QRect(700, 10, 75, 23))
+        self.Page3_logout.setObjectName("Page3_logout")
+        self.stackedWidget.addWidget(self.page_3)
+
+        self.page_4 = QtWidgets.QWidget()
+        self.page_4.setObjectName("page_4")
+        self.Page4_label1 = QtWidgets.QLabel(self.page_4)
+        self.Page4_label1.setGeometry(QtCore.QRect(50, 30, 181, 16))
+        self.Page4_label1.setObjectName("Page4_label1")
+        self.Page4_label2 = QtWidgets.QLabel(self.page_4)
+        self.Page4_label2.setGeometry(QtCore.QRect(50, 70, 181, 16))
+        self.Page4_label2.setObjectName("Page4_label2")
+        self.Page4_label3 = QtWidgets.QLabel(self.page_4)
+        self.Page4_label3.setGeometry(QtCore.QRect(50, 110, 371, 16))
+        self.Page4_label3.setObjectName("Page4_label3")
+        self.Page4_textedit = QtWidgets.QTextEdit(self.page_4)
+        self.Page4_textedit.setGeometry(QtCore.QRect(50, 140, 561, 241))
+        self.Page4_textedit.setObjectName("Page4_textedit")
+        self.Page4_submit = QtWidgets.QPushButton(self.page_4)
+        self.Page4_submit.setGeometry(QtCore.QRect(700, 560, 75, 23))
+        self.Page4_submit.setObjectName("Page4_submit")
+        self.comboBox = QtWidgets.QComboBox(self.page_4)
+        self.comboBox.setGeometry(QtCore.QRect(240, 30, 51, 22))
+        self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox_2 = QtWidgets.QComboBox(self.page_4)
+        self.comboBox_2.setGeometry(QtCore.QRect(210, 70, 51, 22))
+        self.comboBox_2.setObjectName("comboBox_2")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.setItemText(5, "")
+        self.Page4_logout = QtWidgets.QPushButton(self.page_4)
+        self.Page4_logout.setGeometry(QtCore.QRect(700, 10, 75, 23))
+        self.Page4_logout.setObjectName("Page4_logout")
+        self.stackedWidget.addWidget(self.page_4)
 
         #====page1====#
         self.Remove_Button.clicked.connect(self.Remove)
@@ -136,14 +201,23 @@ class Food_Window(object):
 
         #====page2====#
 
-        self.finalCheckOut.clicked.connect(self.Logout)
+        self.finalCheckOut.clicked.connect(self.change)
         self.returnButton.clicked.connect(self.Return)
+        self.Page2_logout.clicked.connect(self.Logout)
 
         #====page2====#
 
         self.retranslateUi(CurrentWindow)
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(CurrentWindow)
+
+        #====page3====#
+        
+        self.Page3_logout.clicked.connect(self.changeFinal)
+        
+        #====page4====#
+        
+        self.Page4_submit.clicked.connect(self.Submittion)
 
     def retranslateUi(self, CurrentWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -173,15 +247,48 @@ class Food_Window(object):
         self.finalCost.setText(_translate("MainWindow", "$$$"))
         self.label_4.setText(_translate("MainWindow", "My Cart"))
         self.returnButton.setText(_translate("MainWindow", "Return"))
+        self.Page2_logout.setText(_translate("MainWindow", "Logout"))
+        #page 3
+        self.Page3_label3.setText(_translate("MainWindow", "Your orders"))
+        self.Page3_label1.setText(_translate("MainWindow", "Thank you for purchasing using our App! "))
+        self.Page3_label2.setText(_translate("MainWindow", "Your food will be arriving shortly"))
+        self.Page3_logout.setText(_translate("MainWindow", "Logout"))        
+        
+        #page 4        
+        self.Page4_label1.setText(_translate("MainWindow", "Please give the Delivery man a rating!"))
+        self.Page4_label2.setText(_translate("MainWindow", "Please give our Chefs a rating!"))
+        self.Page4_label3.setText(_translate("MainWindow", "If you have any complaints or concern, Please leave a message down below"))
+        self.Page4_submit.setText(_translate("MainWindow", "Submit"))
+        self.comboBox.setItemText(0, _translate("MainWindow", "1"))
+        self.comboBox.setItemText(1, _translate("MainWindow", "2"))
+        self.comboBox.setItemText(2, _translate("MainWindow", "3"))
+        self.comboBox.setItemText(3, _translate("MainWindow", "4"))
+        self.comboBox.setItemText(4, _translate("MainWindow", "5"))
+        self.comboBox_2.setItemText(0, _translate("MainWindow", "1"))
+        self.comboBox_2.setItemText(1, _translate("MainWindow", "2"))
+        self.comboBox_2.setItemText(2, _translate("MainWindow", "3"))
+        self.comboBox_2.setItemText(3, _translate("MainWindow", "4"))
+        self.comboBox_2.setItemText(4, _translate("MainWindow", "5"))
 
-
+    def Submittion(self):
+        Anderson.setRating(int(self.comboBox.currentText()))
+        Anderson.setRating(int(self.comboBox_2.currentText())) #need to change so that it changes current delivery man and current chef that made food
+        
     def Logout(self):
-        self.CurrentWindow.hide()
-        self.LoginWindow.show()
-        self.finalCart.clear()
-        CurrentUser.pop()
-        CurrentUser.pop()
-        self.finalCart.clear()
+        msg = QMessageBox()
+        msg.setWindowTitle("Logout")
+        msg.setText("Are you sure you want to logout?")
+        msg.setIcon(QMessageBox.Question)
+        msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
+        msg.setDefaultButton(QMessageBox.No)
+        msg.buttonClicked.connect(self.popup_button)
+        x = msg.exec_()
+
+    def popup_button(self, i):
+        if(i.text() == "&Yes"):
+            CurrentUser.clear()
+            self.CurrentWindow.hide()
+            self.LoginWindow.show()
 
     def Checkout(self):
         i = 0
@@ -194,6 +301,16 @@ class Food_Window(object):
     def Return(self):
         self.stackedWidget.setCurrentIndex(0)
         self.finalCart.clear()
+
+    def change(self):
+        i = 0
+        self.stackedWidget.setCurrentIndex(2)
+        while i < currentCartSize():
+            self.Page3_listView.addItem((User[CurrentUser[1]].order[i]) + "\t\t\t " + str(User[CurrentUser[1]].order[i+1]))
+            i += 2
+    
+    def changeFinal(self):
+        self.stackedWidget.setCurrentIndex(3)
 
     def Remove(self):
         listItems = self.Cart.selectedItems()

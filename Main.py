@@ -333,7 +333,3 @@ addSupplies3(chuckSteak)
 addSupplies3(ribeyeSteak)
 addSupplies3(kobeBeef)
 """
-
-for i in range(len(User)):
-    if(User[i].getType() == 5):
-        print(User[i].getFirst())

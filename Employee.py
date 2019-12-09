@@ -40,6 +40,31 @@ class Employee():
 
     def setRating(self, value):
         self.rating.append(value)
+        print(self.first_name + " received a new rating of " + str(value))
+        if len(self.rating) > 2:
+            last_three = [self.rating[len(self.rating) - 1], self.rating[len(self.rating) - 2], self.rating[len(self.rating) - 3]]
+            sum = 0
+            for i in last_three:
+                sum += i
+            avg = sum / 3
+            print("The last 3 rating average is " + str(avg))
+            if avg < 2:
+                self.warning += 1
+                print(self.first_name + " has been issued a warning, he/she has " + str(self.warning) + " warnings")
+
+    def getLast3Rating(self):
+        last_3 = []
+        if len(self.rating) > 3:
+            for i in range(len(self.rating) - 3, len(self.rating)):
+                last_3.append(self.rating[i])
+        else:
+            for i in range(len(self.rating)):
+                last_3.append(self.rating[i])
+        return last_3
+
+    def getWarnings(self):
+        return self.warning
+
 
 class Delivery(Employee):
     def __init__(self, first_name, username, password, address):
@@ -102,33 +127,6 @@ class Delivery(Employee):
 
     def getAddress(self):
         return self.address
-
-    def setRating(self, value):
-        self.rating.append(value)
-        print(self.first_name + " received a new rating of " + str(value))
-        if len(self.rating) > 2:
-            last_three = [self.rating[len(self.rating) - 1], self.rating[len(self.rating) - 2], self.rating[len(self.rating) - 3]]
-            sum = 0
-            for i in last_three:
-                sum += i
-            avg = sum / 3
-            print("The last 3 rating average is " + str(avg))
-            if avg < 2:
-                self.warning += 1
-                print(self.first_name + " has been issued a warning, he/she has " + str(self.warning) + " warnings")
-
-    def getLast3Rating(self):
-        last_3 = []
-        if len(self.rating) > 3:
-            for i in range(len(self.rating) - 3, len(self.rating)):
-                last_3.append(self.rating[i])
-        else:
-            for i in range(len(self.rating)):
-                last_3.append(self.rating[i])
-        return last_3
-
-    def getWarnings(self):
-        return self.warning
 
     def getCustomerAddress(self):
         return self.currentOrder.getCustomer().getAddress()
