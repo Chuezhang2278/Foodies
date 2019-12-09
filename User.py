@@ -8,7 +8,7 @@ class User():
         self.username = username
         self.email = email
         self.password = password
-        
+
         print("\ninitializing User " + self.first_name + "'s address...")
         self.gmaps = Parser.gmaps
         self.geocode_result = self.gmaps.geocode(address)
@@ -42,29 +42,32 @@ class User():
     def addOrder(self,Food,Price):
         self.order.append(Food)
         self.order.append(Price)
-        
+
     def removeOrder(self,Food,Price):
         self.order.remove(Food)
         self.order.remove(Price)
-    
+
     def printOrder(self):
         i=0
         while (i < (len(self.order))):
             print(self.order[i] + " " + str(self.order[i+1]))
             i += 2
-    
+
     def getRating(self):
-        i = len(self.rating)
-        j = 0
-        
-        for avg in range(len(self.rating)):
-            j += self.rating[avg]
-        
-        return (j/i)
+        if len(self.rating) == 0:
+            return -1
+        sum = 0
+        for i in self.rating:
+            sum += i
+        return sum / len(self.rating)
 
     def setRating(self, value):
         self.rating.append(value)
-        
+
+    # need to do this function, so that when delivery guy gives a rating, this will decide if the user will get promoted/demoted
+    def checkPromotion(self):
+        pass
+
 class Guest(User):
     def __init__(self, username, password):
         self.username = username
@@ -80,7 +83,7 @@ class Member(User): #Inherits VIP methods as well as user, polymorphism
         self.user_type = 1
         self.order = []
         self.rating = []
-        
+
 class VIP(User): #Inherits VIP methods as well as user, polymorphism
     def __init__(self, first_name, last_name, username, password, email, address):
         super().__init__(first_name,last_name,username, password, email, address)
@@ -88,4 +91,3 @@ class VIP(User): #Inherits VIP methods as well as user, polymorphism
         self.user_type = 2
         self.order = []
         self.rating = []
-
