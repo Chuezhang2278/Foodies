@@ -2237,6 +2237,32 @@ class Ui_CookWindow(object):
         item.setText(_translate("CookWindow", "10"))
         self.Price_listWidget.setSortingEnabled(__sortingEnabled)
 
+    def open_logoutConfirmation(self):
+        msg = QMessageBox()
+        msg.setWindowTitle("Logout")
+        msg.setText("Are you sure you want to logout?")
+        msg.setIcon(QMessageBox.Question)
+        msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
+        msg.setDefaultButton(QMessageBox.No)
+
+        msg.buttonClicked.connect(self.popup_button)
+
+        x = msg.exec_()
+
+    def popup_button(self, i):
+        if(i.text() == "&Yes"):
+            self.CurrentWindow.hide()
+            self.LoginWindow.show()
+
+    def open_manageSupplies(self):
+        print("manage supplies clicked")
+
+    def open_manageMenu(self):
+        window = QtWidgets.QMainWindow()
+        self.ui = Ui_WindowMenuModification()
+        self.ui.setupUi(window, None)
+        self.CurrentWindow.hide()
+        window.show()
 
 if __name__ == "__main__":
     import sys
