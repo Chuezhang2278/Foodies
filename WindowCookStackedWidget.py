@@ -2176,7 +2176,7 @@ class Ui_CookWindow(object):
         self.badEggQuantityLabel.setText(_translate("CookWindow", "0"))
         self.badDairyQuantityLabel.setText(_translate("CookWindow", "0"))
         self.rateReturnButton.setText(_translate("CookWindow", "Return"))
-        self.badSuppliesLabel_2.setText(_translate("CookWindow", "Rate your Salesperon"))
+        self.badSuppliesLabel_2.setText(_translate("CookWindow", "Rate your Salesperson"))
         self.label.setText(_translate("CookWindow", "Please consider rating your salesperson!"))
         self.label_2.setText(_translate("CookWindow", "Salesperson:"))
         self.label_3.setText(_translate("CookWindow", "Rating:"))
@@ -2263,6 +2263,11 @@ class Ui_CookWindow(object):
         item.setText(_translate("CookWindow", "10"))
         self.Price_listWidget.setSortingEnabled(__sortingEnabled)
 
+    # Function that shows the "Chef Welcome" page (0)
+    def open_cookWelcome(self):
+        self.clearallFields()
+        self.stackedWidget.setCurrentIndex(0)
+
     # Function that logs the chef out, and returns to the login page
     def open_logoutConfirmation(self):
         msg = QMessageBox()
@@ -2284,30 +2289,66 @@ class Ui_CookWindow(object):
     def open_manageSupplies(self):
         self.stackedWidget.setCurrentIndex(1)
 
-    # Function that shows the "Rate your Salesperson" page (5)
-    def open_rateSalesperson(self):
-        self.stackedWidget.setCurrentIndex(5)
-
-    # Function that shows the "Food Menu Modification" page (6)
-    def open_manageMenu(self):
-        self.stackedWidget.setCurrentIndex(6)
-
-    # Function that shows the "Chef Welcome" page (0)
-    def open_cookWelcome(self):
-        self.clearallFields()
-        self.stackedWidget.setCurrentIndex(0)
-
     # Function that shows the "Best Supplies" page (2)
     def open_bestSupplies(self):
+        self.get_bestSupplies()
         self.stackedWidget.setCurrentIndex(2)
+
+    # Function that retrieves latest inventory data for "Best Supplies" page (2)
+    def get_bestSupplies(self):
+        self.bestMeatsQuantityLabel.setText("1")
+        self.bestFishQuantityLabel.setText("2")
+        self.bestVegetablesQuantityLabel.setText("3")
+        self.bestFlourQuantityLabel.setText("4")
+        self.bestYeastQuantityLabel.setText("5")
+        self.bestSaltQuantityLabel.setText("6")
+        self.bestSpicesQuantityLabel.setText("7")
+        self.bestSugarQuantityLabel.setText("8")
+        self.bestEggQuantityLabel.setText("9")
+        self.bestDairyQuantityLabel.setText("10")
 
     # Function that shows the "Good Supplies" page (3)
     def open_goodSupplies(self):
+        self.get_goodSupplies()
         self.stackedWidget.setCurrentIndex(3)
+
+    # Function that retrieves latest inventory data for "Good Supplies" page (3)
+    def get_goodSupplies(self):
+        self.goodMeatsQuantityLabel.setText("11")
+        self.goodFishQuantityLabel.setText("12")
+        self.goodVegetablesQuantityLabel.setText("13")
+        self.goodFlourQuantityLabel.setText("14")
+        self.goodYeastQuantityLabel.setText("15")
+        self.goodSaltQuantityLabel.setText("16")
+        self.goodSpicesQuantityLabel.setText("17")
+        self.goodSugarQuantityLabel.setText("18")
+        self.goodEggQuantityLabel.setText("19")
+        self.goodDairyQuantityLabel.setText("20")
 
     # Function that shows the "Bad Supplies" page (4)
     def open_badSupplies(self):
+        self.get_badSupplies()
         self.stackedWidget.setCurrentIndex(4)
+
+    # Function that retrieves latest inventory data for "Bad Supplies" page (4)
+    def get_badSupplies(self):
+        self.badMeatsQuantityLabel.setText("21")
+        self.badFishQuantityLabel.setText("22")
+        self.badVegetablesQuantityLabel.setText("23")
+        self.badFlourQuantityLabel.setText("24")
+        self.badYeastQuantityLabel.setText("25")
+        self.badSaltQuantityLabel.setText("26")
+        self.badSpicesQuantityLabel.setText("27")
+        self.badSugarQuantityLabel.setText("28")
+        self.badEggQuantityLabel.setText("29")
+        self.badDairyQuantityLabel.setText("30")
+
+    # Function that shows the "Rate your Salesperson" page (5)
+    def open_rateSalesperson(self):
+        self.stackedWidget.setCurrentIndex(5)
+        # Testing salesperson combobox, remove this later after retrieving the list of Salespersons
+        self.salespersoncomboBox.addItem("Smith")
+        # self.salespersoncomboBox.addItems(Salesperson)
 
     # Function that gives a rating to a chosen Salesperson on the "Rate your Salesperson" page (5)
     def giveRating(self):
@@ -2319,18 +2360,20 @@ class Ui_CookWindow(object):
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
-            print("Please select a valid salesperson and rating!")
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Thank you!")
-            msg.setText("Thank you for rating chef", self.salespersoncomboBox.currentText())
-            msg.setInformativeText("with a rating of", self.ratingcomboBox.currentText(), "out of 5!")
+            msg.setText(f"Thank you for rating salesperson {self.salespersoncomboBox.currentText()}")
+            msg.setInformativeText(f"with a rating of {self.ratingcomboBox.currentText()} out of 5!")
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
-            print("Thank you for rating chef", self.salespersoncomboBox.currentText(), "with a rating of", self.ratingcomboBox.currentText(), "out of 5!")
 
-    # Function that adds a Food object to the Menu List
+    # Function that shows the "Food Menu Modification" page (6)
+    def open_manageMenu(self):
+        self.stackedWidget.setCurrentIndex(6)
+
+    # Function that adds a Food object to the Menu List on the "Food Menu Modification" page (6)
     def addtoMenu(self):
         # Also make pricelien only accept numbers
         # Have a qmessagebox popup
@@ -2359,14 +2402,14 @@ class Ui_CookWindow(object):
                   "\nwith a price of:", self.addpriceLine.text(),
                   "\nand spicy:", self.addspicyCheckbox.isChecked())
 
-    # Function that clears the "Add an Item" field
+    # Function that clears the "Add an Item" field on the "Food Menu Modification" page (6)
     def resetAdd(self):
         self.additemLine.clear()
         self.addclassificationCombo.setCurrentIndex(-1)
         self.addpriceLine.clear()
         self.addspicyCheckbox.setChecked(0)
 
-    # Function that removes a Food object from the Menu List (if it exists)
+    # Function that removes a Food object from the Menu List (if it exists) on the "Food Menu Modification" page (6)
     def removefromMenu(self):
         # Also make priceline only accept numbers
         # have a qmessagebox popup
@@ -2395,7 +2438,7 @@ class Ui_CookWindow(object):
                   "\nwith a price of:", self.removepriceLine.text(),
                   "\nand spicy:", self.removespicyCheckbox.isChecked())
 
-    # Function that clears the "Remove an Item" field
+    # Function that clears the "Remove an Item" field on the "Food Menu Modification" page (6)
     def resetRemove(self):
         self.removeitemLine.clear()
         self.removeclassificationCombo.setCurrentIndex(-1)
