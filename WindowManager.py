@@ -9,6 +9,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from WindowDecidesCommissions import Ui_Form_Commissions
 from WindowEmployeeSalary import Ui_Form_Pay
+from WindowStaffManagement import Ui_Form_StaffManagement
+from CusInforManagement import Ui_Form_CusInfor
+from WindowComplaintManagement import Ui_Form_ComplainManagement
+
 
 class  ManagerWindow(object):
     def setupUi(self, MainWindow):
@@ -63,11 +67,20 @@ class  ManagerWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         self.DecidesCommissionsB.clicked.connect(self.DecidesCommissionsscr)
         self.DecidesPayB.clicked.connect(self.DecidesPayscr)
+        self.ManagementStaffB.clicked.connect(self.StaffManagementscr)
+        self.CustomerInforB.clicked.connect(self.Cusinforscr)
+        self.HandlesComplaintsB.clicked.connect(self.ComplainManafementstr)
         self.exitbutton.clicked.connect(lambda: self.closescr(MainWindow))
 
     def DecidesCommissionsscr(self):
         self.Form = QtWidgets.QWidget()
         self.ui = Ui_Form_Commissions()
+        self.ui.setupUi(self.Form)
+        self.Form.show()
+
+    def StaffManagementscr(self):
+        self.Form = QtWidgets.QWidget()
+        self.ui = Ui_Form_StaffManagement()
         self.ui.setupUi(self.Form)
         self.Form.show()
 
@@ -77,8 +90,22 @@ class  ManagerWindow(object):
         self.ui.setupUi(self.Form)
         self.Form.show()
 
+    def Cusinforscr(self):
+        self.Form = QtWidgets.QWidget()
+        self.ui = Ui_Form_CusInfor()
+        self.ui.setupUi(self.Form)
+        self.Form.show()
+
+    def ComplainManafementstr(self):
+        self.Form = QtWidgets.QWidget()
+        self.ui = Ui_Form_ComplainManagement()
+        self.ui.setupUi(self.Form)
+        self.Form.show()
+
     def closescr(self, MainWindow):
         MainWindow.hide()
+
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
