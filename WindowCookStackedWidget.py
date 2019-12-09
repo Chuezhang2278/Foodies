@@ -7,7 +7,9 @@
 # WARNING! All changes made in this file will be lost!
 
 
+from Main import *
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox, QPushButton
 
 
 class Ui_CookWindow(object):
@@ -2026,10 +2028,34 @@ class Ui_CookWindow(object):
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(CookWindow)
 
+        # Button connections for the first page (Chef welcome page)
         self.logoutButton.clicked.connect(self.open_logoutConfirmation)
         self.managesuppliesButton.clicked.connect(self.open_manageSupplies)
         self.managemenuButton.clicked.connect(self.open_manageMenu)
         self.rateSalespersonButton.clicked.connect(self.open_rateSalesperson)
+        # Button connections for the second page (Supplies management page)
+        self.suppliesReturnButton.clicked.connect(self.open_cookWelcome)
+        self.viewBestButton.clicked.connect(self.open_bestSupplies)
+        self.viewGoodButton.clicked.connect(self.open_goodSupplies)
+        self.viewBadButton.clicked.connect(self.open_badSupplies)
+        # Button connections for the third page (Best supplies page)
+        self.bestReturnButton.clicked.connect(self.open_manageSupplies)
+        # Button connections for the fourth page (Good supplies page)
+        self.goodReturnButton.clicked.connect(self.open_manageSupplies)
+        # Button connections for the fifth page (Bad supplies page)
+        self.badReturnButton.clicked.connect(self.open_manageSupplies)
+        # Button connections for the sixth page (Rate salesperson page)
+        self.rateReturnButton.clicked.connect(self.open_cookWelcome)
+        self.rateButton.clicked.connect(self.giveRating)
+        # Button connections for seventh page (Food menu modification page)
+        self.menuModificationReturnButton.clicked.connect(self.open_cookWelcome)
+        self.addButton.clicked.connect(self.addtoMenu)
+        self.addresetButton.clicked.connect(self.resetAdd)
+        self.removeButton.clicked.connect(self.removefromMenu)
+        self.removeresetButton.clicked.connect(self.resetRemove)
+        self.previewButton.clicked.connect(self.open_previewMenu)
+        # Button connections for the eigth page (Menu preview page)
+        self.menuPreviewReturnButton.clicked.connect(self.open_manageMenu)
 
     def retranslateUi(self, CookWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -2237,6 +2263,7 @@ class Ui_CookWindow(object):
         item.setText(_translate("CookWindow", "10"))
         self.Price_listWidget.setSortingEnabled(__sortingEnabled)
 
+    # Function that logs the chef out, and returns to the login page
     def open_logoutConfirmation(self):
         msg = QMessageBox()
         msg.setWindowTitle("Logout")
@@ -2244,25 +2271,87 @@ class Ui_CookWindow(object):
         msg.setIcon(QMessageBox.Question)
         msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
         msg.setDefaultButton(QMessageBox.No)
-
         msg.buttonClicked.connect(self.popup_button)
-
         x = msg.exec_()
 
     def popup_button(self, i):
         if(i.text() == "&Yes"):
+            CurrentUser.clear()
             self.CurrentWindow.hide()
             self.LoginWindow.show()
 
+    # Function that shows the "Supplies Management" page (1)
     def open_manageSupplies(self):
-        print("manage supplies clicked")
+        self.stackedWidget.setCurrentIndex(1)
 
+    # Function that shows the "Rate your Salesperson" page (5)
+    def open_rateSalesperson(self):
+        self.stackedWidget.setCurrentIndex(5)
+
+    # Function that shows the "Food Menu Modification" page (6)
     def open_manageMenu(self):
-        window = QtWidgets.QMainWindow()
-        self.ui = Ui_WindowMenuModification()
-        self.ui.setupUi(window, None)
-        self.CurrentWindow.hide()
-        window.show()
+        self.stackedWidget.setCurrentIndex(6)
+
+    # Function that shows the "Chef Welcome" page (0)
+    def open_cookWelcome(self):
+        self.stackedWidget.setCurrentIndex(0)
+
+    # Function that shows the "Best Supplies" page (2)
+    def open_bestSupplies(self):
+        self.stackedWidget.setCurrentIndex(2)
+
+    # Function that shows the "Good Supplies" page (3)
+    def open_goodSupplies(self):
+        self.stackedWidget.setCurrentIndex(3)
+
+    # Function that shows the "Bad Supplies" page (4)
+    def open_badSupplies(self):
+        self.stackedWidget.setCurrentIndex(4)
+
+    # Function that gives a rating to a chosen Salesperson on the "Rate your Salesperson" page (5)
+    def giveRating(self):
+        if(self.ratingcomboBox.currentText() == ""):
+            print("Please give a valid rating!")
+        else:
+            print("You just gave Chef", self.salespersoncomboBox.currentText(), "a rating of", self.ratingcomboBox.currentText(), "out of 5!")
+
+    # Function that adds a Food object to the Menu List
+    def addtoMenu(self):
+        if(self.additemLine.text() == "" or self.addclassificationCombo.currentText() == "" or self.addpriceLine.text() == ""):
+           print("Please add a valid item!")
+        else:
+            print("You just added:", self.additemLine.text(), 
+                  "\nwith a classification of:", self.addclassificationCombo.currentText(),
+                  "\nwith a price of:", self.addpriceLine.text(),
+                  "\nand spicy:", self.addspicyCheckbox.isChecked())
+
+    # Function that clears the "Add an Item" field
+    def resetAdd(self):
+        self.additemLine.clear()
+        self.addclassificationCombo.setCurrentIndex(0)
+        self.addpriceLine.clear()
+        self.addspicyCheckbox.setChecked(0)
+
+    # Function that removes a Food object from the Menu List (if it exists)
+    def removefromMenu(self):
+        if(self.removeitemLine.text() == "" or self.removeclassificationCombo.currentText() == "" or self.removepriceLine == ""):
+           print("Please remove a valid item!")
+        else:
+            print("You just removed:", self.removeitemLine.text(), 
+                  "\nwith a classification of:", self.removeclassificationCombo.currentText(),
+                  "\nwith a price of:", self.removepriceLine.text(),
+                  "\nand spicy:", self.removespicyCheckbox.isChecked())
+
+    # Function that clears the "Remove an Item" field
+    def resetRemove(self):
+        self.removeitemLine.clear()
+        self.removeclassificationCombo.setCurrentIndex(0)
+        self.removepriceLine.clear()
+        self.removespicyCheckbox.setChecked(0)
+
+    # Function that shows the "Menu Preview" page (7)
+    def open_previewMenu(self):
+        self.stackedWidget.setCurrentIndex(7)
 
 if __name__ == "__main__":
     import sys
