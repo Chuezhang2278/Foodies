@@ -76,9 +76,9 @@ class Ui_Form_Commissions(object):
             name1 = Q
             for i in range(len(Sales)):
                 if name1 == str(Sales[i].getFirst()+" "+Sales[i].getUser()):
-                    ep = Sales[i]
-                    Com = self.EnterCom.text()
-                    ep.Commissions = int(Com)
+
+                    Com = int(self.EnterCom.text())
+                    Sales[i].Commissions = Com
                     self.ShowCom.setText(name1+" Commissions $:" + self.EnterCom.text())
 
     def retranslateUi(self, Form):

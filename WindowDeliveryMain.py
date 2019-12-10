@@ -1,4 +1,4 @@
-import qdarkstyle, Main, random
+    import qdarkstyle, Main, random
 from threading import Thread
 from time import sleep
 from PyQt5 import QtCore, QtGui, QtWidgets, QtWebKit, QtWebKitWidgets
@@ -144,7 +144,7 @@ class DeliveryMainWindow(object):
         self.orders = Main.Orders
         self.orderWidgets.clear()
         for i in self.orders:
-            self.orderWidgets.addItem("Order ID: " + i.getId() + " (" + i.getCustomer().getFirst() + ")\nAddress: " + i.getCustomer().getAddress() + "\nCurrent Bid: $" + str(i.getCurrentBid()) + "\nBid Time: " + i.getTime() + "\n")
+            self.orderWidgets.addItem("Order ID: " + i.getId() + " (" + i.getCustomer().getFirst() + ")\nAddress: " + i.getCustomer().getAddress() + "\nCurrent Bid: $" + format(i.getCurrentBid(), '.2f') + "\nBid Time: " + i.getTime() + "\n")
 
     def bid(self):
         self.viewingOrder.bid(self.currentUser, float(self.bidAmount_edit.text()))
@@ -241,7 +241,7 @@ class DeliveryMainWindow(object):
         self.msg.setText("Are you sure you want to logout?")
         self.msg.setIcon(QMessageBox.Question)
         self.msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
-        self.msg.setDefaultButton(QMessageBox.No)
+        self.msg.setDefaultButton(QMessageBox.Yes)
 
         self.msg.buttonClicked.connect(self.switch_login)
 
