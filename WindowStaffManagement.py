@@ -8,7 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Main import *
-
+from WindowEmployeeInformation import Ui_Form_EmployeeInformation
 class Ui_Form_StaffManagement(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -31,6 +31,9 @@ class Ui_Form_StaffManagement(object):
         self.removeWarningButton = QtWidgets.QPushButton(Form)
         self.removeWarningButton.setGeometry(QtCore.QRect(410, 310, 141, 25))
         self.removeWarningButton.setObjectName("removeWarningButton")
+        self.EmpinforButton = QtWidgets.QPushButton(Form)
+        self.EmpinforButton.setGeometry(QtCore.QRect(410, 350, 141, 25))
+        self.EmpinforButton.setObjectName("EmpinforButton")
         self.exitbutton = QtWidgets.QPushButton(Form)
         self.exitbutton.setGeometry(QtCore.QRect(655, 466, 71, 31))
         self.exitbutton.setObjectName("exitbutton")
@@ -44,6 +47,7 @@ class Ui_Form_StaffManagement(object):
         self.FireButton.clicked.connect(self.Fire)
         self.WarningButton.clicked.connect(self.Warningfun)
         self.removeWarningButton.clicked.connect(self.removeWarning)
+        self.EmpinforButton.clicked.connect(self.Empinfor)
 
         for i in range(len(DeliveryPeople)):
             self.listWidget.addItem(
@@ -69,8 +73,6 @@ class Ui_Form_StaffManagement(object):
                 for i in range(len(DeliveryPeople)):
                     if name1 == str(DeliveryPeople[i].getFirst() + " " + DeliveryPeople[i].getUser()):
                         DeliveryPeople[i].username = 'FireDelivery' + str(i)
-                        DeliveryPeople[i].password = '*&^&*('
-                        DeliveryPeople[i].salary = 0
                         DeliveryPeople[i].user_type=-1
                         DeliveryPeople.pop(i)
                         self.listWidget.takeItem(self.listWidget.row(item))
@@ -83,8 +85,6 @@ class Ui_Form_StaffManagement(object):
                 for i in range(len(Sales)):
                     if name1 == str(Sales[i].getFirst() + " " + Sales[i].getUser()):
                         Sales[i].username = 'FireSales' + str(i)
-                        Sales[i].password = '*&^&*('
-                        Sales[i].salary = 0
                         Sales[i].user_type = -1
                         Sales.pop(i)
                         self.listWidget.takeItem(self.listWidget.row(item))
@@ -97,8 +97,6 @@ class Ui_Form_StaffManagement(object):
                 for i in range(len(Cooks)):
                     if name1 == str(Cooks[i].getFirst() + " " + Cooks[i].getUser()):
                         Cooks[i].username='FireCooks'+str(i)
-                        Cooks[i].password='*&^&*('
-                        Cooks[i].salary=0
                         Cooks[i].user_type=-1
                         Cooks.pop(i)
                         self.listWidget.takeItem(self.listWidget.row(item))
@@ -173,7 +171,11 @@ class Ui_Form_StaffManagement(object):
                          elif DeliveryPeople[i].warning>2 and len(DeliveryPeople)<=2:
                              self.ShowFire.setText(name1 + "already has 3 Warning, but we can not him this guy  because we do not have enough Sales people. ")
 
-
+    def Empinfor(self):
+        self.Form = QtWidgets.QWidget()
+        self.ui = Ui_Form_EmployeeInformation()
+        self.ui.setupUi(self.Form)
+        self.Form.show()
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
@@ -184,4 +186,5 @@ class Ui_Form_StaffManagement(object):
         self.WarningButton.setText(_translate("Form", "Warning"))
         self.removeWarningButton.setText(_translate("Form", "Remove Warning"))
         self.exitbutton.setText(_translate("Form", "Exit"))
+        self.EmpinforButton.setText(_translate("Form", "Staff Information"))
 
