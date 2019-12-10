@@ -100,6 +100,7 @@ class DeliveryMainWindow(object):
         self.secondScene = [self.back_button, self.custName_label, self.time_label, self.orderID_label, self.totalCost_label, self.address_label, self.starting_label, self.current_label, self.autoWin_label, self.bidHistoryWidget, self.bidAmount_edit, self.bid_button]
         self.thirdScene = [self.logout_button, self.refresh_button, self.name_label, self.rating_label, self.username_label, self.last_3_rating_label, self.warning_label, self.orderWidgets]
 
+        self.centralwidget.keyPressEvent = self.keyPressEvent
         self.bid_button.clicked.connect(self.bid)
         self.back_button.clicked.connect(self.back)
         self.currentOrder_button.clicked.connect(self.switch_currentOrder)
@@ -160,7 +161,7 @@ class DeliveryMainWindow(object):
         while True:
             self.refresh()
             sleep(1)
-            if Main.threadKill == True or self.currentUser.getOrder() != None or self.selectOrder == True:
+            if Main.threadKill == True or self.currentUser.getOrder() != None or self.selectOrder == True or self.onWindow == False:
                 break
         print("Auto refresh thread killed")
 
@@ -174,6 +175,7 @@ class DeliveryMainWindow(object):
         self.decideWhatToShow()
 
     def decideWhatToShow(self):
+        self.onWindow = True
         if self.currentUser.getOrder() == None and self.selectOrder == False:
             for i in self.firstScene:
                 i.hide()
@@ -226,21 +228,28 @@ class DeliveryMainWindow(object):
             self.ui.setupUi(self.NewWindow)
             self.MainWindow.hide()
             self.NewWindow.show()
+            self.onWindow = False
+
+    def keyPressEvent(self, e):
+        if e.key() == QtCore.Qt.Key_Backspace:
+            print('Backspace pressed')
+            self.open_logoutConfirmation()
 
     def open_logoutConfirmation(self):
-        msg = QMessageBox()
-        msg.setWindowTitle("Logout")
-        msg.setText("Are you sure you want to logout?")
-        msg.setIcon(QMessageBox.Question)
-        msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
-        msg.setDefaultButton(QMessageBox.No)
+        self.msg = QMessageBox()
+        self.msg.setWindowTitle("Logout")
+        self.msg.setText("Are you sure you want to logout?")
+        self.msg.setIcon(QMessageBox.Question)
+        self.msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
+        self.msg.setDefaultButton(QMessageBox.No)
 
-        msg.buttonClicked.connect(self.switch_login)
+        self.msg.buttonClicked.connect(self.switch_login)
 
-        x = msg.exec_()
+        x = self.msg.exec_()
 
     def switch_login(self, i):
         if(i.text() == "&Yes"):
+            self.onWindow = False
             Main.CurrentUser.clear()
             self.MainWindow.hide()
             self.LoginWindow.show()

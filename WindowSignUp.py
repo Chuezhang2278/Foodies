@@ -56,6 +56,7 @@ class sign_window(object):
         self.signButton.setObjectName("signButton")
         CurrentWindow.setCentralWidget(self.centralwidget)
 
+        self.centralwidget.keyPressEvent = self.keyPressEvent
         self.retranslateUi(CurrentWindow)
         QtCore.QMetaObject.connectSlotsByName(CurrentWindow)
 
@@ -81,6 +82,14 @@ class sign_window(object):
         eric = Member(temp1,temp2,temp3,temp4,temp5)
         addCustomer(eric)
 
+        self.switch_login()
+
+    def keyPressEvent(self, e):
+        if e.key() == QtCore.Qt.Key_Escape:
+            print('Escape pressed')
+            self.switch_login()
+
+    def switch_login(self):
         self.CurrentWindow.hide()
         self.LoginWindow.show()
 

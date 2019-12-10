@@ -55,6 +55,9 @@ class Order():
                 if bidAmount <= self.autoWin:
                     self.window.addHistory("[" + str(now) + "] " + self.delivery.getFirst() + " bidded $" + format(bidAmount, '.2f') + ", which is the auto win amount.")
                     self.bidComplete()
+                    # bot simulation instant delivery for TESTING
+                    if self.delivery == Main.deliveryBot2:
+                        self.orderCompleted()
                 elif self.timerStarted == False:
                     self.window.addHistory("[" + str(now) + "] " + self.delivery.getFirst() + " bidded $" + format(bidAmount, '.2f') + ".")
                     self.window.addHistory("[" + str(now) + "] Timer started!")
@@ -89,6 +92,9 @@ class Order():
                 now = datetime.now().strftime("%H:%M:%S")
                 self.window.addHistory("[" + str(now) + "] Time's up!")
             self.bidComplete()
+            # bot simulation instant delivery for TESTING
+            if self.delivery == Main.deliveryBot2:
+                self.orderCompleted()
 
     def getCustomer(self):
         return self.customer
@@ -130,6 +136,14 @@ class Order():
         while len(Id) < 8:
             Id = "0" + Id
         return Id
+
+    def orderCompleted(self):
+        self.timeCompleted = datetime.now().strftime("%H:%M:%S")
+        Main.addOrderHistoy(self)
+        print("OrderHistoy length is now " + str(len(Main.OrderHistory)) + " and orderID " + self.Id + " has been put into OrderHistory")
+
+    def getTimeCompleted(self):
+        return self.timeCompleted
 
 # customer = Member("Jia Ming", "Ma", "jma8774", "password", "jma8774@bths.edu", "2369 W 11th St, NY")
 # chue = Delivery("Chue", "chue1", "password", "City College of New York")

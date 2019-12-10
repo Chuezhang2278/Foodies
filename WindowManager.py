@@ -33,7 +33,7 @@ class  ManagerWindow(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.DecidesCommissionsB = QtWidgets.QPushButton(self.verticalLayoutWidget)
        # self.DecidesCommissionsB.setStyleSheet("color: rgb(0, 0, 255);\n"
-#"background-color: rgb(255, 255, 0);")
+       #"background-color: rgb(255, 255, 0);")
         self.DecidesCommissionsB.setObjectName("DecidesCommissionsB")
         self.verticalLayout.addWidget(self.DecidesCommissionsB)
         self.DecidesPayB = QtWidgets.QPushButton(self.verticalLayoutWidget)

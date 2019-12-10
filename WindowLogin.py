@@ -98,6 +98,7 @@ class LoginWindow(object):
     def switch_admin(self):
         self.Manager_Window = QtWidgets.QMainWindow()
         self.ui = ManagerWindow()
+
         self.ui.setupUi(self.Manager_Window)
         CurrentWindow.hide()
         self.Manager_Window.show()
