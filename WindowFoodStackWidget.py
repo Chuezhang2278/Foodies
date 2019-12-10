@@ -44,8 +44,6 @@ class Food_Window(object):
         for i in range(len(Menu)):
                 self.Name_listWidget.addItem(Menu[i].getName())
                 self.Price_listWidget.addItem(str(Menu[i].getPrice()*CurrentUser[0].getDiscount()))
-        
-        #sortMenu()
                 
         self.AddButton2 = QtWidgets.QPushButton(self.page)
         self.AddButton2.setGeometry(QtCore.QRect(360, 90, 93, 28))
@@ -143,6 +141,11 @@ class Food_Window(object):
         self.Page3_logout.setGeometry(QtCore.QRect(700, 10, 75, 23))
         self.Page3_logout.setObjectName("Page3_logout")
         self.stackedWidget.addWidget(self.page_3)
+        self.Page3_next = QtWidgets.QPushButton(self.page_3)
+        self.Page3_next.setGeometry(QtCore.QRect(700, 565, 75, 23))
+        self.Page3_next.setObjectName("Page3_next2")
+        self.stackedWidget.addWidget(self.page_3)
+
 
         self.page_4 = QtWidgets.QWidget()
         self.page_4.setObjectName("page_4")
@@ -157,7 +160,7 @@ class Food_Window(object):
         self.Page4_label3.setObjectName("Page4_label3")
         self.Page4_textedit = QtWidgets.QTextEdit(self.page_4)
         self.Page4_textedit.setGeometry(QtCore.QRect(50, 140, 561, 241))
-        self.Page4_textedit.setObjectName("Page4_textedit")
+        self.Page4_textedit.setObjectName("Page4_lineedit")
         self.Page4_submit = QtWidgets.QPushButton(self.page_4)
         self.Page4_submit.setGeometry(QtCore.QRect(700, 560, 75, 23))
         self.Page4_submit.setObjectName("Page4_submit")
@@ -232,7 +235,6 @@ class Food_Window(object):
         self.AddButton9.clicked.connect(self.Add_Button9)
         self.AddButton10.clicked.connect(self.Add_Button10)
         
-    
         #====page1====#
 
         #====page2====#
@@ -249,11 +251,13 @@ class Food_Window(object):
 
         #====page3====#
         
-        self.Page3_logout.clicked.connect(self.changeFinal)
+        self.Page3_logout.clicked.connect(self.Logout)
+        self.Page3_next.clicked.connect(self.changeFinal)
         
         #====page4====#
         
         self.Page4_submit.clicked.connect(self.Submittion)
+        self.Page4_logout.clicked.connect(self.Logout)
 
     def retranslateUi(self, CurrentWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -288,13 +292,15 @@ class Food_Window(object):
         self.Page3_label3.setText(_translate("MainWindow", "Your orders"))
         self.Page3_label1.setText(_translate("MainWindow", "Thank you for purchasing using our App! "))
         self.Page3_label2.setText(_translate("MainWindow", "Your food will be arriving shortly"))
-        self.Page3_logout.setText(_translate("MainWindow", "Logout"))        
+        self.Page3_logout.setText(_translate("MainWindow", "Logout"))   
+        self.Page3_next.setText(_translate("MainWindow", "Next"))     
         
         #page 4        
         self.Page4_label1.setText(_translate("MainWindow", "Please give the Delivery man a rating!"))
         self.Page4_label2.setText(_translate("MainWindow", "Please give our Chefs a rating!"))
         self.Page4_label3.setText(_translate("MainWindow", "If you have any complaints or concern, Please leave a message down below"))
         self.Page4_submit.setText(_translate("MainWindow", "Submit"))
+        self.Page4_logout.setText(_translate("MainWindow", "Logout"))
         self.comboBox.setItemText(0, _translate("MainWindow", "1"))
         self.comboBox.setItemText(1, _translate("MainWindow", "2"))
         self.comboBox.setItemText(2, _translate("MainWindow", "3"))
@@ -306,9 +312,16 @@ class Food_Window(object):
         self.comboBox_2.setItemText(3, _translate("MainWindow", "4"))
         self.comboBox_2.setItemText(4, _translate("MainWindow", "5"))
 
+    def Recieved(self):
+        User[CurrentUser[1]].confirmDelivery()
+
     def Submittion(self):
         Anderson.setRating(int(self.comboBox.currentText()))
-        Anderson.setRating(int(self.comboBox_2.currentText())) #need to change so that it changes current delivery man and current chef that made food
+        Anderson.setRating(int(self.comboBox_2.currentText())) 
+        temp = self.Page4_textedit.toPlainText()
+        Complaint.append(temp)
+        print(Complaint[0])
+        
         
     def Logout(self):
         msg = QMessageBox()
@@ -330,9 +343,11 @@ class Food_Window(object):
         i = 0
         self.stackedWidget.setCurrentIndex(1)
         self.finalCost.setText(str(self.temp))
+        
         while i < currentCartSize():
-            self.finalCart.addItem((User[CurrentUser[1]].order[i]) + "\t\t\t " + str(User[CurrentUser[1]].order[i+1]))
-            i += 2
+            self.finalCart.addItem((User[CurrentUser[1]].order[i].getName() + "\t\\tt" + str(User[CurrentUser[1]].order[i].getPrice())))
+            i += 1
+
 
     def Return(self):
         self.stackedWidget.setCurrentIndex(0)
@@ -342,13 +357,12 @@ class Food_Window(object):
         i = 0
         self.stackedWidget.setCurrentIndex(2)
         if(User[CurrentUser[1]].getType() == 0):
-            addOrder2("guest", CurrentCart)
+            addOrder2(void, CurrentCart)
         elif(User[CurrentUser[1]].getType() != 0):
-            addOrder2(User[CurrentUser[1]].getFirst(), CurrentCart)
-        
-        while i < currentCartSize():
-            self.Page3_listView.addItem((User[CurrentUser[1]].order[i]) + "\t\t\t " + str(User[CurrentUser[1]].order[i+1]))
-            i += 2
+            addOrder2(User[CurrentUser[1]], CurrentCart)
+        while i < len(User[CurrentUser[1]].order):
+            self.Page3_listView.addItem((User[CurrentUser[1]].order[i].getName()) + "\t\t\t" + str(User[CurrentUser[1]].order[i].getPrice()))
+            i += 1
     
     def changeFinal(self):
         self.stackedWidget.setCurrentIndex(3)
@@ -359,57 +373,58 @@ class Food_Window(object):
         for item in listItems:
             self.Cart.takeItem(self.Cart.row(item))
             CurrentCart.pop(self.Cart.currentRow()+1)
-            User[CurrentUser[1]].removeOrder(User[CurrentUser[1]].order[self.Cart.currentRow()], User[CurrentUser[1]].order[self.Cart.currentRow()+1])
-            User[CurrentUser[1]].printOrder()
-
-    #Need a better method of implementing stuff below, VERY BAD EFFICIENCY
-    #problem stems from the generation of buttons
-    #when logging out, cart needs to still show
+            User[CurrentUser[1]].removeUserOrder(self.Cart.currentRow())
     
     def Add_Button1(self):
         self.Cart.addItem(Menu[0].getName() + '\t\t\t' + str(Menu[0].getPrice()))
         addCurrentCart(Menu[0])
         self.temp += (Menu[0].getPrice())
-        User[CurrentUser[1]].addOrder(Menu[0].getName(),Menu[0].getPrice())
+        User[CurrentUser[1]].addUserOrder(Menu[0])
     def Add_Button2(self):
         self.Cart.addItem(Menu[1].getName() + '\t\t\t' + str(Menu[1].getPrice()))
         addCurrentCart(Menu[1])
         self.temp += (Menu[1].getPrice())
-        User[CurrentUser[1]].addOrder(Menu[1].getName(),Menu[1].getPrice())
+        User[CurrentUser[1]].addUserOrder(Menu[1])
     def Add_Button3(self):
         self.Cart.addItem(Menu[2].getName() + '\t\t\t' + str(Menu[2].getPrice()))
         addCurrentCart(Menu[2])
         self.temp += (Menu[2].getPrice())
-        User[CurrentUser[1]].addOrder(Menu[2].getName(),Menu[2].getPrice())
+        User[CurrentUser[1]].addUserOrder(Menu[2])
     def Add_Button4(self):
         self.Cart.addItem(Menu[3].getName() + '\t\t\t' + str(Menu[3].getPrice()))
         addCurrentCart(Menu[3])
         self.temp += (Menu[3].getPrice())
-        User[CurrentUser[1]].addOrder(Menu[3].getName(),Menu[3].getPrice())
+        User[CurrentUser[1]].addUserOrder(Menu[3])
     def Add_Button5(self):
         self.Cart.addItem(Menu[4].getName() + '\t\t\t' + str(Menu[4].getPrice()))
         addCurrentCart(Menu[4])
         self.temp += (Menu[4].getPrice())
+        User[CurrentUser[1]].addUserOrder(Menu[4])
     def Add_Button6(self):
         self.Cart.addItem(Menu[5].getName() + '\t\t\t' + str(Menu[5].getPrice()))
         addCurrentCart(Menu[5])
         self.temp += (Menu[5].getPrice())
+        User[CurrentUser[1]].addUserOrder(Menu[5])
     def Add_Button7(self):
         self.Cart.addItem(Menu[6].getName() + '\t\t\t' + str(Menu[6].getPrice()))
         addCurrentCart(Menu[6])
         self.temp += (Menu[6].getPrice())
+        User[CurrentUser[1]].addUserOrder(Menu[6])
     def Add_Button8(self):
         self.Cart.addItem(Menu[7].getName() + '\t\t\t' + str(Menu[7].getPrice()))
         addCurrentCart(Menu[7])
         self.temp += (Menu[7].getPrice())
+        User[CurrentUser[1]].addUserOrder(Menu[7])
     def Add_Button9(self):
         self.Cart.addItem(Menu[8].getName() + '\t\t\t' + str(Menu[8].getPrice()))
         addCurrentCart(Menu[8])
         self.temp += (Menu[8].getPrice())
+        User[CurrentUser[1]].addUserOrder(Menu[8])
     def Add_Button10(self):
         self.Cart.addItem(Menu[9].getName() + '\t\t\t' + str(Menu[9].getPrice()))
         addCurrentCart(Menu[9])
         self.temp += (Menu[9].getPrice())
+        User[CurrentUser[1]].addUserOrder(Menu[9])
 
 
 if __name__ == "__main__":
