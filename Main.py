@@ -159,6 +159,7 @@ SuppliesList1 = []
 SuppliesList2 = []
 SuppliesList3 = []
 CurrentCart_SalesPerson=[]
+SuppliesCart_Cook = []
 #====For_Storage====#
 
 ################################################### TESTING BELOW #################################################################
