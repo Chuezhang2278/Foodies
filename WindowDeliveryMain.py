@@ -1,3 +1,5 @@
+# By Jia Ming Ma
+
 import qdarkstyle, Main, random
 from threading import Thread
 from time import sleep
