@@ -2253,16 +2253,23 @@ class Ui_CookWindow(object):
 
     # Function that retrieves latest inventory data for "Best Supplies" page (2)
     def get_bestSupplies(self):
-        self.bestMeatsQuantityLabel.setText("1")
-        self.bestFishQuantityLabel.setText("2")
-        self.bestVegetablesQuantityLabel.setText("3")
-        self.bestFlourQuantityLabel.setText("4")
-        self.bestYeastQuantityLabel.setText("5")
-        self.bestSaltQuantityLabel.setText("6")
-        self.bestSpicesQuantityLabel.setText("7")
-        self.bestSugarQuantityLabel.setText("8")
-        self.bestEggQuantityLabel.setText("9")
-        self.bestDairyQuantityLabel.setText("10")
+        print("Supplies List:")
+        for i in range(len(SuppliesList)):
+            print(SuppliesList[i].getName())
+
+        # I imagine that I want to grab supplies from CurrentCart_SalesPerson. Then clear?
+        # For loop iterating through CurrentCart_SalesPerson
+        # Supplies.getName() = 'Meat' and Supplies.getQuality() = 'Best'
+        self.bestMeatsQuantityLabel.setText("0")
+        self.bestFishQuantityLabel.setText("0")
+        self.bestVegetablesQuantityLabel.setText("0")
+        self.bestFlourQuantityLabel.setText("0")
+        self.bestYeastQuantityLabel.setText("0")
+        self.bestSaltQuantityLabel.setText("0")
+        self.bestSpicesQuantityLabel.setText("0")
+        self.bestSugarQuantityLabel.setText("0")
+        self.bestEggQuantityLabel.setText("0")
+        self.bestDairyQuantityLabel.setText("0")
 
     # Function that shows the "Good Supplies" page (3)
     def open_goodSupplies(self):
@@ -2271,16 +2278,16 @@ class Ui_CookWindow(object):
 
     # Function that retrieves latest inventory data for "Good Supplies" page (3)
     def get_goodSupplies(self):
-        self.goodMeatsQuantityLabel.setText("11")
-        self.goodFishQuantityLabel.setText("12")
-        self.goodVegetablesQuantityLabel.setText("13")
-        self.goodFlourQuantityLabel.setText("14")
-        self.goodYeastQuantityLabel.setText("15")
-        self.goodSaltQuantityLabel.setText("16")
-        self.goodSpicesQuantityLabel.setText("17")
-        self.goodSugarQuantityLabel.setText("18")
-        self.goodEggQuantityLabel.setText("19")
-        self.goodDairyQuantityLabel.setText("20")
+        self.goodMeatsQuantityLabel.setText("0")
+        self.goodFishQuantityLabel.setText("0")
+        self.goodVegetablesQuantityLabel.setText("0")
+        self.goodFlourQuantityLabel.setText("0")
+        self.goodYeastQuantityLabel.setText("0")
+        self.goodSaltQuantityLabel.setText("0")
+        self.goodSpicesQuantityLabel.setText("0")
+        self.goodSugarQuantityLabel.setText("0")
+        self.goodEggQuantityLabel.setText("0")
+        self.goodDairyQuantityLabel.setText("0")
 
     # Function that shows the "Bad Supplies" page (4)
     def open_badSupplies(self):
@@ -2289,28 +2296,28 @@ class Ui_CookWindow(object):
 
     # Function that retrieves latest inventory data for "Bad Supplies" page (4)
     def get_badSupplies(self):
-        self.badMeatsQuantityLabel.setText("21")
-        self.badFishQuantityLabel.setText("22")
-        self.badVegetablesQuantityLabel.setText("23")
-        self.badFlourQuantityLabel.setText("24")
-        self.badYeastQuantityLabel.setText("25")
-        self.badSaltQuantityLabel.setText("26")
-        self.badSpicesQuantityLabel.setText("27")
-        self.badSugarQuantityLabel.setText("28")
-        self.badEggQuantityLabel.setText("29")
-        self.badDairyQuantityLabel.setText("30")
+        self.badMeatsQuantityLabel.setText("0")
+        self.badFishQuantityLabel.setText("0")
+        self.badVegetablesQuantityLabel.setText("0")
+        self.badFlourQuantityLabel.setText("0")
+        self.badYeastQuantityLabel.setText("0")
+        self.badSaltQuantityLabel.setText("0")
+        self.badSpicesQuantityLabel.setText("0")
+        self.badSugarQuantityLabel.setText("0")
+        self.badEggQuantityLabel.setText("0")
+        self.badDairyQuantityLabel.setText("0")
 
     # Function that shows the "Rate your Salesperson" page (5)
     def open_rateSalesperson(self):
-        self.stackedWidget.setCurrentIndex(5)
-        # Testing salesperson combobox, remove this later after retrieving the list of Salespersons
         if(self.salespersoncomboBox.count() == 1):
             for i in range(len(User)):
                 if(User[i].getType() == 5):
                     self.salespersoncomboBox.addItem(User[i].getFirst())
+        self.stackedWidget.setCurrentIndex(5)
 
     # Function that gives a rating to a chosen Salesperson on the "Rate your Salesperson" page (5)
     def giveRating(self):
+        # Case of empty fields for salesperson and/or rating
         if(self.salespersoncomboBox.currentText() == "" or self.ratingcomboBox.currentText() == ""):
             msg = QMessageBox()
             msg.setWindowTitle("Invalid input!")
@@ -2319,6 +2326,7 @@ class Ui_CookWindow(object):
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
+        # Case of satisfactory fields
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Thank you!")
@@ -2326,9 +2334,12 @@ class Ui_CookWindow(object):
             msg.setInformativeText(f"with a rating of {self.ratingcomboBox.currentText()} out of 5!")
             if(self.commentText.toPlainText() != ""):
                 msg.setDetailedText(f"You commented: {self.commentText.toPlainText()}")
+            msg.setIcon(QMessageBox.Information)
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
+            # Need to send the name of salesperson and rating to the Manager (JD) or person in charge of wages
+            # Employee.setRating(int(self.ratingcomboBox.currentText()))?
 
     # Function that shows the "Food Menu Modification" page (6)
     def open_manageMenu(self):
@@ -2336,9 +2347,55 @@ class Ui_CookWindow(object):
 
     # Function that adds a Food object to the Menu List on the "Food Menu Modification" page (6)
     def addtoMenu(self):
-        # Also make pricelien only accept numbers
-        # Have a qmessagebox popup
-        if(self.additemLine.text() == "" or self.addclassificationCombo.currentText() == "" or self.addpriceLine.text() == ""):
+        # Checks if the addpriceLine is a number
+        try:
+            float(self.addpriceLine.text())
+            itemAdded = True
+            # Case where some or all fields are empty
+            if(self.additemLine.text() == "" or self.addclassificationCombo.currentText() == "" or self.addpriceLine.text() == ""):
+                msg = QMessageBox()
+                msg.setWindowTitle("Invalid input!")
+                msg.setText("Please input a valid name, classification, and price!")
+                msg.setIcon(QMessageBox.Critical)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                x = msg.exec_()
+                return
+            # Checking to see if item is already in the menu
+            for i in range(len(Menu)):
+                if(self.additemLine.text() == Menu[i].getName() and self.addclassificationCombo.currentText() == Menu[i].getCate() and
+                self.addpriceLine.text() == str(Menu[i].getPrice()) and self.addspicyCheckbox.isChecked() == Menu[i].getSpice()):
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Duplicate item!")
+                    msg.setText(f"The item {self.additemLine.text()} from {self.addclassificationCombo.currentText()}")
+                    if(self.addspicyCheckbox.isChecked() == True):
+                        msg.setInformativeText(f"with a price of ${self.addpriceLine.text()}, and this item is spicy, is already in the menu!")
+                    else:
+                        msg.setInformativeText(f"with a price of ${self.addpriceLine.text()}, is already in the menu!.")
+                    msg.setIcon(QMessageBox.Critical)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    x = msg.exec_()
+                    itemAdded = False
+                    break
+            # Passed all cases, then the item is added to the menu
+            if(itemAdded == True):           
+                msg = QMessageBox()
+                msg.setWindowTitle("Added!")
+                msg.setText(f"You just added {self.additemLine.text()} into {self.addclassificationCombo.currentText()}")
+                if(self.addspicyCheckbox.isChecked() == True):
+                    msg.setInformativeText(f"with a price of ${self.addpriceLine.text()}. This item is spicy!")
+                else:
+                    msg.setInformativeText(f"with a price of ${self.addpriceLine.text()}.")
+                msg.setIcon(QMessageBox.Information)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                x = msg.exec_()
+                
+                newFood = Food(self.additemLine.text(), self.addpriceLine.text(), self.addclassificationCombo.currentText(), self.addspicyCheckbox.isChecked(), 1, 1, 1)
+                addMenuItem(newFood)
+        # Throw error if addpriceline is not a number
+        except ValueError:
             msg = QMessageBox()
             msg.setWindowTitle("Invalid input!")
             msg.setText("Please input a valid name, classification, and price!")
@@ -2346,22 +2403,7 @@ class Ui_CookWindow(object):
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
-            print("Please input a valid name, classification, and price!")
-        else:           
-            msg = QMessageBox()
-            msg.setWindowTitle("Added!")
-            msg.setText(f"You just added {self.additemLine.text()} into {self.addclassificationCombo.currentText()}")
-            if(self.addspicyCheckbox.isChecked() == True):
-                msg.setInformativeText(f"with a price of ${self.addpriceLine.text()}. This item is spicy!")
-            else:
-                msg.setInformativeText(f"with a price of ${self.addpriceLine.text()}.")
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()        
-            print("You just added:", self.additemLine.text(), 
-                  "\nwith a classification of:", self.addclassificationCombo.currentText(),
-                  "\nwith a price of:", self.addpriceLine.text(),
-                  "\nand spicy:", self.addspicyCheckbox.isChecked())
+            return
 
     # Function that clears the "Add an Item" field on the "Food Menu Modification" page (6)
     def resetAdd(self):
@@ -2372,45 +2414,58 @@ class Ui_CookWindow(object):
 
     # Function that removes a Food object from the Menu List (if it exists) on the "Food Menu Modification" page (6)
     def removefromMenu(self):
-        itemRemoved = False
-        if(self.removeitemLine.text() == "" or self.removeclassificationCombo.currentText() == "" or self.removepriceLine == ""):
-            msg = QMessageBox()
-            msg.setWindowTitle("Invalid input!")
-            msg.setText("Please input a valid name, classification, and price!")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()
-            print("Please input a valid name, classification, and price!")
-            return
-        for i in range(len(Menu)):
-            if(self.removeitemLine.text() == Menu[i].getName() and self.removeclassificationCombo.currentText() == Menu[i].getCate() and
-               self.removepriceLine.text() == str(Menu[i].getPrice()) and self.removespicyCheckbox.isChecked() == Menu[i].getSpice()):
+        # Checks if the removepriceLine is a number
+        try:
+            float(self.removepriceLine.text())
+            itemRemoved = False
+            if(self.removeitemLine.text() == "" or self.removeclassificationCombo.currentText() == "" or self.removepriceLine == ""):
                 msg = QMessageBox()
-                msg.setWindowTitle("Removed!")
-                msg.setText(f"You just removed {self.removeitemLine.text()} from {self.removeclassificationCombo.currentText()}")
-                if(self.removespicyCheckbox.isChecked() == True):
-                    msg.setInformativeText(f"with a price of ${self.removepriceLine.text()}. This item is spicy!")
-                else:
-                    msg.setInformativeText(f"with a price of ${self.removepriceLine.text()}.")
+                msg.setWindowTitle("Invalid input!")
+                msg.setText("Please input a valid name, classification, and price!")
+                msg.setIcon(QMessageBox.Critical)
                 msg.setStandardButtons(QMessageBox.Ok)
                 msg.setDefaultButton(QMessageBox.Ok)
-                x = msg.exec_()       
-                Menu.pop(i)
-                itemRemoved = True
-                break
-        if(itemRemoved == False):
-            msg = QMessageBox()
-            msg.setWindowTitle("No such item found!")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setText(f"There is no {self.removeitemLine.text()} from {self.removeclassificationCombo.currentText()}")
-            if(self.removespicyCheckbox.isChecked() == True):
-                msg.setInformativeText(f"with a price of ${self.removepriceLine.text()} and the item is spicy, to be removed!")
-            else:
-                msg.setInformativeText(f"with a price of ${self.removepriceLine.text()} to be removed!")
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()
+                x = msg.exec_()
+                return
+            for i in range(len(Menu)):
+                if(self.removeitemLine.text() == Menu[i].getName() and self.removeclassificationCombo.currentText() == Menu[i].getCate() and
+                self.removepriceLine.text() == str(Menu[i].getPrice()) and self.removespicyCheckbox.isChecked() == Menu[i].getSpice()):
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Removed!")
+                    msg.setText(f"You just removed {self.removeitemLine.text()} from {self.removeclassificationCombo.currentText()}")
+                    if(self.removespicyCheckbox.isChecked() == True):
+                        msg.setInformativeText(f"with a price of ${self.removepriceLine.text()}. This item is spicy!")
+                    else:
+                        msg.setInformativeText(f"with a price of ${self.removepriceLine.text()}.")
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setStandardButtons(QMessageBox.Ok)
+                    msg.setDefaultButton(QMessageBox.Ok)
+                    x = msg.exec_()       
+                    Menu.pop(i)
+                    itemRemoved = True
+                    break
+            if(itemRemoved == False):
+                msg = QMessageBox()
+                msg.setWindowTitle("No such item found!")
+                msg.setIcon(QMessageBox.Critical)
+                msg.setText(f"There is no {self.removeitemLine.text()} from {self.removeclassificationCombo.currentText()}")
+                if(self.removespicyCheckbox.isChecked() == True):
+                    msg.setInformativeText(f"with a price of ${self.removepriceLine.text()} and the item is spicy, to be removed!")
+                else:
+                    msg.setInformativeText(f"with a price of ${self.removepriceLine.text()} to be removed!")
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                x = msg.exec_()
+        # Throw error if removepriceline is not a number
+        except ValueError:
+                msg = QMessageBox()
+                msg.setWindowTitle("Invalid input!")
+                msg.setText("Please input a valid name, classification, and price!")
+                msg.setIcon(QMessageBox.Critical)
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                x = msg.exec_()
+                return
 
     # Function that clears the "Remove an Item" field on the "Food Menu Modification" page (6)
     def resetRemove(self):
