@@ -19,7 +19,7 @@ class Supplies():
 
     #setters
     def setQuantity(self,quantity):
-        self.quantity=quantity
+        self.quantity = quantity
 
     #getters
     def getName(self):

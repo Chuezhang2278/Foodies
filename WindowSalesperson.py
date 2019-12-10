@@ -1190,7 +1190,7 @@ class Sales_Window(object):
 
     def send_supplies(self):
         for i in range(len(CurrentCart_SalesPerson)):
-            CartSupplies_ForCook.append(CurrentCart_SalesPerson[i])
+            addCookSupplies(CurrentCart_SalesPerson[i])
 
     def confirmOrder(self):
         msg = QMessageBox()
@@ -1308,6 +1308,8 @@ class Sales_Window(object):
             #pop out window to show error
             self.budget_error()
             print("Amount exceeds Budget!")
+
+
 
     def addButton1_2(self):
         if self.check_budget(SuppliesList1[1].getPrice()*int(self.amount1_2.value())):
