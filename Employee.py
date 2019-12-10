@@ -67,6 +67,8 @@ class Employee():
 
 
 class Delivery(Employee):
+    # By Jia Ming Ma
+    
     def __init__(self, first_name, username, password, address):
         super().__init__(first_name, username, password)
         self.bidded = False

@@ -76,8 +76,8 @@ class Food_Window(object):
         self.Cart.setGeometry(QtCore.QRect(480, 39, 271, 441))
         self.Cart.setObjectName("Cart")
 
-        
-        
+
+
         if(len(User[CurrentUser[1]].order) > 0):
             for i in range(len(User[CurrentUser[1]].order)):
                 self.Cart.addItem(User[CurrentUser[1]].order[i].getName() + "\t\t\t" + format(User[CurrentUser[1]].order[i].getPrice(), '.2f'))
@@ -378,7 +378,7 @@ class Food_Window(object):
         # if(User[CurrentUser[1]].getType() == 0):
         #     addOrder2(void, CurrentCart)
         # elif(User[CurrentUser[1]].getType() != 0):
-            addOrder2(User[CurrentUser[1]], CurrentCart)
+            # addOrder2(User[CurrentUser[1]], CurrentCart)
         while i < len(User[CurrentUser[1]].order):
             self.Page3_listView.addItem(User[CurrentUser[1]].order[i].getName() + "\t\t\t" + format(User[CurrentUser[1]].order[i].getPrice(), '.2f'))
             i += 1
