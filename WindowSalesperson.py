@@ -1002,8 +1002,8 @@ class Sales_Window(object):
         self.log_suppliers.setText(_translate("CurrentWindow", "Log Out"))
         self.supplier1_name.setText(_translate("CurrentWindow", "Supplier 1"))
         self.add_1.setText(_translate("CurrentWindow", "Add"))
-        self.amount_1.setText(_translate("CurrentWindow", "Amount"))
-        self.price_1.setText(_translate("CurrentWindow", "Price per lb"))
+        self.amount_1.setText(_translate("CurrentWindow", "Quantity"))
+        self.price_1.setText(_translate("CurrentWindow", "Price"))
         self.quality_1.setText(_translate("CurrentWindow", "Quality"))
         self.item_1.setText(_translate("CurrentWindow", "Item"))
         __sortingEnabled = self.item_list_1.isSortingEnabled()
@@ -1034,8 +1034,8 @@ class Sales_Window(object):
         self.check_list_1.setText(_translate("CurrentWindow", "Check List"))
         self.supplier2_name.setText(_translate("CurrentWindow", "Supplier 2"))
         self.add_2.setText(_translate("CurrentWindow", "Add"))
-        self.amount_2.setText(_translate("CurrentWindow", "Amount"))
-        self.price_2.setText(_translate("CurrentWindow", "Price per lb"))
+        self.amount_2.setText(_translate("CurrentWindow", "Quantity"))
+        self.price_2.setText(_translate("CurrentWindow", "Price"))
         self.quality_2.setText(_translate("CurrentWindow", "Quality"))
         self.item_2.setText(_translate("CurrentWindow", "Item"))
         __sortingEnabled = self.item_list_2.isSortingEnabled()
@@ -1067,8 +1067,8 @@ class Sales_Window(object):
         self.check_list_2.setText(_translate("CurrentWindow", "Check List"))
         self.supplier3_name.setText(_translate("CurrentWindow", "Supplier 3"))
         self.add_3.setText(_translate("CurrentWindow", "Add"))
-        self.amount_3.setText(_translate("CurrentWindow", "Amount"))
-        self.label_28.setText(_translate("CurrentWindow", "Price per lb"))
+        self.amount_3.setText(_translate("CurrentWindow", "Quantity"))
+        self.label_28.setText(_translate("CurrentWindow", "Price"))
         self.quality_3.setText(_translate("CurrentWindow", "Quality"))
         self.item_3.setText(_translate("CurrentWindow", "Item"))
         __sortingEnabled = self.item_list_3.isSortingEnabled()
@@ -1110,8 +1110,8 @@ class Sales_Window(object):
         self.check_out_remove.setText(_translate("CurrentWindow", "Remove"))
         self.confirm_order.setText(_translate("CurrentWindow", "Confirm Order"))
         self.return_check_list.setText(_translate("CurrentWindow", "Return"))
-        self.label.setText(_translate("CurrentWindow", "Inventory Required by Cook Check List"))
-        self.amount_check_list_label.setText(_translate("CurrentWindow", "Amount by lb"))
+        self.label.setText(_translate("CurrentWindow", "Inventory Required by Cook - Check List"))
+        self.amount_check_list_label.setText(_translate("CurrentWindow", "Quantity"))
         self.item_check_list_label.setText(_translate("CurrentWindow", "Item"))
         __sortingEnabled = self.item_check_list.isSortingEnabled()
         self.item_check_list.setSortingEnabled(False)
@@ -1231,15 +1231,15 @@ class Sales_Window(object):
         self.budget_remaining=self.budget_begin-self.total
 
     def update_budget_remaining(self):
-        self.label_31.setText(str(self.budget_remaining))
-        self.label_33.setText(str(self.budget_remaining))
-        self.label_35.setText(str(self.budget_remaining))
-        self.check_out_budget.setText(str(self.budget_remaining))
+        self.label_31.setText(str(round(self.budget_remaining, 2)))
+        self.label_33.setText(str(round(self.budget_remaining, 2)))
+        self.label_35.setText(str(round(self.budget_remaining, 2)))
+        self.check_out_budget.setText(str(round(self.budget_remaining, 2)))
 
     def budget_connected_total(self):
         self.update_budget()
         self.update_budget_remaining()
-        self.total_amount.setText(str(self.total))
+        self.total_amount.setText(str(round(self.total, 2)))
 
     def budget_error(self):
         msg = QMessageBox()
@@ -1258,7 +1258,7 @@ class Sales_Window(object):
             self.check_out_list.addItem(SuppliesList1[0].getName() + '\t' + SuppliesList1[0].getQuality() + \
                                     '\t' + self.amount1_1.text() + '\t' + str(round(SuppliesList1[0].getPrice()*int(self.amount1_1.value()), 2)))
 
-            self.total += (SuppliesList1[0].getPrice()*int(self.amount1_1.value()))
+            self.total += round((SuppliesList1[0].getPrice()*int(self.amount1_1.value())),2)
             self.budget_connected_total()
             SuppliesList[0].setQuantity(int(self.amount1_1.value()))
             addCurrentCart_SalesPerson(SuppliesList1[0])
