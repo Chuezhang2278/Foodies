@@ -391,7 +391,7 @@ class Food_Window(object):
         addCurrentCart(Menu[4])
         self.temp += (Menu[4].getPrice())
     def Add_Button6(self):
-        self.Cart.addItem(Menu[5].getName() + '\t\t\t' + str(Menu[5].getNrice()))
+        self.Cart.addItem(Menu[5].getName() + '\t\t\t' + str(Menu[5].getPrice()))
         addCurrentCart(Menu[5])
         self.temp += (Menu[5].getPrice())
     def Add_Button7(self):
