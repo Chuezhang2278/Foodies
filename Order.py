@@ -4,6 +4,7 @@ from User import VIP, Member, Guest
 from Food import Food
 from Employee import Delivery
 from datetime import datetime
+import random
 import sys, random, Main
 
 class Order():
@@ -52,7 +53,7 @@ class Order():
                 self.delivery.setBidded(True)
                 self.currentBid = bidAmount
                 if bidAmount <= self.autoWin:
-                    self.window.addHistory("[" + str(now) + "] " + self.delivery.getFirst() + " bidded $" + format(bidAmount, '.2f') + " which is the auto win.")
+                    self.window.addHistory("[" + str(now) + "] " + self.delivery.getFirst() + " bidded $" + format(bidAmount, '.2f') + ", which is the auto win amount.")
                     self.bidComplete()
                 elif self.timerStarted == False:
                     self.window.addHistory("[" + str(now) + "] " + self.delivery.getFirst() + " bidded $" + format(bidAmount, '.2f') + ".")
@@ -62,16 +63,21 @@ class Order():
                 else:
                     self.window.addHistory("[" + str(now) + "] " + self.delivery.getFirst() + " bidded $" + format(bidAmount, '.2f') + ".")
             else:
-                self.window.addHistory("[" + str(now) + "] " + Delivery.getFirst() + "'s bid did not go through.")
+                self.window.addHistory("[" + str(now) + "] " + Delivery.getFirst() + "'s bid failed, amount bid is higher than current bid.")
+        else:
+            self.window.addHistory("[" + str(now) + "] " + Delivery.getFirst() + "'s bid failed, you can't bid against yourself.")
 
     def startTimer(self):
+        bot_bid = False
+        if random.uniform(0, 1) > 0.3:
+            bot_bid = True
         self.timerStarted = True
         for i in range(60):
             if self.bidCompleted == True or self.killThread:
                 break
             if self.time > 0:
                 self.time -= 1
-            if i % 5 == 0:
+            if i % 5 == 0 and bot_bid == True and self.delivery != Main.deliveryBot2:
                 self.bid(Main.deliveryBot2, self.currentBid - 1)
             if self.window != None:
                 self.window.updateSecondScene()
