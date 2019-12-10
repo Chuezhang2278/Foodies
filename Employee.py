@@ -183,7 +183,7 @@ class Salesperson(Employee):
         self.rating = []
 
 
-    def getRestuarant(self):
+    def getRestaurant(self):
 
         return self.restaurant
 

@@ -176,8 +176,8 @@ Jim = Cook('Jim', 'jim', 'test')
 manager = Manager('y','y','y')
 
 # Salesperson
-Anderson = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname') #sales person example
-Patrick = Salesperson('Patrick','patrick','password',1000.00,'restaurantname') #sales person example
+Anderson = Salesperson('Anderson','anderson1','password',1000.00,'Foodies') #sales person example
+Patrick = Salesperson('Patrick','patrick','password',1000.00,'Foodies') #sales person example
 
 # Users
 deliveryJiaMing = Delivery('Jia Ming Ma','u','p','City College of New York')

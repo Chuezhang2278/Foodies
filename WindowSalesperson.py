@@ -4,6 +4,7 @@
         
 from Main import *
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
 class Sales_Window(object):
 
@@ -16,8 +17,9 @@ class Sales_Window(object):
         self.CurrentWindow = CurrentWindow
         self.LoginWindow = LoginWindow
         self.total = 0 # total cost for the cart
-        self.budget_remaining = 1000
-        self.budget_begin = 1000
+        self.total = round(self.total, 2)
+        self.budget_remaining = round(User[CurrentUser[1]].getBudget(), 2)
+        self.budget_begin = round(User[CurrentUser[1]].getBudget(), 2)
 
         #page 1- profile page index 0============================================================================================================
         CurrentWindow.setObjectName("CurrentWindow")
@@ -917,7 +919,13 @@ class Sales_Window(object):
         self.add3_9.clicked.connect()
         self.add3_10.clicked.connect()
         '''
-    
+
+        #grab salesperson information and display on the profile page
+        self.name.setText(str(User[CurrentUser[1]].getFirst()))
+        self.restaurant.setText(str(User[CurrentUser[1]].getRestaurant()))
+        self.budget.setText(str(User[CurrentUser[1]].getBudget()))
+        self.rating.setText(str(User[CurrentUser[1]].getRating()))
+
     def retranslateUi(self, CurrentWindow):
         _translate = QtCore.QCoreApplication.translate
         CurrentWindow.setWindowTitle(_translate("CurrentWindow", "CurrentWindow"))
@@ -1164,12 +1172,6 @@ class Sales_Window(object):
 
 
 
-    #get all profile information to display
-    """
-    self.name.setText(get)
-
-    """
-
     #define the button functions to navigate through the pages
     #################################################################################
 
@@ -1240,12 +1242,13 @@ class Sales_Window(object):
         self.total_amount.setText(str(self.total))
 
     def budget_error(self):
-        app = QtWidgets.QApplication([])
-
-        error_dialog = QtWidgets.QErrorMessage()
-        error_dialog.showMessage('Oh no!')
-
-        app.exec_()
+        msg = QMessageBox()
+        msg.setWindowTitle("Budget Exceeded.")
+        msg.setText("This order exceeds the budget.")
+        msg.setIcon(QMessageBox.Critical)
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.setDefaultButton(QMessageBox.Ok)
+        x = msg.exec_()
 
     ### Define the add buttons here
     ########################################################################################################
@@ -1253,7 +1256,7 @@ class Sales_Window(object):
     def addButton1_1(self):
         if self.check_budget(SuppliesList1[0].getPrice()*int(self.amount1_1.value())):
             self.check_out_list.addItem(SuppliesList1[0].getName() + '\t' + SuppliesList1[0].getQuality() + \
-                                    '\t' + self.amount1_1.text() + '\t' + str(SuppliesList1[0].getPrice()*int(self.amount1_1.value())))
+                                    '\t' + self.amount1_1.text() + '\t' + str(round(SuppliesList1[0].getPrice()*int(self.amount1_1.value()), 2)))
 
             self.total += (SuppliesList1[0].getPrice()*int(self.amount1_1.value()))
             self.budget_connected_total()
