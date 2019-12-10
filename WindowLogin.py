@@ -57,6 +57,8 @@ class LoginWindow(object):
         self.signUpButton.setText(_translate("CurrentWindow", "Sign Up"))
         self.loginButton.setText(_translate("CurrentWindow", "Login"))
 
+
+
     def clearFields(self):
         self.LogUser_lineEdit.setText('')
         self.LogPass_lineEdit.setText('')

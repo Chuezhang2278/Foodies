@@ -132,7 +132,7 @@ def addCurrentCart_SalesPerson(Supplies):
     CurrentCart_SalesPerson.append(Supplies)
 
 # Customer Checking Out Stuff
-def addOrder():
+def addOrder2():
     Orders.append(Order(CurrentUser, CurrentCart))
     CurrentCart.clear()
 
@@ -234,48 +234,6 @@ for i in range(0, 9):
     addSupplies2(Supplies(SuppliesList[i].getName(), random_quality[rand_int2], SuppliesList[i].getPrice()))
     addSupplies3(Supplies(SuppliesList[i].getName(), random_quality[rand_int3], SuppliesList[i].getPrice()))
 
-
-
-
-"""
-# Supplier 1 - 10 sample supplies
-freshChicken = Supplies('Chicken', 'Good',15.99)
-Broccoli = Supplies('Broccoli', 'Bad', 5.99 )
-freshDuck = Supplies('Duck', 'Best',25.99)
-Lettuce = Supplies('Lettuce', 'Bad', 4.99)
-Asparagus = Supplies('Asparagus', 'Bad', 6.99)
-Rice = Supplies('Rice', 'Good,', 1.99)
-Pasta = Supplies('Pasta', 'Good', 1.99 )
-Tomato = Supplies('Tomato','Good', 2.99)
-Onion = Supplies('Onion', ' Best', 3.99)
-Pepper = Supplies('Pepper', 'Good', 2.99)
-
-# Supplier 2 - 10 sample supplies
-freshDog = Supplies('Dog', 'Best', 299.99) #????????
-Mushroom = Supplies('Mushroom', 'Best', 9.99 )
-whiteWine = Supplies('White Wine','Good', 13.99)
-redWine = Supplies('Red Wine', 'Bad', 29.99 )
-Truffle = Supplies('Truffle', 'Best', 199.99)
-kingCrab = Supplies('King Crab', 'Good', 44.99)
-Lobster = Supplies('Lobster', 'Bad', 19.99)
-Salmon = Supplies('Salmon', 'Best', 39.99)
-Tuna = Supplies('Tuna', 'Good', 39.99)
-blueCrab = Supplies('Blue Crab', 'Good', 12.99)
-
-
-# Supplier 3 - 10 sample supplies
-freshDuck1 = Supplies('Duck', 'Good', 25.99)
-freshChicken1 = Supplies('Chicken', 'Bad', 15.99)
-honeyHam = Supplies('Honey Ham', 'Good', 7.99 )
-forestHam = Supplies('Forest Ham', 'Bad', 10.99)
-porkBelly = Supplies('Pork Belly', 'Bad', 15.99)
-porkChops = Supplies('Pork Chop', 'Good', 10.99)
-tenderloin = Supplies('Beef Tenderloin', 'Good', 44.99)
-chuckSteak = Supplies('Chuck Steak', 'Best', 13.99)
-ribeyeSteak = Supplies('Ribeye Steak', 'Good', 55.99)
-kobeBeef = Supplies('Kobe Beef', 'Best', 119.99)
-"""
-
 addUser(void)
 addUser(chue)
 addUser(eric)
@@ -293,43 +251,3 @@ addMenuItem(foodTest1)
 addMenuItem(foodTest2)
 addMenuItem(foodTest3)
 addMenuItem(foodTest4)
-
-
-
-"""
-# Add to supplies list 1
-addSupplies1(freshChicken)
-addSupplies1(Broccoli)
-addSupplies1(freshDuck)
-addSupplies1(Lettuce)
-addSupplies1(Asparagus)
-addSupplies1(Rice)
-addSupplies1(Pasta)
-addSupplies1(Tomato)
-addSupplies1(Onion)
-addSupplies1(Pepper)
-
-# Add to supplies list 2
-addSupplies2(freshDog)
-addSupplies2(Mushroom)
-addSupplies2(whiteWine)
-addSupplies2(redWine)
-addSupplies2(Truffle)
-addSupplies2(kingCrab)
-addSupplies2(Lobster)
-addSupplies2(Salmon)
-addSupplies2(Tuna)
-addSupplies2(blueCrab)
-
-# Add to supplies list 3
-addSupplies3(freshDuck1)
-addSupplies3(freshChicken1)
-addSupplies3(honeyHam)
-addSupplies3(forestHam)
-addSupplies3(porkBelly)
-addSupplies3(porkChops)
-addSupplies3(tenderloin)
-addSupplies3(chuckSteak)
-addSupplies3(ribeyeSteak)
-addSupplies3(kobeBeef)
-"""

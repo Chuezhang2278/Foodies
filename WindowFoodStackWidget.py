@@ -42,10 +42,11 @@ class Food_Window(object):
         self.Price_listWidget.setObjectName("Price_listWidget")
 
         for i in range(len(Menu)):
-                sortMenu()
                 self.Name_listWidget.addItem(Menu[i].getName())
                 self.Price_listWidget.addItem(str(Menu[i].getPrice()*CurrentUser[0].getDiscount()))
-
+        
+        #sortMenu()
+                
         self.AddButton2 = QtWidgets.QPushButton(self.page)
         self.AddButton2.setGeometry(QtCore.QRect(360, 90, 93, 28))
         self.AddButton2.setObjectName("AddButton2")
@@ -186,17 +187,52 @@ class Food_Window(object):
         #====page1====#
         self.Remove_Button.clicked.connect(self.Remove)
         self.Checkout_Button.clicked.connect(self.Checkout)
-        self.AddButton1.clicked.connect(self.Add_Button1)
-        self.AddButton2.clicked.connect(self.Add_Button2)
-        self.AddButton3.clicked.connect(self.Add_Button3)
-        self.AddButton4.clicked.connect(self.Add_Button4)
-
+        
+        self.AddButton1.hide()
+        self.AddButton2.hide()
+        self.AddButton3.hide()
+        self.AddButton4.hide()
         self.AddButton5.hide()
         self.AddButton6.hide()
         self.AddButton7.hide()
         self.AddButton8.hide()
         self.AddButton9.hide()
         self.AddButton10.hide()
+        
+        for i in range(len(Menu)):
+            if i == 0:
+                self.AddButton1.show()
+            if i == 1:
+                self.AddButton2.show()
+            if i == 2:
+                self.AddButton3.show()
+            if i == 3:
+                self.AddButton4.show()
+            if i == 4:
+                self.AddButton5.show()
+            if i == 5:
+                self.AddButton6.show()
+            if i == 6:
+                self.AddButton7.show()
+            if i == 7:
+                self.AddButton8.show()
+            if i == 8:
+                self.AddButton9.show()
+            if i == 9:
+                self.AddButton10.show()
+           
+        self.AddButton1.clicked.connect(self.Add_Button1)
+        self.AddButton2.clicked.connect(self.Add_Button2)
+        self.AddButton3.clicked.connect(self.Add_Button3)
+        self.AddButton4.clicked.connect(self.Add_Button4)
+        self.AddButton5.clicked.connect(self.Add_Button5)
+        self.AddButton6.clicked.connect(self.Add_Button6)
+        self.AddButton7.clicked.connect(self.Add_Button7)
+        self.AddButton8.clicked.connect(self.Add_Button8)
+        self.AddButton9.clicked.connect(self.Add_Button9)
+        self.AddButton10.clicked.connect(self.Add_Button10)
+        
+    
         #====page1====#
 
         #====page2====#
@@ -318,12 +354,13 @@ class Food_Window(object):
         for item in listItems:
             self.Cart.takeItem(self.Cart.row(item))
             CurrentCart.pop(self.Cart.currentRow()+1)
-            User[CurrentUser[1]].removeOrder()
+            User[CurrentUser[1]].removeOrder(User[CurrentUser[1]].order[self.Cart.currentRow()], User[CurrentUser[1]].order[self.Cart.currentRow()+1])
+            User[CurrentUser[1]].printOrder()
 
     #Need a better method of implementing stuff below, VERY BAD EFFICIENCY
     #problem stems from the generation of buttons
     #when logging out, cart needs to still show
-
+    
     def Add_Button1(self):
         self.Cart.addItem(Menu[0].getName() + '\t\t\t' + str(Menu[0].getPrice()))
         addCurrentCart(Menu[0])
