@@ -159,10 +159,10 @@ CurrentCart_SalesPerson=[]
 
 ################################################### TESTING BELOW #################################################################
 # Foods
-foodTest1 = Food('Chicken', 12.99, 'Entrees', True, 100, 2, 4)
-foodTest2 = Food('Fish', 10.99, 'Entrees', False, 500, 3, 5)
-foodTest3 = Food('Duck', 9.49, 'Entrees', False, 122, 5, 6)
-foodTest4 = Food('Dog', 20.99, 'Entrees', True, 5, 5, 7)
+foodTest1 = Food('Chicken', 12.99, 'Entrees', True)
+foodTest2 = Food('Fish', 10.99, 'Entrees', False)
+foodTest3 = Food('Duck', 9.49, 'Entrees', False)
+foodTest4 = Food('Dog', 20.99, 'Entrees', True)
 
 # Cart
 

@@ -2392,7 +2392,7 @@ class Ui_CookWindow(object):
                 msg.setDefaultButton(QMessageBox.Ok)
                 x = msg.exec_()
                 
-                newFood = Food(self.additemLine.text(), self.addpriceLine.text(), self.addclassificationCombo.currentText(), self.addspicyCheckbox.isChecked(), 1, 1, 1)
+                newFood = Food(self.additemLine.text(), float(self.addpriceLine.text()), self.addclassificationCombo.currentText(), self.addspicyCheckbox.isChecked())
                 addMenuItem(newFood)
         # Throw error if addpriceline is not a number
         except ValueError:
