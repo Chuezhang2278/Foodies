@@ -4,6 +4,7 @@ class Supplies():
     def __init__(self, name, quality, price): #price entered is the default price for "Good" Quality inventory
         self.name = name
         self.quality = quality
+        self.quantity=0
 
         if quality=='Bad': #if quality is bad then cut default price by 50%
             self.price = price * .50
@@ -12,6 +13,11 @@ class Supplies():
         else: #if quality is neither bad or best than it is just the default price
             self.price=price
 
+
+
+    #setters
+    def setQuantity(self,quantity):
+        self.quantity=quantity
 
     #getters
     def getName(self):
@@ -22,6 +28,9 @@ class Supplies():
 
     def getPrice(self):
         return self.price
+
+    def getQuantity(self):
+        return self.quantity
 
     # Update the price if the price changes or if quality is changed
     def updatePrice(self):

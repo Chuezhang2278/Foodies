@@ -87,7 +87,7 @@ class LoginWindow(object):
     def switch_sales(self):
         self.sales_window = QtWidgets.QMainWindow()
         self.ui = Sales_Window()
-        self.ui.setupUi(self.sales_window)
+        self.ui.setupUi(self.sales_window,CurrentWindow)
         CurrentWindow.hide()
         self.sales_window.show()
 
