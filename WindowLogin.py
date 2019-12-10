@@ -150,12 +150,20 @@ class LoginWindow(object):
                     break
 
 
+def handle_exit():
+    for i in Orders:
+        i.setKillThread(True)
+    threadKill = True
+
 if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
-    CurrentWindow = QtWidgets.QMainWindow()
-    ui = LoginWindow()
-    ui.setupUi(CurrentWindow)
-    CurrentWindow.show()
-    sys.exit(app.exec_())
+    import sys, signal, atexit
+    try:
+        app = QtWidgets.QApplication(sys.argv)
+        app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+        CurrentWindow = QtWidgets.QMainWindow()
+        ui = LoginWindow()
+        ui.setupUi(CurrentWindow)
+        CurrentWindow.show()
+        sys.exit(app.exec_())
+    finally:
+        handle_exit()
