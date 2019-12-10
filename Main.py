@@ -56,10 +56,6 @@ def printMenu():
 def getUserSize():
     return len(User)
 
-def removeMember(user):
-    User.remove(user)
-    print("Removed " + user.getFirst() + " from VIP")
-
 def findUser(name):
     for i in range(len(User)):
         if(User[i].getFirst() == name):
@@ -75,7 +71,7 @@ def promoteVIP(name):
             para3 = User[i].getUser()
             para4 = User[i].getEmail()
             para5 = User[i].getPass()
-            removeMember(User[i])
+            removeUser(User[i])
             new = VIP(para1, para2, para3, para4, para5)
             addUser(new)
             break
@@ -97,6 +93,14 @@ def addEmployee(name):
 
 def addUser(user):
     User.append(user)
+
+def removeUser(user):
+    User.remove(user)
+    print("Removed " + user.getFirst() + " from VIP")
+
+def addBlacklist(user):
+    Blacklist.append(user)
+    print("Added " + user.getFirst() + " to Blacklist")
 
 def sortMenu(): #Bubble sort algorithm for most relevant items, May change for only top 3
     swapped = True
@@ -136,6 +140,9 @@ def addOrder2(User, CurrentCart):
     Orders.append(Order(User, CurrentCart))
     CurrentCart.clear()
 
+# def addOrder2(Order):
+#     Orders.append(Order)
+
 def addOrderHistoy(Order):
     OrderHistory.append(Order)
 
@@ -155,6 +162,7 @@ Sales = []
 Menu = []
 IngredientList = []
 User = []
+Blacklist = []
 Employee = []
 CurrentUser = []
 CurrentCart = []

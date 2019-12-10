@@ -367,6 +367,10 @@ class Food_Window(object):
             addPendingOrder(Order(void, CurrentCart))
         elif(User[CurrentUser[1]].getType() != 0):
             addPendingOrder(Order(User[CurrentUser[1]], CurrentCart))
+        # if(User[CurrentUser[1]].getType() == 0):
+        #     addOrder2(void, CurrentCart)
+        # elif(User[CurrentUser[1]].getType() != 0):
+            addOrder2(User[CurrentUser[1]], CurrentCart)
         while i < len(User[CurrentUser[1]].order):
             self.Page3_listView.addItem(User[CurrentUser[1]].order[i].getName() + "\t\t\t" + format(User[CurrentUser[1]].order[i].getPrice(), '.2f'))
             i += 1

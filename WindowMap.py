@@ -147,9 +147,6 @@ class MapWindow(object):
         self.MainWindow.MainWindow.show()
         self.MapWindow.hide()
 
-    def giveCustomerRating(self):
-        self.currentUser.getCustomer().setRating(5)
-
     def keyPressEvent(self, e):
         if e.key() == QtCore.Qt.Key_Backspace:
             print('Backspace pressed')
@@ -163,7 +160,7 @@ class MapWindow(object):
                     checkedButton = i
             if checkedButton == None:
                 return
-            self.currentUser.getCustomer().setRating(i + 1)
+            self.currentUser.getCustomer().setRating(checkedButton + 1)
             self.currentUser.getCustomer().checkPromotion() # *************** need andy to do this
             self.currentUser.getOrder().orderCompleted()
             self.currentUser.getCustomer().setDelivery(self.currentUser)

@@ -46,6 +46,11 @@ class Order():
     def bid(self, Delivery, bidAmount):
         # Delivery is a Delivery object
         now = datetime.now().strftime("%H:%M:%S")
+
+        if bidAmount < 0:
+            self.window.addHistory("[" + str(now) + "] " + Delivery.getFirst() + "'s bid failed, must bid positive amount")
+            return
+
         if self.bidCompleted == False and self.delivery != Delivery:
             if bidAmount < self.currentBid:
                 if self.delivery != None:
@@ -151,7 +156,7 @@ class Order():
 
     def setCook(self, Cook):
         self.cook = Cook
-        
+
 
 # customer = Member("Jia Ming", "Ma", "jma8774", "password", "jma8774@bths.edu", "2369 W 11th St, NY")
 # chue = Delivery("Chue", "chue1", "password", "City College of New York")
