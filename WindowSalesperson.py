@@ -873,7 +873,7 @@ class Sales_Window(object):
         self.check_out_check_list.clicked.connect(self.go_to_check_list)
         self.check_out_supplier.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
         self.check_out_remove.clicked.connect(self.remove)
-        #self.confirm_order.clicked.connect(self.)
+        self.confirm_order.clicked.connect(self.confirmOrder)
 
         #page 8 index 7 (check list for inventory)
         self.return_check_list.clicked.connect(self.return_previous)
@@ -1174,24 +1174,46 @@ class Sales_Window(object):
 
     #define logout function to be connected to each button
     def logout(self):
-        '''
         msg = QMessageBox()
         msg.setWindowTitle("Logout")
         msg.setText("Are you sure you want to logout?")
         msg.setIcon(QMessageBox.Question)
         msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
         msg.setDefaultButton(QMessageBox.No)
-        msg.buttonClicked.connect(self.logout_confirm())
+        msg.buttonClicked.connect(self.logout_confirm)
         x = msg.exec_()
-        '''
-        self.CurrentWindow.hide()
-        self.LoginWindow.show()
-    '''
-    def logout_confirm(self):
+
+    def logout_confirm(self, i):
         if (i.text() == "&Yes"):
             self.CurrentWindow.hide()
             self.LoginWindow.show()
-    '''
+
+    def send_supplies(self):
+        for i in range(len(CurrentCart_SalesPerson)):
+            CartSupplies_ForCook.append(CurrentCart_SalesPerson[i])
+
+    def confirmOrder(self):
+        msg = QMessageBox()
+        msg.setWindowTitle("Confirm Order")
+        msg.setText("Are you sure you want to confirm order")
+        msg.setIcon(QMessageBox.Question)
+        msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        msg.setDefaultButton(QMessageBox.No)
+        msg.buttonClicked.connect(self.popup_button)
+        x = msg.exec_()
+
+    def popup_button(self, i):
+        if (i.text() == "&Yes"):
+            self.send_supplies()
+            msg = QMessageBox()
+            msg.setWindowTitle("Order Confirmed.")
+            msg.setText("Order Confirmed! Supplies sent to Cook.")
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
+
+
+
     def remove(self):
         listItems = self.check_out_list.selectedItems()
         if not listItems: return
