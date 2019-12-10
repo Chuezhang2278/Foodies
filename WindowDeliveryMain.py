@@ -1,4 +1,4 @@
-    import qdarkstyle, Main, random
+import qdarkstyle, Main, random
 from threading import Thread
 from time import sleep
 from PyQt5 import QtCore, QtGui, QtWidgets, QtWebKit, QtWebKitWidgets
