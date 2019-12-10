@@ -11,6 +11,7 @@ from Main import *
 from SignUpListWIndow import Ui_Form_SignUplist
 from WindowCusinfor import Ui_Form_cusmberInfor
 from WindowComplain import Ui_Form_Complain
+from WindowOrderHistory import Ui_Form_OrderHistory
 
 class Ui_Form_CusInfor(object):
     def setupUi(self, Form):
@@ -46,6 +47,7 @@ class Ui_Form_CusInfor(object):
         self.exitbutton.clicked.connect(lambda: self.closescr(Form))
         self.SignButton.clicked.connect(lambda: self.SingupInformation())
         self.CusinforButton.clicked.connect(lambda: self.CusInformation())
+        self.orderinforButton.clicked.connect(lambda: self.orderHistorystr())
 
     def closescr(self, Form):
         Form.hide()
@@ -59,6 +61,12 @@ class Ui_Form_CusInfor(object):
     def CusInformation(self):
         self.Form = QtWidgets.QWidget()
         self.ui = Ui_Form_cusmberInfor()
+        self.ui.setupUi(self.Form)
+        self.Form.show()
+
+    def orderHistorystr(self):
+        self.Form = QtWidgets.QWidget()
+        self.ui = Ui_Form_OrderHistory()
         self.ui.setupUi(self.Form)
         self.Form.show()
 
