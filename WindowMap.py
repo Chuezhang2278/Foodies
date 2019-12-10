@@ -103,6 +103,7 @@ class MapWindow(object):
         self.durationLabel.setFont(font)
         self.radioButtons = [self.oneStar, self.twoStar, self.threeStar, self.fourStar, self.fiveStar]
 
+        self.centralwidget.keyPressEvent = self.keyPressEvent
         MapWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MapWindow)
         self.statusbar.setObjectName("statusbar")
@@ -149,19 +150,31 @@ class MapWindow(object):
     def giveCustomerRating(self):
         self.currentUser.getCustomer().setRating(5)
 
+    def keyPressEvent(self, e):
+        if e.key() == QtCore.Qt.Key_Backspace:
+            print('Backspace pressed')
+            self.switch_mainWindow()
+
     def delivery_complete(self):
-        checkedButton = None
-        for i in range(len(self.radioButtons)):
-            if self.radioButtons[i].isChecked():
-                checkedButton = i
-        if checkedButton == None:
-            return
-        self.currentUser.getCustomer().setRating(i + 1)
-        self.currentUser.getCustomer().checkPromotion() # *************** let see if he does it, gotta remind him
-        self.currentUser.resetOrder() # removes order from delivery guy, so now currentOrder = None
-        self.MainWindow.decideWhatToShow() # determines what to show based on currentOrder of delivery guy
-        self.MainWindow.MainWindow.show()
-        self.MapWindow.hide()
+        try:
+            checkedButton = None
+            for i in range(len(self.radioButtons)):
+                if self.radioButtons[i].isChecked():
+                    checkedButton = i
+            if checkedButton == None:
+                return
+            self.currentUser.getCustomer().setRating(i + 1)
+            self.currentUser.getCustomer().checkPromotion() # *************** need andy to do this
+            self.currentUser.getOrder().orderCompleted()
+            # self.currentUser.getCustomer().setDelivery(self.currentUser)
+            # self.currentUser.getCustomer().confirmDelivery()
+            self.currentUser.resetOrder() # removes order from delivery guy, so now currentOrder = None
+            self.MainWindow.decideWhatToShow() # determines what to show based on currentOrder of delivery guy
+            self.MainWindow.MainWindow.show()
+            self.MapWindow.hide()
+        except Exception:
+            import traceback
+            print(traceback.format_exc())
 
 if __name__ == "__main__":
     import sys

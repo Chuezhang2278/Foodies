@@ -44,6 +44,7 @@ class LoginWindow(object):
         self.retranslateUi(CurrentWindow)
         QtCore.QMetaObject.connectSlotsByName(CurrentWindow)
 
+        self.centralwidget.keyPressEvent = self.keyPressEvent
         self.signUpButton.clicked.connect(self.switch_sign)
         self.loginButton.clicked.connect(self.LoginVeri)
         self.guestButton.clicked.connect(self.guestVeri)
@@ -57,7 +58,10 @@ class LoginWindow(object):
         self.signUpButton.setText(_translate("CurrentWindow", "Sign Up"))
         self.loginButton.setText(_translate("CurrentWindow", "Login"))
 
-
+    def keyPressEvent(self, event):
+        if event.key() == QtCore.Qt.Key_Return:
+            self.LoginVeri()
+            print('Enter pressed')
 
     def clearFields(self):
         self.LogUser_lineEdit.setText('')
@@ -94,6 +98,7 @@ class LoginWindow(object):
     def switch_admin(self):
         self.Manager_Window = QtWidgets.QMainWindow()
         self.ui = ManagerWindow()
+
         self.ui.setupUi(self.Manager_Window)
         CurrentWindow.hide()
         self.Manager_Window.show()

@@ -2328,6 +2328,11 @@ class Ui_CookWindow(object):
             x = msg.exec_()
         # Case of satisfactory fields
         else:
+            for i in range(len(User)):
+                if(User[i].getType() == 5 and User[i].getFirst() == self.salespersoncomboBox.currentText()):
+                    print(User[i].getFirst())
+                    User[i].setRating(int(self.ratingcomboBox.currentText()))
+                    break
             msg = QMessageBox()
             msg.setWindowTitle("Thank you!")
             msg.setText(f"Thank you for rating salesperson {self.salespersoncomboBox.currentText()}")
@@ -2476,7 +2481,8 @@ class Ui_CookWindow(object):
 
     # Function that shows the "Menu Preview" page (7)
     def open_previewMenu(self):
-        self.clearallFields()
+        self.Name_listWidget.clear()
+        self.Price_listWidget.clear()
         for i in range(len(Menu)):
             #sortMenu()
             self.Name_listWidget.addItem(Menu[i].getName())

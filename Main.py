@@ -136,11 +136,15 @@ def addOrder2(Name, CurrentCart):
     Orders.append(Order(Name, CurrentCart))
     CurrentCart.clear()
 
+def addOrderHistoy(Order):
+    OrderHistory.append(Order)
+
 # Thread
 threadKill = False
 
 #====For_Storage====
 Orders = []
+OrderHistory = []
 DeliveryPeople = []
 Cooks = []
 Sales = []

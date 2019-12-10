@@ -4,6 +4,7 @@ from User import VIP, Member, Guest
 from Food import Food
 from Employee import Delivery
 from datetime import datetime
+import random
 import sys, random, Main
 
 class Order():
@@ -52,8 +53,11 @@ class Order():
                 self.delivery.setBidded(True)
                 self.currentBid = bidAmount
                 if bidAmount <= self.autoWin:
-                    self.window.addHistory("[" + str(now) + "] " + self.delivery.getFirst() + " bidded $" + format(bidAmount, '.2f') + " which is the auto win.")
+                    self.window.addHistory("[" + str(now) + "] " + self.delivery.getFirst() + " bidded $" + format(bidAmount, '.2f') + ", which is the auto win amount.")
                     self.bidComplete()
+                    # bot simulation instant delivery for TESTING
+                    if self.delivery == Main.deliveryBot2:
+                        self.orderCompleted()
                 elif self.timerStarted == False:
                     self.window.addHistory("[" + str(now) + "] " + self.delivery.getFirst() + " bidded $" + format(bidAmount, '.2f') + ".")
                     self.window.addHistory("[" + str(now) + "] Timer started!")
@@ -62,16 +66,21 @@ class Order():
                 else:
                     self.window.addHistory("[" + str(now) + "] " + self.delivery.getFirst() + " bidded $" + format(bidAmount, '.2f') + ".")
             else:
-                self.window.addHistory("[" + str(now) + "] " + Delivery.getFirst() + "'s bid did not go through.")
+                self.window.addHistory("[" + str(now) + "] " + Delivery.getFirst() + "'s bid failed, amount bid is higher than current bid.")
+        else:
+            self.window.addHistory("[" + str(now) + "] " + Delivery.getFirst() + "'s bid failed, you can't bid against yourself.")
 
     def startTimer(self):
+        bot_bid = False
+        if random.uniform(0, 1) > 0.3:
+            bot_bid = True
         self.timerStarted = True
         for i in range(60):
             if self.bidCompleted == True or self.killThread:
                 break
             if self.time > 0:
                 self.time -= 1
-            if i % 5 == 0:
+            if i % 5 == 0 and bot_bid == True and self.delivery != Main.deliveryBot2:
                 self.bid(Main.deliveryBot2, self.currentBid - 1)
             if self.window != None:
                 self.window.updateSecondScene()
@@ -83,6 +92,9 @@ class Order():
                 now = datetime.now().strftime("%H:%M:%S")
                 self.window.addHistory("[" + str(now) + "] Time's up!")
             self.bidComplete()
+            # bot simulation instant delivery for TESTING
+            if self.delivery == Main.deliveryBot2:
+                self.orderCompleted()
 
     def getCustomer(self):
         return self.customer
@@ -124,6 +136,14 @@ class Order():
         while len(Id) < 8:
             Id = "0" + Id
         return Id
+
+    def orderCompleted(self):
+        self.timeCompleted = datetime.now().strftime("%H:%M:%S")
+        Main.addOrderHistoy(self)
+        print("OrderHistoy length is now " + str(len(Main.OrderHistory)) + " and orderID " + self.Id + " has been put into OrderHistory")
+
+    def getTimeCompleted(self):
+        return self.timeCompleted
 
 # customer = Member("Jia Ming", "Ma", "jma8774", "password", "jma8774@bths.edu", "2369 W 11th St, NY")
 # chue = Delivery("Chue", "chue1", "password", "City College of New York")
