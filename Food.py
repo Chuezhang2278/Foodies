@@ -1,13 +1,13 @@
 class Food():
-    def __init__(self, name, price, cate, spicy, quantity, quality, sold):
+    def __init__(self, name, price, cate, spicy):
         self.name = name
         self.price = price
         self.cate = cate
         self.spicy = spicy
-        self.quantity = quantity
+        self.quantity = 0
         # quality rated from 1 to 5
-        self.quality = quality
-        self.sold = sold
+        self.quality = 0
+        self.sold = 0
 
     def __str__(self):
         return self.name
