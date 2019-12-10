@@ -76,26 +76,27 @@ class Ui_Form_Pay(object):
                 name1 = Q[17:]
                 for i in range(len(DeliveryPeople)):
                    if name1 == DeliveryPeople[i].getFirst():
-                        ep = DeliveryPeople[i]
-                        Sa = self.lineEdit.text()
-                        ep.Salary = int(Sa)
+
+                        Sa = int(self.lineEdit.text())
+                        DeliveryPeople[i].salary = Sa
                         self.label.setText(name1+" Salary $:" + self.lineEdit.text())
             elif Q[0] == 'S':
                 name1 = Q[13:]
                 for i in range(len(Sales)):
                     if name1 == Sales[i].getFirst():
-                        ep = Sales[i]
-                        Sa = self.lineEdit.text()
-                        ep.Salary = int(Sa)
+
+                        Sa = int(self.lineEdit.text())
+                        Sales[i].salary = Sa
                         self.label.setText(name1+ " salary $ " + self.lineEdit.text())
             elif Q[0] == 'C':
                 name1 = Q[7:]
                 for i in range(len(Cooks)):
                     if name1 == Cooks[i].getFirst():
-                        ep = Cooks[i]
-                        Sa = self.lineEdit.text()
-                        ep.Salary = int(Sa)
+
+                        Sa = int(self.lineEdit.text())
+                        Cooks[i].salary = Sa
                         self.label.setText(name1+ " salary $ "+ self.lineEdit.text())
+
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate

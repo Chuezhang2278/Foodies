@@ -39,8 +39,13 @@ class Ui_Form_EmployeeInformation(object):
         self.exitButton.setGeometry(QtCore.QRect(490, 416, 61, 21))
         self.exitButton.setObjectName("pushButton")
 
+
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
+        self.exitButton.clicked.connect(lambda:self.closescr(Form))
+
+
+
         for i in range(len(Cooks)):
             for j in range(4):
                 if j == 0:
@@ -68,22 +73,27 @@ class Ui_Form_EmployeeInformation(object):
                     self.tableWidget.setItem(k, l, QTableWidgetItem(str(DeliveryPeople[k - len(Cooks)].getWarning())))
 
         lencd=len(Cooks)+len(DeliveryPeople)
-        for m in range(len(Cooks)+len(DeliveryPeople),lencd+len(Sales)):
-            for n in range(6):
-                if n == 0:
-                    self.tableWidget.setItem(m, n, QTableWidgetItem(str('Sales')))
-                elif l == 1:
-                    self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m-lencd].getFirst())))
-                elif l == 2:
-                    self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m-lencd].getUser())))
+        try:
+            for m in range(lencd,lencd+len(Sales)):
+                for n in range(6):
+                    if n == 0:
+                        self.tableWidget.setItem(m, n, QTableWidgetItem(str('Sales')))
+                    elif n == 1:
+                        self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m-lencd].getFirst())))
+                    elif n == 2:
+                        self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m-lencd].getUser())))
+                    elif n == 3:
+                        self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m-lencd].getSalary())))
+                    elif n==4:
+                        self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m - lencd].getWarning())))
+                    elif n==5:
+                        self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m - lencd].getCommissions())))
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
 
-                elif l == 3:
-                    self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m-lencd].getSalary())))
-                elif l==4:
-                    self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m - lencd].getWarning())))
-                elif l==5:
-                    self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m - lencd].getComissions())))
-
+    def closescr(self, Form):
+        Form.hide()
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
