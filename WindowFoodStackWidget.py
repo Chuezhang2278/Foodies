@@ -20,6 +20,7 @@ class Food_Window(object):
         CurrentWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(CurrentWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.centralwidget.keyPressEvent = self.keyPressEvent
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
         self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 800, 600))
         self.stackedWidget.setObjectName("stackedWidget")
@@ -43,8 +44,8 @@ class Food_Window(object):
 
         for i in range(len(Menu)):
                 self.Name_listWidget.addItem(Menu[i].getName())
-                self.Price_listWidget.addItem(str(Menu[i].getPrice()*CurrentUser[0].getDiscount()))
-                
+                self.Price_listWidget.addItem(format(Menu[i].getPrice()*CurrentUser[0].getDiscount(), '.2f'))
+
         self.AddButton2 = QtWidgets.QPushButton(self.page)
         self.AddButton2.setGeometry(QtCore.QRect(360, 90, 93, 28))
         self.AddButton2.setObjectName("AddButton2")
@@ -126,8 +127,8 @@ class Food_Window(object):
         self.Page3_listView = QtWidgets.QListWidget(self.page_3)
         self.Page3_listView.setGeometry(QtCore.QRect(20, 50, 301, 531))
         self.Page3_listView.setObjectName("Page3_listView")
-        
-        
+
+
         self.Page3_label3 = QtWidgets.QLabel(self.page_3)
         self.Page3_label3.setGeometry(QtCore.QRect(30, 20, 81, 16))
         self.Page3_label3.setObjectName("Page3_label3")
@@ -190,7 +191,7 @@ class Food_Window(object):
         #====page1====#
         self.Remove_Button.clicked.connect(self.Remove)
         self.Checkout_Button.clicked.connect(self.Checkout)
-        
+
         self.AddButton1.hide()
         self.AddButton2.hide()
         self.AddButton3.hide()
@@ -201,7 +202,7 @@ class Food_Window(object):
         self.AddButton8.hide()
         self.AddButton9.hide()
         self.AddButton10.hide()
-        
+
         for i in range(len(Menu)):
             if i == 0:
                 self.AddButton1.show()
@@ -223,7 +224,7 @@ class Food_Window(object):
                 self.AddButton9.show()
             if i == 9:
                 self.AddButton10.show()
-           
+
         self.AddButton1.clicked.connect(self.Add_Button1)
         self.AddButton2.clicked.connect(self.Add_Button2)
         self.AddButton3.clicked.connect(self.Add_Button3)
@@ -234,7 +235,7 @@ class Food_Window(object):
         self.AddButton8.clicked.connect(self.Add_Button8)
         self.AddButton9.clicked.connect(self.Add_Button9)
         self.AddButton10.clicked.connect(self.Add_Button10)
-        
+
         #====page1====#
 
         #====page2====#
@@ -250,12 +251,12 @@ class Food_Window(object):
         QtCore.QMetaObject.connectSlotsByName(CurrentWindow)
 
         #====page3====#
-        
+
         self.Page3_logout.clicked.connect(self.Logout)
         self.Page3_next.clicked.connect(self.changeFinal)
-        
+
         #====page4====#
-        
+
         self.Page4_submit.clicked.connect(self.Submittion)
         self.Page4_logout.clicked.connect(self.Logout)
 
@@ -292,10 +293,10 @@ class Food_Window(object):
         self.Page3_label3.setText(_translate("MainWindow", "Your orders"))
         self.Page3_label1.setText(_translate("MainWindow", "Thank you for purchasing using our App! "))
         self.Page3_label2.setText(_translate("MainWindow", "Your food will be arriving shortly"))
-        self.Page3_logout.setText(_translate("MainWindow", "Logout"))   
-        self.Page3_next.setText(_translate("MainWindow", "Next"))     
-        
-        #page 4        
+        self.Page3_logout.setText(_translate("MainWindow", "Logout"))
+        self.Page3_next.setText(_translate("MainWindow", "Next"))
+
+        #page 4
         self.Page4_label1.setText(_translate("MainWindow", "Please give the Delivery man a rating!"))
         self.Page4_label2.setText(_translate("MainWindow", "Please give our Chefs a rating!"))
         self.Page4_label3.setText(_translate("MainWindow", "If you have any complaints or concern, Please leave a message down below"))
@@ -312,24 +313,29 @@ class Food_Window(object):
         self.comboBox_2.setItemText(3, _translate("MainWindow", "4"))
         self.comboBox_2.setItemText(4, _translate("MainWindow", "5"))
 
+    def keyPressEvent(self, e):
+        if e.key() == QtCore.Qt.Key_Backspace:
+            print('Backspace pressed')
+            self.Logout()
+
     def Recieved(self):
         User[CurrentUser[1]].confirmDelivery()
 
     def Submittion(self):
         Anderson.setRating(int(self.comboBox.currentText()))
-        Anderson.setRating(int(self.comboBox_2.currentText())) 
+        Anderson.setRating(int(self.comboBox_2.currentText()))
         temp = self.Page4_textedit.toPlainText()
         Complaint.append(temp)
         print(Complaint[0])
-        
-        
+
+
     def Logout(self):
         msg = QMessageBox()
         msg.setWindowTitle("Logout")
         msg.setText("Are you sure you want to logout?")
         msg.setIcon(QMessageBox.Question)
         msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
-        msg.setDefaultButton(QMessageBox.No)
+        msg.setDefaultButton(QMessageBox.Yes)
         msg.buttonClicked.connect(self.popup_button)
         x = msg.exec_()
 
@@ -342,10 +348,10 @@ class Food_Window(object):
     def Checkout(self):
         i = 0
         self.stackedWidget.setCurrentIndex(1)
-        self.finalCost.setText(str(self.temp))
-        
+        self.finalCost.setText(format(self.temp, '.2f'))
+
         while i < currentCartSize():
-            self.finalCart.addItem((User[CurrentUser[1]].order[i].getName() + "\t\\tt" + str(User[CurrentUser[1]].order[i].getPrice())))
+            self.finalCart.addItem(User[CurrentUser[1]].order[i].getName() + "\t\t\t" + format(User[CurrentUser[1]].order[i].getPrice(), '.2f'))
             i += 1
 
 
@@ -361,9 +367,9 @@ class Food_Window(object):
         elif(User[CurrentUser[1]].getType() != 0):
             addOrder2(User[CurrentUser[1]], CurrentCart)
         while i < len(User[CurrentUser[1]].order):
-            self.Page3_listView.addItem((User[CurrentUser[1]].order[i].getName()) + "\t\t\t" + str(User[CurrentUser[1]].order[i].getPrice()))
+            self.Page3_listView.addItem(User[CurrentUser[1]].order[i].getName() + "\t\t\t" + format(User[CurrentUser[1]].order[i].getPrice(), '.2f'))
             i += 1
-    
+
     def changeFinal(self):
         self.stackedWidget.setCurrentIndex(3)
 
@@ -374,54 +380,54 @@ class Food_Window(object):
             self.Cart.takeItem(self.Cart.row(item))
             CurrentCart.pop(self.Cart.currentRow()+1)
             User[CurrentUser[1]].removeUserOrder(self.Cart.currentRow())
-    
+
     def Add_Button1(self):
-        self.Cart.addItem(Menu[0].getName() + '\t\t\t' + str(Menu[0].getPrice()))
+        self.Cart.addItem(Menu[0].getName() + '\t\t\t' + format(Menu[0].getPrice(), '.2f'))
         addCurrentCart(Menu[0])
         self.temp += (Menu[0].getPrice())
         User[CurrentUser[1]].addUserOrder(Menu[0])
     def Add_Button2(self):
-        self.Cart.addItem(Menu[1].getName() + '\t\t\t' + str(Menu[1].getPrice()))
+        self.Cart.addItem(Menu[1].getName() + '\t\t\t' + format(Menu[1].getPrice(), '.2f'))
         addCurrentCart(Menu[1])
         self.temp += (Menu[1].getPrice())
         User[CurrentUser[1]].addUserOrder(Menu[1])
     def Add_Button3(self):
-        self.Cart.addItem(Menu[2].getName() + '\t\t\t' + str(Menu[2].getPrice()))
+        self.Cart.addItem(Menu[2].getName() + '\t\t\t' + format(Menu[2].getPrice(), '.2f'))
         addCurrentCart(Menu[2])
         self.temp += (Menu[2].getPrice())
         User[CurrentUser[1]].addUserOrder(Menu[2])
     def Add_Button4(self):
-        self.Cart.addItem(Menu[3].getName() + '\t\t\t' + str(Menu[3].getPrice()))
+        self.Cart.addItem(Menu[3].getName() + '\t\t\t' + format(Menu[3].getPrice(), '.2f'))
         addCurrentCart(Menu[3])
         self.temp += (Menu[3].getPrice())
         User[CurrentUser[1]].addUserOrder(Menu[3])
     def Add_Button5(self):
-        self.Cart.addItem(Menu[4].getName() + '\t\t\t' + str(Menu[4].getPrice()))
+        self.Cart.addItem(Menu[4].getName() + '\t\t\t' + format(Menu[4].getPrice(), '.2f'))
         addCurrentCart(Menu[4])
         self.temp += (Menu[4].getPrice())
         User[CurrentUser[1]].addUserOrder(Menu[4])
     def Add_Button6(self):
-        self.Cart.addItem(Menu[5].getName() + '\t\t\t' + str(Menu[5].getPrice()))
+        self.Cart.addItem(Menu[5].getName() + '\t\t\t' + format(Menu[5].getPrice(), '.2f'))
         addCurrentCart(Menu[5])
         self.temp += (Menu[5].getPrice())
         User[CurrentUser[1]].addUserOrder(Menu[5])
     def Add_Button7(self):
-        self.Cart.addItem(Menu[6].getName() + '\t\t\t' + str(Menu[6].getPrice()))
+        self.Cart.addItem(Menu[6].getName() + '\t\t\t' + format(Menu[6].getPrice(), '.2f'))
         addCurrentCart(Menu[6])
         self.temp += (Menu[6].getPrice())
         User[CurrentUser[1]].addUserOrder(Menu[6])
     def Add_Button8(self):
-        self.Cart.addItem(Menu[7].getName() + '\t\t\t' + str(Menu[7].getPrice()))
+        self.Cart.addItem(Menu[7].getName() + '\t\t\t' + format(Menu[7].getPrice(), '.2f'))
         addCurrentCart(Menu[7])
         self.temp += (Menu[7].getPrice())
         User[CurrentUser[1]].addUserOrder(Menu[7])
     def Add_Button9(self):
-        self.Cart.addItem(Menu[8].getName() + '\t\t\t' + str(Menu[8].getPrice()))
+        self.Cart.addItem(Menu[8].getName() + '\t\t\t' + format(Menu[8].getPrice(), '.2f'))
         addCurrentCart(Menu[8])
         self.temp += (Menu[8].getPrice())
         User[CurrentUser[1]].addUserOrder(Menu[8])
     def Add_Button10(self):
-        self.Cart.addItem(Menu[9].getName() + '\t\t\t' + str(Menu[9].getPrice()))
+        self.Cart.addItem(Menu[9].getName() + '\t\t\t' + format(Menu[9].getPrice(), '.2f'))
         addCurrentCart(Menu[9])
         self.temp += (Menu[9].getPrice())
         User[CurrentUser[1]].addUserOrder(Menu[9])

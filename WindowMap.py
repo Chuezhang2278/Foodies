@@ -166,8 +166,8 @@ class MapWindow(object):
             self.currentUser.getCustomer().setRating(i + 1)
             self.currentUser.getCustomer().checkPromotion() # *************** need andy to do this
             self.currentUser.getOrder().orderCompleted()
-            # self.currentUser.getCustomer().setDelivery(self.currentUser)
-            # self.currentUser.getCustomer().confirmDelivery()
+            self.currentUser.getCustomer().setDelivery(self.currentUser)
+            self.currentUser.getCustomer().confirmDelivery()
             self.currentUser.resetOrder() # removes order from delivery guy, so now currentOrder = None
             self.MainWindow.decideWhatToShow() # determines what to show based on currentOrder of delivery guy
             self.MainWindow.MainWindow.show()

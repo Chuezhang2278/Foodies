@@ -241,7 +241,7 @@ class DeliveryMainWindow(object):
         self.msg.setText("Are you sure you want to logout?")
         self.msg.setIcon(QMessageBox.Question)
         self.msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
-        self.msg.setDefaultButton(QMessageBox.No)
+        self.msg.setDefaultButton(QMessageBox.Yes)
 
         self.msg.buttonClicked.connect(self.switch_login)
 
