@@ -83,6 +83,10 @@ class Ui_CookWindow(object):
         font.setWeight(75)
         self.pendingOrdersLabel.setFont(font)
         self.pendingOrdersLabel.setObjectName("pendingOrdersLabel")
+
+        # Pending orders : (list of orders)
+        self.pendingOrdersLabel.setText(f"Pending orders: {len(PendingOrders)}")
+
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
@@ -2059,7 +2063,7 @@ class Ui_CookWindow(object):
         self.managemenuButton.setText(_translate("CookWindow", "Manage Restaurant Food Menu"))
         self.rateSalespersonButton.setText(_translate("CookWindow", "Rate your Salesperson!"))
         self.cookNextOrderButton.setText(_translate("CookWindow", "Cook Next Order"))
-        self.pendingOrdersLabel.setText(_translate("CookWindow", "Pending orders:"))
+        #self.pendingOrdersLabel.setText(_translate("CookWindow", "Pending orders:"))
         self.suppliesReturnButton.setText(_translate("CookWindow", "Return"))
         self.suppliesLabel.setText(_translate("CookWindow", "Supplies Management"))
         self.viewBestButton.setText(_translate("CookWindow", "View Best Supplies"))
@@ -2501,7 +2505,17 @@ class Ui_CookWindow(object):
     def cookNextOrder(self):
         # Go through list of orders
         # Send Cook's first name information to customer so they can be rated on the food
-        pass
+        
+        # Check if there are enough supplies to make the order, if there isn't return
+        # If there is enough supplies, need to decrement it based on the food classification
+        # Pass the Order confirmation to Delivery guy
+
+        # Decrement pending orders by 1
+        if(len(PendingOrders) > 0):
+            PendingOrders.pop(0)
+            self.pendingOrdersLabel.setText(f"Pending orders: {len(PendingOrders)}")
+        else:
+            print("No pending orders currently")
 
     # Function that clears all fields on page change
     def clearallFields(self):
