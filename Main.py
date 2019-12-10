@@ -158,7 +158,7 @@ SuppliesList=[]
 SuppliesList1 = []
 SuppliesList2 = []
 SuppliesList3 = []
-CurrentCart_SalesPerson=[]
+CurrentCart_SalesPerson = []
 CartSupplies_ForCook = []
 Complaint = []
 #====For_Storage====#
