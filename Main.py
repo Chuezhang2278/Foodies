@@ -132,15 +132,18 @@ def addCurrentCart_SalesPerson(Supplies):
     CurrentCart_SalesPerson.append(Supplies)
 
 # Customer Checking Out Stuff
-def addOrder2(User, CurrentCart):
-    Orders.append(Order(User, CurrentCart))
-    CurrentCart.clear()
+def addOrder2(Order):
+    Orders.append(Order)
 
 def addOrderHistoy(Order):
     OrderHistory.append(Order)
 
 def addPendingOrder(Order):
     PendingOrders.append(Order)
+    Order.getCart().clear()
+
+def addCookSupplies(Supplies):
+    CartSupplies_ForCook.append(Supplies)
 
 # Thread
 threadKill = False
@@ -222,6 +225,40 @@ Spices = Supplies('Spices', 'Good', 15.99)
 Sugar = Supplies('Sugar', 'Good', 4.99)
 Egg = Supplies('Egg', 'Good', 5.99)
 Dairy = Supplies('Dairy', 'Good', 8.99)
+
+
+# Give cook default inventory
+defaultMeat = Supplies('Meat','Best', 24.99)
+defaultMeat.setQuantity(25)
+defaultFish = Supplies('Fish', 'Best', 31.99)
+defaultFish.setQuantity(25)
+defaultVegetables = Supplies('Vegetables', 'Best', 9.99)
+defaultVegetables.setQuantity(25)
+defaultFlour = Supplies('Flour', 'Best', 5.99)
+defaultFlour.setQuantity(25)
+defaultYeast = Supplies('Yeast', 'Best', 6.99)
+defaultYeast.setQuantity(25)
+defaultSalt = Supplies('Salt', 'Best', 3.99)
+defaultSalt.setQuantity(25)
+defaultSpices = Supplies('Spices', 'Best', 15.99)
+defaultSpices.setQuantity(25)
+defaultSugar = Supplies('Sugar', 'Best', 4.99)
+defaultSugar.setQuantity(25)
+defaultEgg = Supplies('Egg', 'Best', 5.99)
+defaultEgg.setQuantity(25)
+defaultDairy = Supplies('Dairy', 'Best', 8.99)
+defaultDairy.setQuantity(25)
+
+addCookSupplies(defaultMeat)
+addCookSupplies(defaultFish)
+addCookSupplies(defaultVegetables)
+addCookSupplies(defaultFlour)
+addCookSupplies(defaultYeast)
+addCookSupplies(defaultSalt)
+addCookSupplies(defaultSpices)
+addCookSupplies(defaultSugar)
+addCookSupplies(defaultEgg)
+addCookSupplies(defaultDairy)
 
 addSupplies(Meat)
 addSupplies(Fish)

@@ -2229,6 +2229,8 @@ class Ui_CookWindow(object):
     def open_cookWelcome(self):
         self.clearallFields()
         self.stackedWidget.setCurrentIndex(0)
+        for i in range(len(CartSupplies_ForCook)):
+            print(CartSupplies_ForCook[i].getName(), CartSupplies_ForCook[i].getPrice(), CartSupplies_ForCook[i].getQuality(), CartSupplies_ForCook[i].getQuantity())
 
     def keyPressEvent(self, e):
         if e.key() == QtCore.Qt.Key_Backspace:
@@ -2269,16 +2271,28 @@ class Ui_CookWindow(object):
         # I imagine that I want to grab supplies from CurrentCart_SalesPerson. Then clear?
         # For loop iterating through CurrentCart_SalesPerson
         # Supplies.getName() = 'Meat' and Supplies.getQuality() = 'Best'
-        self.bestMeatsQuantityLabel.setText("0")
-        self.bestFishQuantityLabel.setText("0")
-        self.bestVegetablesQuantityLabel.setText("0")
-        self.bestFlourQuantityLabel.setText("0")
-        self.bestYeastQuantityLabel.setText("0")
-        self.bestSaltQuantityLabel.setText("0")
-        self.bestSpicesQuantityLabel.setText("0")
-        self.bestSugarQuantityLabel.setText("0")
-        self.bestEggQuantityLabel.setText("0")
-        self.bestDairyQuantityLabel.setText("0")
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Meat'):
+
+                self.bestMeatsQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Fish'):                
+                self.bestFishQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Vegetables'):
+                self.bestVegetablesQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Flour'):
+                self.bestFlourQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Yeast'):
+                self.bestYeastQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Salt'):
+                self.bestSaltQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Spices'):
+                self.bestSpicesQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Sugar'):
+                self.bestSugarQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Egg'):
+                self.bestEggQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Dairy'):
+                self.bestDairyQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
 
     # Function that shows the "Good Supplies" page (3)
     def open_goodSupplies(self):
@@ -2287,16 +2301,29 @@ class Ui_CookWindow(object):
 
     # Function that retrieves latest inventory data for "Good Supplies" page (3)
     def get_goodSupplies(self):
-        self.goodMeatsQuantityLabel.setText("0")
-        self.goodFishQuantityLabel.setText("0")
-        self.goodVegetablesQuantityLabel.setText("0")
-        self.goodFlourQuantityLabel.setText("0")
-        self.goodYeastQuantityLabel.setText("0")
-        self.goodSaltQuantityLabel.setText("0")
-        self.goodSpicesQuantityLabel.setText("0")
-        self.goodSugarQuantityLabel.setText("0")
-        self.goodEggQuantityLabel.setText("0")
-        self.goodDairyQuantityLabel.setText("0")
+        print(len(CartSupplies_ForCook))
+
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Meat'):
+                self.goodMeatsQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Fish'):                
+                self.goodFishQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Vegetables'):
+                self.goodVegetablesQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Flour'):
+                self.goodFlourQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Yeast'):
+                self.goodYeastQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Salt'):
+                self.goodSaltQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Spices'):
+                self.goodSpicesQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Sugar'):
+                self.goodSugarQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Egg'):
+                self.goodEggQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Dairy'):
+                self.goodDairyQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
 
     # Function that shows the "Bad Supplies" page (4)
     def open_badSupplies(self):
@@ -2305,16 +2332,27 @@ class Ui_CookWindow(object):
 
     # Function that retrieves latest inventory data for "Bad Supplies" page (4)
     def get_badSupplies(self):
-        self.badMeatsQuantityLabel.setText("0")
-        self.badFishQuantityLabel.setText("0")
-        self.badVegetablesQuantityLabel.setText("0")
-        self.badFlourQuantityLabel.setText("0")
-        self.badYeastQuantityLabel.setText("0")
-        self.badSaltQuantityLabel.setText("0")
-        self.badSpicesQuantityLabel.setText("0")
-        self.badSugarQuantityLabel.setText("0")
-        self.badEggQuantityLabel.setText("0")
-        self.badDairyQuantityLabel.setText("0")
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Meat'):
+                self.badMeatsQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Fish'):                
+                self.badFishQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Vegetables'):
+                self.badVegetablesQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Flour'):
+                self.badFlourQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Yeast'):
+                self.badYeastQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Salt'):
+                self.badSaltQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Spices'):
+                self.badSpicesQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Sugar'):
+                self.badSugarQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Egg'):
+                self.badEggQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Dairy'):
+                self.badDairyQuantityLabel.setText(str(CartSupplies_ForCook[i].getQuantity()))
 
     # Function that shows the "Rate your Salesperson" page (5)
     def open_rateSalesperson(self):
@@ -2512,6 +2550,8 @@ class Ui_CookWindow(object):
 
         # Decrement pending orders by 1
         if(len(PendingOrders) > 0):
+            PendingOrders[0].setCook(self)
+            addOrder2(PendingOrders[0])
             PendingOrders.pop(0)
             self.pendingOrdersLabel.setText(f"Pending orders: {len(PendingOrders)}")
         else:
