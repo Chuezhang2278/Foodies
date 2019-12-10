@@ -15,6 +15,7 @@ class Order():
         self.Id = self.generateId()
         self.customer = User
         self.delivery = None
+        self.cook = None
         self.cart = cart
         # prices are in dollars
         self.totalCost = 0
@@ -144,6 +145,13 @@ class Order():
 
     def getTimeCompleted(self):
         return self.timeCompleted
+
+    def getCook(self):
+        return self.cook
+
+    def setCook(self, Cook):
+        self.cook = Cook
+        
 
 # customer = Member("Jia Ming", "Ma", "jma8774", "password", "jma8774@bths.edu", "2369 W 11th St, NY")
 # chue = Delivery("Chue", "chue1", "password", "City College of New York")

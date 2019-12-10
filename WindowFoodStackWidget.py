@@ -4,6 +4,7 @@
 #ALTERNIATIVELY USE GUEST OR MAKE AN ACCOUNT THROUGH SIGNUP
 
 from Main import *
+from Order import Order
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
@@ -357,9 +358,9 @@ class Food_Window(object):
         i = 0
         self.stackedWidget.setCurrentIndex(2)
         if(User[CurrentUser[1]].getType() == 0):
-            addOrder2(void, CurrentCart)
+            addPendingOrder(Order(void, CurrentCart))
         elif(User[CurrentUser[1]].getType() != 0):
-            addOrder2(User[CurrentUser[1]], CurrentCart)
+            addPendingOrder(Order(User[CurrentUser[1]], CurrentCart))
         while i < len(User[CurrentUser[1]].order):
             self.Page3_listView.addItem((User[CurrentUser[1]].order[i].getName()) + "\t\t\t" + str(User[CurrentUser[1]].order[i].getPrice()))
             i += 1
