@@ -180,10 +180,10 @@ class Salesperson(Employee):
         self.salary = 20
         self.budget = budget
         self.restaurant=restaurant
-        self.rating = [5,4]
+        self.rating = []
 
 
-    def getRestuarant(self):
+    def getRestaurant(self):
 
         return self.restaurant
 
