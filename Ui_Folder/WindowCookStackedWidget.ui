@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QLabel" name="welcomeLabel">
@@ -121,6 +121,45 @@
       </property>
       <property name="text">
        <string>Rate your Salesperson!</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cookNextOrderButton">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>350</y>
+        <width>201</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Cook Next Order</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="pendingOrdersLabel">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>430</y>
+        <width>201</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Pending orders:</string>
       </property>
      </widget>
     </widget>
@@ -2647,7 +2686,7 @@
         <x>120</x>
         <y>110</y>
         <width>551</width>
-        <height>331</height>
+        <height>401</height>
        </rect>
       </property>
       <property name="title">
@@ -2745,7 +2784,7 @@
       <widget class="QComboBox" name="ratingcomboBox">
        <property name="geometry">
         <rect>
-         <x>160</x>
+         <x>170</x>
          <y>150</y>
          <width>51</width>
          <height>31</height>
@@ -2790,7 +2829,7 @@
       <widget class="QLabel" name="label_4">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>230</x>
          <y>150</y>
          <width>91</width>
          <height>31</height>
@@ -2813,8 +2852,8 @@
       <widget class="QPushButton" name="rateButton">
        <property name="geometry">
         <rect>
-         <x>234</x>
-         <y>232</y>
+         <x>220</x>
+         <y>330</y>
          <width>111</width>
          <height>51</height>
         </rect>
@@ -2828,6 +2867,44 @@
        </property>
        <property name="text">
         <string>Rate!</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>210</y>
+         <width>191</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Leave a comment:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="commentText">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>250</y>
+         <width>531</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
        </property>
       </widget>
      </widget>

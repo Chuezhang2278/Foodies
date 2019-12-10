@@ -68,6 +68,21 @@ class Ui_CookWindow(object):
         font.setWeight(75)
         self.rateSalespersonButton.setFont(font)
         self.rateSalespersonButton.setObjectName("rateSalespersonButton")
+        self.cookNextOrderButton = QtWidgets.QPushButton(self.page)
+        self.cookNextOrderButton.setGeometry(QtCore.QRect(490, 350, 201, 71))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.cookNextOrderButton.setFont(font)
+        self.cookNextOrderButton.setObjectName("cookNextOrderButton")
+        self.pendingOrdersLabel = QtWidgets.QLabel(self.page)
+        self.pendingOrdersLabel.setGeometry(QtCore.QRect(490, 430, 201, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pendingOrdersLabel.setFont(font)
+        self.pendingOrdersLabel.setObjectName("pendingOrdersLabel")
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
@@ -1451,7 +1466,7 @@ class Ui_CookWindow(object):
         self.badSuppliesLabel_2.setAlignment(QtCore.Qt.AlignCenter)
         self.badSuppliesLabel_2.setObjectName("badSuppliesLabel_2")
         self.groupBox_6 = QtWidgets.QGroupBox(self.page_6)
-        self.groupBox_6.setGeometry(QtCore.QRect(120, 110, 551, 331))
+        self.groupBox_6.setGeometry(QtCore.QRect(120, 110, 551, 401))
         self.groupBox_6.setTitle("")
         self.groupBox_6.setObjectName("groupBox_6")
         self.label = QtWidgets.QLabel(self.groupBox_6)
@@ -1490,7 +1505,7 @@ class Ui_CookWindow(object):
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
         self.ratingcomboBox = QtWidgets.QComboBox(self.groupBox_6)
-        self.ratingcomboBox.setGeometry(QtCore.QRect(160, 150, 51, 31))
+        self.ratingcomboBox.setGeometry(QtCore.QRect(170, 150, 51, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.ratingcomboBox.setFont(font)
@@ -1503,7 +1518,7 @@ class Ui_CookWindow(object):
         self.ratingcomboBox.addItem("")
         self.ratingcomboBox.addItem("")
         self.label_4 = QtWidgets.QLabel(self.groupBox_6)
-        self.label_4.setGeometry(QtCore.QRect(210, 150, 91, 31))
+        self.label_4.setGeometry(QtCore.QRect(230, 150, 91, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
@@ -1512,13 +1527,28 @@ class Ui_CookWindow(object):
         self.label_4.setAlignment(QtCore.Qt.AlignCenter)
         self.label_4.setObjectName("label_4")
         self.rateButton = QtWidgets.QPushButton(self.groupBox_6)
-        self.rateButton.setGeometry(QtCore.QRect(234, 232, 111, 51))
+        self.rateButton.setGeometry(QtCore.QRect(220, 330, 111, 51))
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
         font.setWeight(75)
         self.rateButton.setFont(font)
         self.rateButton.setObjectName("rateButton")
+        self.label_5 = QtWidgets.QLabel(self.groupBox_6)
+        self.label_5.setGeometry(QtCore.QRect(10, 210, 191, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_5.setFont(font)
+        self.label_5.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_5.setObjectName("label_5")
+        self.commentText = QtWidgets.QTextEdit(self.groupBox_6)
+        self.commentText.setGeometry(QtCore.QRect(10, 250, 531, 71))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.commentText.setFont(font)
+        self.commentText.setObjectName("commentText")
         self.stackedWidget.addWidget(self.page_6)
         self.page_7 = QtWidgets.QWidget()
         self.page_7.setObjectName("page_7")
@@ -1967,11 +1997,13 @@ class Ui_CookWindow(object):
         self.Name_listWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.Name_listWidget.setLineWidth(0)
         self.Name_listWidget.setObjectName("Name_listWidget")
+        self.Name_listWidget.setSpacing(14)
 
         self.Price_listWidget = QtWidgets.QListWidget(self.page_8)
         self.Price_listWidget.setGeometry(QtCore.QRect(550, 70, 91, 481))
         self.Price_listWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.Price_listWidget.setObjectName("Price_listWidget")
+        self.Price_listWidget.setSpacing(14)
 
         self.stackedWidget.addWidget(self.page_8)
         CookWindow.setCentralWidget(self.centralwidget)
@@ -1992,6 +2024,7 @@ class Ui_CookWindow(object):
         self.managesuppliesButton.clicked.connect(self.open_manageSupplies)
         self.managemenuButton.clicked.connect(self.open_manageMenu)
         self.rateSalespersonButton.clicked.connect(self.open_rateSalesperson)
+        self.cookNextOrderButton.clicked.connect(self.cookNextOrder)
         # Button connections for the second page (Supplies management page)
         self.suppliesReturnButton.clicked.connect(self.open_cookWelcome)
         self.viewBestButton.clicked.connect(self.open_bestSupplies)
@@ -2024,6 +2057,8 @@ class Ui_CookWindow(object):
         self.managesuppliesButton.setText(_translate("CookWindow", "Manage Restaurant Supplies"))
         self.managemenuButton.setText(_translate("CookWindow", "Manage Restaurant Food Menu"))
         self.rateSalespersonButton.setText(_translate("CookWindow", "Rate your Salesperson!"))
+        self.cookNextOrderButton.setText(_translate("CookWindow", "Cook Next Order"))
+        self.pendingOrdersLabel.setText(_translate("CookWindow", "Pending orders:"))
         self.suppliesReturnButton.setText(_translate("CookWindow", "Return"))
         self.suppliesLabel.setText(_translate("CookWindow", "Supplies Management"))
         self.viewBestButton.setText(_translate("CookWindow", "View Best Supplies"))
@@ -2146,6 +2181,7 @@ class Ui_CookWindow(object):
         self.ratingcomboBox.setItemText(5, _translate("CookWindow", "5"))
         self.label_4.setText(_translate("CookWindow", "out of 5"))
         self.rateButton.setText(_translate("CookWindow", "Rate!"))
+        self.label_5.setText(_translate("CookWindow", "Leave a comment:"))
         self.menuModificationReturnButton.setText(_translate("CookWindow", "Return"))
         self.foodmenuLabel.setText(_translate("CookWindow", "Food Menu Modification"))
         self.addgroupBox.setTitle(_translate("CookWindow", "Add an item"))
@@ -2268,9 +2304,10 @@ class Ui_CookWindow(object):
     def open_rateSalesperson(self):
         self.stackedWidget.setCurrentIndex(5)
         # Testing salesperson combobox, remove this later after retrieving the list of Salespersons
-        for i in range(len(User)):
-            if(User[i].getType() == 5):
-                self.salespersoncomboBox.addItem(User[i].getFirst())
+        if(self.salespersoncomboBox.count() == 1):
+            for i in range(len(User)):
+                if(User[i].getType() == 5):
+                    self.salespersoncomboBox.addItem(User[i].getFirst())
 
     # Function that gives a rating to a chosen Salesperson on the "Rate your Salesperson" page (5)
     def giveRating(self):
@@ -2287,6 +2324,8 @@ class Ui_CookWindow(object):
             msg.setWindowTitle("Thank you!")
             msg.setText(f"Thank you for rating salesperson {self.salespersoncomboBox.currentText()}")
             msg.setInformativeText(f"with a rating of {self.ratingcomboBox.currentText()} out of 5!")
+            if(self.commentText.toPlainText() != ""):
+                msg.setDetailedText(f"You commented: {self.commentText.toPlainText()}")
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
@@ -2333,8 +2372,7 @@ class Ui_CookWindow(object):
 
     # Function that removes a Food object from the Menu List (if it exists) on the "Food Menu Modification" page (6)
     def removefromMenu(self):
-        # Also make priceline only accept numbers
-        # have a qmessagebox popup
+        itemRemoved = False
         if(self.removeitemLine.text() == "" or self.removeclassificationCombo.currentText() == "" or self.removepriceLine == ""):
             msg = QMessageBox()
             msg.setWindowTitle("Invalid input!")
@@ -2344,30 +2382,35 @@ class Ui_CookWindow(object):
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
             print("Please input a valid name, classification, and price!")
-        else:
-            for i in range(len(Menu)):
-                if(self.removeitemLine.text() == Menu[i].getName() and self.removeclassificationCombo.currentText() == Menu[i].getCate() and
-                   self.removepriceLine.text() == str(Menu[i].getPrice()) and self.removespicyCheckbox.isChecked() == Menu[i].getSpice()):
-                   print(i)
-                   print(Menu[i].getName())
-                   Menu.pop(i)
-                   break
-                   
-
+            return
+        for i in range(len(Menu)):
+            if(self.removeitemLine.text() == Menu[i].getName() and self.removeclassificationCombo.currentText() == Menu[i].getCate() and
+               self.removepriceLine.text() == str(Menu[i].getPrice()) and self.removespicyCheckbox.isChecked() == Menu[i].getSpice()):
+                msg = QMessageBox()
+                msg.setWindowTitle("Removed!")
+                msg.setText(f"You just removed {self.removeitemLine.text()} from {self.removeclassificationCombo.currentText()}")
+                if(self.removespicyCheckbox.isChecked() == True):
+                    msg.setInformativeText(f"with a price of ${self.removepriceLine.text()}. This item is spicy!")
+                else:
+                    msg.setInformativeText(f"with a price of ${self.removepriceLine.text()}.")
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.setDefaultButton(QMessageBox.Ok)
+                x = msg.exec_()       
+                Menu.pop(i)
+                itemRemoved = True
+                break
+        if(itemRemoved == False):
             msg = QMessageBox()
-            msg.setWindowTitle("Removed!")
-            msg.setText(f"You just removed {self.removeitemLine.text()} from {self.removeclassificationCombo.currentText()}")
+            msg.setWindowTitle("No such item found!")
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText(f"There is no {self.removeitemLine.text()} from {self.removeclassificationCombo.currentText()}")
             if(self.removespicyCheckbox.isChecked() == True):
-                msg.setInformativeText(f"with a price of ${self.removepriceLine.text()}. This item is spicy!")
+                msg.setInformativeText(f"with a price of ${self.removepriceLine.text()} and the item is spicy, to be removed!")
             else:
-                msg.setInformativeText(f"with a price of ${self.removepriceLine.text()}.")
+                msg.setInformativeText(f"with a price of ${self.removepriceLine.text()} to be removed!")
             msg.setStandardButtons(QMessageBox.Ok)
             msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()       
-            print("You just removed:", self.removeitemLine.text(), 
-                  "\nwith a classification of:", self.removeclassificationCombo.currentText(),
-                  "\nwith a price of:", self.removepriceLine.text(),
-                  "\nand spicy:", self.removespicyCheckbox.isChecked())
+            x = msg.exec_()
 
     # Function that clears the "Remove an Item" field on the "Food Menu Modification" page (6)
     def resetRemove(self):
@@ -2380,20 +2423,22 @@ class Ui_CookWindow(object):
     def open_previewMenu(self):
         self.clearallFields()
         for i in range(len(Menu)):
-            sortMenu()
+            #sortMenu()
             self.Name_listWidget.addItem(Menu[i].getName())
-            self.Price_listWidget.addItem(str(Menu[i].getPrice()))
-
-        self.Name_listWidget.setSpacing(14)
-        self.Price_listWidget.setSpacing(14)
-        
+            self.Price_listWidget.addItem(str(Menu[i].getPrice()))        
         self.stackedWidget.setCurrentIndex(7)
+
+    # Function that cooks the next order in "Welcome Chef" page (0)
+    def cookNextOrder(self):
+        # Go through list of orders
+        # Send Cook's first name information to customer so they can be rated on the food
+        pass
 
     # Function that clears all fields on page change
     def clearallFields(self):
+        self.commentText.clear()
         self.Name_listWidget.clear()
         self.Price_listWidget.clear()
-        #self.salespersoncomboBox.clear()
         self.salespersoncomboBox.setCurrentIndex(-1)
         self.ratingcomboBox.setCurrentIndex(-1)
         self.additemLine.clear()
