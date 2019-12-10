@@ -2020,6 +2020,7 @@ class Ui_CookWindow(object):
         QtCore.QMetaObject.connectSlotsByName(CookWindow)
 
         # Button connections for the first page (Chef welcome page)
+        self.centralwidget.keyPressEvent = self.keyPressEvent
         self.logoutButton.clicked.connect(self.open_logoutConfirmation)
         self.managesuppliesButton.clicked.connect(self.open_manageSupplies)
         self.managemenuButton.clicked.connect(self.open_manageMenu)
@@ -2225,6 +2226,10 @@ class Ui_CookWindow(object):
         self.clearallFields()
         self.stackedWidget.setCurrentIndex(0)
 
+    def keyPressEvent(self, e):
+        if e.key() == QtCore.Qt.Key_Backspace:
+            self.open_logoutConfirmation()
+
     # Function that logs the chef out, and returns to the login page
     def open_logoutConfirmation(self):
         msg = QMessageBox()
@@ -2345,6 +2350,9 @@ class Ui_CookWindow(object):
             x = msg.exec_()
             # Need to send the name of salesperson and rating to the Manager (JD) or person in charge of wages
             # Employee.setRating(int(self.ratingcomboBox.currentText()))?
+            for i in range(len(User)):
+                if(User[i].getType() == 5):
+                    print(User[i].getFirst(), User[i].getRating())
 
     # Function that shows the "Food Menu Modification" page (6)
     def open_manageMenu(self):

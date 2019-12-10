@@ -90,7 +90,7 @@ def addCurrentCart(name):
     CurrentCart.append(name)
 
 def currentCartSize():
-    return len(CurrentCart)*2
+    return len(CurrentCart)
 
 def addEmployee(name):
     Employee.append(name)
@@ -132,8 +132,8 @@ def addCurrentCart_SalesPerson(Supplies):
     CurrentCart_SalesPerson.append(Supplies)
 
 # Customer Checking Out Stuff
-def addOrder2(Name, CurrentCart):
-    Orders.append(Order(Name, CurrentCart))
+def addOrder2(User, CurrentCart):
+    Orders.append(Order(User, CurrentCart))
     CurrentCart.clear()
 
 def addOrderHistoy(Order):
@@ -159,7 +159,7 @@ SuppliesList1 = []
 SuppliesList2 = []
 SuppliesList3 = []
 CurrentCart_SalesPerson=[]
-SuppliesCart_Cook = []
+Complaint = []
 #====For_Storage====#
 
 ################################################### TESTING BELOW #################################################################
@@ -203,19 +203,6 @@ checkLaidOff(deliveryJiaMing)
 deliveryBot2.setRating(1)
 # deliveryBot2.startNewOrder(Order(chue, CurrentCart))
 # deliveryBot.startNewOrder(Order(eric, CurrentCart))
-addCurrentCart(foodTest4)
-addCurrentCart(foodTest4)
-addCurrentCart(foodTest4)
-Orders.append(Order(eric, CurrentCart))
-addCurrentCart(foodTest4)
-Orders.append(Order(chue, CurrentCart))
-addCurrentCart(foodTest4)
-Orders.append(Order(jd, CurrentCart))
-addCurrentCart(foodTest4)
-addCurrentCart(foodTest4)
-Orders.append(Order(wilson, CurrentCart))
-addCurrentCart(foodTest4)
-Orders.append(Order(wilson, CurrentCart))
 
 
 # Define some supplies
