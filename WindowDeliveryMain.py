@@ -231,7 +231,7 @@ class DeliveryMainWindow(object):
             self.onWindow = False
 
     def keyPressEvent(self, e):
-        if e.key() == QtCore.Qt.Key_Backspace:
+        if e.key() == QtCore.Qt.Key_Backspace and self.selectOrder == False:
             print('Backspace pressed')
             self.open_logoutConfirmation()
 

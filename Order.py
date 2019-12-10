@@ -157,6 +157,9 @@ class Order():
     def setCook(self, Cook):
         self.cook = Cook
 
+    def getCart(self):
+        return self.cart
+
 
 # customer = Member("Jia Ming", "Ma", "jma8774", "password", "jma8774@bths.edu", "2369 W 11th St, NY")
 # chue = Delivery("Chue", "chue1", "password", "City College of New York")
