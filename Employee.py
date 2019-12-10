@@ -69,6 +69,7 @@ class Employee():
 class Delivery(Employee):
     def __init__(self, first_name, username, password, address):
         super().__init__(first_name, username, password)
+        self.bidded = False
         self.user_type = 3
         self.warning = 0
         self.rating = []
@@ -101,6 +102,7 @@ class Delivery(Employee):
 
     def startNewOrder(self, Order):
         self.currentOrder = Order
+        self.bidded = False
         self.create_direction_result(self.currentOrder.getCustomer().getAddress())
 
     def get_duration_to_address(self):
@@ -136,9 +138,15 @@ class Delivery(Employee):
 
     def getOrder(self):
         return self.currentOrder
-        
+
     def resetOrder(self):
         self.currentOrder = None
+
+    def getBidded(self):
+        return self.bidded
+
+    def setBidded(self, bool):
+        self.bidded = bool
 
 class Cook(Employee):
     def __init__(self,first_name, username, password):

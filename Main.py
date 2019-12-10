@@ -136,7 +136,8 @@ def addOrder2(Name, CurrentCart):
     Orders.append(Order(Name, CurrentCart))
     CurrentCart.clear()
 
-
+# Thread
+threadKill = False
 
 #====For_Storage====
 Orders = []
@@ -179,22 +180,37 @@ Anderson = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname
 Patrick = Salesperson('Patrick','patrick','password',1000.00,'restaurantname') #sales person example
 
 # Users
-deliveryBot = Delivery('Delivery Bot','u','p','City College of New York')
-deliveryBot2 = Delivery('Delivery Bot 2','u2','p2','JFK Airport')
+deliveryJiaMing = Delivery('Jia Ming Ma','u','p','City College of New York')
+deliveryBot2 = Delivery('Auto Bidding Bot','u2','p2','JFK Airport')
 void = Guest('void1','void2')
 eric = Member('eric','test2','t','t','t','Coney Island')
+jd = Member('jd','test2','t','t','t','Bronx Zoo')
+wilson = Member('wilson','test2','t','t','t','Flushing Ave, NY')
 chue = VIP('chue','bloo','blee','blee','blop','Empire State Building')
 
-addDeliveryPerson(deliveryBot)
-deliveryBot.setRating(1)
-deliveryBot.setRating(2)
-deliveryBot.setRating(1)
-deliveryBot.setRating(4)
-deliveryBot.setRating(5)
-checkLaidOff(deliveryBot)
+addDeliveryPerson(deliveryJiaMing)
+deliveryJiaMing.setRating(1)
+deliveryJiaMing.setRating(2)
+deliveryJiaMing.setRating(1)
+deliveryJiaMing.setRating(4)
+deliveryJiaMing.setRating(5)
+checkLaidOff(deliveryJiaMing)
 deliveryBot2.setRating(1)
-deliveryBot2.startNewOrder(Order(chue, CurrentCart))
-deliveryBot.startNewOrder(Order(eric, CurrentCart))
+# deliveryBot2.startNewOrder(Order(chue, CurrentCart))
+# deliveryBot.startNewOrder(Order(eric, CurrentCart))
+addCurrentCart(foodTest4)
+addCurrentCart(foodTest4)
+addCurrentCart(foodTest4)
+Orders.append(Order(eric, CurrentCart))
+addCurrentCart(foodTest4)
+Orders.append(Order(chue, CurrentCart))
+addCurrentCart(foodTest4)
+Orders.append(Order(jd, CurrentCart))
+addCurrentCart(foodTest4)
+addCurrentCart(foodTest4)
+Orders.append(Order(wilson, CurrentCart))
+addCurrentCart(foodTest4)
+Orders.append(Order(wilson, CurrentCart))
 
 
 # Define some supplies
@@ -242,7 +258,7 @@ addUser(Jim)
 addUser(manager)
 addUser(Anderson)
 addUser(Patrick)
-addUser(deliveryBot)
+addUser(deliveryJiaMing)
 addUser(deliveryBot2)
 
 addMenuItem(foodTest1)
