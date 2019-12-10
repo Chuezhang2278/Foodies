@@ -13,7 +13,12 @@ from PyQt5.QtWidgets import QMessageBox, QPushButton
 
 
 class Ui_CookWindow(object):
-    def setupUi(self, CookWindow):
+    def __init__(self):
+        self.CookWindow = None
+        self.LoginWindow = None
+    def setupUi(self, CookWindow, LoginWindow):
+        self.LoginWindow = LoginWindow
+        self.CookWindow = CookWindow
         CookWindow.setObjectName("CookWindow")
         CookWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(CookWindow)
@@ -25,6 +30,10 @@ class Ui_CookWindow(object):
         self.page.setObjectName("page")
         self.welcomeLabel = QtWidgets.QLabel(self.page)
         self.welcomeLabel.setGeometry(QtCore.QRect(0, 0, 350, 40))
+        
+        # Welcome chef (firstName)!
+        self.welcomeLabel.setText(f"Welcome chef {CurrentUser[0].getFirst()}!")
+        
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
@@ -1955,65 +1964,15 @@ class Ui_CookWindow(object):
         self.Name_listWidget.setEnabled(True)
         self.Name_listWidget.setGeometry(QtCore.QRect(140, 70, 401, 481))
         self.Name_listWidget.setAutoFillBackground(False)
-        self.Name_listWidget.setStyleSheet("background-color: rgb(240, 240, 240);")
         self.Name_listWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.Name_listWidget.setLineWidth(0)
         self.Name_listWidget.setObjectName("Name_listWidget")
-        item = QtWidgets.QListWidgetItem()
-        self.Name_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.Name_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.Name_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.Name_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.Name_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.Name_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.Name_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.Name_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.Name_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.Name_listWidget.addItem(item)
+
         self.Price_listWidget = QtWidgets.QListWidget(self.page_8)
         self.Price_listWidget.setGeometry(QtCore.QRect(550, 70, 91, 481))
-        self.Price_listWidget.setStyleSheet("background-color: rgb(240, 240, 240);")
         self.Price_listWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.Price_listWidget.setObjectName("Price_listWidget")
-        item = QtWidgets.QListWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Price_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Price_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Price_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Price_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Price_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Price_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Price_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Price_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Price_listWidget.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Price_listWidget.addItem(item)
+
         self.stackedWidget.addWidget(self.page_8)
         CookWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(CookWindow)
@@ -2060,7 +2019,7 @@ class Ui_CookWindow(object):
     def retranslateUi(self, CookWindow):
         _translate = QtCore.QCoreApplication.translate
         CookWindow.setWindowTitle(_translate("CookWindow", "MainWindow"))
-        self.welcomeLabel.setText(_translate("CookWindow", "Welcome, chef"))
+        #self.welcomeLabel.setText(_translate("CookWindow", "Welcome, chef"))
         self.logoutButton.setText(_translate("CookWindow", "Logout"))
         self.managesuppliesButton.setText(_translate("CookWindow", "Manage Restaurant Supplies"))
         self.managemenuButton.setText(_translate("CookWindow", "Manage Restaurant Food Menu"))
@@ -2218,49 +2177,11 @@ class Ui_CookWindow(object):
         self.menupreviewLabel.setText(_translate("CookWindow", "Menu Preview"))
         __sortingEnabled = self.Name_listWidget.isSortingEnabled()
         self.Name_listWidget.setSortingEnabled(False)
-        item = self.Name_listWidget.item(0)
-        item.setText(_translate("CookWindow", "New Item"))
-        item = self.Name_listWidget.item(1)
-        item.setText(_translate("CookWindow", "New Item"))
-        item = self.Name_listWidget.item(2)
-        item.setText(_translate("CookWindow", "New Item"))
-        item = self.Name_listWidget.item(3)
-        item.setText(_translate("CookWindow", "New Item"))
-        item = self.Name_listWidget.item(4)
-        item.setText(_translate("CookWindow", "New Item"))
-        item = self.Name_listWidget.item(5)
-        item.setText(_translate("CookWindow", "New Item"))
-        item = self.Name_listWidget.item(6)
-        item.setText(_translate("CookWindow", "New Item"))
-        item = self.Name_listWidget.item(7)
-        item.setText(_translate("CookWindow", "New Item"))
-        item = self.Name_listWidget.item(8)
-        item.setText(_translate("CookWindow", "New Item"))
-        item = self.Name_listWidget.item(9)
-        item.setText(_translate("CookWindow", "New Item"))
+
         self.Name_listWidget.setSortingEnabled(__sortingEnabled)
         __sortingEnabled = self.Price_listWidget.isSortingEnabled()
         self.Price_listWidget.setSortingEnabled(False)
-        item = self.Price_listWidget.item(0)
-        item.setText(_translate("CookWindow", "10"))
-        item = self.Price_listWidget.item(1)
-        item.setText(_translate("CookWindow", "10"))
-        item = self.Price_listWidget.item(2)
-        item.setText(_translate("CookWindow", "10"))
-        item = self.Price_listWidget.item(3)
-        item.setText(_translate("CookWindow", "10"))
-        item = self.Price_listWidget.item(4)
-        item.setText(_translate("CookWindow", "10"))
-        item = self.Price_listWidget.item(5)
-        item.setText(_translate("CookWindow", "10"))
-        item = self.Price_listWidget.item(6)
-        item.setText(_translate("CookWindow", "10"))
-        item = self.Price_listWidget.item(7)
-        item.setText(_translate("CookWindow", "10"))
-        item = self.Price_listWidget.item(8)
-        item.setText(_translate("CookWindow", "10"))
-        item = self.Price_listWidget.item(9)
-        item.setText(_translate("CookWindow", "10"))
+
         self.Price_listWidget.setSortingEnabled(__sortingEnabled)
 
     # Function that shows the "Chef Welcome" page (0)
@@ -2282,7 +2203,7 @@ class Ui_CookWindow(object):
     def popup_button(self, i):
         if(i.text() == "&Yes"):
             CurrentUser.clear()
-            self.CurrentWindow.hide()
+            self.CookWindow.hide()
             self.LoginWindow.show()
 
     # Function that shows the "Supplies Management" page (1)
@@ -2347,8 +2268,9 @@ class Ui_CookWindow(object):
     def open_rateSalesperson(self):
         self.stackedWidget.setCurrentIndex(5)
         # Testing salesperson combobox, remove this later after retrieving the list of Salespersons
-        self.salespersoncomboBox.addItem("Smith")
-        # self.salespersoncomboBox.addItems(Salesperson)
+        for i in range(len(User)):
+            if(User[i].getType() == 5):
+                self.salespersoncomboBox.addItem(User[i].getFirst())
 
     # Function that gives a rating to a chosen Salesperson on the "Rate your Salesperson" page (5)
     def giveRating(self):
@@ -2386,7 +2308,7 @@ class Ui_CookWindow(object):
             msg.setDefaultButton(QMessageBox.Ok)
             x = msg.exec_()
             print("Please input a valid name, classification, and price!")
-        else:
+        else:           
             msg = QMessageBox()
             msg.setWindowTitle("Added!")
             msg.setText(f"You just added {self.additemLine.text()} into {self.addclassificationCombo.currentText()}")
@@ -2423,6 +2345,15 @@ class Ui_CookWindow(object):
             x = msg.exec_()
             print("Please input a valid name, classification, and price!")
         else:
+            for i in range(len(Menu)):
+                if(self.removeitemLine.text() == Menu[i].getName() and self.removeclassificationCombo.currentText() == Menu[i].getCate() and
+                   self.removepriceLine.text() == str(Menu[i].getPrice()) and self.removespicyCheckbox.isChecked() == Menu[i].getSpice()):
+                   print(i)
+                   print(Menu[i].getName())
+                   Menu.pop(i)
+                   break
+                   
+
             msg = QMessageBox()
             msg.setWindowTitle("Removed!")
             msg.setText(f"You just removed {self.removeitemLine.text()} from {self.removeclassificationCombo.currentText()}")
@@ -2448,10 +2379,21 @@ class Ui_CookWindow(object):
     # Function that shows the "Menu Preview" page (7)
     def open_previewMenu(self):
         self.clearallFields()
+        for i in range(len(Menu)):
+            sortMenu()
+            self.Name_listWidget.addItem(Menu[i].getName())
+            self.Price_listWidget.addItem(str(Menu[i].getPrice()))
+
+        self.Name_listWidget.setSpacing(14)
+        self.Price_listWidget.setSpacing(14)
+        
         self.stackedWidget.setCurrentIndex(7)
 
     # Function that clears all fields on page change
     def clearallFields(self):
+        self.Name_listWidget.clear()
+        self.Price_listWidget.clear()
+        #self.salespersoncomboBox.clear()
         self.salespersoncomboBox.setCurrentIndex(-1)
         self.ratingcomboBox.setCurrentIndex(-1)
         self.additemLine.clear()
@@ -2468,6 +2410,6 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     CookWindow = QtWidgets.QMainWindow()
     ui = Ui_CookWindow()
-    ui.setupUi(CookWindow)
+    ui.setupUi(CookWindow, None)
     CookWindow.show()
     sys.exit(app.exec_())

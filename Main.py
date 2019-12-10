@@ -158,10 +158,10 @@ CurrentCart_SalesPerson=[]
 
 ################################################### TESTING BELOW #################################################################
 # Foods
-foodTest1 = Food('Chicken', 12.99, 'Entree', True, 100, 2, 4)
-foodTest2 = Food('Fish', 10.99, 'Entree', False, 500, 3, 5)
-foodTest3 = Food('Duck', 9.49, 'Entree', False, 122, 5, 6)
-foodTest4 = Food('Dog', 20.99, 'Entree', True, 5, 5, 7)
+foodTest1 = Food('Chicken', 12.99, 'Entrees', True, 100, 2, 4)
+foodTest2 = Food('Fish', 10.99, 'Entrees', False, 500, 3, 5)
+foodTest3 = Food('Duck', 9.49, 'Entrees', False, 122, 5, 6)
+foodTest4 = Food('Dog', 20.99, 'Entrees', True, 5, 5, 7)
 
 # Cart
 
@@ -177,8 +177,6 @@ manager = Manager('y','y','y')
 # Salesperson
 Anderson = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname') #sales person example
 Patrick = Salesperson('Patrick','patrick','password',1000.00,'restaurantname') #sales person example
-And = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname') #sales person example
-Ander = Salesperson('Anderson','anderson1','password',1000.00,'restaurantname') #sales person example
 
 # Users
 deliveryBot = Delivery('Delivery Bot','u','p','City College of New York')
@@ -244,8 +242,6 @@ addUser(Jim)
 addUser(manager)
 addUser(Anderson)
 addUser(Patrick)
-addUser(And)
-addUser(Ander)
 addUser(deliveryBot)
 addUser(deliveryBot2)
 
