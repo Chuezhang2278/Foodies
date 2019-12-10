@@ -9,6 +9,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Main import  *
 
+
+
+
+
 class Ui_Form_Complain(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -42,8 +46,8 @@ class Ui_Form_Complain(object):
 
     def ComplainSend(self):
         comp = self.textEdit.toPlainText()
-        Complaint.append(str(comp))
-        self.listWidget.addItem("Complain" + str(len(Complaint)) + ": " + str(comp))
+        Complaint.append(str("Anonymous Complain" + str(len(Complaint)-len(Reply)) + ": " + str(comp)))
+        self.listWidget.addItem("Anonymous Complain" + str(len(Complaint)-len(Reply)) + ": " + str(comp))
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
