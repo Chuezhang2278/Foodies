@@ -873,7 +873,7 @@ class Sales_Window(object):
         self.check_out_check_list.clicked.connect(self.go_to_check_list)
         self.check_out_supplier.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
         self.check_out_remove.clicked.connect(self.remove)
-        #self.confirm_order.clicked.connect(self.)
+        self.confirm_order.clicked.connect(self.confirmOrder)
 
         #page 8 index 7 (check list for inventory)
         self.return_check_list.clicked.connect(self.return_previous)
@@ -891,30 +891,30 @@ class Sales_Window(object):
         self.add1_8.clicked.connect(self.addButton1_8)
         self.add1_9.clicked.connect(self.addButton1_9)
         self.add1_10.clicked.connect(self.addButton1_10)
-        '''
-        #supplier 2 add to cart buttons
-        self.add2_1.clicked.connect()
-        self.add2_2.clicked.connect()
-        self.add2_3.clicked.connect()
-        self.add2_4.clicked.connect()
-        self.add2_5.clicked.connect()
-        self.add2_6.clicked.connect()
-        self.add2_7.clicked.connect()
-        self.add2_8.clicked.connect()
-        self.add2_9.clicked.connect()
-        self.add2_10.clicked.connect()
 
+        #supplier 2 add to cart buttons
+        self.add2_1.clicked.connect(self.addButton2_1)
+        self.add2_2.clicked.connect(self.addButton2_2)
+        self.add2_3.clicked.connect(self.addButton2_3)
+        self.add2_4.clicked.connect(self.addButton2_4)
+        self.add2_5.clicked.connect(self.addButton2_5)
+        self.add2_6.clicked.connect(self.addButton2_6)
+        self.add2_7.clicked.connect(self.addButton2_7)
+        self.add2_8.clicked.connect(self.addButton2_8)
+        self.add2_9.clicked.connect(self.addButton2_9)
+        self.add2_10.clicked.connect(self.addButton2_10)
+        '''
         #supplier 3 add to cart buttons
-        self.add3_1.clicked.connect()
-        self.add3_2.clicked.connect()
-        self.add3_3.clicked.connect()
-        self.add3_4.clicked.connect()
-        self.add3_5.clicked.connect()
-        self.add3_6.clicked.connect()
-        self.add3_7.clicked.connect()
-        self.add3_8.clicked.connect()
-        self.add3_9.clicked.connect()
-        self.add3_10.clicked.connect()
+        self.add3_1.clicked.connect(self.addButton3_1)
+        self.add3_2.clicked.connect(self.addButton3_2)
+        self.add3_3.clicked.connect(self.addButton3_3)
+        self.add3_4.clicked.connect(self.addButton3_4)
+        self.add3_5.clicked.connect(self.addButton3_5)
+        self.add3_6.clicked.connect(self.addButton3_6)
+        self.add3_7.clicked.connect(self.addButton3_7)
+        self.add3_8.clicked.connect(self.addButton3_8)
+        self.add3_9.clicked.connect(self.addButton3_9)
+        self.add3_10.clicked.connect(self.addButton3_10)
         
 '''
         #grab salesperson information and display on the profile page
@@ -1174,24 +1174,46 @@ class Sales_Window(object):
 
     #define logout function to be connected to each button
     def logout(self):
-        '''
         msg = QMessageBox()
         msg.setWindowTitle("Logout")
         msg.setText("Are you sure you want to logout?")
         msg.setIcon(QMessageBox.Question)
         msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
         msg.setDefaultButton(QMessageBox.No)
-        msg.buttonClicked.connect(self.logout_confirm())
+        msg.buttonClicked.connect(self.logout_confirm)
         x = msg.exec_()
-        '''
-        self.CurrentWindow.hide()
-        self.LoginWindow.show()
-    '''
-    def logout_confirm(self):
+
+    def logout_confirm(self, i):
         if (i.text() == "&Yes"):
             self.CurrentWindow.hide()
             self.LoginWindow.show()
-    '''
+
+    def send_supplies(self):
+        for i in range(len(CurrentCart_SalesPerson)):
+            CartSupplies_ForCook.append(CurrentCart_SalesPerson[i])
+
+    def confirmOrder(self):
+        msg = QMessageBox()
+        msg.setWindowTitle("Confirm Order")
+        msg.setText("Are you sure you want to confirm order")
+        msg.setIcon(QMessageBox.Question)
+        msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        msg.setDefaultButton(QMessageBox.No)
+        msg.buttonClicked.connect(self.popup_button)
+        x = msg.exec_()
+
+    def popup_button(self, i): # need to clear listwidget, list, total and keep budget
+        if (i.text() == "&Yes"):
+            self.send_supplies()
+            CurrentCart_SalesPerson.clear()
+            msg = QMessageBox()
+            msg.setWindowTitle("Order Confirmed.")
+            msg.setText("Order Confirmed! Supplies sent to Cook.")
+            msg.setStandardButtons(QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Ok)
+            x = msg.exec_()
+
+
     def remove(self):
         listItems = self.check_out_list.selectedItems()
         if not listItems: return
@@ -1267,7 +1289,7 @@ class Sales_Window(object):
     def update_total(self):
         temp = 0;
         for i in range(len(CurrentCart_SalesPerson)):
-            temp += (CurrentCart_SalesPerson[i].getPrice()*int(self.amount1_1.value()))
+            temp += (CurrentCart_SalesPerson[i].getPrice()*int(CurrentCart_SalesPerson[i].getQuantity()))
 
         self.total = round(temp, 2)
 
@@ -1278,7 +1300,7 @@ class Sales_Window(object):
         if self.check_budget(SuppliesList1[0].getPrice()*int(self.amount1_1.value())):
             self.check_out_list.addItem(SuppliesList1[0].getName() + '\t' + SuppliesList1[0].getQuality() + \
                                     '\t' + self.amount1_1.text() + '\t' + str(round(SuppliesList1[0].getPrice()*int(self.amount1_1.value()), 2)))
-            SuppliesList[0].setQuantity(int(self.amount1_1.value()))
+            SuppliesList1[0].setQuantity(int(self.amount1_1.value()))
             addCurrentCart_SalesPerson(SuppliesList1[0])
             self.update_total()
             self.budget_connected_total()
@@ -1291,7 +1313,7 @@ class Sales_Window(object):
         if self.check_budget(SuppliesList1[1].getPrice()*int(self.amount1_2.value())):
             self.check_out_list.addItem(SuppliesList1[1].getName() + '\t' + SuppliesList1[1].getQuality() + \
                                     '\t' + self.amount1_2.text() + '\t' + str(round(SuppliesList1[1].getPrice()*int(self.amount1_2.value()), 2)))
-            SuppliesList[1].setQuantity(int(self.amount1_2.value()))
+            SuppliesList1[1].setQuantity(int(self.amount1_2.value()))
             addCurrentCart_SalesPerson(SuppliesList1[0])
             self.update_total()
             self.budget_connected_total()
@@ -1304,7 +1326,7 @@ class Sales_Window(object):
         if self.check_budget(SuppliesList1[2].getPrice() * int(self.amount1_3.value())):
             self.check_out_list.addItem(SuppliesList1[2].getName() + '\t' + SuppliesList1[2].getQuality() + \
                                     '\t' + self.amount1_3.text() + '\t' + str(round(SuppliesList1[2].getPrice() * int(self.amount1_3.value()), 2)))
-            SuppliesList[2].setQuantity(int(self.amount1_3.value()))
+            SuppliesList1[2].setQuantity(int(self.amount1_3.value()))
             addCurrentCart_SalesPerson(SuppliesList1[2])
             self.update_total()
             self.budget_connected_total()
@@ -1318,7 +1340,7 @@ class Sales_Window(object):
         if self.check_budget(SuppliesList1[3].getPrice() * int(self.amount1_4.value())):
             self.check_out_list.addItem(SuppliesList1[3].getName() + '\t' + SuppliesList1[3].getQuality() + \
                                     '\t' + self.amount1_4.text() + '\t' + str(round(SuppliesList1[3].getPrice() * int(self.amount1_4.value()), 2)))
-            SuppliesList[3].setQuantity(int(self.amount1_4.value()))
+            SuppliesList1[3].setQuantity(int(self.amount1_4.value()))
             addCurrentCart_SalesPerson(SuppliesList1[3])
             self.update_total()
             self.budget_connected_total()
@@ -1331,7 +1353,7 @@ class Sales_Window(object):
         if self.check_budget(SuppliesList1[4].getPrice() * int(self.amount1_5.value())):
             self.check_out_list.addItem(SuppliesList1[4].getName() + '\t' + SuppliesList1[4].getQuality() + \
                                     '\t' + self.amount1_5.text() + '\t' + str(round(SuppliesList1[4].getPrice() * int(self.amount1_5.value()), 2)))
-            SuppliesList[4].setQuantity(int(self.amount1_5.value()))
+            SuppliesList1[4].setQuantity(int(self.amount1_5.value()))
             addCurrentCart_SalesPerson(SuppliesList1[4])
             self.update_total()
             self.budget_connected_total()
@@ -1344,7 +1366,7 @@ class Sales_Window(object):
         if self.check_budget(SuppliesList1[5].getPrice() * int(self.amount1_6.value())):
             self.check_out_list.addItem(SuppliesList1[5].getName() + '\t' + SuppliesList1[5].getQuality() + \
                                     '\t' + self.amount1_6.text() + '\t' + str(round(SuppliesList1[5].getPrice() * int(self.amount1_6.value()), 2)))
-            SuppliesList[5].setQuantity(int(self.amount1_6.value()))
+            SuppliesList1[5].setQuantity(int(self.amount1_6.value()))
             addCurrentCart_SalesPerson(SuppliesList1[5])
             self.update_total()
             self.budget_connected_total()
@@ -1357,7 +1379,7 @@ class Sales_Window(object):
         if self.check_budget(SuppliesList1[6].getPrice() * int(self.amount1_7.value())):
             self.check_out_list.addItem(SuppliesList1[6].getName() + '\t' + SuppliesList1[6].getQuality() + \
                                     '\t' + self.amount1_7.text() + '\t' + str(round(SuppliesList1[6].getPrice() * int(self.amount1_7.value()), 2)))
-            SuppliesList[6].setQuantity(int(self.amount1_7.value()))
+            SuppliesList1[6].setQuantity(int(self.amount1_7.value()))
             addCurrentCart_SalesPerson(SuppliesList1[6])
             self.update_total()
             self.budget_connected_total()
@@ -1370,7 +1392,7 @@ class Sales_Window(object):
         if self.check_budget(SuppliesList1[7].getPrice() * int(self.amount1_8.value())):
             self.check_out_list.addItem(SuppliesList1[7].getName() + '\t' + SuppliesList1[7].getQuality() + \
                                     '\t' + self.amount1_8.text() + '\t' + str(round(SuppliesList1[7].getPrice() * int(self.amount1_8.value()), 2)))
-            SuppliesList[7].setQuantity(int(self.amount1_8.value()))
+            SuppliesList1[7].setQuantity(int(self.amount1_8.value()))
             addCurrentCart_SalesPerson(SuppliesList1[7])
             self.update_total()
             self.budget_connected_total()
@@ -1383,7 +1405,7 @@ class Sales_Window(object):
         if self.check_budget(SuppliesList1[8].getPrice() * int(self.amount1_9.value())):
             self.check_out_list.addItem(SuppliesList1[8].getName() + '\t' + SuppliesList1[8].getQuality() + \
                                     '\t' + self.amount1_9.text() + '\t' + str(round(SuppliesList1[8].getPrice() * int(self.amount1_9.value()), 2)))
-            SuppliesList[8].setQuantity(int(self.amount1_9.value()))
+            SuppliesList1[8].setQuantity(int(self.amount1_9.value()))
             addCurrentCart_SalesPerson(SuppliesList1[8])
             self.update_total()
             self.budget_connected_total()
@@ -1396,7 +1418,7 @@ class Sales_Window(object):
         if self.check_budget(SuppliesList1[9].getPrice() * int(self.amount1_10.value())):
             self.check_out_list.addItem(SuppliesList1[9].getName() + '\t' + SuppliesList1[9].getQuality() + \
                                     '\t' + self.amount1_10.text() + '\t' + str(round(SuppliesList1[9].getPrice() * int(self.amount1_10.value()), 2)))
-            SuppliesList[9].setQuantity(int(self.amount1_10.value()))
+            SuppliesList1[9].setQuantity(int(self.amount1_10.value()))
             addCurrentCart_SalesPerson(SuppliesList1[9])
             self.update_total()
             self.budget_connected_total()
@@ -1404,28 +1426,138 @@ class Sales_Window(object):
             # pop out window to show error
             self.budget_error()
             print("Amount exceeds Budget!")
-    '''
+
     # For Supplier 2
     def addButton2_1(self):
+        if self.check_budget(SuppliesList2[0].getPrice() * int(self.amount2_1.value())):
+            self.check_out_list.addItem(SuppliesList2[0].getName() + '\t' + SuppliesList2[0].getQuality() + \
+                                    '\t' + self.amount2_1.text() + '\t' + str(round(SuppliesList2[0].getPrice() * int(self.amount2_1.value()), 2)))
+            SuppliesList2[0].setQuantity(int(self.amount2_1.value()))
+            addCurrentCart_SalesPerson(SuppliesList2[0])
+            self.update_total()
+            self.budget_connected_total()
+        else:
+            # pop out window to show error
+            self.budget_error()
+            print("Amount exceeds Budget!")
 
     def addButton2_2(self):
+        if self.check_budget(SuppliesList2[1].getPrice() * int(self.amount2_2.value())):
+            self.check_out_list.addItem(SuppliesList2[1].getName() + '\t' + SuppliesList2[1].getQuality() + \
+                                    '\t' + self.amount2_2.text() + '\t' + str(round(SuppliesList2[1].getPrice() * int(self.amount2_2.value()), 2)))
+            SuppliesList2[1].setQuantity(int(self.amount2_2.value()))
+            addCurrentCart_SalesPerson(SuppliesList2[1])
+            self.update_total()
+            self.budget_connected_total()
+        else:
+            # pop out window to show error
+            self.budget_error()
+            print("Amount exceeds Budget!")
 
     def addButton2_3(self):
+        if self.check_budget(SuppliesList2[2].getPrice() * int(self.amount2_3.value())):
+            self.check_out_list.addItem(SuppliesList2[2].getName() + '\t' + SuppliesList2[2].getQuality() + \
+                                    '\t' + self.amount2_3.text() + '\t' + str(round(SuppliesList2[2].getPrice() * int(self.amount2_3.value()), 2)))
+            SuppliesList2[2].setQuantity(int(self.amount2_3.value()))
+            addCurrentCart_SalesPerson(SuppliesList2[2])
+            self.update_total()
+            self.budget_connected_total()
+        else:
+            # pop out window to show error
+            self.budget_error()
+            print("Amount exceeds Budget!")
 
     def addButton2_4(self):
+        if self.check_budget(SuppliesList2[3].getPrice() * int(self.amount2_4.value())):
+            self.check_out_list.addItem(SuppliesList2[3].getName() + '\t' + SuppliesList2[3].getQuality() + \
+                                    '\t' + self.amount2_4.text() + '\t' + str(round(SuppliesList2[3].getPrice() * int(self.amount2_4.value()), 2)))
+            SuppliesList2[3].setQuantity(int(self.amount2_4.value()))
+            addCurrentCart_SalesPerson(SuppliesList2[3])
+            self.update_total()
+            self.budget_connected_total()
+        else:
+            # pop out window to show error
+            self.budget_error()
+            print("Amount exceeds Budget!")
 
     def addButton2_5(self):
+        if self.check_budget(SuppliesList2[4].getPrice() * int(self.amount2_5.value())):
+            self.check_out_list.addItem(SuppliesList2[4].getName() + '\t' + SuppliesList2[4].getQuality() + \
+                                    '\t' + self.amount2_5.text() + '\t' + str(round(SuppliesList2[4].getPrice() * int(self.amount2_5.value()), 2)))
+            SuppliesList2[4].setQuantity(int(self.amount2_5.value()))
+            addCurrentCart_SalesPerson(SuppliesList2[4])
+            self.update_total()
+            self.budget_connected_total()
+        else:
+            # pop out window to show error
+            self.budget_error()
+            print("Amount exceeds Budget!")
 
     def addButton2_6(self):
+        if self.check_budget(SuppliesList2[5].getPrice() * int(self.amount2_6.value())):
+            self.check_out_list.addItem(SuppliesList2[5].getName() + '\t' + SuppliesList2[5].getQuality() + \
+                                    '\t' + self.amount2_6.text() + '\t' + str(round(SuppliesList2[5].getPrice() * int(self.amount2_6.value()), 2)))
+            SuppliesList2[5].setQuantity(int(self.amount2_6.value()))
+            addCurrentCart_SalesPerson(SuppliesList2[5])
+            self.update_total()
+            self.budget_connected_total()
+        else:
+            # pop out window to show error
+            self.budget_error()
+            print("Amount exceeds Budget!")
 
     def addButton2_7(self):
+        if self.check_budget(SuppliesList2[6].getPrice() * int(self.amount2_7.value())):
+            self.check_out_list.addItem(SuppliesList2[6].getName() + '\t' + SuppliesList2[6].getQuality() + \
+                                    '\t' + self.amount2_7.text() + '\t' + str(round(SuppliesList2[6].getPrice() * int(self.amount2_7.value()), 2)))
+            SuppliesList2[6].setQuantity(int(self.amount2_7.value()))
+            addCurrentCart_SalesPerson(SuppliesList2[6])
+            self.update_total()
+            self.budget_connected_total()
+        else:
+            # pop out window to show error
+            self.budget_error()
+            print("Amount exceeds Budget!")
 
     def addButton2_8(self):
+        if self.check_budget(SuppliesList2[7].getPrice() * int(self.amount2_8.value())):
+            self.check_out_list.addItem(SuppliesList2[7].getName() + '\t' + SuppliesList2[7].getQuality() + \
+                                    '\t' + self.amount2_8.text() + '\t' + str(round(SuppliesList2[7].getPrice() * int(self.amount2_8.value()), 2)))
+            SuppliesList2[7].setQuantity(int(self.amount2_8.value()))
+            addCurrentCart_SalesPerson(SuppliesList2[7])
+            self.update_total()
+            self.budget_connected_total()
+        else:
+            # pop out window to show error
+            self.budget_error()
+            print("Amount exceeds Budget!")
 
     def addButton2_9(self):
+        if self.check_budget(SuppliesList2[8].getPrice() * int(self.amount2_9.value())):
+            self.check_out_list.addItem(SuppliesList2[8].getName() + '\t' + SuppliesList2[8].getQuality() + \
+                                    '\t' + self.amount2_9.text() + '\t' + str(round(SuppliesList2[8].getPrice() * int(self.amount2_9.value()), 2)))
+            SuppliesList2[8].setQuantity(int(self.amount2_9.value()))
+            addCurrentCart_SalesPerson(SuppliesList2[8])
+            self.update_total()
+            self.budget_connected_total()
+        else:
+            # pop out window to show error
+            self.budget_error()
+            print("Amount exceeds Budget!")
 
     def addButton2_10(self):
-
+        if self.check_budget(SuppliesList2[9].getPrice() * int(self.amount2_10.value())):
+            self.check_out_list.addItem(SuppliesList2[9].getName() + '\t' + SuppliesList2[9].getQuality() + \
+                                    '\t' + self.amount2_10.text() + '\t' + str(round(SuppliesList2[9].getPrice() * int(self.amount2_10.value()), 2)))
+            SuppliesList2[9].setQuantity(int(self.amount2_10.value()))
+            addCurrentCart_SalesPerson(SuppliesList2[9])
+            self.update_total()
+            self.budget_connected_total()
+        else:
+            # pop out window to show error
+            self.budget_error()
+            print("Amount exceeds Budget!")
+    '''
     # For Supplier 3
     def addButton3_1(self):
 
