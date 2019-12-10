@@ -1,9 +1,10 @@
 
 #supplies class for both the cook and salesperson
 class Supplies():
-    def __init__(self, name, quality, price): #price entered is the default price for "Good" Quality inventory
+    def __init__(self, name, quality, price, quantity): #price entered is the default price for "Good" Quality inventory
         self.name = name
         self.quality = quality
+        self.quantity = quantity
 
         if quality=='Bad': #if quality is bad then cut default price by 50%
             self.price = price * .50
@@ -23,6 +24,9 @@ class Supplies():
     def getPrice(self):
         return self.price
 
+    def getQuantity(self):
+        return self.quantity
+
     # Update the price if the price changes or if quality is changed
     def updatePrice(self):
         if self.quality=='Bad': #if quality is bad then cut default price by 50%
@@ -40,7 +44,5 @@ class Supplies():
         self.quality=quality
         self.updatePrice()
 
-
-
-
-
+    def changeQuantity(self, quantity):
+        self.quantity=quantity
