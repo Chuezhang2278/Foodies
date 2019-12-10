@@ -76,6 +76,13 @@ class Food_Window(object):
         self.Cart.setGeometry(QtCore.QRect(480, 39, 271, 441))
         self.Cart.setObjectName("Cart")
 
+        
+        
+        if(len(User[CurrentUser[1]].order) > 0):
+            for i in range(len(User[CurrentUser[1]].order)):
+                self.Cart.addItem(User[CurrentUser[1]].order[i].getName() + "\t\t\t" + format(User[CurrentUser[1]].order[i].getPrice(), '.2f'))
+                CurrentCart.append(User[CurrentUser[1]].order[i])
+
         self.AddButton5 = QtWidgets.QPushButton(self.page)
         self.AddButton5.setGeometry(QtCore.QRect(360, 244, 93, 28))
         self.AddButton5.setObjectName("AddButton5")
@@ -343,6 +350,7 @@ class Food_Window(object):
     def popup_button(self, i):
         if(i.text() == "&Yes"):
             CurrentUser.clear()
+            CurrentCart.clear()
             self.CurrentWindow.hide()
             self.LoginWindow.show()
 
@@ -352,7 +360,7 @@ class Food_Window(object):
         self.finalCost.setText(format(self.temp, '.2f'))
 
         while i < currentCartSize():
-            self.finalCart.addItem(User[CurrentUser[1]].order[i].getName() + "\t\t\t" + format(User[CurrentUser[1]].order[i].getPrice(), '.2f'))
+            self.finalCart.addItem(CurrentCart[i].getName() + "\t\t\t" + format(CurrentCart[i].getPrice(), '.2f'))
             i += 1
 
 
