@@ -1,6 +1,5 @@
 from WindowSignUp import sign_window
 from WindowFoodStackWidget import Food_Window
-#from WindowChef import Ui_WindowChef
 from WindowCookStackedWidget import Ui_CookWindow
 from WindowManager import ManagerWindow
 from WindowSalesperson import Sales_Window
