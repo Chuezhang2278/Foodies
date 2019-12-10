@@ -47,6 +47,9 @@ class Ui_Form_SignUplist(object):
         self.label_3 = QtWidgets.QLabel(Form)
         self.label_3.setGeometry(QtCore.QRect(20, 50, 261, 61))
         self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(Form)
+        self.label_4.setGeometry(QtCore.QRect(370, 260, 261, 61))
+        self.label_4.setObjectName("label_4")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -72,12 +75,13 @@ class Ui_Form_SignUplist(object):
 
     def AgreeSignup(self):
         try:
+            j=-1
             cellr=self.tableWidget.currentRow()
             cellc=self.tableWidget.currentColumn()
             Em=self.tableWidget.currentItem().text()
             for i in Signup:
+                j=j+1
                 if i.getEmail() == Em:
-                    print(len(Members))
                     t1=i.getFirst()
                     t2=i.getLast()
                     t3=i.getUser()
@@ -85,7 +89,10 @@ class Ui_Form_SignUplist(object):
                     t5=i.getEmail()
                     t6=i.getAddress()
                     Members.append(Member(t1,t2,t3,t4,t5,t6))
-                    print(len(Members))
+                    self.label_4.setText(i.getUser()+ " move to member successful!")
+                    self.tableWidget.removeRow(cellr)
+                    Signup.pop(j)
+
         except Exception as e:
             import traceback
             traceback.print_exc()
@@ -118,4 +125,4 @@ class Ui_Form_SignUplist(object):
         item.setText(_translate("Form", "User Name"))
         self.AgreeButton.setText(_translate("Form", "Agree"))
         self.label_3.setText(_translate("Form", "<html><head/><body><p><span style=\" font-weight:600;\">Select one, push Agree to agree</span></p><p><span style=\" font-weight:600;\">user to be Member:</span></p></body></html>"))
-
+        self.label_4.setText(_translate("Form", "<html><head/><body><p><br/></p></body></html>"))
