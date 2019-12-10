@@ -341,6 +341,11 @@ class Food_Window(object):
     def change(self):
         i = 0
         self.stackedWidget.setCurrentIndex(2)
+        if(User[CurrentUser[1]].getType() == 0):
+            addOrder2("guest", CurrentCart)
+        elif(User[CurrentUser[1]].getType() != 0):
+            addOrder2(User[CurrentUser[1]].getFirst(), CurrentCart)
+        
         while i < currentCartSize():
             self.Page3_listView.addItem((User[CurrentUser[1]].order[i]) + "\t\t\t " + str(User[CurrentUser[1]].order[i+1]))
             i += 2

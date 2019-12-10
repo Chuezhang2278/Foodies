@@ -132,9 +132,11 @@ def addCurrentCart_SalesPerson(Supplies):
     CurrentCart_SalesPerson.append(Supplies)
 
 # Customer Checking Out Stuff
-def addOrder2():
-    Orders.append(Order(CurrentUser, CurrentCart))
+def addOrder2(Name, CurrentCart):
+    Orders.append(Order(Name, CurrentCart))
     CurrentCart.clear()
+
+
 
 #====For_Storage====
 Orders = []
