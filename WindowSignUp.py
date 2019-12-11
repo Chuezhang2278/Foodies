@@ -1,6 +1,7 @@
 from Main import *
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from User import *
 
 
 class sign_window(object):
@@ -12,7 +13,7 @@ class sign_window(object):
         self.LoginWindow = LoginWindow
         self.CurrentWindow = CurrentWindow
         CurrentWindow.setObjectName("CurrentWindow")
-        CurrentWindow.resize(400, 320)
+        CurrentWindow.resize(400, 286)
         self.centralwidget = QtWidgets.QWidget(CurrentWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.First_Label = QtWidgets.QLabel(self.centralwidget)
@@ -36,11 +37,6 @@ class sign_window(object):
         self.Email_Label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.Email_Label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.Email_Label.setObjectName("Email_Label")
-        self.Address_Label = QtWidgets.QLabel(self.centralwidget)
-        self.Address_Label.setGeometry(QtCore.QRect(52, 220, 65, 16))
-        self.Address_Label.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.Address_Label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.Address_Label.setObjectName("Address_Label")
         self.First_lineEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.First_lineEdit.setGeometry(QtCore.QRect(128, 20, 201, 22))
         self.First_lineEdit.setObjectName("First_lineEdit")
@@ -56,11 +52,8 @@ class sign_window(object):
         self.Email_lineEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.Email_lineEdit.setGeometry(QtCore.QRect(128, 180, 201, 22))
         self.Email_lineEdit.setObjectName("Email_lineEdit")
-        self.Address_lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.Address_lineEdit.setGeometry(QtCore.QRect(128, 220, 201, 22))
-        self.Address_lineEdit.setObjectName("Address_lineEdit")
         self.signButton = QtWidgets.QPushButton(self.centralwidget)
-        self.signButton.setGeometry(QtCore.QRect(60, 260, 271, 28))
+        self.signButton.setGeometry(QtCore.QRect(60, 220, 271, 28))
         self.signButton.setObjectName("signButton")
         CurrentWindow.setCentralWidget(self.centralwidget)
 
@@ -78,7 +71,6 @@ class sign_window(object):
         self.User_Label.setText(_translate("CurrentWindow", "Username"))
         self.Pass_Label.setText(_translate("CurrentWindow", "Password"))
         self.Email_Label.setText(_translate("CurrentWindow", "Email"))
-        self.Address_Label.setText("Address")
         self.signButton.setText(_translate("CurrentWindow", "Finish Signing Up"))
 
     def SignFunc(self):
@@ -87,13 +79,11 @@ class sign_window(object):
         temp3 = self.User_lineEdit.text()
         temp4 = self.Pass_lineEdit.text()
         temp5 = self.Email_lineEdit.text()
-        temp6 = self.Address_lineEdit.text()
 
-        eric = Member(temp1,temp2,temp3,temp4,temp5,temp6)
-        print("Added Member " + temp1 + " to Users list!")
-        addUser(eric)
-
+        eric = SignUp(temp1,temp2,temp3,temp4,temp5,"t")
+        Signup.append(eric)
         self.switch_login()
+
 
     def keyPressEvent(self, e):
         if e.key() == QtCore.Qt.Key_Escape:
