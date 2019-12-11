@@ -5,6 +5,7 @@
 from Main import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
+from datetime import date
 
 class Sales_Window(object):
 
@@ -87,6 +88,8 @@ class Sales_Window(object):
         self.shop_suppliers.setGeometry(QtCore.QRect(590, 30, 113, 32))
         self.shop_suppliers.setObjectName("shop_suppliers")
         self.stackedWidget.addWidget(self.profile)
+
+        self.calculate_DOD()
 
         #page 2 - inventory required by cook - index 1============================================================================================================
         self.inventory_required = QtWidgets.QWidget()
@@ -263,9 +266,12 @@ class Sales_Window(object):
 
 
         for i in range(len(SuppliesList1)):
+            if SuppliesList1[i].isDealOfTheDay():
+                self.item_list_1.addItem(self.add_DOD_item(SuppliesList1[i].getName()))
+            else:
                 self.item_list_1.addItem(SuppliesList1[i].getName())
-                self.quality_list_1.addItem(SuppliesList1[i].getQuality())
-                self.price_list_1.addItem(str(SuppliesList1[i].getPrice()))
+            self.quality_list_1.addItem(SuppliesList1[i].getQuality())
+            self.price_list_1.addItem(str(SuppliesList1[i].getPrice()))
 
         self.verticalLayoutWidget_3 = QtWidgets.QWidget(self.suppler_1)
         self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(619, 80, 151, 501))
@@ -406,9 +412,12 @@ class Sales_Window(object):
         self.price_list_2.setSpacing(15)#changed spacing
 
         for i in range(len(SuppliesList2)):
+            if SuppliesList2[i].isDealOfTheDay():
+                self.item_list_2.addItem(self.add_DOD_item(SuppliesList2[i].getName()))
+            else:
                 self.item_list_2.addItem(SuppliesList2[i].getName())
-                self.quality_list_2.addItem(SuppliesList2[i].getQuality())
-                self.price_list_2.addItem(str(SuppliesList2[i].getPrice()))
+            self.quality_list_2.addItem(SuppliesList2[i].getQuality())
+            self.price_list_2.addItem(str(SuppliesList2[i].getPrice()))
 
         self.verticalLayoutWidget_5 = QtWidgets.QWidget(self.supplier_2)
         self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(620, 80, 151, 501))
@@ -552,9 +561,12 @@ class Sales_Window(object):
         self.price_list_3.setSpacing(15)#changed spacing
 
         for i in range(len(SuppliesList3)):
+            if SuppliesList3[i].isDealOfTheDay():
+                self.item_list_3.addItem(self.add_DOD_item(SuppliesList3[i].getName()))
+            else:
                 self.item_list_3.addItem(SuppliesList3[i].getName())
-                self.quality_list_3.addItem(SuppliesList3[i].getQuality())
-                self.price_list_3.addItem(str(SuppliesList3[i].getPrice()))
+            self.quality_list_3.addItem(SuppliesList3[i].getQuality())
+            self.price_list_3.addItem(str(SuppliesList3[i].getPrice()))
 
         self.verticalLayoutWidget_6 = QtWidgets.QWidget(self.supplier_3)
         self.verticalLayoutWidget_6.setGeometry(QtCore.QRect(619, 80, 151, 501))
@@ -1312,7 +1324,11 @@ class Sales_Window(object):
     # For Supplier 1
     def addButton1_1(self):
         if self.check_budget(SuppliesList1[0].getPrice()*int(self.amount1_1.value())):
-            self.check_out_list.addItem(SuppliesList1[0].getName() + '\t' + SuppliesList1[0].getQuality() + \
+            if SuppliesList1[0].isDealOfTheDay():
+                temp = self.add_DOD_item(SuppliesList1[0].getName())
+            else:
+                temp = SuppliesList1[0].getName()
+            self.check_out_list.addItem(temp + '\t' + SuppliesList1[0].getQuality() + \
                                     '\t' + self.amount1_1.text() + '\t' + str(round(SuppliesList1[0].getPrice()*int(self.amount1_1.value()), 2)))
             SuppliesList1[0].setQuantity(int(self.amount1_1.value()))
             addCurrentCart_SalesPerson(SuppliesList1[0])
@@ -1704,6 +1720,58 @@ class Sales_Window(object):
             # pop out window to show error
             self.budget_error()
             print("Amount exceeds Budget!")
+
+
+    def if_index_error_DOD(self,n):
+        if n>3:
+            return 1
+        else:
+            return n
+
+    def if_index_error_DOD2(self,n):
+        if n>9:
+            return 4
+        else:
+            return n
+
+    def add_DOD_item(self,item):
+        return str(item)+ " (Deal Of the Day)"
+
+    #deal of the day function
+    def calculate_DOD(self):
+        determine_dod_num = 0;
+        today = date.today()
+        determine_dod_num+=int(today.month)
+        determine_dod_num+=int(today.day)
+
+        temp = determine_dod_num%5
+
+        for i in range(0,temp): #determine mod 5 amount of deals every day
+
+            temp = (temp%2)
+            temp = self.if_index_error_DOD(temp)
+
+            temp2 = (determine_dod_num%3) + (determine_dod_num%4)
+            temp2 = self.if_index_error_DOD2(temp2)
+
+            if (temp == 0 or temp == 1):
+                SuppliesList1[temp2].setDealOfTheDay()
+                self.deal_of_the_day_list.addItem("Supplier 1: "+str(SuppliesList1[temp2].getName()))
+            elif temp == 2:
+                SuppliesList2[temp2].setDealOfTheDay()
+                self.deal_of_the_day_list.addItem("Supplier 1: " + str(SuppliesList2[temp2].getName()))
+            elif temp == 3:
+                SuppliesList3[temp2].setDealOfTheDay()
+                self.deal_of_the_day_list.addItem("Supplier 1: " + str(SuppliesList3[temp2].getName()))
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
