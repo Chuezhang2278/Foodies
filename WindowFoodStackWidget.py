@@ -34,7 +34,7 @@ class Food_Window(object):
         self.Name_listWidget.setAutoFillBackground(False)
         self.Name_listWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.Name_listWidget.setLineWidth(0)
-        self.Name_listWidget.setSpacing(15)
+        self.Name_listWidget.setSpacing(17)
         self.Name_listWidget.setObjectName("Name_listWidget")
 
         self.Price_listWidget = QtWidgets.QListWidget(self.page)
@@ -107,7 +107,7 @@ class Food_Window(object):
         self.AddButton6.setObjectName("AddButton6")
 
         self.Cart = QtWidgets.QListWidget(self.page)
-        self.Cart.setGeometry(QtCore.QRect(480, 39, 271, 441))
+        self.Cart.setGeometry(QtCore.QRect(480, 39, 281, 441))
         self.Cart.setObjectName("Cart")
 
 
