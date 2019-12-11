@@ -14,7 +14,6 @@ class Food_Window(object):
         self.CurrentWindow = None
         self.LoginWindow = None
         self.r = sr.Recognizer()
-        self.mic = sr.Microphone()
 
     def setupUi(self, CurrentWindow, LoginWindow):
         self.temp = 0
@@ -377,6 +376,7 @@ class Food_Window(object):
         self.comboBox_2.setItemText(4, _translate("MainWindow", "5"))
 
     def voice_recognize(self):
+        self.mic = sr.Microphone()
         with self.mic as source:
             print("Listening to User")
             audio = self.r.listen(source)
