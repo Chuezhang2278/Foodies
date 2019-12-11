@@ -7,7 +7,7 @@ class Employee():
         self.first_name = first_name.title()
         self.username = username
         self.password = password
-
+    
     def getPass(self):
         return self.password
 
@@ -30,51 +30,12 @@ class Employee():
         self.salary = self.salary * 1.1
         return self.salary
 
-    def getRating(self):
-        if len(self.rating) == 0:
-            return -1
-        sum = 0
-        for i in self.rating:
-            sum += i
-        return sum / len(self.rating)
-
-    def setRating(self, value):
-        self.rating.append(value)
-        print(self.first_name + " received a new rating of " + str(value))
-        if len(self.rating) > 2:
-            last_three = [self.rating[len(self.rating) - 1], self.rating[len(self.rating) - 2], self.rating[len(self.rating) - 3]]
-            sum = 0
-            for i in last_three:
-                sum += i
-            avg = sum / 3
-            print("The last 3 rating average is " + str(avg))
-            if avg < 2:
-                self.warning += 1
-                print(self.first_name + " has been issued a warning, he/she has " + str(self.warning) + " warnings")
-
-    def getLast3Rating(self):
-        last_3 = []
-        if len(self.rating) > 3:
-            for i in range(len(self.rating) - 3, len(self.rating)):
-                last_3.append(self.rating[i])
-        else:
-            for i in range(len(self.rating)):
-                last_3.append(self.rating[i])
-        return last_3
-
-    def getWarnings(self):
-        return self.warning
-
-
 class Delivery(Employee):
-    # By Jia Ming Ma
-    
     def __init__(self, first_name, username, password, address):
         super().__init__(first_name, username, password)
-        self.bidded = False
         self.user_type = 3
-        self.warning = 0
-        self.rating = []
+        self.warning=0
+        self.salary=0
         self.currentOrder = None
         self.step_by_step = []
         self.decoded = []
@@ -96,7 +57,6 @@ class Delivery(Employee):
         self.duration_to_address = Parser.get_duration(self.directions_result)
         self.distance_to_address = Parser.get_distance(self.directions_result)
         self.step_by_step = Parser.get_step_by_step_directions(self.directions_result)
-
         # ended up not needing the polyline coordinates
         # self.polylines = Parser.get_polyline(self.directions_result)
         # self.decoded = Parser.decode_polyline(self.polylines)
@@ -104,8 +64,7 @@ class Delivery(Employee):
 
     def startNewOrder(self, Order):
         self.currentOrder = Order
-        self.bidded = False
-        self.create_direction_result(self.currentOrder.getCustomer().getAddress())
+        self.create_direction_result(Order.getCustomer().getAddress())
 
     def get_duration_to_address(self):
         return self.duration_to_address
@@ -129,33 +88,14 @@ class Delivery(Employee):
     def getY(self):
         return self.y
 
-    def getAddress(self):
-        return self.address
-
-    def getCustomerAddress(self):
-        return self.currentOrder.getCustomer().getAddress()
-
-    def getCustomer(self):
-        return self.currentOrder.getCustomer()
-
-    def getOrder(self):
-        return self.currentOrder
-
-    def resetOrder(self):
-        self.currentOrder = None
-
-    def getBidded(self):
-        return self.bidded
-
-    def setBidded(self, bool):
-        self.bidded = bool
+    def getWarning(self):
+        return self.warning
 
 class Cook(Employee):
     def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)
         self.salary = 10
         self.user_type = 4
-        self.rating = []
 
     def addFood(menuList, Food):
         menuList.append(Food)
@@ -176,20 +116,19 @@ class Cook(Employee):
                 menuList[i].setQuality(quality)
 
 class Salesperson(Employee):
-    def __init__(self,first_name, username, password, budget, restaurant):
+    def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)
         self.user_type = 5
         self.salary = 20
-        self.budget = budget
-        self.restaurant=restaurant
-        self.rating = []
+        self.budget = 600
+        self.Commissions=0
+        self.warning=0
+    ####
+    def getWarning(self):
+        return self.warning
 
-    def setBudget(self,budget):
-        self.budget = budget
-
-    def getRestaurant(self):
-
-        return self.restaurant
+    def getCommissions(self):
+        return self.Commissions
 
 class Manager(Employee):
     def __init__(self,first_name, username, password):
@@ -197,3 +136,5 @@ class Manager(Employee):
         self.user_type = 6
         self.salary = 250
         self.budget = 1000
+
+# DeliveryGuy = Delivery("Jia Ming", "jma8774", "jma8774", "160 Convent Ave, New York, NY 10031")
