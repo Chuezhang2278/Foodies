@@ -50,7 +50,7 @@ class Supplies():
     def updatePrice(self):
         if self.quality=='Bad': #if quality is bad then cut default price by 50%
             self.price = self.price * .50
-            self.priec = round(self.price, 2)
+            self.price = round(self.price, 2)
         elif self.quality=='Best': #if quality is the best than increase by 120%
             self.price = self.price * 1.20
             self.price = round(self.price, 2)

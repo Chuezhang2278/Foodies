@@ -10,6 +10,7 @@ class User():
         self.email = email #Email
         self.password = password #Password
         self.deliveryPerson = None
+        self.cookPerson = None
         self.rating = []
 
         print("\ninitializing User " + self.first_name + "'s address...")
@@ -20,6 +21,9 @@ class User():
 
     def setDelivery(self, Delivery):
         self.deliveryPerson = Delivery
+    
+    def setCook(self, Cook):
+        self.cookPerson = Cook
 
     def confirmDelivery(self):
         self.confirm = True

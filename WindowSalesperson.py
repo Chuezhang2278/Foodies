@@ -84,6 +84,7 @@ class Sales_Window(object):
         self.deal_of_the_day_list = QtWidgets.QListWidget(self.profile)
         self.deal_of_the_day_list.setGeometry(QtCore.QRect(490, 120, 221, 471))
         self.deal_of_the_day_list.setObjectName("deal_of_the_day_list")
+        self.deal_of_the_day_list.setSpacing(15)
         self.shop_suppliers = QtWidgets.QPushButton(self.profile)
         self.shop_suppliers.setGeometry(QtCore.QRect(590, 30, 113, 32))
         self.shop_suppliers.setObjectName("shop_suppliers")
@@ -1744,25 +1745,38 @@ class Sales_Window(object):
         determine_dod_num+=int(today.month)
         determine_dod_num+=int(today.day)
 
+        print(determine_dod_num)
         temp = determine_dod_num%5
 
         for i in range(0,temp): #determine mod 5 amount of deals every day
 
-            temp = (temp%2)
+            temp = (temp%2)+i
             temp = self.if_index_error_DOD(temp)
 
-            temp2 = (determine_dod_num%3) + (determine_dod_num%4)
+            temp2 = (determine_dod_num%3) + (determine_dod_num%4) + i
             temp2 = self.if_index_error_DOD2(temp2)
 
             if (temp == 0 or temp == 1):
-                SuppliesList1[temp2].setDealOfTheDay()
-                self.deal_of_the_day_list.addItem("Supplier 1: "+str(SuppliesList1[temp2].getName()))
+                #if  (not SuppliesList1[temp2].isDealOfTheDay):
+                    SuppliesList1[temp2].setDealOfTheDay()
+                    self.deal_of_the_day_list.addItem("Supplier 1: "+str(SuppliesList1[temp2].getName()))
+                    SuppliesList1[temp2].changeQuality('Best')
+                    SuppliesList1[temp2].updatePrice()
+                    SuppliesList1[temp2].changePrice(int(SuppliesList1[temp2].getPrice())*.50)
             elif temp == 2:
-                SuppliesList2[temp2].setDealOfTheDay()
-                self.deal_of_the_day_list.addItem("Supplier 1: " + str(SuppliesList2[temp2].getName()))
+                #if (not SuppliesList2[temp2].isDealOfTheDay):
+                    SuppliesList2[temp2].setDealOfTheDay()
+                    self.deal_of_the_day_list.addItem("Supplier 2: " + str(SuppliesList2[temp2].getName()))
+                    SuppliesList1[temp2].changeQuality('Best')
+                    SuppliesList1[temp2].updatePrice()
+                    SuppliesList1[temp2].changePrice(int(SuppliesList2[temp2].getPrice()) * .50)
             elif temp == 3:
-                SuppliesList3[temp2].setDealOfTheDay()
-                self.deal_of_the_day_list.addItem("Supplier 1: " + str(SuppliesList3[temp2].getName()))
+                #if (not SuppliesList3[temp2].isDealOfTheDay):
+                    SuppliesList3[temp2].setDealOfTheDay()
+                    self.deal_of_the_day_list.addItem("Supplier 2: " + str(SuppliesList3[temp2].getName()))
+                    SuppliesList2[temp2].changeQuality('Best')
+                    SuppliesList2[temp2].updatePrice()
+                    SuppliesList2[temp2].changePrice(int(SuppliesList2[temp2].getPrice()) * .50)
 
 
 
