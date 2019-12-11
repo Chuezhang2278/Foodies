@@ -90,8 +90,9 @@ class sign_window(object):
         temp5 = self.Email_lineEdit.text()
         temp6 = self.Address_lineEdit.text()
 
-        eric = Member(temp1,temp2,temp3,temp4,temp5,temp6)
-        addUser(eric)
+        eric=SignUp(temp1,temp2,temp3,temp4,temp5,temp6)
+        Signup.append(eric)
+
         self.switch_login()
 
 

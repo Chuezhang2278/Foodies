@@ -2,13 +2,14 @@ import googlemaps
 import GoogleMapParser as Parser
 import Main
 
+
 class User():
     def __init__(self, first_name, last_name, username, password, email, address):
-        self.first_name = first_name.title() #First name
-        self.last_name = last_name.title() #Last name
-        self.username = username #User name
-        self.email = email #Email
-        self.password = password #Password
+        self.first_name = first_name.title()  # First name
+        self.last_name = last_name.title()  # Last name
+        self.username = username  # User name
+        self.email = email  # Email
+        self.password = password  # Password
         self.deliveryPerson = None
         self.cookPerson = None
         self.rating = []
@@ -21,7 +22,7 @@ class User():
 
     def setDelivery(self, Delivery):
         self.deliveryPerson = Delivery
-    
+
     def setCook(self, Cook):
         self.cookPerson = Cook
 
@@ -52,7 +53,7 @@ class User():
     def getAddress(self):
         return self.address
 
-    def addUserOrder(self,Food):
+    def addUserOrder(self, Food):
         self.order.append(Food)
 
     def removeUserOrder(self, index):
@@ -62,7 +63,7 @@ class User():
         return len(self.order)
 
     def printOrder(self):
-        i=0
+        i = 0
         while (i < (len(self.order))):
             print(self.order[i].getName())
             i += 1
@@ -84,13 +85,13 @@ class User():
         for i in self.getLast3Rating():
             sum += i
         if sum != 0:
-            avg = sum/len(self.getLast3Rating())
+            avg = sum / len(self.getLast3Rating())
         if avg != 0 and len(self.getLast3Rating()) == 3:
             if avg > 4:
-                self.user_type = 2 # become VIP
+                self.user_type = 2  # become VIP
                 self.discount = 0.75
             elif avg < 2 and avg > 1:
-                self.user_type = 0 # become GUEST
+                self.user_type = 0  # become GUEST
                 self.discount = 1
             else:
                 print(self.first_name + " has been blacklisted")
@@ -107,6 +108,7 @@ class User():
                 last_3.append(self.rating[i])
         return last_3
 
+
 class Guest(User):
     def __init__(self, username, password):
         self.first_name = "guest"
@@ -117,7 +119,8 @@ class Guest(User):
         self.order = []
         self.confirm = False
 
-class Member(User): #Inherits VIP methods as well as user, polymorphism
+
+class Member(User):  # Inherits VIP methods as well as user, polymorphism
     def __init__(self, first_name, last_name, username, password, email, address):
         super().__init__(first_name, last_name, username, password, email, address)
         self.discount = 0.85
@@ -125,10 +128,16 @@ class Member(User): #Inherits VIP methods as well as user, polymorphism
         self.order = []
         self.confirm = False
 
-class VIP(User): #Inherits VIP methods as well as user, polymorphism
+
+class VIP(User):  # Inherits VIP methods as well as user, polymorphism
     def __init__(self, first_name, last_name, username, password, email, address):
-        super().__init__(first_name,last_name,username, password, email, address)
+        super().__init__(first_name, last_name, username, password, email, address)
         self.discount = 0.75
         self.user_type = 2
         self.order = []
         self.confirm = False
+
+
+class SignUp(User): #Inherits VIP methods as well as user, polymorphism
+    def __init__(self, first_name, last_name, username, password, email, address):
+        super().__init__(first_name,last_name,username, password, email, address)
