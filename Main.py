@@ -151,7 +151,7 @@ def addOrderHistoy(Order):
 
 def addPendingOrder(Order):
     PendingOrders.append(Order)
-    #Order.getCart().clear()
+    CurrentCart.clear()
 
 def addCookSupplies(Supplies):
     CartSupplies_ForCook.append(Supplies)

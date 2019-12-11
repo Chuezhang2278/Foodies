@@ -57,21 +57,21 @@ class Food_Window(object):
                 second = first
                 first = Menu[i].getSold()
                 m1 = Menu[i]
-            
+
             elif(Menu[i].getSold() > second):
                 third = second
                 second = Menu[i].getSold()
                 m2 = Menu[i]
-            
+
             elif(Menu[i].getSold() > third):
                 third = Menu[i].getSold()
                 m3 = Menu[i]
-                
-                
+
+
         print(m1.getName())
         print(m2.getName())
         #print(m3.getName())
-        
+
         for i in range(len(Menu)):
             if(Menu[i] == m1 or Menu[i] == m2 or Menu[i] == m3):
                 self.Name_listWidget.addItem(Menu[i].getName() + "\t [Your top choice!]")
@@ -137,14 +137,14 @@ class Food_Window(object):
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
-        
+
         self.Page2_Address = QtWidgets.QLineEdit(self.page_2)
         self.Page2_Address.setGeometry(QtCore.QRect(540,170,241,20))
         self.Page2_Address.setObjectName("Page2_Address")
         self.Page2_AddLabel = QtWidgets.QLabel(self.page_2)
         self.Page2_AddLabel.setGeometry(QtCore.QRect(540,140,47,13))
         self.Page2_AddLabel.setObjectName("Page2_AddLabel")
-        
+
         self.finalCart = QtWidgets.QListWidget(self.page_2)
         self.finalCart.setGeometry(QtCore.QRect(230, 50, 301, 531))
         self.finalCart.setObjectName("finalCart")
@@ -288,7 +288,7 @@ class Food_Window(object):
         self.AddButton8.clicked.connect(self.Add_Button8)
         self.AddButton9.clicked.connect(self.Add_Button9)
         self.AddButton10.clicked.connect(self.Add_Button10)
-        
+
         self.retranslateUi(CurrentWindow)
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(CurrentWindow)
@@ -399,19 +399,19 @@ class Food_Window(object):
             CurrentUser.clear()
             CurrentCart.clear()
             self.CurrentWindow.hide()
-            self.LoginWindow.show() 
+            self.LoginWindow.show()
 
     def Checkout(self):
         i = 0
         self.stackedWidget.setCurrentIndex(1)
         self.finalCost.setText(format(self.temp, '.2f'))
-        
+
         while i < currentCartSize():
             self.finalCart.addItem(CurrentCart[i].getName() + "\t\t\t" + format(CurrentCart[i].getPrice(), '.2f'))
             i += 1
-    
+
         if(User[CurrentUser[1]].getType() == 0):
-        
+
             self.Page2_AddLabel.show()
             self.Page2_Address.show()
 
@@ -421,29 +421,30 @@ class Food_Window(object):
         self.stackedWidget.setCurrentIndex(0)
         self.finalCart.clear()
 
-    def change(self):                 
+    def change(self):
         i = 0
-        
+
         self.stackedWidget.setCurrentIndex(2)
         randFood = random.randint(0, len(Menu)-1)
+        temp = CurrentCart.copy()
         if(User[CurrentUser[1]].getType() == 0):
-            addPendingOrder(Order(void, CurrentCart))
-            
+            addPendingOrder(Order(void, temp))
+
         elif(User[CurrentUser[1]].getType() != 0):
             if(User[CurrentUser[1]].getType() == 2):
-                
+
                 randomFood = Food(Menu[randFood].getName() + " *Free*",0,Menu[randFood].getCate(),Menu[randFood].getSpice())
                 User[CurrentUser[1]].addUserOrder(randomFood)
                 addCurrentCart(randomFood)
                 self.Page3_label4.show()
-    
-            addPendingOrder(Order(User[CurrentUser[1]], CurrentCart))
+
+            addPendingOrder(Order(User[CurrentUser[1]], temp))
         while i < len(User[CurrentUser[1]].order):
             self.Page3_listView.addItem(User[CurrentUser[1]].order[i].getName() + "\t\t\t" + format(User[CurrentUser[1]].order[i].getPrice(), '.2f'))
             i += 1
-        
+
         print(currentCartSize())
-        
+
 
     def changeFinal(self):
         if(User[CurrentUser[1]].getType() == 0):
