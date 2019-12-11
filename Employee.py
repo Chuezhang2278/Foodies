@@ -189,13 +189,19 @@ class Salesperson(Employee):
         self.Commissions=0
 
 
+    def setBudget(self,budget):
+        self.budget = budget
 
     def getRestaurant(self):
         return self.restaurant
+
     def getWarning(self):
         return self.warning
+
     def getCommissions(self):
         return self.Commissions
+
+
 class Manager(Employee):
     def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)
