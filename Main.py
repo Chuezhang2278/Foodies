@@ -183,6 +183,10 @@ SuppliesList3 = []
 CurrentCart_SalesPerson = []
 CartSupplies_ForCook = []
 Complaint = []
+Signup=[]
+Reply=[]
+VIPs=[]
+Members=[]
 #====For_Storage====#
 
 ################################################### TESTING BELOW #################################################################
@@ -215,6 +219,16 @@ eric = Member('eric','test2','t','t','t','Coney Island')
 jd = Member('jd','test2','t','t','t','Bronx Zoo')
 wilson = Member('wilson','test2','t','t','t','Flushing Ave, NY')
 chue = VIP('chue','bloo','blee','blee','blop','Empire State Building')
+
+####
+addDeliveryPerson(deliveryBot2)
+addSalesperson(Anderson)
+addSalesperson(Patrick)
+Members.append(eric)
+VIPs.append(chue)
+Cooks.append(John)
+Cooks.append(Jim)
+####
 
 addDeliveryPerson(deliveryJiaMing)
 deliveryJiaMing.setRating(1)
@@ -320,3 +334,5 @@ addMenuItem(foodTest2)
 addMenuItem(foodTest3)
 addMenuItem(foodTest4)
 addMenuItem(foodTest5)
+###
+Complaint.append("Complaint 1:I dont like it")
