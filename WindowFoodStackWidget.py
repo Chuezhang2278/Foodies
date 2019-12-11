@@ -415,6 +415,7 @@ class Food_Window(object):
             self.Page2_AddLabel.show()
             self.Page2_Address.show()
 
+        print(currentCartSize())
 
     def Return(self):
         self.stackedWidget.setCurrentIndex(0)
@@ -422,10 +423,12 @@ class Food_Window(object):
 
     def change(self):                 
         i = 0
+        
         self.stackedWidget.setCurrentIndex(2)
         randFood = random.randint(0, len(Menu)-1)
         if(User[CurrentUser[1]].getType() == 0):
             addPendingOrder(Order(void, CurrentCart))
+            
         elif(User[CurrentUser[1]].getType() != 0):
             if(User[CurrentUser[1]].getType() == 2):
                 
@@ -433,24 +436,13 @@ class Food_Window(object):
                 User[CurrentUser[1]].addUserOrder(randomFood)
                 addCurrentCart(randomFood)
                 self.Page3_label4.show()
-                
+    
             addPendingOrder(Order(User[CurrentUser[1]], CurrentCart))
-        # if(User[CurrentUser[1]].getType() == 0):
-        #     addOrder2(void, CurrentCart)
-        # elif(User[CurrentUser[1]].getType() != 0):
-            # addOrder2(User[CurrentUser[1]], CurrentCart)
         while i < len(User[CurrentUser[1]].order):
             self.Page3_listView.addItem(User[CurrentUser[1]].order[i].getName() + "\t\t\t" + format(User[CurrentUser[1]].order[i].getPrice(), '.2f'))
             i += 1
         
-    
-        
-        if(User[CurrentUser[1]].getType() == 2):
-            
-            randomFood = Menu[randFood]
-            randomFood.setPrice(0)
-            User[CurrentUser[1]].addUserOrder(randomFood)
-            addCurrentCart(randomFood)
+        print(currentCartSize())
         
 
     def changeFinal(self):

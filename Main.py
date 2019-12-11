@@ -135,6 +135,10 @@ def addSupplies3(Supplies):
 def addCurrentCart_SalesPerson(Supplies):
     CurrentCart_SalesPerson.append(Supplies)
 
+def printCurrentCart():
+    for i in range(len(CurrentCart)):
+        print(CurrentCart[i].getCate())
+
 # Customer Checking Out Stuff
 def addOrder2(Order):
     Orders.append(Order)
@@ -147,7 +151,7 @@ def addOrderHistoy(Order):
 
 def addPendingOrder(Order):
     PendingOrders.append(Order)
-    Order.getCart().clear()
+    #Order.getCart().clear()
 
 def addCookSupplies(Supplies):
     CartSupplies_ForCook.append(Supplies)
