@@ -41,6 +41,9 @@ class Food():
 
     def setSold(self, amount):
         self.sold += amount
+       
+    def IncrSold(self):
+        self.sold += 1    
 
     def getSold(self):
         return self.sold
