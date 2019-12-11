@@ -391,28 +391,47 @@ class Food_Window(object):
             print("Recognized buy")
             if "chicken" in msg:
                 if self.hasNumbers(msg):
-                    for i in range(self.buy1to9(msg)):
+                    for i in range(self.determine1to9(msg)):
                         self.Add_Button1()
                 else:
                     self.Add_Button1()
             elif "fish" in msg:
                 if self.hasNumbers(msg):
-                    for i in range(self.buy1to9(msg)):
+                    for i in range(self.determine1to9(msg)):
                         self.Add_Button2()
                 else:
                     self.Add_Button2()
             elif "duck" in msg or "thugs" in msg: # sound like ducks
                 if self.hasNumbers(msg):
-                    for i in range(self.buy1to9(msg)):
+                    for i in range(self.determine1to9(msg)):
                         self.Add_Button3()
                 else:
                     self.Add_Button3()
             elif "dog" in msg:
-                pass
-            elif "eel" in msg:
-                pass
+                if self.hasNumbers(msg):
+                    for i in range(self.determine1to9(msg)):
+                        self.Add_Button4()
+                else:
+                    self.Add_Button4()
+            elif "eel" in msg or "seal" in msg: # sounds like eels
+                if self.hasNumbers(msg):
+                    for i in range(self.determine1to9(msg)):
+                        self.Add_Button5()
+                else:
+                    self.Add_Button5()
         elif "sell" in msg or "remove" in msg:
             print("Recognized sell")
+        elif "check" in msg or "out" in msg:
+            print("Recognized checkout")
+            self.Checkout()
+
+    # def Remove(self):
+    #     listItems = self.Cart.selectedItems()
+    #     if not listItems: return
+    #     for item in listItems:
+    #         self.Cart.takeItem(self.Cart.row(item))
+    #         CurrentCart.pop(self.Cart.currentRow()+1)
+    #         User[CurrentUser[1]].removeUserOrder(self.Cart.currentRow())
 
     def hasNumbers(self, inputString):
         nums = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
@@ -421,7 +440,7 @@ class Food_Window(object):
                 return True
         return any(char.isdigit() for char in inputString)
 
-    def buy1to9(self, inputString):
+    def determine1to9(self, inputString):
         for i in range(1, 10):
             if str(i) in inputString:
                 return i
@@ -440,6 +459,7 @@ class Food_Window(object):
 
     def Submittion(self):
         User[CurrentUser[1]].deliveryPerson.setRating(int(self.comboBox.currentText()))
+        checkLaidOff(User[CurrentUser[1]].deliveryPerson)
         User[CurrentUser[1]].cookPerson.setRating(int(self.comboBox_2.currentText()))
         temp = self.Page4_textedit.toPlainText()
         Complaint.append(temp)
@@ -463,15 +483,15 @@ class Food_Window(object):
 
     def Checkout(self):
         i = 0
-        self.stackedWidget.setCurrentIndex(1)
+        if len(self.finalCart) != 0:
+            self.stackedWidget.setCurrentIndex(1)
         self.finalCost.setText(format(self.temp, '.2f'))
 
         while i < currentCartSize():
             self.finalCart.addItem(CurrentCart[i].getName() + "\t\t\t" + format(CurrentCart[i].getPrice(), '.2f'))
             i += 1
 
-        if(User[CurrentUser[1]].getType() == 0):
-
+        if(User[CurrentUser[1]].getType()):
             self.Page2_AddLabel.show()
             self.Page2_Address.show()
 
