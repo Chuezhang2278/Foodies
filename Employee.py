@@ -67,13 +67,12 @@ class Employee():
 
 
 class Delivery(Employee):
-    # By Jia Ming Ma
-    
     def __init__(self, first_name, username, password, address):
         super().__init__(first_name, username, password)
         self.bidded = False
         self.user_type = 3
         self.warning = 0
+        self.salary=0
         self.rating = []
         self.currentOrder = None
         self.step_by_step = []
@@ -150,6 +149,9 @@ class Delivery(Employee):
     def setBidded(self, bool):
         self.bidded = bool
 
+    def getWarning(self):
+        return self.warning
+
 class Cook(Employee):
     def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)
@@ -180,17 +182,20 @@ class Salesperson(Employee):
         super().__init__(first_name,username,password)
         self.user_type = 5
         self.salary = 20
+        self.warning=0
         self.budget = budget
         self.restaurant=restaurant
         self.rating = []
+        self.Commissions=0
 
-    def setBudget(self,budget):
-        self.budget = budget
+
 
     def getRestaurant(self):
-
         return self.restaurant
-
+    def getWarning(self):
+        return self.warning
+    def getCommissions(self):
+        return self.Commissions
 class Manager(Employee):
     def __init__(self,first_name, username, password):
         super().__init__(first_name,username,password)

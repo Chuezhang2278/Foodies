@@ -1,6 +1,7 @@
 from Main import *
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from User import *
 
 
 class sign_window(object):
@@ -79,10 +80,10 @@ class sign_window(object):
         temp4 = self.Pass_lineEdit.text()
         temp5 = self.Email_lineEdit.text()
 
-        eric = Member(temp1,temp2,temp3,temp4,temp5)
-        addCustomer(eric)
-
+        eric = SignUp(temp1,temp2,temp3,temp4,temp5,"t")
+        Signup.append(eric)
         self.switch_login()
+
 
     def keyPressEvent(self, e):
         if e.key() == QtCore.Qt.Key_Escape:

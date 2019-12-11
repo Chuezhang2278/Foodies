@@ -17,7 +17,7 @@ from User import *
 class Ui_Form_SignUplist(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(867, 558)
+        Form.resize(867, 700)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(20, 10, 231, 31))
         self.label.setObjectName("label")
