@@ -109,6 +109,7 @@ class User():
 
 class Guest(User):
     def __init__(self, username, password):
+        self.first_name = "guest"
         self.username = username
         self.password = password
         self.discount = 1

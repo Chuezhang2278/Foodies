@@ -154,6 +154,9 @@ class Order():
     def getCook(self):
         return self.cook
 
+    def getUser(self):
+        return self.customer
+
     def setCook(self, Cook):
         self.cook = Cook
 
