@@ -98,7 +98,8 @@ def addUser(user):
     User.append(user)
 
 def removeUser(user):
-    User.remove(user)
+    if user in User:
+        User.remove(user)
     print("Removed " + user.getFirst() + " from VIP")
 
 def addBlacklist(user):
@@ -219,9 +220,9 @@ Patrick = Salesperson('Patrick','patrick','password',1000.00,'Foodies') #sales p
 deliveryJiaMing = Delivery('Jia Ming Ma','u','p','City College of New York')
 deliveryBot2 = Delivery('Auto Bidding Bot','u2','p2','JFK Airport')
 void = Guest('void1','void2')
-eric = Member('eric','test2','t','t','t','Coney Island')
-jd = Member('jd','test2','t','t','t','Bronx Zoo')
-wilson = Member('wilson','test2','t','t','t','Flushing Ave, NY')
+eric = Member('eric','eric','eric','t','t','Coney Island')
+jd = Member('jd','jd','jd','t','t','Bronx Zoo')
+wilson = Member('wilson','wilson','wilson','t','t','Flushing Ave, NY')
 chue = VIP('chue','bloo','blee','blee','blop','Empire State Building')
 
 ####
@@ -239,6 +240,11 @@ deliveryJiaMing.setRating(1)
 deliveryJiaMing.setRating(4)
 deliveryJiaMing.setRating(5)
 deliveryBot2.setRating(1)
+temp = [foodTest1, foodTest2]
+Orders.append(Order(jd, temp))
+Orders.append(Order(jd, temp))
+Orders.append(Order(jd, temp))
+Orders.append(Order(wilson, temp))
 # deliveryBot2.startNewOrder(Order(chue, CurrentCart))
 # deliveryBot.startNewOrder(Order(eric, CurrentCart))
 
