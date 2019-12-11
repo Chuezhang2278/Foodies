@@ -1186,6 +1186,7 @@ class Sales_Window(object):
         if (i.text() == "&Yes"):
             CurrentCart_SalesPerson.clear()
             self.check_out_list.clear()
+            CurrentUser.clear()
             self.CurrentWindow.hide()
             self.LoginWindow.show()
 
