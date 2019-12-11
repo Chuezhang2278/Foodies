@@ -461,6 +461,7 @@ class Food_Window(object):
         User[CurrentUser[1]].deliveryPerson.setRating(int(self.comboBox.currentText()))
         checkLaidOff(User[CurrentUser[1]].deliveryPerson)
         User[CurrentUser[1]].cookPerson.setRating(int(self.comboBox_2.currentText()))
+        checkLaidOff(User[CurrentUser[1]].cookPerson)
         temp = self.Page4_textedit.toPlainText()
         Complaint.append(temp)
 
@@ -483,7 +484,7 @@ class Food_Window(object):
 
     def Checkout(self):
         i = 0
-        if len(self.finalCart) != 0:
+        if currentCartSize() != 0:
             self.stackedWidget.setCurrentIndex(1)
         self.finalCost.setText(format(self.temp, '.2f'))
 
