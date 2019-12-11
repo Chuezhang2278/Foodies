@@ -29,6 +29,9 @@ class Food():
 
     def getQuality(self):
         return self.quality
+    
+    def setPrice(self, value):
+        self.price = value
 
     def setQuality(self, quality):
         self.quality = quality

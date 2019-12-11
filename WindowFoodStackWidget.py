@@ -193,6 +193,9 @@ class Food_Window(object):
         self.Page3_next = QtWidgets.QPushButton(self.page_3)
         self.Page3_next.setGeometry(QtCore.QRect(700, 565, 75, 23))
         self.Page3_next.setObjectName("Page3_next2")
+        self.Page3_label4 = QtWidgets.QLabel(self.page_3)
+        self.Page3_label4.setGeometry(QtCore.QRect(400,140,351,61))
+        self.Page3_label4.setObjectName("Page3_label4")
         self.stackedWidget.addWidget(self.page_3)
 
 
@@ -305,6 +308,7 @@ class Food_Window(object):
 
         self.Page3_logout.clicked.connect(self.Logout)
         self.Page3_next.clicked.connect(self.changeFinal)
+        self.Page3_label4.hide()
 
         #====page4====#
 
@@ -346,6 +350,7 @@ class Food_Window(object):
         self.Page3_label1.setText(_translate("MainWindow", "Thank you for purchasing using our App! "))
         self.Page3_label2.setText(_translate("MainWindow", "Your food will be arriving shortly"))
         self.Page3_logout.setText(_translate("MainWindow", "Logout"))
+        self.Page3_label4.setText(_translate("MainWindow", "Because You are a VIP, You get a random item on the menu FOR FREE"))
         self.Page3_next.setText(_translate("MainWindow", "Next"))
 
         #page 4
@@ -400,11 +405,6 @@ class Food_Window(object):
         i = 0
         self.stackedWidget.setCurrentIndex(1)
         self.finalCost.setText(format(self.temp, '.2f'))
-        randFood = random.randint(0, len(Menu))
-        
-        if(User[CurrentUser[1]].getType() == 2):
-            User[CurrentUser[1]].addUserOrder(Menu[randFood])
-            addCurrentCart(Menu[randFood])
         
         while i < currentCartSize():
             self.finalCart.addItem(CurrentCart[i].getName() + "\t\t\t" + format(CurrentCart[i].getPrice(), '.2f'))
@@ -423,9 +423,17 @@ class Food_Window(object):
     def change(self):                 
         i = 0
         self.stackedWidget.setCurrentIndex(2)
+        randFood = random.randint(0, len(Menu)-1)
         if(User[CurrentUser[1]].getType() == 0):
             addPendingOrder(Order(void, CurrentCart))
         elif(User[CurrentUser[1]].getType() != 0):
+            if(User[CurrentUser[1]].getType() == 2):
+                
+                randomFood = Food(Menu[randFood].getName() + " *Free*",0,Menu[randFood].getCate(),Menu[randFood].getSpice())
+                User[CurrentUser[1]].addUserOrder(randomFood)
+                addCurrentCart(randomFood)
+                self.Page3_label4.show()
+                
             addPendingOrder(Order(User[CurrentUser[1]], CurrentCart))
         # if(User[CurrentUser[1]].getType() == 0):
         #     addOrder2(void, CurrentCart)
@@ -434,6 +442,15 @@ class Food_Window(object):
         while i < len(User[CurrentUser[1]].order):
             self.Page3_listView.addItem(User[CurrentUser[1]].order[i].getName() + "\t\t\t" + format(User[CurrentUser[1]].order[i].getPrice(), '.2f'))
             i += 1
+        
+    
+        
+        if(User[CurrentUser[1]].getType() == 2):
+            
+            randomFood = Menu[randFood]
+            randomFood.setPrice(0)
+            User[CurrentUser[1]].addUserOrder(randomFood)
+            addCurrentCart(randomFood)
         
 
     def changeFinal(self):
