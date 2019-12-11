@@ -327,9 +327,10 @@ class Food_Window(object):
         self.Page3_label4.hide()
 
         #====Stack2====#
+        self.tab_2.setEnabled(False)
         if(User[CurrentUser[1]].getType() != 0):
             if(User[CurrentUser[1]].cookPerson != None and User[CurrentUser[1]].deliveryPerson != None):
-                #self.tab_2.setEnabled(True)
+                self.tab_2.setEnabled(True)
                 self.Page4_label1_2.setText("Please give the Delivery man: '" +  User[CurrentUser[1]].deliveryPerson.getFirst() + "' a rating!") 
                 self.Page4_label2_2.setText("Please give the Chef: '" +  User[CurrentUser[1]].cookPerson.getFirst() + "' a rating!") 
                  
