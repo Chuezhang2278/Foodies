@@ -2478,9 +2478,9 @@ class Ui_CookWindow(object):
     # Function that shows the "Chef Welcome" page (0)
     def open_cookWelcome(self):
         self.clearallFields()
+        print(PendingOrders[0].getTotalCost())
+        print(len(PendingOrders[0].getCart()))
         self.stackedWidget.setCurrentIndex(0)
-        for i in range(len(CartSupplies_ForCook)):
-            print(CartSupplies_ForCook[i].getName(), CartSupplies_ForCook[i].getPrice(), CartSupplies_ForCook[i].getQuality(), CartSupplies_ForCook[i].getQuantity())
 
     # Backspace key shortcut to open logout confirmation
     def keyPressEvent(self, e):
