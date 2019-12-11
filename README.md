@@ -13,4 +13,4 @@
 ##### To run the program, please pip install the required modules and then run WindowLogin.py
 
 # Some of our features
-[![Everything Is AWESOME](https://img.youtube.com/vi/SgdUDon4IP4-Y/0.jpg)](https://www.youtube.com/watch?v=SgdUDon4IP4-Y "Everything Is AWESOME")
+[![Voice Recognition](https://img.youtube.com/vi/SgdUDon4IP4/0.jpg)](https://www.youtube.com/watch?v=SgdUDon4IP4 "Voice Recognition")
