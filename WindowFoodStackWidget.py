@@ -511,6 +511,8 @@ class Food_Window(object):
 
     def change(self):
         i = 0
+        if(User[CurrentUser[1]].getType() == 0):
+            void.setAddress(self.Page2_Address.text())
 
         self.stackedWidget.setCurrentIndex(2)
         randFood = random.randint(0, len(Menu)-1)

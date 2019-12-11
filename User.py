@@ -53,6 +53,9 @@ class User():
     def getAddress(self):
         return self.address
 
+    def setAddress(self, Address):
+        self.address = Address
+
     def addUserOrder(self, Food):
         self.order.append(Food)
 
@@ -61,6 +64,8 @@ class User():
 
     def printOrderSize(self):
         return len(self.order)
+
+
 
     def printOrder(self):
         i = 0
@@ -118,6 +123,7 @@ class Guest(User):
         self.user_type = 0
         self.order = []
         self.confirm = False
+        self.address = None
 
 
 class Member(User):  # Inherits VIP methods as well as user, polymorphism

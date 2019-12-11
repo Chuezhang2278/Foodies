@@ -160,11 +160,13 @@ class MapWindow(object):
                     checkedButton = i
             if checkedButton == None:
                 return
-            self.currentUser.getCustomer().setRating(checkedButton + 1)
-            self.currentUser.getCustomer().checkPromotion() # *************** need andy to do this
+            if(self.currentUser.getCustomer().getType() != 0):
+                self.currentUser.getCustomer().setRating(checkedButton + 1)
+                self.currentUser.getCustomer().setDelivery(self.currentUser)
+                self.currentUser.getCustomer().confirmDelivery()
+                self.currentUser.getCustomer().checkPromotion() # *************** need andy to do this
+            
             self.currentUser.getOrder().orderCompleted()
-            self.currentUser.getCustomer().setDelivery(self.currentUser)
-            self.currentUser.getCustomer().confirmDelivery()
             self.currentUser.resetOrder() # removes order from delivery guy, so now currentOrder = None
             self.MainWindow.decideWhatToShow() # determines what to show based on currentOrder of delivery guy
             self.MainWindow.MainWindow.show()
