@@ -1,6 +1,6 @@
-#### Using PyQt5 and PyQt5 Designer in Python
-##### For .ui file conversion go to cmd -> type, pyuic5 -x "file.ui" -o "file.py" 
+### Instructions for VScode, For installation using Pycharm, use built in installation of pycharm 
 #### [required]
+#### Using PyQt5 and PyQt5 Designer in Python
 ##### pip install googlemaps
 ##### pip install polyline
 ##### pip install PyQtWebKit
@@ -10,5 +10,7 @@
           c++ build tool after downloading it
           and it still fails download PyAudio‑0.2.11‑cp37‑cp37m‑win_amd64.whl from https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
           where cp37 is your python version, then cd to directory with cmd and pip install PyAudio‑0.2.11‑cp37‑cp37m‑win_amd64.whl
-To run the program, please pip install the required modules and then run WindowLogin.py
+##### To run the program, please pip install the required modules and then run WindowLogin.py
 
+# Some of our features
+[![Everything Is AWESOME](https://img.youtube.com/vi/SgdUDon4IP4-Y/0.jpg)](https://www.youtube.com/watch?v=SgdUDon4IP4-Y "Everything Is AWESOME")
