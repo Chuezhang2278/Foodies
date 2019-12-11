@@ -84,6 +84,7 @@ class Sales_Window(object):
         self.deal_of_the_day_list = QtWidgets.QListWidget(self.profile)
         self.deal_of_the_day_list.setGeometry(QtCore.QRect(490, 120, 221, 471))
         self.deal_of_the_day_list.setObjectName("deal_of_the_day_list")
+        self.deal_of_the_day_list.setSpacing(15)
         self.shop_suppliers = QtWidgets.QPushButton(self.profile)
         self.shop_suppliers.setGeometry(QtCore.QRect(590, 30, 113, 32))
         self.shop_suppliers.setObjectName("shop_suppliers")
