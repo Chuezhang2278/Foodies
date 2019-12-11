@@ -1,6 +1,7 @@
 ### Instructions for VScode, For installation using Pycharm, use built in installation of pycharm 
-#### [required]
-#### Using PyQt5 and PyQt5 Designer in Python
+### [required]
+#### INTERNET ACCESS, Software won't run if you have no internet access
+#### pip install PyQt5 
 ##### pip install googlemaps
 ##### pip install polyline
 ##### pip install PyQtWebKit
