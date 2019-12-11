@@ -1346,7 +1346,7 @@ class Sales_Window(object):
             self.check_out_list.addItem(SuppliesList1[1].getName() + '\t' + SuppliesList1[1].getQuality() + \
                                     '\t' + self.amount1_2.text() + '\t' + str(round(SuppliesList1[1].getPrice()*int(self.amount1_2.value()), 2)))
             SuppliesList1[1].setQuantity(int(self.amount1_2.value()))
-            addCurrentCart_SalesPerson(SuppliesList1[0])
+            addCurrentCart_SalesPerson(SuppliesList1[1])
             self.update_total()
             self.budget_connected_total()
         else:
