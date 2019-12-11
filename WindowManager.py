@@ -12,6 +12,7 @@ from WindowEmployeeSalary import Ui_Form_Pay
 from WindowStaffManagement import Ui_Form_StaffManagement
 from CusInforManagement import Ui_Form_CusInfor
 from WindowComplaintManagement import Ui_Form_ComplainManagement
+from WindowEmployeeSignUp import Ui_Form_EmployeeSignUp
 
 
 class  ManagerWindow(object):
@@ -51,6 +52,9 @@ class  ManagerWindow(object):
         self.CustomerInforB = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.CustomerInforB.setObjectName("CustomerInforB")
         self.verticalLayout.addWidget(self.CustomerInforB)
+        self.ESignB = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.ESignB.setObjectName("ESignB")
+        self.verticalLayout.addWidget(self.ESignB)
         self.exitbutton = QtWidgets.QPushButton(self.centralwidget)
         self.exitbutton.setGeometry(QtCore.QRect(455, 350, 91, 31))
         self.exitbutton.setObjectName("exitbutton")
@@ -70,6 +74,7 @@ class  ManagerWindow(object):
         self.ManagementStaffB.clicked.connect(self.StaffManagementscr)
         self.CustomerInforB.clicked.connect(self.Cusinforscr)
         self.HandlesComplaintsB.clicked.connect(self.ComplainManafementstr)
+        self.ESignB.clicked.connect(self.Esignstr)
         self.exitbutton.clicked.connect(lambda: self.closescr(MainWindow))
 
     def DecidesCommissionsscr(self):
@@ -102,6 +107,12 @@ class  ManagerWindow(object):
         self.ui.setupUi(self.Form)
         self.Form.show()
 
+    def Esignstr(self):
+        self.Form = QtWidgets.QWidget()
+        self.ui = Ui_Form_EmployeeSignUp()
+        self.ui.setupUi(self.Form)
+        self.Form.show()
+
     def closescr(self, MainWindow):
         MainWindow.hide()
 
@@ -116,6 +127,7 @@ class  ManagerWindow(object):
         self.HandlesComplaintsB.setText(_translate("MainWindow", "Handles complaints"))
         self.ManagementStaffB.setText(_translate("MainWindow", "Management stuff"))
         self.CustomerInforB.setText(_translate("MainWindow", "Customer Information Mangement"))
+        self.ESignB.setText(_translate("MainWindow", "Empoloyee Signup"))
         self.exitbutton.setText(_translate("MainWindow", "Exit"))
 
 if __name__ == "__main__":
