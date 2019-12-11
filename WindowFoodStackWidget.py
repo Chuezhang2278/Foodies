@@ -7,11 +7,14 @@ from Main import *
 from Order import Order
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
+import speech_recognition as sr
 
 class Food_Window(object):
     def __init__(self):
         self.CurrentWindow = None
         self.LoginWindow = None
+        self.r = sr.Recognizer()
+        self.mic = sr.Microphone()
 
     def setupUi(self, CurrentWindow, LoginWindow):
         self.temp = 0
@@ -62,7 +65,6 @@ class Food_Window(object):
                 third = second
                 second = Menu[i].getSold()
                 m2 = Menu[i]
-
             elif(Menu[i].getSold() > third):
                 third = Menu[i].getSold()
                 m3 = Menu[i]
@@ -99,6 +101,10 @@ class Food_Window(object):
         self.Remove_Button = QtWidgets.QPushButton(self.page)
         self.Remove_Button.setGeometry(QtCore.QRect(480, 505, 93, 28))
         self.Remove_Button.setObjectName("Checkout_Button")
+        self.voice_button = QtWidgets.QPushButton(self.page)
+        self.voice_button.setGeometry(QtCore.QRect(480, 540, 273, 28))
+        self.voice_button.setText("Voice Recognition")
+        self.voice_button.clicked.connect(self.voice_recognize)
         self.AddButton8 = QtWidgets.QPushButton(self.page)
         self.AddButton8.setGeometry(QtCore.QRect(360, 400, 93, 28))
         self.AddButton8.setObjectName("AddButton8")
@@ -369,6 +375,60 @@ class Food_Window(object):
         self.comboBox_2.setItemText(2, _translate("MainWindow", "3"))
         self.comboBox_2.setItemText(3, _translate("MainWindow", "4"))
         self.comboBox_2.setItemText(4, _translate("MainWindow", "5"))
+
+    def voice_recognize(self):
+        with self.mic as source:
+            print("Listening to User")
+            audio = self.r.listen(source)
+        try:
+            msg = self.r.recognize_google(audio)
+        except Exception:
+            print("Caught Exception")
+            return
+
+        print(msg)
+        if "buy" in msg or "by" in msg or "hi" in msg or "ad" in msg or "find" in msg: # they all sound like buy
+            print("Recognized buy")
+            if "chicken" in msg:
+                if self.hasNumbers(msg):
+                    for i in range(self.buy1to9(msg)):
+                        self.Add_Button1()
+                else:
+                    self.Add_Button1()
+            elif "fish" in msg:
+                if self.hasNumbers(msg):
+                    for i in range(self.buy1to9(msg)):
+                        self.Add_Button2()
+                else:
+                    self.Add_Button2()
+            elif "duck" in msg or "thugs" in msg: # sound like ducks
+                if self.hasNumbers(msg):
+                    for i in range(self.buy1to9(msg)):
+                        self.Add_Button3()
+                else:
+                    self.Add_Button3()
+            elif "dog" in msg:
+                pass
+            elif "eel" in msg:
+                pass
+        elif "sell" in msg or "remove" in msg:
+            print("Recognized sell")
+
+    def hasNumbers(self, inputString):
+        nums = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+        for i in nums:
+            if i in inputString:
+                return True
+        return any(char.isdigit() for char in inputString)
+
+    def buy1to9(self, inputString):
+        for i in range(1, 10):
+            if str(i) in inputString:
+                return i
+        nums = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+        for i in range(len(nums)):
+            if nums[i] in inputString:
+                return i + 1
 
     def keyPressEvent(self, e):
         if e.key() == QtCore.Qt.Key_Backspace:
