@@ -283,7 +283,7 @@ random_quality = ['Bad', 'Good', 'Best']
 
 
 # Add the Supplies into each supplier inventory with them each having random qualities
-for i in range(0, 9):
+for i in range(len(SuppliesList)):
     rand_int1 = random.randint(0, 2)
     rand_int2 = random.randint(0, 2)
     rand_int3 = random.randint(0, 2)
