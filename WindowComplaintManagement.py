@@ -23,7 +23,7 @@ class Ui_Form_ComplainManagement(object):
         self.pushButton.setGeometry(QtCore.QRect(170, 260, 131, 21))
         self.pushButton.setObjectName("pushButton")
         self.ExitButton = QtWidgets.QPushButton(Form)
-        self.ExitButton.setGeometry(QtCore.QRect(400, 380, 56, 17))
+        self.ExitButton.setGeometry(QtCore.QRect(400, 380, 56, 27))
         self.ExitButton.setObjectName("ExitButton")
         self.textEdit = QtWidgets.QTextEdit(Form)
         self.textEdit.setGeometry(QtCore.QRect(100, 310, 271, 64))
@@ -45,22 +45,24 @@ class Ui_Form_ComplainManagement(object):
             self.listWidget.addItem(Complaint[i])
 
     def DeleteComplain(self):
-        Items = self.listWidget.selectedItems()
-        if not Items: return
-        for i in Items:
-            Q = i.text()
-            for j in range(len(Complaint)):
-                if Q == Complaint[j]:
-                    Complaint.pop(j)
-                    self.listWidget.takeItem(self.listWidget.row(i))
-
+        try:
+            Items = self.listWidget.selectedItems()
+            if not Items: return
+            for i in Items:
+                Q = i.text()
+                for j in range(0,len(Complaint)):
+                    if Q == Complaint[j]:
+                        Complaint.pop(j)
+                        self.listWidget.takeItem(self.listWidget.row(i))
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
     def closescr(self, Form):
         Form.hide()
 
     def replySend(self):
         comp = self.textEdit.toPlainText()
         Complaint.append(str(comp))
-        ReplyNmeber+1
         Complaint.append("Management： " + str(comp))
         self.listWidget.addItem("Management： " + str(comp))
 

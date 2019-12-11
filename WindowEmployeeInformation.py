@@ -43,57 +43,56 @@ class Ui_Form_EmployeeInformation(object):
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
         self.exitButton.clicked.connect(lambda:self.closescr(Form))
-
-
-
-        for i in range(len(Cooks)):
-            for j in range(4):
-                if j == 0:
-                    self.tableWidget.setItem(i, j, QTableWidgetItem(str('Cook')))
-                elif j == 1:
-                    self.tableWidget.setItem(i, j, QTableWidgetItem(Cooks[i].getFirst()))
-                elif j == 2:
-                    self.tableWidget.setItem(i, j, QTableWidgetItem(Cooks[i].getUser()))
-                elif j==3:
-                    self.tableWidget.setItem(i, j, QTableWidgetItem(str(Cooks[i].getSalary())))
-
-
-
-        for k in range(len(Cooks),len(Cooks)+len(DeliveryPeople)):
-            for l in range(5):
-                if l == 0:
-                    self.tableWidget.setItem(k, l, QTableWidgetItem(str('DeliveryPeople')))
-                elif l == 1:
-                    self.tableWidget.setItem(k, l, QTableWidgetItem(str(DeliveryPeople[k-len(Cooks)].getFirst())))
-                elif l == 2:
-                    self.tableWidget.setItem(k, l, QTableWidgetItem(str(DeliveryPeople[k-len(Cooks)].getUser())))
-                elif l == 3:
-                    self.tableWidget.setItem(k, l, QTableWidgetItem(str(DeliveryPeople[k-len(Cooks)].getSalary())))
-                elif l==4:
-                    self.tableWidget.setItem(k, l, QTableWidgetItem(str(DeliveryPeople[k - len(Cooks)].getWarning())))
-
-        lencd=len(Cooks)+len(DeliveryPeople)
         try:
-            for m in range(lencd,lencd+len(Sales)):
+            for i in range(len(Cooks)):
+                for j in range(4):
+                    if j == 0:
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(str('Cook')))
+                    elif j == 1:
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(Cooks[i].getFirst()))
+                    elif j == 2:
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(Cooks[i].getUser()))
+                    elif j == 3:
+                        self.tableWidget.setItem(i, j, QTableWidgetItem(str(Cooks[i].getSalary())))
+
+            for k in range(len(Cooks), len(Cooks) + len(DeliveryPeople)):
+                for l in range(5):
+                    if l == 0:
+                        self.tableWidget.setItem(k, l, QTableWidgetItem(str('DeliveryPeople')))
+                    elif l == 1:
+                        self.tableWidget.setItem(k, l, QTableWidgetItem(str(DeliveryPeople[k - len(Cooks)].getFirst())))
+                    elif l == 2:
+                        self.tableWidget.setItem(k, l, QTableWidgetItem(str(DeliveryPeople[k - len(Cooks)].getUser())))
+                    elif l == 3:
+                        self.tableWidget.setItem(k, l, QTableWidgetItem(str(DeliveryPeople[k - len(Cooks)].getSalary())))
+                    elif l == 4:
+                        self.tableWidget.setItem(k, l, QTableWidgetItem(str(DeliveryPeople[k - len(Cooks)].getWarning())))
+
+            lencd = len(Cooks) + len(DeliveryPeople)
+
+            for m in range(lencd, lencd + len(Sales)):
                 for n in range(6):
                     if n == 0:
                         self.tableWidget.setItem(m, n, QTableWidgetItem(str('Sales')))
                     elif n == 1:
-                        self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m-lencd].getFirst())))
+                        self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m - lencd].getFirst())))
                     elif n == 2:
-                        self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m-lencd].getUser())))
+                        self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m - lencd].getUser())))
                     elif n == 3:
-                        self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m-lencd].getSalary())))
-                    elif n==4:
+                        self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m - lencd].getSalary())))
+                    elif n == 4:
                         self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m - lencd].getWarning())))
-                    elif n==5:
+                    elif n == 5:
                         self.tableWidget.setItem(m, n, QTableWidgetItem(str(Sales[m - lencd].getCommissions())))
         except Exception as e:
             import traceback
             traceback.print_exc()
 
+
     def closescr(self, Form):
         Form.hide()
+
+
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))

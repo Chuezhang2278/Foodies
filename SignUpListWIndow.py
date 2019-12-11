@@ -17,7 +17,7 @@ from User import *
 class Ui_Form_SignUplist(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(867, 700)
+        Form.resize(867, 558)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(20, 10, 231, 31))
         self.label.setObjectName("label")
@@ -78,7 +78,9 @@ class Ui_Form_SignUplist(object):
             j=-1
             cellr=self.tableWidget.currentRow()
             cellc=self.tableWidget.currentColumn()
+            if not self.tableWidget.currentItem(): return
             Em=self.tableWidget.currentItem().text()
+
             for i in Signup:
                 j=j+1
                 if i.getEmail() == Em:

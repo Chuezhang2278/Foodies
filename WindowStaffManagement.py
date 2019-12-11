@@ -20,7 +20,7 @@ class Ui_Form_StaffManagement(object):
         self.listWidget.setGeometry(QtCore.QRect(10, 100, 351, 351))
         self.listWidget.setObjectName("listWidget")
         self.label_2 = QtWidgets.QLabel(Form)
-        self.label_2.setGeometry(QtCore.QRect(30, 60, 250, 31))
+        self.label_2.setGeometry(QtCore.QRect(30, 60, 280, 31))
         self.label_2.setObjectName("label_2")
         self.FireButton = QtWidgets.QPushButton(Form)
         self.FireButton.setGeometry(QtCore.QRect(410, 230, 61, 25))
@@ -29,16 +29,16 @@ class Ui_Form_StaffManagement(object):
         self.WarningButton.setGeometry(QtCore.QRect(410, 270, 81, 25))
         self.WarningButton.setObjectName("WarningButton")
         self.removeWarningButton = QtWidgets.QPushButton(Form)
-        self.removeWarningButton.setGeometry(QtCore.QRect(410, 310, 141, 25))
+        self.removeWarningButton.setGeometry(QtCore.QRect(410, 310, 170, 25))
         self.removeWarningButton.setObjectName("removeWarningButton")
         self.EmpinforButton = QtWidgets.QPushButton(Form)
-        self.EmpinforButton.setGeometry(QtCore.QRect(410, 350, 141, 25))
+        self.EmpinforButton.setGeometry(QtCore.QRect(410, 350, 170, 25))
         self.EmpinforButton.setObjectName("EmpinforButton")
         self.exitbutton = QtWidgets.QPushButton(Form)
         self.exitbutton.setGeometry(QtCore.QRect(655, 466, 71, 31))
         self.exitbutton.setObjectName("exitbutton")
         self.ShowFire = QtWidgets.QLabel(Form)
-        self.ShowFire.setGeometry(QtCore.QRect(520, 180, 571, 231))
+        self.ShowFire.setGeometry(QtCore.QRect(570, 180, 571, 231))
         self.ShowFire.setObjectName("label_3")
 
         self.retranslateUi(Form)
@@ -61,116 +61,121 @@ class Ui_Form_StaffManagement(object):
         Form.hide()
 
     def Fire(self):
-        Items = self.listWidget.selectedItems()
-        if not Items: return
-        for item in Items:
-            Q = str(item.text())
-            if Q[0] == 'D':
-                name1 = Q[17:]
-                if len(DeliveryPeople) <= 1:
-                    self.ShowFire.setText("You can not fire any one of Deliver people because at least 1 Delivery guy!")
-                    return
-                for i in range(len(DeliveryPeople)):
-                    if name1 == str(DeliveryPeople[i].getFirst() + " " + DeliveryPeople[i].getUser()):
-                        DeliveryPeople[i].username = 'FireDelivery' + str(i)
-                        DeliveryPeople[i].user_type=-1
-                        DeliveryPeople.pop(i)
-                        self.listWidget.takeItem(self.listWidget.row(item))
-                        self.ShowFire.setText(name1+" was fired successful!")
-            elif Q[0] == 'S':
-                name1 = Q[13:]
-                if len(Sales) <= 2:
-                    self.ShowFire.setText("You can not fire any one of Sales people because at least 2 Sales people.")
-                    return
-                for i in range(len(Sales)):
-                    if name1 == str(Sales[i].getFirst() + " " + Sales[i].getUser()):
-                        Sales[i].username = 'FireSales' + str(i)
-                        Sales[i].user_type = -1
-                        Sales.pop(i)
-                        self.listWidget.takeItem(self.listWidget.row(item))
-                        self.ShowFire.setText(name1+" was fired successful!")
-            elif Q[0] == 'C':
-                name1 = Q[7:]
-                if len(Cooks) <= 2:
-                    self.ShowFire.setText("You can not fire any one of Cooks because at least 2 Cooks.")
-                    return
-                for i in range(len(Cooks)):
-                    if name1 == str(Cooks[i].getFirst() + " " + Cooks[i].getUser()):
-                        Cooks[i].username='FireCooks'+str(i)
-                        Cooks[i].user_type=-1
-                        Cooks.pop(i)
-                        self.listWidget.takeItem(self.listWidget.row(item))
-                        self.ShowFire.setText( name1+" was fired successful!")
-
+        try:
+            Items = self.listWidget.selectedItems()
+            if not Items: return
+            for item in Items:
+                Q = str(item.text())
+                if Q[0] == 'D':
+                    name1 = Q[17:]
+                    if len(DeliveryPeople) <= 1:
+                        self.ShowFire.setText("You can not fire any one of Deliver \npeople because at least 1 Delivery guy!")
+                        return
+                    for i in range(len(DeliveryPeople)):
+                        if name1 == str(DeliveryPeople[i].getFirst() + " " + DeliveryPeople[i].getUser()):
+                            DeliveryPeople[i].username = 'FireDelivery' + str(i)
+                            DeliveryPeople[i].user_type=-1
+                            DeliveryPeople.pop(i)
+                            self.listWidget.takeItem(self.listWidget.row(item))
+                            self.ShowFire.setText(name1+" was fired successful!")
+                elif Q[0] == 'S':
+                    name1 = Q[13:]
+                    if len(Sales) <= 2:
+                        self.ShowFire.setText("You can not fire any one of Sales \npeople because at least 2 Sales people.")
+                        return
+                    for i in range(len(Sales)):
+                        if name1 == str(Sales[i].getFirst() + " " + Sales[i].getUser()):
+                            Sales[i].username = 'FireSales' + str(i)
+                            Sales[i].user_type = -1
+                            Sales.pop(i)
+                            self.listWidget.takeItem(self.listWidget.row(item))
+                            self.ShowFire.setText(name1+" was fired successful!")
+                elif Q[0] == 'C':
+                    name1 = Q[7:]
+                    if len(Cooks) <= 2:
+                        self.ShowFire.setText("You can not fire any one of Cooks \nbecause at least 2 Cooks.")
+                        return
+                    for i in range(len(Cooks)):
+                        if name1 == str(Cooks[i].getFirst() + " " + Cooks[i].getUser()):
+                            Cooks[i].username='FireCooks'+str(i)
+                            Cooks[i].user_type=-1
+                            Cooks.pop(i)
+                            self.listWidget.takeItem(self.listWidget.row(item))
+                            self.ShowFire.setText( name1+" was fired successful!")
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
 
 
     def removeWarning(self):
-        Items = self.listWidget.selectedItems()
-        if not Items: return
-        for item in Items:
-            Q = str(item.text())
-            if Q[0] == 'D':
-                name1 = Q[17:]
-                for i in range(len(DeliveryPeople)):
-                    if name1 == str(DeliveryPeople[i].getFirst() + " " + DeliveryPeople[i].getUser()):
-                        if DeliveryPeople[i].warning>0:
-                            DeliveryPeople[i].warning=DeliveryPeople[i].warning-1
-                            self.ShowFire.setText(name1 + "reduce 1 warning and has "+str(DeliveryPeople[i].warning)+" warning now!")
-                        elif DeliveryPeople[i].warning==0:
-                            self.ShowFire.setText(name1 + "has no warning now!")
+        try:
+            Items = self.listWidget.selectedItems()
+            if not Items: return
+            for item in Items:
+                Q = str(item.text())
+                if Q[0] == 'D':
+                    name1 = Q[17:]
+                    for i in range(len(DeliveryPeople)):
+                        if name1 == str(DeliveryPeople[i].getFirst() + " " + DeliveryPeople[i].getUser()):
+                            if DeliveryPeople[i].warning>0:
+                                DeliveryPeople[i].warning=DeliveryPeople[i].warning-1
+                                self.ShowFire.setText(name1 + "reduce 1 warning and has \n"+str(DeliveryPeople[i].warning)+" warning now!")
+                            elif DeliveryPeople[i].warning==0:
+                                self.ShowFire.setText(name1 + "has no warning now!")
 
-            elif Q[0] == 'S':
-                name1 = Q[13:]
-                if name1 == str(Sales[i].getFirst() + " " + Sales[i].getUser()):
-                    if Sales[i].warning > 0:
-                        Sales[i].warning = Sales[i].warning - 1
-                        self.ShowFire.setText(
-                            name1 + "reduce 1 warning and has " + str(Sales[i].warning) + " warning now!")
-                    elif Sales[i].warning == 0:
-                        self.ShowFire.setText(name1 + "has no warning now!")
-
+                elif Q[0] == 'S':
+                    name1 = Q[13:]
+                    for i in range(len(Sales)):
+                        if name1 == str(Sales[i].getFirst() + " " + Sales[i].getUser()):
+                            if Sales[i].warning > 0:
+                                Sales[i].warning = Sales[i].warning - 1
+                                self.ShowFire.setText(
+                                name1 + "reduce 1 warning and has \n" + str(Sales[i].warning) + " warning now!")
+                            elif Sales[i].warning == 0:
+                                self.ShowFire.setText(name1 + "has no warning now!")
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
     def Warningfun(self):
-         Items = self.listWidget.selectedItems()
-         if not Items: return
-         for item in Items:
-             Q = str(item.text())
-             if Q[0] == 'D':
-                 name1 = Q[17:]
-                 for i in range(len(DeliveryPeople)):
-                     if name1 == str(DeliveryPeople[i].getFirst() + " " + DeliveryPeople[i].getUser()):
-                         DeliveryPeople[i].warning=DeliveryPeople[i].warning+1
-                         if DeliveryPeople[i].warning<=2:
-                             self.ShowFire.setText(name1 + " has  " + str(DeliveryPeople[i].warning) + "warning now!")
-                         elif DeliveryPeople[i].warning>2 and len(DeliveryPeople)>1:
-                             DeliveryPeople[i].username = 'FireDelivery' + str(i)
-                             DeliveryPeople[i].password = '*&^&*('
-                             DeliveryPeople[i].salary = 0
-                             DeliveryPeople[i].user_type=-1
-                             DeliveryPeople.pop(i)
-                             self.listWidget.takeItem(self.listWidget.row(item))
-                             self.ShowFire.setText(name1+" was fired because "+ name1 + " has 3 warning already!")
-                         elif DeliveryPeople[i].warning>2 and len(DeliveryPeople)<=1:
-                             self.ShowFire.setText(name1 + "already has 3 Warning, but we can not him this guy  because we do not have enough Delivery people. ")
-             elif Q[0] == 'S':
-                 name1 = Q[13:]
+         try:
+            Items = self.listWidget.selectedItems()
+            if not Items: return
+            for item in Items:
+                Q = str(item.text())
+                if Q[0] == 'D':
+                    name1 = Q[17:]
+                    for i in range(len(DeliveryPeople)):
+                        if name1 == str(DeliveryPeople[i].getFirst() + " " + DeliveryPeople[i].getUser()):
+                            DeliveryPeople[i].warning=DeliveryPeople[i].warning+1
+                            if DeliveryPeople[i].warning<=2:
+                                self.ShowFire.setText(name1 + " has  " + str(DeliveryPeople[i].warning) + "warning now!")
+                            elif DeliveryPeople[i].warning>2 and len(DeliveryPeople)>1:
+                                 DeliveryPeople[i].username = 'FireDelivery' + str(i)
+                                 DeliveryPeople[i].user_type=-1
+                                 DeliveryPeople.pop(i)
+                                 self.listWidget.takeItem(self.listWidget.row(item))
+                                 self.ShowFire.setText(name1+" was fired because /n"+ name1 + " has 3 warning already!")
+                            elif DeliveryPeople[i].warning>2 and len(DeliveryPeople)>=1:
+                                self.ShowFire.setText(name1 + "already has 3 Warning, but we can not him this guy  \nbecause we do not have enough Delivery people. ")
 
-                 for i in range(len(Sales)):
-                     if name1 == str(Sales[i].getFirst() + " " + Sales[i].getUser()):
-
-                         Sales[i].warning = Sales[i].warning + 1
-                         if Sales[i].warning<=2:
-                             self.ShowFire.setText(name1 + " has  " + str(Sales[i].warning) + " warning now!")
-                         elif Sales[i].warning>2 and len(Sales)>2:
-                             Sales[i].username = 'FireSales' + str(i)
-                             Sales[i].password = '*&^&*('
-                             Sales[i].salary = 0
-                             Sales[i].user_type=-1
-                             Sales.pop(i)
-                             self.listWidget.takeItem(self.listWidget.row(item))
-                             self.ShowFire.setText(name1+" was fired because "+ name1 + " has 3 warning already!")
-                         elif DeliveryPeople[i].warning>2 and len(DeliveryPeople)<=2:
-                             self.ShowFire.setText(name1 + "already has 3 Warning, but we can not him this guy  because we do not have enough Sales people. ")
-
+                elif Q[0] == 'S':
+                    name1 = Q[13:]
+                    for i in range(len(Sales)):
+                        if name1 == str(Sales[i].getFirst() + " " + Sales[i].getUser()):
+                            Sales[i].warning = Sales[i].warning + 1
+                            if Sales[i].warning<=2:
+                                self.ShowFire.setText(name1 + " has  " + str(Sales[i].warning) + " warning now!")
+                            elif Sales[i].warning>2 and len(Sales)>2:
+                                Sales[i].username = 'FireSales' + str(i)
+                                Sales[i].user_type=-1
+                                Sales.pop(i)
+                                self.listWidget.takeItem(self.listWidget.row(item))
+                                self.ShowFire.setText(name1+" was fired because \n"+ name1 + " has 3 warning already!")
+                            elif Sales[i].warning>2 and len(Sales)<=2:
+                                self.ShowFire.setText(name1 + "already has 3 Warning, but we can not fire this guy\n  because we do not have enough Sales people. ")
+         except Exception as e:
+             import traceback
+             traceback.print_exc()
     def Empinfor(self):
         self.Form = QtWidgets.QWidget()
         self.ui = Ui_Form_EmployeeInformation()

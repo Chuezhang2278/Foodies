@@ -23,17 +23,17 @@ class Ui_Form_Pay(object):
         self.Choose.setGeometry(QtCore.QRect(50, 60, 311, 41))
         self.Choose.setObjectName("Choose")
         self.lineEdit = QtWidgets.QLineEdit(Form)
-        self.lineEdit.setGeometry(QtCore.QRect(650, 260, 121, 19))
+        self.lineEdit.setGeometry(QtCore.QRect(650, 260, 121, 29))
         self.lineEdit.setObjectName("lineEdit")
         self.DS = QtWidgets.QLabel(Form)
         self.DS.setGeometry(QtCore.QRect(620, 260, 20, 20))
         self.DS.setObjectName("DS")
         self.ShowStuff = QtWidgets.QLabel(Form)
-        self.ShowStuff.setGeometry(QtCore.QRect(650, 220, 231, 31))
+        self.ShowStuff.setGeometry(QtCore.QRect(630, 170, 251, 81))
         self.ShowStuff.setText("")
         self.ShowStuff.setObjectName("ShowStuff")
         self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(630, 340, 501, 51))
+        self.label.setGeometry(QtCore.QRect(630, 340, 501, 61))
         self.label.setText("")
         self.label.setObjectName("label")
         self.listWidget = QtWidgets.QListWidget(Form)
@@ -62,7 +62,7 @@ class Ui_Form_Pay(object):
         person = self.listWidget.selectedItems()
         if not person: return
         for i in person:
-            self.ShowStuff.setText('Please enter ' + i.text() + ' salary')
+            self.ShowStuff.setText('Please enter \n' + i.text() + '\n salary')
 
     def closescr(self, Form):
         Form.hide()
@@ -79,7 +79,7 @@ class Ui_Form_Pay(object):
 
                         Sa = int(self.lineEdit.text())
                         DeliveryPeople[i].salary = Sa
-                        self.label.setText(name1+" Salary $:" + self.lineEdit.text())
+                        self.label.setText(name1+" Salary $:\n" + self.lineEdit.text())
             elif Q[0] == 'S':
                 name1 = Q[13:]
                 for i in range(len(Sales)):
@@ -87,7 +87,7 @@ class Ui_Form_Pay(object):
 
                         Sa = int(self.lineEdit.text())
                         Sales[i].salary = Sa
-                        self.label.setText(name1+ " salary $ " + self.lineEdit.text())
+                        self.label.setText(name1+ " salary $: \n" + self.lineEdit.text())
             elif Q[0] == 'C':
                 name1 = Q[7:]
                 for i in range(len(Cooks)):
@@ -95,7 +95,7 @@ class Ui_Form_Pay(object):
 
                         Sa = int(self.lineEdit.text())
                         Cooks[i].salary = Sa
-                        self.label.setText(name1+ " salary $ "+ self.lineEdit.text())
+                        self.label.setText(name1+ " salary $: \n"+ self.lineEdit.text())
 
 
     def retranslateUi(self, Form):

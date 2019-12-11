@@ -29,13 +29,13 @@ class Ui_Form_Commissions(object):
         self.DollarSign.setGeometry(QtCore.QRect(440, 190, 20, 41))
         self.DollarSign.setObjectName("DollarSign")
         self.ShowSaleP = QtWidgets.QLabel(Form)
-        self.ShowSaleP.setGeometry(QtCore.QRect(470, 149, 261, 31))
+        self.ShowSaleP.setGeometry(QtCore.QRect(470, 119, 261, 61))
         self.ShowSaleP.setObjectName("ShowSaleP")
         self.ShowCom = QtWidgets.QLabel(Form)
-        self.ShowCom.setGeometry(QtCore.QRect(470, 290, 261, 31))
+        self.ShowCom.setGeometry(QtCore.QRect(470, 290, 261, 91))
         self.ShowCom.setObjectName("ShowCom")
         self.Choose = QtWidgets.QLabel(Form)
-        self.Choose.setGeometry(QtCore.QRect(30, 99, 191, 31))
+        self.Choose.setGeometry(QtCore.QRect(30, 69, 250, 61))
         self.Choose.setObjectName("Choose")
         self.listWidget = QtWidgets.QListWidget(Form)
         self.listWidget.setGeometry(QtCore.QRect(10, 140, 291, 291))
@@ -61,7 +61,7 @@ class Ui_Form_Commissions(object):
         person = self.listWidget.selectedItems()
         if not person: return
         for i in person:
-            self.ShowSaleP.setText('Please enter ' + i.text() + ' commissions')
+            self.ShowSaleP.setText('Please enter ' + i.text() + '\n commissions')
 
 
 
@@ -79,7 +79,7 @@ class Ui_Form_Commissions(object):
 
                     Com = int(self.EnterCom.text())
                     Sales[i].Commissions = Com
-                    self.ShowCom.setText(name1+" Commissions $:" + self.EnterCom.text())
+                    self.ShowCom.setText(name1+" Commissions $:\n" + self.EnterCom.text())
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate

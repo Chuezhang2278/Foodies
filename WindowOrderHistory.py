@@ -14,23 +14,23 @@ class Ui_Form_OrderHistory(object):
         Form.setObjectName("Form")
         Form.resize(597, 521)
         self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(20, 19, 101, 31))
+        self.label.setGeometry(QtCore.QRect(20, 19, 150, 31))
         self.label.setObjectName("label")
         self.listWidget = QtWidgets.QListWidget(Form)
         self.listWidget.setGeometry(QtCore.QRect(25, 51, 521, 411))
         self.listWidget.setObjectName("listWidget")
         self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(510, 490, 56, 17))
+        self.pushButton.setGeometry(QtCore.QRect(510, 490, 56, 27))
         self.pushButton.setObjectName("pushButton")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
         self.pushButton.clicked.connect(lambda:self.closescr(Form))
-
         for i in range(len(OrderHistory)):
-            ordernmber = str("Order: " + i +"\tCustomr: " + OrderHistory[i].CurrentUser())
+            ordernmber = str("Order: " + i +"\nCustomr: " + OrderHistory[i].CurrentUser()
+                             + "\naddress:" + OrderHistory[i].Orders())
 
-            self.listWidget.addItem()
+            self.listWidget.addItem(ordernmber)
 
     def closescr(self, Form):
         Form.hide()
