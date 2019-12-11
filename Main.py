@@ -142,6 +142,9 @@ def printCurrentCart():
     for i in range(len(CurrentCart)):
         print(CurrentCart[i].getCate())
 
+def addWhoBought(Salesperson):
+    Who_Bought_Supplies.append(Salesperson)
+
 # Customer Checking Out Stuff
 def addOrder2(Order):
     Orders.append(Order)
@@ -164,6 +167,7 @@ threadKill = False
 
 #====For_Storage====
 PendingOrders = []
+Who_Bought_Supplies = []
 Orders = []
 OrderHistory = []
 DeliveryPeople = []

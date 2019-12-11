@@ -1068,7 +1068,7 @@ class Sales_Window(object):
 
             self.send_supplies() #sends supplies over to cook
             self.update_inventory() #once supplies are sent in update inventory
-
+            addWhoBought(User[CurrentUser[1]])
             #clear everything
             CurrentCart_SalesPerson.clear()
             self.check_out_list.clear()

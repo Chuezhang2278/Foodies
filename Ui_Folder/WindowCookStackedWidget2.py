@@ -2,23 +2,16 @@
 
 # Form implementation generated from reading ui file 'WindowCookStackedWidget.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
 
-from Main import *
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox, QPushButton
 
 
 class Ui_CookWindow(object):
-    def __init__(self):
-        self.CookWindow = None
-        self.LoginWindow = None
-    def setupUi(self, CookWindow, LoginWindow):
-        self.LoginWindow = LoginWindow
-        self.CookWindow = CookWindow
+    def setupUi(self, CookWindow):
         CookWindow.setObjectName("CookWindow")
         CookWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(CookWindow)
@@ -30,10 +23,6 @@ class Ui_CookWindow(object):
         self.page.setObjectName("page")
         self.welcomeLabel = QtWidgets.QLabel(self.page)
         self.welcomeLabel.setGeometry(QtCore.QRect(0, 0, 350, 40))
-        
-        # Welcome chef (firstName)!
-        self.welcomeLabel.setText(f"Welcome chef {CurrentUser[0].getFirst()}!")
-        
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
@@ -83,10 +72,6 @@ class Ui_CookWindow(object):
         font.setWeight(75)
         self.pendingOrdersLabel.setFont(font)
         self.pendingOrdersLabel.setObjectName("pendingOrdersLabel")
-
-        # Pending orders : (list of orders)
-        self.pendingOrdersLabel.setText(f"Pending orders: {len(PendingOrders)}")
-
         self.cookSalaryLabel = QtWidgets.QLabel(self.page)
         self.cookSalaryLabel.setGeometry(QtCore.QRect(0, 40, 350, 40))
         font = QtGui.QFont()
@@ -95,10 +80,6 @@ class Ui_CookWindow(object):
         font.setWeight(75)
         self.cookSalaryLabel.setFont(font)
         self.cookSalaryLabel.setObjectName("cookSalaryLabel")
-
-        # Salary : (float)
-        self.cookSalaryLabel.setText(f"Current Salary: ${CurrentUser[0].getSalary()}")
-
         self.currentWarningsLabel = QtWidgets.QLabel(self.page)
         self.currentWarningsLabel.setGeometry(QtCore.QRect(0, 80, 350, 40))
         font = QtGui.QFont()
@@ -107,10 +88,6 @@ class Ui_CookWindow(object):
         font.setWeight(75)
         self.currentWarningsLabel.setFont(font)
         self.currentWarningsLabel.setObjectName("currentWarningsLabel")
-
-        # Current Warnings : (int 0, 1, 2, 3)
-        self.currentWarningsLabel.setText(f"Current Warnings: {CurrentUser[0].getWarnings()}")
-
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
@@ -2022,17 +1999,65 @@ class Ui_CookWindow(object):
         self.Name_listWidget.setEnabled(True)
         self.Name_listWidget.setGeometry(QtCore.QRect(140, 70, 401, 481))
         self.Name_listWidget.setAutoFillBackground(False)
+        self.Name_listWidget.setStyleSheet("background-color: rgb(240, 240, 240);")
         self.Name_listWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.Name_listWidget.setLineWidth(0)
         self.Name_listWidget.setObjectName("Name_listWidget")
-        self.Name_listWidget.setSpacing(14)
-
+        item = QtWidgets.QListWidgetItem()
+        self.Name_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.Name_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.Name_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.Name_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.Name_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.Name_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.Name_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.Name_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.Name_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.Name_listWidget.addItem(item)
         self.Price_listWidget = QtWidgets.QListWidget(self.page_8)
         self.Price_listWidget.setGeometry(QtCore.QRect(550, 70, 91, 481))
+        self.Price_listWidget.setStyleSheet("background-color: rgb(240, 240, 240);")
         self.Price_listWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.Price_listWidget.setObjectName("Price_listWidget")
-        self.Price_listWidget.setSpacing(14)
-
+        item = QtWidgets.QListWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.Price_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.Price_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.Price_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.Price_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.Price_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.Price_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.Price_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.Price_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.Price_listWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.Price_listWidget.addItem(item)
         self.stackedWidget.addWidget(self.page_8)
         CookWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(CookWindow)
@@ -2047,49 +2072,18 @@ class Ui_CookWindow(object):
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(CookWindow)
 
-        # Button connections for the first page (Chef welcome page)
-        self.centralwidget.keyPressEvent = self.keyPressEvent
-        self.logoutButton.clicked.connect(self.open_logoutConfirmation)
-        self.managesuppliesButton.clicked.connect(self.open_manageSupplies)
-        self.managemenuButton.clicked.connect(self.open_manageMenu)
-        self.rateSalespersonButton.clicked.connect(self.open_rateSalesperson)
-        self.cookNextOrderButton.clicked.connect(self.cookNextOrder)
-        # Button connections for the second page (Supplies management page)
-        self.suppliesReturnButton.clicked.connect(self.open_cookWelcome)
-        self.viewBestButton.clicked.connect(self.open_bestSupplies)
-        self.viewGoodButton.clicked.connect(self.open_goodSupplies)
-        self.viewBadButton.clicked.connect(self.open_badSupplies)
-        # Button connections for the third page (Best supplies page)
-        self.bestReturnButton.clicked.connect(self.open_manageSupplies)
-        # Button connections for the fourth page (Good supplies page)
-        self.goodReturnButton.clicked.connect(self.open_manageSupplies)
-        # Button connections for the fifth page (Bad supplies page)
-        self.badReturnButton.clicked.connect(self.open_manageSupplies)
-        # Button connections for the sixth page (Rate salesperson page)
-        self.rateReturnButton.clicked.connect(self.open_cookWelcome)
-        self.rateButton.clicked.connect(self.giveRating)
-        # Button connections for seventh page (Food menu modification page)
-        self.menuModificationReturnButton.clicked.connect(self.open_cookWelcome)
-        self.addButton.clicked.connect(self.addtoMenu)
-        self.addresetButton.clicked.connect(self.resetAdd)
-        self.removeButton.clicked.connect(self.removefromMenu)
-        self.removeresetButton.clicked.connect(self.resetRemove)
-        self.previewButton.clicked.connect(self.open_previewMenu)
-        # Button connections for the eigth page (Menu preview page)
-        self.menuPreviewReturnButton.clicked.connect(self.open_manageMenu)
-
     def retranslateUi(self, CookWindow):
         _translate = QtCore.QCoreApplication.translate
         CookWindow.setWindowTitle(_translate("CookWindow", "MainWindow"))
-        #self.welcomeLabel.setText(_translate("CookWindow", "Welcome, chef"))
+        self.welcomeLabel.setText(_translate("CookWindow", "Welcome, chef"))
         self.logoutButton.setText(_translate("CookWindow", "Logout"))
         self.managesuppliesButton.setText(_translate("CookWindow", "Manage Restaurant Supplies"))
         self.managemenuButton.setText(_translate("CookWindow", "Manage Restaurant Food Menu"))
         self.rateSalespersonButton.setText(_translate("CookWindow", "Rate your Salesperson!"))
         self.cookNextOrderButton.setText(_translate("CookWindow", "Cook Next Order"))
-        #self.pendingOrdersLabel.setText(_translate("CookWindow", "Pending orders:"))
-        #self.cookSalaryLabel.setText(_translate("CookWindow", "Salary:"))
-        #self.currentWarningsLabel.setText(_translate("CookWindow", "Current Warnings:"))
+        self.pendingOrdersLabel.setText(_translate("CookWindow", "Pending orders:"))
+        self.cookSalaryLabel.setText(_translate("CookWindow", "Salary:"))
+        self.currentWarningsLabel.setText(_translate("CookWindow", "Current Warnings:"))
         self.suppliesReturnButton.setText(_translate("CookWindow", "Return"))
         self.suppliesLabel.setText(_translate("CookWindow", "Supplies Management"))
         self.viewBestButton.setText(_translate("CookWindow", "View Best Supplies"))
@@ -2201,7 +2195,7 @@ class Ui_CookWindow(object):
         self.badEggQuantityLabel.setText(_translate("CookWindow", "0"))
         self.badDairyQuantityLabel.setText(_translate("CookWindow", "0"))
         self.rateReturnButton.setText(_translate("CookWindow", "Return"))
-        self.badSuppliesLabel_2.setText(_translate("CookWindow", "Rate your Salesperson"))
+        self.badSuppliesLabel_2.setText(_translate("CookWindow", "Rate your Salesperon"))
         self.label.setText(_translate("CookWindow", "Please consider rating your salesperson!"))
         self.label_2.setText(_translate("CookWindow", "Salesperson:"))
         self.label_3.setText(_translate("CookWindow", "Rating:"))
@@ -2244,1219 +2238,57 @@ class Ui_CookWindow(object):
         self.menupreviewLabel.setText(_translate("CookWindow", "Menu Preview"))
         __sortingEnabled = self.Name_listWidget.isSortingEnabled()
         self.Name_listWidget.setSortingEnabled(False)
-
+        item = self.Name_listWidget.item(0)
+        item.setText(_translate("CookWindow", "New Item"))
+        item = self.Name_listWidget.item(1)
+        item.setText(_translate("CookWindow", "New Item"))
+        item = self.Name_listWidget.item(2)
+        item.setText(_translate("CookWindow", "New Item"))
+        item = self.Name_listWidget.item(3)
+        item.setText(_translate("CookWindow", "New Item"))
+        item = self.Name_listWidget.item(4)
+        item.setText(_translate("CookWindow", "New Item"))
+        item = self.Name_listWidget.item(5)
+        item.setText(_translate("CookWindow", "New Item"))
+        item = self.Name_listWidget.item(6)
+        item.setText(_translate("CookWindow", "New Item"))
+        item = self.Name_listWidget.item(7)
+        item.setText(_translate("CookWindow", "New Item"))
+        item = self.Name_listWidget.item(8)
+        item.setText(_translate("CookWindow", "New Item"))
+        item = self.Name_listWidget.item(9)
+        item.setText(_translate("CookWindow", "New Item"))
         self.Name_listWidget.setSortingEnabled(__sortingEnabled)
         __sortingEnabled = self.Price_listWidget.isSortingEnabled()
         self.Price_listWidget.setSortingEnabled(False)
-
+        item = self.Price_listWidget.item(0)
+        item.setText(_translate("CookWindow", "10"))
+        item = self.Price_listWidget.item(1)
+        item.setText(_translate("CookWindow", "10"))
+        item = self.Price_listWidget.item(2)
+        item.setText(_translate("CookWindow", "10"))
+        item = self.Price_listWidget.item(3)
+        item.setText(_translate("CookWindow", "10"))
+        item = self.Price_listWidget.item(4)
+        item.setText(_translate("CookWindow", "10"))
+        item = self.Price_listWidget.item(5)
+        item.setText(_translate("CookWindow", "10"))
+        item = self.Price_listWidget.item(6)
+        item.setText(_translate("CookWindow", "10"))
+        item = self.Price_listWidget.item(7)
+        item.setText(_translate("CookWindow", "10"))
+        item = self.Price_listWidget.item(8)
+        item.setText(_translate("CookWindow", "10"))
+        item = self.Price_listWidget.item(9)
+        item.setText(_translate("CookWindow", "10"))
         self.Price_listWidget.setSortingEnabled(__sortingEnabled)
 
-##### Methods to obtain each supply name and quality's (Quantity) from the CartSupplies_ForCook list #####
-##### Best #####
-
-    # Function that gets the Best Meats
-    def getBestMeats(self):
-        self.bestMeats = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Meat'):
-                self.bestMeats += CartSupplies_ForCook[i].getQuantity()
-        return self.bestMeats
-    
-    # Function that gets the Best Fish
-    def getBestFish(self):
-        self.bestFish = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Fish'):
-                self.bestFish += CartSupplies_ForCook[i].getQuantity()
-        return self.bestFish
-
-    # Function that gets the Best Vegetables
-    def getBestVegetables(self):
-        self.bestVegetables = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Vegetables'):
-                self.bestVegetables += CartSupplies_ForCook[i].getQuantity()
-        return self.bestVegetables
-    
-    # Function that gets the Best Flour
-    def getBestFlour(self):
-        self.bestFlour = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Flour'):
-                self.bestFlour += CartSupplies_ForCook[i].getQuantity()
-        return self.bestFlour
-
-    # Function that gets the Best Yeast
-    def getBestYeast(self):
-        self.bestYeast = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Yeast'):
-                self.bestYeast += CartSupplies_ForCook[i].getQuantity()
-        return self.bestYeast
-    
-    # Function that gets the Best Salt
-    def getBestSalt(self):
-        self.bestSalt = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Salt'):
-                self.bestSalt += CartSupplies_ForCook[i].getQuantity()
-        return self.bestSalt
-
-    # Function that gets the Best Spices
-    def getBestSpices(self):
-        self.bestSpices = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Spices'):
-                self.bestSpices += CartSupplies_ForCook[i].getQuantity()
-        return self.bestSpices
-    
-    # Function that gets the Best Sugar
-    def getBestSugar(self):
-        self.bestSugar = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Sugar'):
-                self.bestSugar += CartSupplies_ForCook[i].getQuantity()
-        return self.bestSugar
-
-    # Function that gets the Best Egg
-    def getBestEgg(self):
-        self.bestEgg = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Egg'):
-                self.bestEgg += CartSupplies_ForCook[i].getQuantity()
-        return self.bestEgg
-    
-    # Function that gets the Best Dairy
-    def getBestDairy(self):
-        self.bestDairy = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Dairy'):
-                self.bestDairy += CartSupplies_ForCook[i].getQuantity()
-        return self.bestDairy
-
-##### Good #####
-
-    # Function that gets the Good Meats
-    def getGoodMeats(self):
-        self.goodMeats = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Meat'):
-                self.goodMeats += CartSupplies_ForCook[i].getQuantity()
-        return self.goodMeats
-    
-    # Function that gets the Good Fish
-    def getGoodFish(self):
-        self.goodFish = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Fish'):
-                self.goodFish += CartSupplies_ForCook[i].getQuantity()
-        return self.goodFish
-
-    # Function that gets the Good Vegetables
-    def getGoodVegetables(self):
-        self.goodVegetables = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Vegetables'):
-                self.goodVegetables += CartSupplies_ForCook[i].getQuantity()
-        return self.goodVegetables
-    
-    # Function that gets the Good Flour
-    def getGoodFlour(self):
-        self.goodFlour = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Flour'):
-                self.goodFlour += CartSupplies_ForCook[i].getQuantity()
-        return self.goodFlour
-
-    # Function that gets the Good Yeast
-    def getGoodYeast(self):
-        self.goodYeast = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Yeast'):
-                self.goodYeast += CartSupplies_ForCook[i].getQuantity()
-        return self.goodYeast
-    
-    # Function that gets the Good Salt
-    def getGoodSalt(self):
-        self.goodSalt = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Salt'):
-                self.goodSalt += CartSupplies_ForCook[i].getQuantity()
-        return self.goodSalt
-
-    # Function that gets the Good Spices
-    def getGoodSpices(self):
-        self.goodSpices = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Spices'):
-                self.goodSpices += CartSupplies_ForCook[i].getQuantity()
-        return self.goodSpices
-    
-    # Function that gets the Good Sugar
-    def getGoodSugar(self):
-        self.goodSugar = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Sugar'):
-                self.goodSugar += CartSupplies_ForCook[i].getQuantity()
-        return self.goodSugar
-
-    # Function that gets the Good Egg
-    def getGoodEgg(self):
-        self.goodEgg = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Egg'):
-                self.goodEgg += CartSupplies_ForCook[i].getQuantity()
-        return self.goodEgg
-    
-    # Function that gets the Good Dairy
-    def getGoodDairy(self):
-        self.goodDairy = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Dairy'):
-                self.goodDairy += CartSupplies_ForCook[i].getQuantity()
-        return self.goodDairy
-
-
-##### Bad #####
-
-    # Function that gets the Bad Meats
-    def getBadMeats(self):
-        self.badMeats = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Meat'):
-                self.badMeats += CartSupplies_ForCook[i].getQuantity()
-        return self.badMeats
-    
-    # Function that gets the Bad Fish
-    def getBadFish(self):
-        self.badFish = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Fish'):
-                self.badFish += CartSupplies_ForCook[i].getQuantity()
-        return self.badFish
-
-    # Function that gets the Bad Vegetables
-    def getBadVegetables(self):
-        self.badVegetables = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Vegetables'):
-                self.badVegetables += CartSupplies_ForCook[i].getQuantity()
-        return self.badVegetables
-    
-    # Function that gets the Bad Flour
-    def getBadFlour(self):
-        self.badFlour = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Flour'):
-                self.badFlour += CartSupplies_ForCook[i].getQuantity()
-        return self.badFlour
-
-    # Function that gets the Bad Yeast
-    def getBadYeast(self):
-        self.badYeast = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Yeast'):
-                self.badYeast += CartSupplies_ForCook[i].getQuantity()
-        return self.badYeast
-    
-    # Function that gets the Bad Salt
-    def getBadSalt(self):
-        self.badSalt = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Salt'):
-                self.badSalt += CartSupplies_ForCook[i].getQuantity()
-        return self.badSalt
-
-    # Function that gets the Bad Spices
-    def getBadSpices(self):
-        self.badSpices = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Spices'):
-                self.badSpices += CartSupplies_ForCook[i].getQuantity()
-        return self.badSpices
-    
-    # Function that gets the Bad Sugar
-    def getBadSugar(self):
-        self.badSugar = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Sugar'):
-                self.badSugar += CartSupplies_ForCook[i].getQuantity()
-        return self.badSugar
-
-    # Function that gets the Bad Egg
-    def getBadEgg(self):
-        self.badEgg = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Egg'):
-                self.badEgg += CartSupplies_ForCook[i].getQuantity()
-        return self.badEgg
-    
-    # Function that gets the Bad Dairy
-    def getBadDairy(self):
-        self.badDairy = 0
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Dairy'):
-                self.badDairy += CartSupplies_ForCook[i].getQuantity()
-        return self.badDairy
-
-##############################
-##### Methods to decrease supply count #####
-    # Function that removes supplies associated for Spicy Appetizers
-    # Vegetables, Flour, Yeast, Spices
-    def removeAppetizersSpicySupplies(self):
-        if(self.getBestVegetables() > 0 and self.getBestFlour() > 0 and self.getBestYeast() > 0 and self.getBestSpices() > 0):
-            bestVegetables = Supplies('Vegetables', 'Best', 0)
-            bestVegetables.setQuantity(-1)
-            addCookSupplies(bestVegetables)
-            bestFlour = Supplies('Flour', 'Best', 0)
-            bestFlour.setQuantity(-1)
-            addCookSupplies(bestFlour)
-            bestYeast = Supplies('Yeast', 'Best', 0)
-            bestYeast.setQuantity(-1)
-            addCookSupplies(bestYeast)
-            bestSpices = Supplies('Spices', 'Best', 0)
-            bestSpices.setQuantity(-1)
-            addCookSupplies(bestSpices)
-            return True
-        elif(self.getGoodVegetables() > 0 and self.getGoodFlour() > 0 and self.getGoodYeast() > 0 and self.getGoodSpices() > 0):
-            goodVegetables = Supplies('Vegetables', 'Good', 0)
-            goodVegetables.setQuantity(-1)
-            addCookSupplies(goodVegetables)
-            goodFlour = Supplies('Flour', 'Good', 0)
-            goodFlour.setQuantity(-1)
-            addCookSupplies(goodFlour)
-            goodYeast = Supplies('Yeast', 'Good', 0)
-            goodYeast.setQuantity(-1)
-            addCookSupplies(goodYeast)
-            goodSpices = Supplies('Spices', 'Good', 0)
-            goodSpices.setQuantity(-1)
-            addCookSupplies(goodSpices)
-            return True
-        elif(self.getBadVegetables() > 0 and self.getBadFlour() > 0 and self.getBadYeast() > 0 and self.getBadSpices() > 0):
-            badVegetables = Supplies('Vegetables', 'Bad', 0)
-            badVegetables.setQuantity(-1)
-            addCookSupplies(badVegetables)
-            badFlour = Supplies('Flour', 'Bad', 0)
-            badFlour.setQuantity(-1)
-            addCookSupplies(badFlour)
-            badYeast = Supplies('Yeast', 'Bad', 0)
-            badYeast.setQuantity(-1)
-            addCookSupplies(badYeast)
-            badSpices = Supplies('Spices', 'Bad', 0)
-            badSpices.setQuantity(-1)
-            addCookSupplies(badSpices)
-            return True
-        else:
-            msg = QMessageBox()
-            msg.setWindowTitle("Not enough supplies!")
-            msg.setText("Please restock on supplies!")
-            msg.setInformativeText("You need more Vegetables, Flour, Yeast, or Spices of the same quality for this dish.")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()
-            return False
-
-    # Function that removes supplies associated for Appetizers
-    # Vegetables, Flour, Yeast
-    def removeAppetizersSupplies(self):
-        if(self.getBestVegetables() > 0 and self.getBestFlour() > 0 and self.getBestYeast() > 0):
-            bestVegetables = Supplies('Vegetables', 'Best', 0)
-            bestVegetables.setQuantity(-1)
-            addCookSupplies(bestVegetables)
-            bestFlour = Supplies('Flour', 'Best', 0)
-            bestFlour.setQuantity(-1)
-            addCookSupplies(bestFlour)
-            bestYeast = Supplies('Yeast', 'Best', 0)
-            bestYeast.setQuantity(-1)
-            addCookSupplies(bestYeast)
-            return True
-        elif(self.getGoodVegetables() > 0 and self.getGoodFlour() > 0 and self.getGoodYeast() > 0):
-            goodVegetables = Supplies('Vegetables', 'Good', 0)
-            goodVegetables.setQuantity(-1)
-            addCookSupplies(goodVegetables)
-            goodFlour = Supplies('Flour', 'Good', 0)
-            goodFlour.setQuantity(-1)
-            addCookSupplies(goodFlour)
-            goodYeast = Supplies('Yeast', 'Good', 0)
-            goodYeast.setQuantity(-1)
-            addCookSupplies(goodYeast)
-            return True
-        elif(self.getBadVegetables() > 0 and self.getBadFlour() > 0 and self.getBadYeast() > 0):
-            badVegetables = Supplies('Vegetables', 'Bad', 0)
-            badVegetables.setQuantity(-1)
-            addCookSupplies(badVegetables)
-            badFlour = Supplies('Flour', 'Bad', 0)
-            badFlour.setQuantity(-1)
-            addCookSupplies(badFlour)
-            badYeast = Supplies('Yeast', 'Bad', 0)
-            badYeast.setQuantity(-1)
-            addCookSupplies(badYeast)
-            return True
-        else:
-            msg = QMessageBox()
-            msg.setWindowTitle("Not enough supplies!")
-            msg.setText("Please restock on supplies!")
-            msg.setInformativeText("You need more Vegetables, Flour, or Yeast of the same quality for this dish.")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()
-            return False
-
-    # Function that removes supplies associated for Spicy Sides
-    # Flour, Yeast, Salt, Spices
-    def removeSidesSpicySupplies(self):
-        if(self.getBestFlour() > 0 and self.getBestYeast() > 0 and self.getBestSalt() > 0 and self.getBestSpices() > 0):
-            bestFlour = Supplies('Flour', 'Best', 0)
-            bestFlour.setQuantity(-1)
-            addCookSupplies(bestFlour)
-            bestYeast = Supplies('Yeast', 'Best', 0)
-            bestYeast.setQuantity(-1)
-            addCookSupplies(bestYeast)
-            bestSalt = Supplies('Salt', 'Best', 0)
-            bestSalt.setQuantity(-1)
-            addCookSupplies(bestSalt)
-            bestSpices = Supplies('Spices', 'Best', 0)
-            bestSpices.setQuantity(-1)
-            addCookSupplies(bestSpices)
-            return True
-        elif(self.getGoodFlour() > 0 and self.getGoodYeast() > 0 and self.getGoodSalt() > 0 and self.getGoodSpices() > 0):
-            goodFlour = Supplies('Flour', 'Good', 0)
-            goodFlour.setQuantity(-1)
-            addCookSupplies(goodFlour)
-            goodYeast = Supplies('Yeast', 'Good', 0)
-            goodYeast.setQuantity(-1)
-            addCookSupplies(goodYeast)
-            goodSalt = Supplies('Salt', 'Good', 0)
-            goodSalt.setQuantity(-1)
-            addCookSupplies(goodSalt)
-            goodSpices = Supplies('Spices', 'Good', 0)
-            goodSpices.setQuantity(-1)
-            addCookSupplies(bestSpices)
-            return True
-        elif(self.getBadFlour() > 0 and self.getBadYeast() > 0 and self.getBadSalt() > 0 and self.getBadSpices() > 0):
-            badFlour = Supplies('Flour', 'Bad', 0)
-            badFlour.setQuantity(-1)
-            addCookSupplies(badFlour)
-            badYeast = Supplies('Yeast', 'Bad', 0)
-            badYeast.setQuantity(-1)
-            addCookSupplies(badYeast)
-            badSalt = Supplies('Salt', 'Bad', 0)
-            badSalt.setQuantity(-1)
-            addCookSupplies(badSalt)
-            badSpices = Supplies('Spices', 'Bad', 0)
-            badSpices.setQuantity(-1)
-            addCookSupplies(badSpices)
-            return True
-        else:
-            msg = QMessageBox()
-            msg.setWindowTitle("Not enough supplies!")
-            msg.setText("Please restock on supplies!")
-            msg.setInformativeText("You need more Flour, Yeast, Salt or Spices of the same quality for this dish.")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()
-            return False
-    
-    # Function that removes supplies associated for Sides
-    # Flour, Yeast, Salt
-    def removeSidesSupplies(self):
-        if(self.getBestFlour() > 0 and self.getBestYeast() > 0 and self.getBestSalt() > 0):
-            bestFlour = Supplies('Flour', 'Best', 0)
-            bestFlour.setQuantity(-1)
-            addCookSupplies(bestFlour)
-            bestYeast = Supplies('Yeast', 'Best', 0)
-            bestYeast.setQuantity(-1)
-            addCookSupplies(bestYeast)
-            bestSalt = Supplies('Salt', 'Best', 0)
-            bestSalt.setQuantity(-1)
-            addCookSupplies(bestSalt)
-            return True
-        elif(self.getGoodFlour() > 0 and self.getGoodYeast() > 0 and self.getGoodSalt() > 0):
-            goodFlour = Supplies('Flour', 'Good', 0)
-            goodFlour.setQuantity(-1)
-            addCookSupplies(goodFlour)
-            goodYeast = Supplies('Yeast', 'Good', 0)
-            goodYeast.setQuantity(-1)
-            addCookSupplies(goodYeast)
-            goodSalt = Supplies('Salt', 'Good', 0)
-            goodSalt.setQuantity(-1)
-            addCookSupplies(goodSalt)
-            return True
-        elif(self.getBadFlour() > 0 and self.getBadYeast() > 0 and self.getBadSalt() > 0):
-            badFlour = Supplies('Flour', 'Bad', 0)
-            badFlour.setQuantity(-1)
-            addCookSupplies(badFlour)
-            badYeast = Supplies('Yeast', 'Bad', 0)
-            badYeast.setQuantity(-1)
-            addCookSupplies(badYeast)
-            badSalt = Supplies('Salt', 'Bad', 0)
-            badSalt.setQuantity(-1)
-            addCookSupplies(badSalt)
-            return True
-        else:
-            msg = QMessageBox()
-            msg.setWindowTitle("Not enough supplies!")
-            msg.setText("Please restock on supplies!")
-            msg.setInformativeText("You need more Flour, Yeast, or Salt of the same quality for this dish.")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()
-            return False
-
-    # Function that removes supplies associated for Spicy Entrees
-    # Meats, Fish, Vegetables, Salt, Spices
-    def removeEntreesSpicySupplies(self):
-        if(self.getBestMeats() > 0 and self.getBestFish() > 0 and self.getBestVegetables() > 0 and self.getBestSalt() > 0 and self.getBestSpices() > 0):
-            bestMeats = Supplies('Meats', 'Best', 0)
-            bestMeats.setQuantity(-1)
-            addCookSupplies(bestMeats)
-            bestFish = Supplies('Fish', 'Best', 0)
-            bestFish.setQuantity(-1)
-            addCookSupplies(bestFish)
-            bestVegetables = Supplies('Vegetables', 'Best', 0)
-            bestVegetables.setQuantity(-1)
-            addCookSupplies(bestVegetables)
-            bestSalt = Supplies('Salt', 'Best', 0)
-            bestSalt.setQuantity(-1)
-            addCookSupplies(bestSalt)
-            bestSpices = Supplies('Spices', 'Best', 0)
-            bestSpices.setQuantity(-1)
-            addCookSupplies(bestSpices)
-            return True
-        elif(self.getGoodMeats() > 0 and self.getGoodFish() > 0 and self.getGoodVegetables() > 0 and self.getGoodSalt() > 0 and self.getGoodSpices() > 0):
-            goodMeats = Supplies('Meats', 'Good', 0)
-            goodMeats.setQuantity(-1)
-            addCookSupplies(goodMeats)
-            goodFish = Supplies('Fish', 'Good', 0)
-            goodFish.setQuantity(-1)
-            addCookSupplies(goodFish)
-            goodVegetables = Supplies('Vegetables', 'Good', 0)
-            goodVegetables.setQuantity(-1)
-            addCookSupplies(goodVegetables)
-            goodSalt = Supplies('Salt', 'Good', 0)
-            goodSalt.setQuantity(-1)
-            addCookSupplies(goodSalt)
-            goodSpices = Supplies('Spices', 'Good', 0)
-            goodSpices.setQuantity(-1)
-            addCookSupplies(goodSpices)
-            return True
-        elif(self.getBadMeats() > 0 and self.getBadFish() > 0 and self.getBadVegetables() > 0 and self.getBadSalt() > 0 and self.getBadSpices() > 0):
-            badMeats = Supplies('Meats', 'Bad', 0)
-            badMeats.setQuantity(-1)
-            addCookSupplies(badMeats)
-            badFish = Supplies('Fish', 'Bad', 0)
-            badFish.setQuantity(-1)
-            addCookSupplies(badFish)
-            badVegetables = Supplies('Vegetables', 'Bad', 0)
-            badVegetables.setQuantity(-1)
-            addCookSupplies(badVegetables)
-            badSalt = Supplies('Salt', 'Bad', 0)
-            badSalt.setQuantity(-1)
-            addCookSupplies(badSalt)
-            badSpices = Supplies('Spices', 'Bad', 0)
-            badSpices.setQuantity(-1)
-            addCookSupplies(badSpices)
-            return True
-        else:
-            msg = QMessageBox()
-            msg.setWindowTitle("Not enough supplies!")
-            msg.setText("Please restock on supplies!")
-            msg.setInformativeText("You need more Meats, Fish, Vegetables, Salt, or Spices of the same quality for this dish.")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()   
-            return False
-
-    # Function that removes supplies associated for Entrees
-    # Meats, Fish, Vegetables, Salt
-    def removeEntreesSupplies(self):
-        if(self.getBestMeats() > 0 and self.getBestFish() > 0 and self.getBestVegetables() > 0 and self.getBestSalt() > 0):
-            bestMeats = Supplies('Meats', 'Best', 0)
-            bestMeats.setQuantity(-1)
-            addCookSupplies(bestMeats)
-            bestFish = Supplies('Fish', 'Best', 0)
-            bestFish.setQuantity(-1)
-            addCookSupplies(bestFish)
-            bestVegetables = Supplies('Vegetables', 'Best', 0)
-            bestVegetables.setQuantity(-1)
-            addCookSupplies(bestVegetables)
-            bestSalt = Supplies('Salt', 'Best', 0)
-            bestSalt.setQuantity(-1)
-            addCookSupplies(bestSalt)
-            return True
-        elif(self.getGoodMeats() > 0 and self.getGoodFish() > 0 and self.getGoodVegetables() > 0 and self.getGoodSalt() > 0):
-            goodMeats = Supplies('Meats', 'Good', 0)
-            goodMeats.setQuantity(-1)
-            addCookSupplies(goodMeats)
-            goodFish = Supplies('Fish', 'Good', 0)
-            goodFish.setQuantity(-1)
-            addCookSupplies(goodFish)
-            goodVegetables = Supplies('Vegetables', 'Good', 0)
-            goodVegetables.setQuantity(-1)
-            addCookSupplies(goodVegetables)
-            goodSalt = Supplies('Salt', 'Good', 0)
-            goodSalt.setQuantity(-1)
-            addCookSupplies(goodSalt)
-            return True
-        elif(self.getBadMeats() > 0 and self.getBadFish() > 0 and self.getBadVegetables() > 0 and self.getBadSalt() > 0):
-            badMeats = Supplies('Meats', 'Bad', 0)
-            badMeats.setQuantity(-1)
-            addCookSupplies(badMeats)
-            badFish = Supplies('Fish', 'Bad', 0)
-            badFish.setQuantity(-1)
-            addCookSupplies(badFish)
-            badVegetables = Supplies('Vegetables', 'Bad', 0)
-            badVegetables.setQuantity(-1)
-            addCookSupplies(badVegetables)
-            badSalt = Supplies('Salt', 'Bad', 0)
-            badSalt.setQuantity(-1)
-            addCookSupplies(badSalt)
-            return True
-        else:
-            msg = QMessageBox()
-            msg.setWindowTitle("Not enough supplies!")
-            msg.setText("Please restock on supplies!")
-            msg.setInformativeText("You need more Meats, Fish, Vegetables, or Salt of the same quality for this dish.")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()   
-            return False
-
-    # Function that removes supplies associated for Spicy Desserts
-    # Flour, Yeast, Sugar, Egg, Dairy, Spices
-    def removeDessertsSpicySupplies(self):
-        if(self.getBestFlour() > 0 and self.getBestYeast() > 0 and self.getBestSugar() > 0 and self.getBestEgg() > 0 and self.getBestDairy() > 0 and self.getBestSpices() > 0):
-            bestFlour = Supplies('Flour', 'Best', 0)
-            bestFlour.setQuantity(-1)
-            addCookSupplies(bestFlour)
-            bestYeast = Supplies('Yeast', 'Best', 0)
-            bestYeast.setQuantity(-1)
-            addCookSupplies(bestYeast)
-            bestSugar = Supplies('Sugar', 'Best', 0)
-            bestSugar.setQuantity(-1)
-            addCookSupplies(bestSugar)
-            bestEgg = Supplies('Egg', 'Best', 0)
-            bestEgg.setQuantity(-1)
-            addCookSupplies(bestEgg)
-            bestDairy = Supplies('Dairy', 'Best', 0)
-            bestDairy.setQuantity(-1)
-            addCookSupplies(bestDairy)
-            bestSpices = Supplies('Spices', 'Best', 0)
-            bestSpices.setQuantity(-1)
-            addCookSupplies(bestSpices)
-            return True
-        elif(self.getGoodFlour() > 0 and self.getGoodYeast() > 0 and self.getGoodSugar() > 0 and self.getGoodEgg() > 0 and self.getGoodDairy() > 0 and self.getGoodSpices() > 0):
-            goodFlour = Supplies('Flour', 'Good', 0)
-            goodFlour.setQuantity(-1)
-            addCookSupplies(goodFlour)
-            goodYeast = Supplies('Yeast', 'Good', 0)
-            goodYeast.setQuantity(-1)
-            addCookSupplies(goodYeast)
-            goodSugar = Supplies('Sugar', 'Good', 0)
-            goodSugar.setQuantity(-1)
-            addCookSupplies(goodSugar)
-            goodEgg = Supplies('Egg', 'Good', 0)
-            goodEgg.setQuantity(-1)
-            addCookSupplies(goodEgg)
-            goodDairy = Supplies('Dairy', 'Good', 0)
-            goodDairy.setQuantity(-1)
-            addCookSupplies(goodDairy)
-            goodSpices = Supplies('Spices', 'Good', 0)
-            goodSpices.setQuantity(-1)
-            addCookSupplies(goodSpices)
-            return True
-        elif(self.getBadFlour() > 0 and self.getBadYeast() > 0 and self.getBadSugar() > 0 and self.getBadEgg() > 0 and self.getBadDairy() > 0 and self.getBadSpices() > 0):
-            badFlour = Supplies('Flour', 'Bad', 0)
-            badFlour.setQuantity(-1)
-            addCookSupplies(badFlour)
-            badYeast = Supplies('Yeast', 'Bad', 0)
-            badYeast.setQuantity(-1)
-            addCookSupplies(badYeast)
-            badSugar = Supplies('Sugar', 'Bad', 0)
-            badSugar.setQuantity(-1)
-            addCookSupplies(badSugar)
-            badEgg = Supplies('Egg', 'Bad', 0)
-            badEgg.setQuantity(-1)
-            addCookSupplies(badEgg)
-            badDairy = Supplies('Dairy', 'Bad', 0)
-            badDairy.setQuantity(-1)
-            addCookSupplies(badDairy)
-            badSpices = Supplies('Spices', 'Bad', 0)
-            badSpices.setQuantity(-1)
-            addCookSupplies(badSpices)
-            return True
-        else:
-            msg = QMessageBox()
-            msg.setWindowTitle("Not enough supplies!")
-            msg.setText("Please restock on supplies!")
-            msg.setInformativeText("You need more Flour, Yeast, Sugar, Dairy, or Spices of the same quality for this dish.")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()  
-            return False
-
-    # Function that removes supplies associated for Desserts
-    # Flour, Yeast, Sugar, Egg, Dairy
-    def removeDessertsSupplies(self):
-        if(self.getBestFlour() > 0 and self.getBestYeast() > 0 and self.getBestSugar() > 0 and self.getBestEgg() > 0 and self.getBestDairy() > 0):
-            bestFlour = Supplies('Flour', 'Best', 0)
-            bestFlour.setQuantity(-1)
-            addCookSupplies(bestFlour)
-            bestYeast = Supplies('Yeast', 'Best', 0)
-            bestYeast.setQuantity(-1)
-            addCookSupplies(bestYeast)
-            bestSugar = Supplies('Sugar', 'Best', 0)
-            bestSugar.setQuantity(-1)
-            addCookSupplies(bestSugar)
-            bestEgg = Supplies('Egg', 'Best', 0)
-            bestEgg.setQuantity(-1)
-            addCookSupplies(bestEgg)
-            bestDairy = Supplies('Dairy', 'Best', 0)
-            bestDairy.setQuantity(-1)
-            addCookSupplies(bestDairy)
-            return True
-        elif(self.getGoodFlour() > 0 and self.getGoodYeast() > 0 and self.getGoodSugar() > 0 and self.getGoodEgg() > 0 and self.getGoodDairy() > 0):
-            goodFlour = Supplies('Flour', 'Good', 0)
-            goodFlour.setQuantity(-1)
-            addCookSupplies(goodFlour)
-            goodYeast = Supplies('Yeast', 'Good', 0)
-            goodYeast.setQuantity(-1)
-            addCookSupplies(goodYeast)
-            goodSugar = Supplies('Sugar', 'Good', 0)
-            goodSugar.setQuantity(-1)
-            addCookSupplies(goodSugar)
-            goodEgg = Supplies('Egg', 'Good', 0)
-            goodEgg.setQuantity(-1)
-            addCookSupplies(goodEgg)
-            goodDairy = Supplies('Dairy', 'Good', 0)
-            goodDairy.setQuantity(-1)
-            addCookSupplies(goodDairy)
-            return True
-        elif(self.getBadFlour() > 0 and self.getBadYeast() > 0 and self.getBadSugar() > 0 and self.getBadEgg() > 0 and self.getBadDairy() > 0):
-            badFlour = Supplies('Flour', 'Bad', 0)
-            badFlour.setQuantity(-1)
-            addCookSupplies(badFlour)
-            badYeast = Supplies('Yeast', 'Bad', 0)
-            badYeast.setQuantity(-1)
-            addCookSupplies(badYeast)
-            badSugar = Supplies('Sugar', 'Bad', 0)
-            badSugar.setQuantity(-1)
-            addCookSupplies(badSugar)
-            badEgg = Supplies('Egg', 'Bad', 0)
-            badEgg.setQuantity(-1)
-            addCookSupplies(badEgg)
-            badDairy = Supplies('Dairy', 'Bad', 0)
-            badDairy.setQuantity(-1)
-            addCookSupplies(badDairy)
-            return True
-        else:
-            msg = QMessageBox()
-            msg.setWindowTitle("Not enough supplies!")
-            msg.setText("Please restock on supplies!")
-            msg.setInformativeText("You need more Flour, Yeast, Sugar, or Dairy of the same quality for this dish.")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()  
-            return False
-
-    # Function that removes supplies associated for Spicy Beverages
-    # Spices
-    def removeBeveragesSpicySupplies(self):
-        if(self.getBestSpices() > 0):
-            bestSpices = Supplies('Spices', 'Best', 0)
-            bestSpices.setQuantity(-1)
-            addCookSupplies(bestSpices)
-            return True
-        else:
-            msg = QMessageBox()
-            msg.setWindowTitle("Not enough supplies!")
-            msg.setText("Please restock on supplies!")
-            msg.setInformativeText("You need Spices for this beverage.")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()  
-            return False      
-
-###############
-
-    # Function that shows the "Chef Welcome" page (0)
-    def open_cookWelcome(self):
-        self.clearallFields()
-        #print(PendingOrders[0].getTotalCost())
-        #print(len(PendingOrders[0].getCart()))
-        print("test")
-        #print(CurrentUser[0].getWarning())
-        #print(CurrentUser[0].getSalary())
-        self.stackedWidget.setCurrentIndex(0)
-
-    # Backspace key shortcut to open logout confirmation
-    def keyPressEvent(self, e):
-        if e.key() == QtCore.Qt.Key_Backspace:
-            self.open_logoutConfirmation()
-
-    # Function that logs the chef out, and returns to the login page
-    def open_logoutConfirmation(self):
-        msg = QMessageBox()
-        msg.setWindowTitle("Logout")
-        msg.setText("Are you sure you want to logout?")
-        msg.setIcon(QMessageBox.Question)
-        msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
-        msg.setDefaultButton(QMessageBox.No)
-        msg.buttonClicked.connect(self.popup_button)
-        x = msg.exec_()
-
-    def popup_button(self, i):
-        if(i.text() == "&Yes"):
-            CurrentUser.clear()
-            self.CookWindow.hide()
-            self.LoginWindow.show()
-
-    # Function that cooks the next order in "Welcome Chef" page (0)
-    def cookNextOrder(self):
-        # This count is to keep track of supply refunds if the entire order can't be made
-        count = 0
-        if(len(PendingOrders) > 0):
-            for Food in PendingOrders[0].getCart():
-                # Vegetables, Flour, Yeast, Spices(Optional)
-                if(Food.getCate() == 'Appetizers'):
-                    if(Food.getSpice() == True):
-                        if(self.removeAppetizersSpicySupplies() == True):
-                            msg = QMessageBox()
-                            msg.setWindowTitle("Order created")
-                            msg.setText(f"Successfully created order for spicy {Food.getName()}")
-                            msg.setInformativeText("This dish is a appetizer.")
-                            msg.setIcon(QMessageBox.Information)
-                            msg.setStandardButtons(QMessageBox.Ok)
-                            msg.setDefaultButton(QMessageBox.Ok)
-                            x = msg.exec_()
-                            count+=4
-                        else:
-                            print("Spicy Appetizer unsuccessfully made!")
-                            self.refundSupplies(count)
-                            return
-                    else:
-                        if(self.removeAppetizersSupplies() == True):
-                            msg = QMessageBox()
-                            msg.setWindowTitle("Order created")
-                            msg.setText(f"Successfully created order for {Food.getName()}")
-                            msg.setInformativeText("This dish is a appetizer.")
-                            msg.setIcon(QMessageBox.Information)
-                            msg.setStandardButtons(QMessageBox.Ok)
-                            msg.setDefaultButton(QMessageBox.Ok)
-                            x = msg.exec_()
-                            count+=3
-                        else:
-                            print("Appetizer unsuccesfully made!")
-                            self.refundSupplies(count)
-                            return
-                # Flour, Yeast, Salt, Spices(Optional)
-                elif(Food.getCate() == 'Sides'):
-                    if(Food.getSpice() == True):
-                        if(self.removeSidesSpicySupplies() == True):
-                            msg = QMessageBox()
-                            msg.setWindowTitle("Order created")
-                            msg.setText(f"Successfully created order for spicy {Food.getName()}")
-                            msg.setInformativeText("This dish is a side.")
-                            msg.setIcon(QMessageBox.Information)
-                            msg.setStandardButtons(QMessageBox.Ok)
-                            msg.setDefaultButton(QMessageBox.Ok)
-                            x = msg.exec_()
-                            count+=4
-                        else:
-                            print("Spicy Side unsuccessfully made!")
-                            self.refundSupplies(count)
-                            return
-                    else:
-                        if(self.removeSidesSupplies() == True):
-                            msg = QMessageBox()
-                            msg.setWindowTitle("Order created")
-                            msg.setText(f"Successfully created order for {Food.getName()}")
-                            msg.setInformativeText("This dish is a side.")
-                            msg.setIcon(QMessageBox.Information)
-                            msg.setStandardButtons(QMessageBox.Ok)
-                            msg.setDefaultButton(QMessageBox.Ok)
-                            x = msg.exec_()
-                            count+=3
-                        else:
-                            print("Side unsuccessfully made!")
-                            self.refundSupplies(count)
-                            return
-                # Meats, Fish, Vegetables, Salt, Spices(Optional)
-                elif(Food.getCate() == 'Entrees'):
-                    if(Food.getSpice() == True):
-                        if(self.removeEntreesSpicySupplies() == True):
-                            msg = QMessageBox()
-                            msg.setWindowTitle("Order created")
-                            msg.setText(f"Successfully created order for spicy {Food.getName()}")
-                            msg.setInformativeText("This dish is a entree.")
-                            msg.setIcon(QMessageBox.Information)
-                            msg.setStandardButtons(QMessageBox.Ok)
-                            msg.setDefaultButton(QMessageBox.Ok)
-                            x = msg.exec_()
-                            count+=5
-                        else:
-                            print("Spicy Entree unsuccessfully made!")
-                            self.refundSupplies(count)
-                            return
-                    else:
-                        if(self.removeEntreesSupplies() == True):
-                            msg = QMessageBox()
-                            msg.setWindowTitle("Order created")
-                            msg.setText(f"Successfully created order for {Food.getName()}")
-                            msg.setInformativeText("This dish is a entree.")
-                            msg.setIcon(QMessageBox.Information)
-                            msg.setStandardButtons(QMessageBox.Ok)
-                            msg.setDefaultButton(QMessageBox.Ok)
-                            x = msg.exec_()
-                            count+=4
-                        else:
-                            print("Entree unsuccessfully made!")
-                            self.refundSupplies(count)
-                            return
-                # Flour, Yeast, Sugar, Egg, Dairy, Spices(Optional)
-                elif(Food.getCate() == 'Desserts'):
-                    if(Food.getSpice() == True):
-                        if(self.removeDessertsSpicySupplies() == True):
-                            msg = QMessageBox()
-                            msg.setWindowTitle("Order created")
-                            msg.setText(f"Successfully created order for spicy {Food.getName()}")
-                            msg.setInformativeText("This dish is a dessert.")
-                            msg.setIcon(QMessageBox.Information)
-                            msg.setStandardButtons(QMessageBox.Ok)
-                            msg.setDefaultButton(QMessageBox.Ok)
-                            x = msg.exec_()
-                            count+=6
-                        else:
-                            print("Spicy Dessert unsuccessfully made!")
-                            self.refundSupplies(count)
-                            return
-                    else:
-                        if(self.removeDessertsSupplies() == True):
-                            msg = QMessageBox()
-                            msg.setWindowTitle("Order created")
-                            msg.setText(f"Successfully created order for {Food.getName()}")
-                            msg.setInformativeText("This dish is a dessert.")
-                            msg.setIcon(QMessageBox.Information)
-                            msg.setStandardButtons(QMessageBox.Ok)
-                            msg.setDefaultButton(QMessageBox.Ok)
-                            x = msg.exec_()
-                            count+=5
-                        else:
-                            print("Dessert unsuccessfully made!")
-                            self.refundSupplies(count)
-                            return
-                # Spices(Optional)
-                else:
-                    if(Food.getSpice() == True):
-                        if(self.removeBeveragesSpicySupplies() == True):
-                            msg = QMessageBox()
-                            msg.setWindowTitle("Order created")
-                            msg.setText(f"Successfully created order for spicy {Food.getName()}")
-                            msg.setInformativeText("This is a beverage.")
-                            msg.setIcon(QMessageBox.Information)
-                            msg.setStandardButtons(QMessageBox.Ok)
-                            msg.setDefaultButton(QMessageBox.Ok)
-                            x = msg.exec_()
-                            count+=1
-                        else:
-                            print("Spicy Beverage unsuccessfully made!") 
-                            self.refundSupplies(count)
-                            return
-                    else:
-                        msg = QMessageBox()
-                        msg.setWindowTitle("Order created")
-                        msg.setText(f"Successfully created order for {Food.getName()}")
-                        msg.setInformativeText("This is a beverage.")
-                        msg.setIcon(QMessageBox.Information)
-                        msg.setStandardButtons(QMessageBox.Ok)
-                        msg.setDefaultButton(QMessageBox.Ok)
-                        x = msg.exec_()
-                            
-            PendingOrders[0].setCook(self)
-            addOrder2(PendingOrders[0])
-            PendingOrders[0].getUser().setCook(CurrentUser[0]) #For Customer to rate 
-            PendingOrders.pop(0)
-            self.pendingOrdersLabel.setText(f"Pending orders: {len(PendingOrders)}")
-        else:
-            print("No pending orders currently")
-            msg = QMessageBox()
-            msg.setWindowTitle("No pending orders")
-            msg.setText("There are currently no pending orders.")
-            msg.setIcon(QMessageBox.Information)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()
-
-    # This function is called when an order is unable to be made due to lack of supplies
-    def refundSupplies(self, count):
-        # This will refund the supplies used
-        for i in range(0, count):
-            del CartSupplies_ForCook[-1]
-
-    # Function that shows the "Supplies Management" page (1)
-    def open_manageSupplies(self):
-        self.stackedWidget.setCurrentIndex(1)
-
-    # Function that shows the "Best Supplies" page (2)
-    def open_bestSupplies(self):     
-        self.bestMeatsQuantityLabel.setText(str(self.getBestMeats()))
-        self.bestFishQuantityLabel.setText(str(self.getBestFish()))
-        self.bestVegetablesQuantityLabel.setText(str(self.getBestVegetables()))
-        self.bestFlourQuantityLabel.setText(str(self.getBestFlour()))
-        self.bestYeastQuantityLabel.setText(str(self.getBestYeast()))
-        self.bestSaltQuantityLabel.setText(str(self.getBestSalt()))
-        self.bestSpicesQuantityLabel.setText(str(self.getBestSpices()))
-        self.bestSugarQuantityLabel.setText(str(self.getBestSugar()))
-        self.bestEggQuantityLabel.setText(str(self.getBestEgg()))
-        self.bestDairyQuantityLabel.setText(str(self.getBestDairy()))
-        self.stackedWidget.setCurrentIndex(2)
-
-    # Function that shows the "Good Supplies" page (3)
-    def open_goodSupplies(self):
-        self.goodMeatsQuantityLabel.setText(str(self.getGoodMeats()))
-        self.goodFishQuantityLabel.setText(str(self.getGoodFish()))
-        self.goodVegetablesQuantityLabel.setText(str(self.getGoodVegetables()))
-        self.goodFlourQuantityLabel.setText(str(self.getGoodFlour()))
-        self.goodYeastQuantityLabel.setText(str(self.getGoodYeast()))
-        self.goodSaltQuantityLabel.setText(str(self.getGoodSalt()))
-        self.goodSpicesQuantityLabel.setText(str(self.getGoodSpices()))
-        self.goodSugarQuantityLabel.setText(str(self.getGoodSugar()))
-        self.goodEggQuantityLabel.setText(str(self.getGoodEgg()))
-        self.goodDairyQuantityLabel.setText(str(self.getGoodDairy()))
-        self.stackedWidget.setCurrentIndex(3)
-
-    # Function that shows the "Bad Supplies" page (4)
-    def open_badSupplies(self):
-        self.badMeatsQuantityLabel.setText(str(self.getBadMeats()))
-        self.badFishQuantityLabel.setText(str(self.getBadFish()))
-        self.badVegetablesQuantityLabel.setText(str(self.getBadVegetables()))
-        self.badFlourQuantityLabel.setText(str(self.getBadFlour()))
-        self.badYeastQuantityLabel.setText(str(self.getBadYeast()))
-        self.badSaltQuantityLabel.setText(str(self.getBadSalt()))
-        self.badSpicesQuantityLabel.setText(str(self.getBadSpices()))
-        self.badSugarQuantityLabel.setText(str(self.getBadSugar()))
-        self.badEggQuantityLabel.setText(str(self.getBadEgg()))
-        self.badDairyQuantityLabel.setText(str(self.getBadDairy()))
-        self.stackedWidget.setCurrentIndex(4)
-
-    # Function that shows the "Rate your Salesperson" page (5)
-    def open_rateSalesperson(self):
-        if(self.salespersoncomboBox.count() == 1):
-            for i in Who_Bought_Supplies:
-                self.salespersoncomboBox.addItem(i.getFirst())
-        self.stackedWidget.setCurrentIndex(5)
-
-    # Function that gives a rating to a chosen Salesperson on the "Rate your Salesperson" page (5)
-    def giveRating(self):
-        # Case of empty fields for salesperson and/or rating
-        if(self.salespersoncomboBox.currentText() == "" or self.ratingcomboBox.currentText() == ""):
-            msg = QMessageBox()
-            msg.setWindowTitle("Invalid input!")
-            msg.setText("Please select a valid salesperson and rating!")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()
-        # Case of satisfactory fields
-        else:
-            for i in range(len(User)):
-                if(User[i].getType() == 5 and User[i].getFirst() == self.salespersoncomboBox.currentText()):
-                    print(User[i].getFirst())
-                    User[i].setRating(int(self.ratingcomboBox.currentText()))
-                    break
-            msg = QMessageBox()
-            msg.setWindowTitle("Thank you!")
-            msg.setText(f"Thank you for rating salesperson {self.salespersoncomboBox.currentText()}")
-            msg.setInformativeText(f"with a rating of {self.ratingcomboBox.currentText()} out of 5!")
-            if(self.commentText.toPlainText() != ""):
-                msg.setDetailedText(f"You commented: {self.commentText.toPlainText()}")
-            msg.setIcon(QMessageBox.Information)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()
-
-            # Need to remove the selected User(Salesperson) from the Combobox and the Who_Bought_Supplies list
-            print(self.salespersoncomboBox.currentIndex()-1)
-            Who_Bought_Supplies.pop(self.salespersoncomboBox.currentIndex()-1)
-            self.salespersoncomboBox.removeItem(self.salespersoncomboBox.currentIndex())
-            
-            for i in range(len(User)):
-                if(User[i].getType() == 5):
-                    print(User[i].getFirst(), User[i].getRating())
-
-    # Function that shows the "Food Menu Modification" page (6)
-    def open_manageMenu(self):
-        self.stackedWidget.setCurrentIndex(6)
-
-    # Function that adds a Food object to the Menu List on the "Food Menu Modification" page (6)
-    def addtoMenu(self):
-        # Checks if the addpriceLine is a number
-        try:
-            float(self.addpriceLine.text())
-            itemAdded = True
-            # Case where some or all fields are empty
-            if(self.additemLine.text() == "" or self.addclassificationCombo.currentText() == "" or self.addpriceLine.text() == ""):
-                msg = QMessageBox()
-                msg.setWindowTitle("Invalid input!")
-                msg.setText("Please input a valid name, classification, and price!")
-                msg.setIcon(QMessageBox.Critical)
-                msg.setStandardButtons(QMessageBox.Ok)
-                msg.setDefaultButton(QMessageBox.Ok)
-                x = msg.exec_()
-                return
-            # Checking to see if item is already in the menu
-            for i in range(len(Menu)):
-                if(self.additemLine.text() == Menu[i].getName() and self.addclassificationCombo.currentText() == Menu[i].getCate() and
-                self.addpriceLine.text() == str(Menu[i].getPrice()) and self.addspicyCheckbox.isChecked() == Menu[i].getSpice()):
-                    msg = QMessageBox()
-                    msg.setWindowTitle("Duplicate item!")
-                    msg.setText(f"The item {self.additemLine.text()} from {self.addclassificationCombo.currentText()}")
-                    if(self.addspicyCheckbox.isChecked() == True):
-                        msg.setInformativeText(f"with a price of ${self.addpriceLine.text()}, and this item is spicy, is already in the menu!")
-                    else:
-                        msg.setInformativeText(f"with a price of ${self.addpriceLine.text()}, is already in the menu!.")
-                    msg.setIcon(QMessageBox.Critical)
-                    msg.setStandardButtons(QMessageBox.Ok)
-                    msg.setDefaultButton(QMessageBox.Ok)
-                    x = msg.exec_()
-                    itemAdded = False
-                    break
-            # Passed all cases, then the item is added to the menu
-            if(itemAdded == True):           
-                msg = QMessageBox()
-                msg.setWindowTitle("Added!")
-                msg.setText(f"You just added {self.additemLine.text()} into {self.addclassificationCombo.currentText()}")
-                if(self.addspicyCheckbox.isChecked() == True):
-                    msg.setInformativeText(f"with a price of ${self.addpriceLine.text()}. This item is spicy!")
-                else:
-                    msg.setInformativeText(f"with a price of ${self.addpriceLine.text()}.")
-                msg.setIcon(QMessageBox.Information)
-                msg.setStandardButtons(QMessageBox.Ok)
-                msg.setDefaultButton(QMessageBox.Ok)
-                x = msg.exec_()
-                
-                newFood = Food(self.additemLine.text(), float(self.addpriceLine.text()), self.addclassificationCombo.currentText(), self.addspicyCheckbox.isChecked())
-                addMenuItem(newFood)
-        # Throw error if addpriceline is not a number
-        except ValueError:
-            msg = QMessageBox()
-            msg.setWindowTitle("Invalid input!")
-            msg.setText("Please input a valid name, classification, and price!")
-            msg.setIcon(QMessageBox.Critical)
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Ok)
-            x = msg.exec_()
-            return
-
-    # Function that clears the "Add an Item" field on the "Food Menu Modification" page (6)
-    def resetAdd(self):
-        self.additemLine.clear()
-        self.addclassificationCombo.setCurrentIndex(-1)
-        self.addpriceLine.clear()
-        self.addspicyCheckbox.setChecked(0)
-
-    # Function that removes a Food object from the Menu List (if it exists) on the "Food Menu Modification" page (6)
-    def removefromMenu(self):
-        # Checks if the removepriceLine is a number
-        try:
-            float(self.removepriceLine.text())
-            itemRemoved = False
-            if(self.removeitemLine.text() == "" or self.removeclassificationCombo.currentText() == "" or self.removepriceLine == ""):
-                msg = QMessageBox()
-                msg.setWindowTitle("Invalid input!")
-                msg.setText("Please input a valid name, classification, and price!")
-                msg.setIcon(QMessageBox.Critical)
-                msg.setStandardButtons(QMessageBox.Ok)
-                msg.setDefaultButton(QMessageBox.Ok)
-                x = msg.exec_()
-                return
-            for i in range(len(Menu)):
-                if(self.removeitemLine.text() == Menu[i].getName() and self.removeclassificationCombo.currentText() == Menu[i].getCate() and
-                self.removepriceLine.text() == str(Menu[i].getPrice()) and self.removespicyCheckbox.isChecked() == Menu[i].getSpice()):
-                    msg = QMessageBox()
-                    msg.setWindowTitle("Removed!")
-                    msg.setText(f"You just removed {self.removeitemLine.text()} from {self.removeclassificationCombo.currentText()}")
-                    if(self.removespicyCheckbox.isChecked() == True):
-                        msg.setInformativeText(f"with a price of ${self.removepriceLine.text()}. This item is spicy!")
-                    else:
-                        msg.setInformativeText(f"with a price of ${self.removepriceLine.text()}.")
-                    msg.setIcon(QMessageBox.Information)
-                    msg.setStandardButtons(QMessageBox.Ok)
-                    msg.setDefaultButton(QMessageBox.Ok)
-                    x = msg.exec_()       
-                    Menu.pop(i)
-                    itemRemoved = True
-                    break
-            if(itemRemoved == False):
-                msg = QMessageBox()
-                msg.setWindowTitle("No such item found!")
-                msg.setIcon(QMessageBox.Critical)
-                msg.setText(f"There is no {self.removeitemLine.text()} from {self.removeclassificationCombo.currentText()}")
-                if(self.removespicyCheckbox.isChecked() == True):
-                    msg.setInformativeText(f"with a price of ${self.removepriceLine.text()} and the item is spicy, to be removed!")
-                else:
-                    msg.setInformativeText(f"with a price of ${self.removepriceLine.text()} to be removed!")
-                msg.setStandardButtons(QMessageBox.Ok)
-                msg.setDefaultButton(QMessageBox.Ok)
-                x = msg.exec_()
-        # Throw error if removepriceline is not a number
-        except ValueError:
-                msg = QMessageBox()
-                msg.setWindowTitle("Invalid input!")
-                msg.setText("Please input a valid name, classification, and price!")
-                msg.setIcon(QMessageBox.Critical)
-                msg.setStandardButtons(QMessageBox.Ok)
-                msg.setDefaultButton(QMessageBox.Ok)
-                x = msg.exec_()
-                return
-
-    # Function that clears the "Remove an Item" field on the "Food Menu Modification" page (6)
-    def resetRemove(self):
-        self.removeitemLine.clear()
-        self.removeclassificationCombo.setCurrentIndex(-1)
-        self.removepriceLine.clear()
-        self.removespicyCheckbox.setChecked(0)
-
-    # Function that shows the "Menu Preview" page (7)
-    def open_previewMenu(self):
-        self.Name_listWidget.clear()
-        self.Price_listWidget.clear()
-        for i in range(len(Menu)):
-            #sortMenu()
-            self.Name_listWidget.addItem(Menu[i].getName())
-            self.Price_listWidget.addItem(str(Menu[i].getPrice()))        
-        self.stackedWidget.setCurrentIndex(7)
-
-    # Function that clears all fields on page change
-    def clearallFields(self):
-        self.commentText.clear()
-        self.Name_listWidget.clear()
-        self.Price_listWidget.clear()
-        self.salespersoncomboBox.setCurrentIndex(-1)
-        self.ratingcomboBox.setCurrentIndex(-1)
-        self.additemLine.clear()
-        self.addclassificationCombo.setCurrentIndex(-1)
-        self.addpriceLine.clear()
-        self.addspicyCheckbox.setChecked(0)
-        self.removeitemLine.clear()
-        self.removeclassificationCombo.setCurrentIndex(-1)
-        self.removepriceLine.clear()
-        self.removespicyCheckbox.setChecked(0)
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     CookWindow = QtWidgets.QMainWindow()
     ui = Ui_CookWindow()
-    ui.setupUi(CookWindow, None)
+    ui.setupUi(CookWindow)
     CookWindow.show()
     sys.exit(app.exec_())
