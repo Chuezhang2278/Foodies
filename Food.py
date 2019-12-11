@@ -36,6 +36,9 @@ class Food():
     def setQuantity(self, quantity):
         self.quantity = quantity
 
+    def setSold(self, amount):
+        self.sold += amount
+
     def getSold(self):
         return self.sold
 

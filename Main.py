@@ -303,7 +303,16 @@ addUser(Patrick)
 addUser(deliveryJiaMing)
 addUser(deliveryBot2)
 
+foodTest5 = Food('Eel', 5.99, 'Entrees', False)
+
+foodTest1.setSold(3)
+foodTest2.setSold(2)
+foodTest3.setSold(6)
+foodTest4.setSold(7)
+foodTest5.setSold(5)
+
 addMenuItem(foodTest1)
 addMenuItem(foodTest2)
 addMenuItem(foodTest3)
 addMenuItem(foodTest4)
+addMenuItem(foodTest5)
