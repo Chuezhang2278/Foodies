@@ -927,7 +927,7 @@ class Sales_Window(object):
         CurrentWindow.setWindowTitle(_translate("CurrentWindow", "CurrentWindow"))
         self.label_37.setText(_translate("CurrentWindow", "Name:"))
         self.restuarant_label.setText(_translate("CurrentWindow", "Restuarant:"))
-        self.budget_label.setText(_translate("CurrentWindow", "Budget of the Day:"))
+        self.budget_label.setText(_translate("CurrentWindow", "Budget:"))
         self.rating_label.setText(_translate("CurrentWindow", "Rating:"))
         self.salesperson_profile.setText(_translate("CurrentWindow", "Salesperson Profile"))
         self.name.setText(_translate("CurrentWindow", "name example"))
@@ -1184,6 +1184,8 @@ class Sales_Window(object):
 
     def logout_confirm(self, i):
         if (i.text() == "&Yes"):
+            CurrentCart_SalesPerson.clear()
+            self.check_out_list.clear()
             self.CurrentWindow.hide()
             self.LoginWindow.show()
 
@@ -1203,8 +1205,20 @@ class Sales_Window(object):
 
     def popup_button(self, i): # need to clear listwidget, list, total and keep budget
         if (i.text() == "&Yes"):
-            self.send_supplies()
+            self.budget_begin=self.budget_remaining #changes the budget to what has been already used
+            self.send_supplies() #sends supplies over to cook
+
+            #clear everything
             CurrentCart_SalesPerson.clear()
+            self.check_out_list.clear()
+
+            #update the new total and display -> should be 0 total now with budget remaining from what was purchased
+            self.update_total()
+            self.budget_connected_total()
+
+            #changes the budget of the salesperson to what he has now after ordering
+            User[CurrentUser[1]].setBudget(self.budget_begin)
+
             msg = QMessageBox()
             msg.setWindowTitle("Order Confirmed.")
             msg.setText("Order Confirmed! Supplies sent to Cook.")

@@ -184,6 +184,8 @@ class Salesperson(Employee):
         self.restaurant=restaurant
         self.rating = []
 
+    def setBudget(self,budget):
+        self.budget = budget
 
     def getRestaurant(self):
 
