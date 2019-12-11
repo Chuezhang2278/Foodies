@@ -72,7 +72,29 @@ class Ui_Form_cusmberInfor(object):
                 elif l == 3:
                     self.tableWidget.setItem(k, l, QTableWidgetItem(str(VIPs[k-len(Members)].getUser())))
                 elif l == 4:
-                    self.tableWidget.setItem(k, l, QTableWidgetItem(str(VIPs[k-len(Members)].getEmail())))
+                        self.tableWidget.setItem(k, l, QTableWidgetItem(str(VIPs[k-len(Members)].getEmail())))
+
+
+
+        try:
+
+            for k in range(len(Members)+len(VIPs),len(Members)+len(VIPs)+len(Blacklist)):
+
+                for l in range(5):
+                    if l == 0:
+                        self.tableWidget.setItem(k, l, QTableWidgetItem(str('Blacklist')))
+                    elif l == 1:
+                        self.tableWidget.setItem(k, l, QTableWidgetItem(str(Blacklist[k-len(Members)-len(VIPs)].getFirst())))
+                    elif l == 2:
+                        self.tableWidget.setItem(k, l, QTableWidgetItem(str(Blacklist[k-len(Members)-len(VIPs)].getLast())))
+                    elif l == 3:
+                        self.tableWidget.setItem(k, l, QTableWidgetItem(str(Blacklist[k-len(Members)-len(VIPs)].getUser())))
+                    elif l == 4:
+                        self.tableWidget.setItem(k, l, QTableWidgetItem(str(Blacklist[k-len(Members)-len(VIPs)].getEmail())))
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+
 
     def closescr(self, Form):
         Form.hide()
