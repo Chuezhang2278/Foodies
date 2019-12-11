@@ -109,7 +109,7 @@ class Ui_CookWindow(object):
         self.currentWarningsLabel.setObjectName("currentWarningsLabel")
 
         # Current Warnings : (int 0, 1, 2, 3)
-        #self.currentWarningsLabel.setText(f"Current Warnings: {CurrentUser[0].getWarning()}")
+        self.currentWarningsLabel.setText(f"Current Warnings: {CurrentUser[0].getWarnings()}")
 
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
