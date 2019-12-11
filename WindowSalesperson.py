@@ -876,7 +876,7 @@ class Sales_Window(object):
         self.log_profile.setText(_translate("CurrentWindow", "Log Out"))
         self.shop_suppliers.setText(_translate("CurrentWindow", "Shop"))
         self.label_3.setText(_translate("CurrentWindow", "Inventory Required by Cook"))
-        self.items_required_label_2.setText(_translate("CurrentWindow", "Amount by lb"))
+        self.items_required_label_2.setText(_translate("CurrentWindow", "Quantity"))
         self.items_required_label.setText(_translate("CurrentWindow", "Item"))
         __sortingEnabled = self.items_required.isSortingEnabled()
         self.items_required.setSortingEnabled(False)
@@ -1065,7 +1065,9 @@ class Sales_Window(object):
     def popup_button(self, i): # need to clear listwidget, list, total and keep budget
         if (i.text() == "&Yes"):
             self.budget_begin=self.budget_remaining #changes the budget to what has been already used
+
             self.send_supplies() #sends supplies over to cook
+            self.update_inventory() #once supplies are sent in update inventory
 
             #clear everything
             CurrentCart_SalesPerson.clear()
@@ -1626,6 +1628,7 @@ class Sales_Window(object):
 
     ###=========Auto Inventory Required implementation==========###
     #item_check_list, amount_check_list, items_required, amounts_required
+
     def update_inventory(self):
         u = Ui_CookWindow()
 
@@ -1669,6 +1672,46 @@ class Sales_Window(object):
                 self.amount_check_list.addItem(str(temp))
                 self.items_required.addItem((SuppliesList[i].getName()))
                 self.amounts_required.addItem(str(temp))
+
+    def update_check_list(self):
+        u = Ui_CookWindow()
+
+        self.item_check_list.clear()
+        self.amount_check_list.clear()
+
+        totalMeat = u.getBestMeats() + u.getGoodMeats() + u.getBadMeats()
+        totalFish = u.getBestFish() + u.getGoodFish() + u.getBadFish()
+        totalVegetables = u.getBestVegetables() + u.getGoodVegetables() + u.getBadVegetables()
+        totalFlour = u.getBestFlour() + u.getGoodFlour() + u.getBadFlour()
+        totalYeast = u.getBestYeast() + u.getGoodYeast() + u.getBadYeast()
+        totalSalt = u.getBestSalt() + u.getGoodSalt() + u.getBadSalt()
+        totalSpices = u.getBestSpices() + u.getGoodSpices() + u.getBadSpices()
+        totalSugar = u.getBestSugar() + u.getGoodSugar() + u.getBadSugar()
+        totalEgg = u.getBestEgg() + u.getGoodEgg() + u.getBadEgg()
+        totalDairy = u.getBestDairy() + u.getGoodDairy() + u.getBadDairy()
+
+        #auto replenish interval at 25
+        autoMeat = 27
+        autoFish = 27
+        autoVegetables = 27
+        autoFlour = 27
+        autoYeast = 27
+        autoSalt = 27
+        autoSpices = 27
+        autoSugar = 27
+        autoEgg = 27
+        autoDairy = 27
+
+        #put all variables into an array
+        totalList=[totalMeat, totalFish, totalVegetables, totalFlour, totalYeast, totalSalt, totalSpices, totalSugar, totalEgg, totalDairy ]
+        autoList =[autoMeat, autoFish, autoVegetables, autoFlour, autoYeast, autoSalt, autoSpices, autoSugar, autoEgg, autoDairy]
+
+        #loop through each and check if any inventory is needed
+        for i in range(len(totalList)):
+            if(int(totalList[i])<int(autoList[i])): #if the total amount is less than auto replenish
+                temp = int(autoList[i])-int(totalList[i])
+                self.item_check_list.addItem(SuppliesList[i].getName())
+                self.amount_check_list.addItem(str(temp))
 
 
 
