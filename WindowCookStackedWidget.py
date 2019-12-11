@@ -2965,6 +2965,11 @@ class Ui_CookWindow(object):
     # Function that shows the "Chef Welcome" page (0)
     def open_cookWelcome(self):
         self.clearallFields()
+        #print(PendingOrders[0].getTotalCost())
+        #print(len(PendingOrders[0].getCart()))
+        print("test")
+        print(CurrentUser[0].getWarning())
+        print(CurrentUser[0].getSalary())
         self.stackedWidget.setCurrentIndex(0)
 
     # Backspace key shortcut to open logout confirmation
@@ -3152,6 +3157,7 @@ class Ui_CookWindow(object):
                             
             PendingOrders[0].setCook(self)
             addOrder2(PendingOrders[0])
+            PendingOrders[0].getUser().setCook(CurrentUser[0]) #For Customer to rate 
             PendingOrders.pop(0)
             self.pendingOrdersLabel.setText(f"Pending orders: {len(PendingOrders)}")
         else:

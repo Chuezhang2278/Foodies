@@ -41,6 +41,7 @@ class Order():
             now = datetime.now().strftime("%H:%M:%S")
             self.window.addHistory("[" + str(now) + "] " + self.delivery.getFirst() + " won the bidding, please press back to see your new order!")
         Main.Orders.remove(self)
+        self.customer.setDelivery(self.delivery)
         self.delivery.startNewOrder(self)
 
     def bid(self, Delivery, bidAmount):
@@ -153,6 +154,9 @@ class Order():
 
     def getCook(self):
         return self.cook
+
+    def getUser(self):
+        return self.customer
 
     def setCook(self, Cook):
         self.cook = Cook

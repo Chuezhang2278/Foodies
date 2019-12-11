@@ -7,11 +7,13 @@ from Main import *
 from Order import Order
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
+import speech_recognition as sr
 
 class Food_Window(object):
     def __init__(self):
         self.CurrentWindow = None
         self.LoginWindow = None
+        self.r = sr.Recognizer()
 
     def setupUi(self, CurrentWindow, LoginWindow):
         self.temp = 0
@@ -62,7 +64,6 @@ class Food_Window(object):
                 third = second
                 second = Menu[i].getSold()
                 m2 = Menu[i]
-
             elif(Menu[i].getSold() > third):
                 third = Menu[i].getSold()
                 m3 = Menu[i]
@@ -99,6 +100,10 @@ class Food_Window(object):
         self.Remove_Button = QtWidgets.QPushButton(self.page)
         self.Remove_Button.setGeometry(QtCore.QRect(480, 505, 93, 28))
         self.Remove_Button.setObjectName("Checkout_Button")
+        self.voice_button = QtWidgets.QPushButton(self.page)
+        self.voice_button.setGeometry(QtCore.QRect(480, 540, 273, 28))
+        self.voice_button.setText("Voice Recognition")
+        self.voice_button.clicked.connect(self.voice_recognize)
         self.AddButton8 = QtWidgets.QPushButton(self.page)
         self.AddButton8.setGeometry(QtCore.QRect(360, 400, 93, 28))
         self.AddButton8.setObjectName("AddButton8")
@@ -370,6 +375,80 @@ class Food_Window(object):
         self.comboBox_2.setItemText(3, _translate("MainWindow", "4"))
         self.comboBox_2.setItemText(4, _translate("MainWindow", "5"))
 
+    def voice_recognize(self):
+        self.mic = sr.Microphone()
+        with self.mic as source:
+            print("Listening to User")
+            audio = self.r.listen(source)
+        try:
+            msg = self.r.recognize_google(audio)
+        except Exception:
+            print("Caught Exception")
+            return
+
+        print(msg)
+        if "buy" in msg or "by" in msg or "hi" in msg or "ad" in msg or "find" in msg: # they all sound like buy
+            print("Recognized buy")
+            if "chicken" in msg:
+                if self.hasNumbers(msg):
+                    for i in range(self.determine1to9(msg)):
+                        self.Add_Button1()
+                else:
+                    self.Add_Button1()
+            elif "fish" in msg:
+                if self.hasNumbers(msg):
+                    for i in range(self.determine1to9(msg)):
+                        self.Add_Button2()
+                else:
+                    self.Add_Button2()
+            elif "duck" in msg or "thugs" in msg: # sound like ducks
+                if self.hasNumbers(msg):
+                    for i in range(self.determine1to9(msg)):
+                        self.Add_Button3()
+                else:
+                    self.Add_Button3()
+            elif "dog" in msg:
+                if self.hasNumbers(msg):
+                    for i in range(self.determine1to9(msg)):
+                        self.Add_Button4()
+                else:
+                    self.Add_Button4()
+            elif "eel" in msg or "seal" in msg: # sounds like eels
+                if self.hasNumbers(msg):
+                    for i in range(self.determine1to9(msg)):
+                        self.Add_Button5()
+                else:
+                    self.Add_Button5()
+        elif "sell" in msg or "remove" in msg:
+            print("Recognized sell")
+        elif "check" in msg or "out" in msg:
+            print("Recognized checkout")
+            self.Checkout()
+
+    # def Remove(self):
+    #     listItems = self.Cart.selectedItems()
+    #     if not listItems: return
+    #     for item in listItems:
+    #         self.Cart.takeItem(self.Cart.row(item))
+    #         CurrentCart.pop(self.Cart.currentRow()+1)
+    #         User[CurrentUser[1]].removeUserOrder(self.Cart.currentRow())
+
+    def hasNumbers(self, inputString):
+        nums = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+        for i in nums:
+            if i in inputString:
+                return True
+        return any(char.isdigit() for char in inputString)
+
+    def determine1to9(self, inputString):
+        for i in range(1, 10):
+            if str(i) in inputString:
+                return i
+        nums = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+        for i in range(len(nums)):
+            if nums[i] in inputString:
+                return i + 1
+
     def keyPressEvent(self, e):
         if e.key() == QtCore.Qt.Key_Backspace:
             print('Backspace pressed')
@@ -379,10 +458,15 @@ class Food_Window(object):
         User[CurrentUser[1]].confirmDelivery()
 
     def Submittion(self):
-        User[CurrentUser[1]].deliveryPerson.setRating(int(self.comboBox.currentText()))
-        User[CurrentUser[1]].cookPerson.setRating(int(self.comboBox_2.currentText()))
-        temp = self.Page4_textedit.toPlainText()
-        Complaint.append(temp)
+        try:
+            User[CurrentUser[1]].deliveryPerson.setRating(int(self.comboBox.currentText()))
+            checkLaidOff(User[CurrentUser[1]].deliveryPerson)
+            User[CurrentUser[1]].cookPerson.setRating(int(self.comboBox_2.currentText()))
+            checkLaidOff(User[CurrentUser[1]].cookPerson)
+            temp = self.Page4_textedit.toPlainText()
+            Complaint.append(temp)
+        except Exception:
+            pass
 
     def Logout(self):
         msg = QMessageBox()
@@ -403,15 +487,15 @@ class Food_Window(object):
 
     def Checkout(self):
         i = 0
-        self.stackedWidget.setCurrentIndex(1)
+        if currentCartSize() != 0:
+            self.stackedWidget.setCurrentIndex(1)
         self.finalCost.setText(format(self.temp, '.2f'))
 
         while i < currentCartSize():
             self.finalCart.addItem(CurrentCart[i].getName() + "\t\t\t" + format(CurrentCart[i].getPrice(), '.2f'))
             i += 1
 
-        if(User[CurrentUser[1]].getType() == 0):
-
+        if(User[CurrentUser[1]].getType()):
             self.Page2_AddLabel.show()
             self.Page2_Address.show()
 

@@ -158,6 +158,7 @@ class Cook(Employee):
         self.salary = 10
         self.user_type = 4
         self.rating = []
+        self.warning = 0
 
     def addFood(menuList, Food):
         menuList.append(Food)

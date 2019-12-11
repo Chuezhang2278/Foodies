@@ -34,10 +34,13 @@ def printCooks():
             print(Cooks[i].getFirst(), end=' ')
         print('')
 
-def checkLaidOff(Delivery):
-    if Delivery.getWarnings() > 2:
-        print(Delivery.getFirst() + " has been laid off")
-        DeliveryPeople.remove(Delivery)
+def checkLaidOff(Employee):
+    if Employee.getWarnings() > 2:
+        print(Employee.getFirst() + " has been laid off")
+        if Employee in DeliveryPeople:
+            DeliveryPeople.remove(Employee)
+        if Employee in User:
+            User.remove(Employee)
 # Food
 def addMenuItem(food):
     Menu.append(food)
@@ -215,11 +218,8 @@ chue = VIP('chue','bloo','blee','blee','blop','Empire State Building')
 
 addDeliveryPerson(deliveryJiaMing)
 deliveryJiaMing.setRating(1)
-deliveryJiaMing.setRating(2)
-deliveryJiaMing.setRating(1)
 deliveryJiaMing.setRating(4)
 deliveryJiaMing.setRating(5)
-checkLaidOff(deliveryJiaMing)
 deliveryBot2.setRating(1)
 # deliveryBot2.startNewOrder(Order(chue, CurrentCart))
 # deliveryBot.startNewOrder(Order(eric, CurrentCart))
