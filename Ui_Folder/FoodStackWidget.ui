@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QListWidget" name="Name_listWidget">
@@ -151,7 +151,7 @@
        <rect>
         <x>480</x>
         <y>39</y>
-        <width>271</width>
+        <width>281</width>
         <height>441</height>
        </rect>
       </property>
@@ -439,6 +439,19 @@
        <string>Logout</string>
       </property>
      </widget>
+     <widget class="QLabel" name="Page5_label4">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>140</y>
+        <width>351</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Because You are a VIP, You get a random item on the menu FOR FREE</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_4">
      <widget class="QLabel" name="Page4_label1">
@@ -446,12 +459,12 @@
        <rect>
         <x>50</x>
         <y>30</y>
-        <width>181</width>
+        <width>251</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>Please give the Delivery man a rating!</string>
+       <string>Please give the Delivery man:           a rating!</string>
       </property>
      </widget>
      <widget class="QLabel" name="Page4_label2">
@@ -459,12 +472,12 @@
        <rect>
         <x>50</x>
         <y>70</y>
-        <width>181</width>
+        <width>191</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>Please give our Chefs a rating!</string>
+       <string>Please give our Chef:              a rating!</string>
       </property>
      </widget>
      <widget class="QLabel" name="Page4_label3">
@@ -506,7 +519,7 @@
      <widget class="QComboBox" name="comboBox">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>320</x>
         <y>30</y>
         <width>51</width>
         <height>22</height>
@@ -541,7 +554,7 @@
      <widget class="QComboBox" name="comboBox_2">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>270</x>
         <y>70</y>
         <width>51</width>
         <height>22</height>
