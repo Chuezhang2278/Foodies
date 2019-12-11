@@ -45,43 +45,6 @@ class Food_Window(object):
         self.Price_listWidget.setSpacing(17)
         self.Price_listWidget.setObjectName("Price_listWidget")
 
-        first = 0
-        second = 0
-        third = 0
-        m1 = None
-        m2 = None
-        m3 = None
-
-        for i in range(len(Menu)):
-            #print(Menu[i].getSold())
-            if(Menu[i].getSold() > first):
-                third = second
-                second = first
-                first = Menu[i].getSold()
-                m1 = Menu[i]
-
-            elif(Menu[i].getSold() > second):
-                third = second
-                second = Menu[i].getSold()
-                m2 = Menu[i]
-            elif(Menu[i].getSold() > third):
-                third = Menu[i].getSold()
-                m3 = Menu[i]
-
-
-        print(m1.getName())
-        print(m2.getName())
-        #print(m3.getName())
-
-        for i in range(len(Menu)):
-            if(Menu[i] == m1 or Menu[i] == m2 or Menu[i] == m3):
-                self.Name_listWidget.addItem(Menu[i].getName() + "\t [Your top choice!]")
-                self.Price_listWidget.addItem(format(Menu[i].getPrice()*CurrentUser[0].getDiscount(), '.2f'))
-            else:
-                self.Name_listWidget.addItem(Menu[i].getName())
-                self.Price_listWidget.addItem(format(Menu[i].getPrice()*CurrentUser[0].getDiscount(), '.2f'))
-
-
         self.AddButton2 = QtWidgets.QPushButton(self.page)
         self.AddButton2.setGeometry(QtCore.QRect(360, 90, 93, 28))
         self.AddButton2.setObjectName("AddButton2")
@@ -114,13 +77,6 @@ class Food_Window(object):
         self.Cart = QtWidgets.QListWidget(self.page)
         self.Cart.setGeometry(QtCore.QRect(480, 39, 281, 441))
         self.Cart.setObjectName("Cart")
-
-
-
-        if(len(User[CurrentUser[1]].order) > 0):
-            for i in range(len(User[CurrentUser[1]].order)):
-                self.Cart.addItem(User[CurrentUser[1]].order[i].getName() + "\t\t\t" + format(User[CurrentUser[1]].order[i].getPrice(), '.2f'))
-                CurrentCart.append(User[CurrentUser[1]].order[i])
 
         self.AddButton5 = QtWidgets.QPushButton(self.page)
         self.AddButton5.setGeometry(QtCore.QRect(360, 244, 93, 28))
@@ -180,7 +136,6 @@ class Food_Window(object):
         self.Page3_listView = QtWidgets.QListWidget(self.page_3)
         self.Page3_listView.setGeometry(QtCore.QRect(20, 50, 301, 531))
         self.Page3_listView.setObjectName("Page3_listView")
-
 
         self.Page3_label3 = QtWidgets.QLabel(self.page_3)
         self.Page3_label3.setGeometry(QtCore.QRect(30, 20, 81, 16))
@@ -301,7 +256,42 @@ class Food_Window(object):
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(CurrentWindow)
 
+        first = 0
+        second = 0
+        third = 0
+        m1 = None
+        m2 = None
+        m3 = None
 
+        for i in range(len(Menu)):
+            if(Menu[i].getSold() > first):
+                third = second
+                second = first
+                first = Menu[i].getSold()
+                m1 = Menu[i]
+
+            elif(Menu[i].getSold() > second):
+                third = second
+                second = Menu[i].getSold()
+                m2 = Menu[i]
+            elif(Menu[i].getSold() > third):
+                third = Menu[i].getSold()
+                m3 = Menu[i]
+
+        for i in range(len(Menu)):
+            if(Menu[i] == m1 or Menu[i] == m2 or Menu[i] == m3):
+                self.Name_listWidget.addItem(Menu[i].getName() + "\t [Hot!]")
+                self.Price_listWidget.addItem(format(Menu[i].getPrice()*CurrentUser[0].getDiscount(), '.2f'))
+            else:
+                self.Name_listWidget.addItem(Menu[i].getName())
+                self.Price_listWidget.addItem(format(Menu[i].getPrice()*CurrentUser[0].getDiscount(), '.2f'))
+
+        if(len(User[CurrentUser[1]].order) > 0):
+            for i in range(len(User[CurrentUser[1]].order)):
+                self.Cart.addItem(User[CurrentUser[1]].order[i].getName() + "\t\t\t" + format(User[CurrentUser[1]].order[i].getPrice(), '.2f'))
+                CurrentCart.append(User[CurrentUser[1]].order[i])
+        
+        
         #====page1====#
 
         #====page2====#
