@@ -4,3 +4,5 @@
 ##### pip install googlemaps
 ##### pip install polyline
 ##### pip install PyQtWebKit
+
+To run the program, please pip install the required modules and then run WindowLogin.py
