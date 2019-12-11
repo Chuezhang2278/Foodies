@@ -6,6 +6,7 @@ from Main import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from datetime import date
+from WindowCookStackedWidget import Ui_CookWindow
 
 class Sales_Window(object):
 
@@ -91,7 +92,7 @@ class Sales_Window(object):
         self.shop_suppliers.setObjectName("shop_suppliers")
         self.stackedWidget.addWidget(self.profile)
 
-        self.calculate_DOD()
+        self.calculate_DOD() #function that calculates the deal of the day
 
         #page 2 - inventory required by cook - index 1============================================================================================================
         self.inventory_required = QtWidgets.QWidget()
@@ -115,52 +116,12 @@ class Sales_Window(object):
         self.items_required.setGeometry(QtCore.QRect(60, 160, 331, 471))
         self.items_required.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.items_required.setObjectName("items_required")
-        item = QtWidgets.QListWidgetItem()
-        self.items_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.items_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.items_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.items_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.items_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.items_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.items_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.items_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.items_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.items_required.addItem(item)
-        self.items_required.setSpacing(15) #changed spacing
+        self.items_required.setSpacing(10) #changed spacing
         self.amounts_required = QtWidgets.QListWidget(self.inventory_required)
         self.amounts_required.setGeometry(QtCore.QRect(390, 160, 331, 471))
         self.amounts_required.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.amounts_required.setObjectName("amounts_required")
-        item = QtWidgets.QListWidgetItem()
-        self.amounts_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amounts_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amounts_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amounts_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amounts_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amounts_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amounts_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amounts_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amounts_required.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amounts_required.addItem(item)
-        self.amounts_required.setSpacing(15) #changed spacing
+        self.amounts_required.setSpacing(10) #changed spacing
         self.return_inventory = QtWidgets.QPushButton(self.inventory_required)
         self.return_inventory.setGeometry(QtCore.QRect(20, 10, 113, 32))
         self.return_inventory.setObjectName("return_inventory")
@@ -750,51 +711,11 @@ class Sales_Window(object):
         self.item_check_list.setGeometry(QtCore.QRect(70, 150, 301, 471))
         self.item_check_list.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.item_check_list.setObjectName("item_check_list")
-        item = QtWidgets.QListWidgetItem()
-        self.item_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.item_check_list.addItem(item)
         self.item_check_list.setSpacing(10)
         self.amount_check_list = QtWidgets.QListWidget(self.check_list)
         self.amount_check_list.setGeometry(QtCore.QRect(370, 150, 311, 471))
         self.amount_check_list.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.amount_check_list.setObjectName("amount_check_list")
-        item = QtWidgets.QListWidgetItem()
-        self.amount_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amount_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amount_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amount_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amount_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amount_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amount_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amount_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amount_check_list.addItem(item)
-        item = QtWidgets.QListWidgetItem()
-        self.amount_check_list.addItem(item)
         self.amount_check_list.setSpacing(10)
         self.verticalLayoutWidget_11 = QtWidgets.QWidget(self.check_list)
         self.verticalLayoutWidget_11.setGeometry(QtCore.QRect(10, 140, 61, 401))
@@ -848,6 +769,9 @@ class Sales_Window(object):
         self.retranslateUi(CurrentWindow)
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(CurrentWindow)
+
+        #initial update inventory
+        self.update_inventory()
 
         #connect each button to the functions==============================================
 
@@ -956,49 +880,9 @@ class Sales_Window(object):
         self.items_required_label.setText(_translate("CurrentWindow", "Item"))
         __sortingEnabled = self.items_required.isSortingEnabled()
         self.items_required.setSortingEnabled(False)
-        item = self.items_required.item(0)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.items_required.item(1)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.items_required.item(2)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.items_required.item(3)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.items_required.item(4)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.items_required.item(5)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.items_required.item(6)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.items_required.item(7)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.items_required.item(8)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.items_required.item(9)
-        item.setText(_translate("CurrentWindow", "New Item"))
         self.items_required.setSortingEnabled(__sortingEnabled)
         __sortingEnabled = self.amounts_required.isSortingEnabled()
         self.amounts_required.setSortingEnabled(False)
-        item = self.amounts_required.item(0)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amounts_required.item(1)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amounts_required.item(2)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amounts_required.item(3)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amounts_required.item(4)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amounts_required.item(5)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amounts_required.item(6)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amounts_required.item(7)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amounts_required.item(8)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amounts_required.item(9)
-        item.setText(_translate("CurrentWindow", "New Item"))
         self.amounts_required.setSortingEnabled(__sortingEnabled)
         self.return_inventory.setText(_translate("CurrentWindow", "Return"))
         self.choose_suppliers.setText(_translate("CurrentWindow", "Choose Suppliers"))
@@ -1125,49 +1009,9 @@ class Sales_Window(object):
         self.item_check_list_label.setText(_translate("CurrentWindow", "Item"))
         __sortingEnabled = self.item_check_list.isSortingEnabled()
         self.item_check_list.setSortingEnabled(False)
-        item = self.item_check_list.item(0)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.item_check_list.item(1)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.item_check_list.item(2)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.item_check_list.item(3)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.item_check_list.item(4)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.item_check_list.item(5)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.item_check_list.item(6)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.item_check_list.item(7)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.item_check_list.item(8)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.item_check_list.item(9)
-        item.setText(_translate("CurrentWindow", "New Item"))
         self.item_check_list.setSortingEnabled(__sortingEnabled)
         __sortingEnabled = self.amount_check_list.isSortingEnabled()
         self.amount_check_list.setSortingEnabled(False)
-        item = self.amount_check_list.item(0)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amount_check_list.item(1)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amount_check_list.item(2)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amount_check_list.item(3)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amount_check_list.item(4)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amount_check_list.item(5)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amount_check_list.item(6)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amount_check_list.item(7)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amount_check_list.item(8)
-        item.setText(_translate("CurrentWindow", "New Item"))
-        item = self.amount_check_list.item(9)
-        item.setText(_translate("CurrentWindow", "New Item"))
         self.amount_check_list.setSortingEnabled(__sortingEnabled)
         self.mark1.setText(_translate("CurrentWindow", "Mark"))
         self.mark2.setText(_translate("CurrentWindow", "Mark"))
@@ -1723,6 +1567,7 @@ class Sales_Window(object):
             self.budget_error()
             print("Amount exceeds Budget!")
 
+    ###=========Deal of the Day implementation==========###
 
     def if_index_error_DOD(self,n):
         if n>3:
@@ -1778,6 +1623,53 @@ class Sales_Window(object):
                     SuppliesList2[temp2].changeQuality('Best')
                     SuppliesList2[temp2].updatePrice()
                     SuppliesList2[temp2].changePrice(int(SuppliesList2[temp2].getPrice()) * .50)
+
+    ###=========Auto Inventory Required implementation==========###
+    #item_check_list, amount_check_list, items_required, amounts_required
+    def update_inventory(self):
+        u = Ui_CookWindow()
+
+        self.item_check_list.clear()
+        self.amount_check_list.clear()
+        self.items_required.clear()
+        self.amounts_required.clear()
+
+        totalMeat = u.getBestMeats() + u.getGoodMeats() + u.getBadMeats()
+        totalFish = u.getBestFish() + u.getGoodFish() + u.getBadFish()
+        totalVegetables = u.getBestVegetables() + u.getGoodVegetables() + u.getBadVegetables()
+        totalFlour = u.getBestFlour() + u.getGoodFlour() + u.getBadFlour()
+        totalYeast = u.getBestYeast() + u.getGoodYeast() + u.getBadYeast()
+        totalSalt = u.getBestSalt() + u.getGoodSalt() + u.getBadSalt()
+        totalSpices = u.getBestSpices() + u.getGoodSpices() + u.getBadSpices()
+        totalSugar = u.getBestSugar() + u.getGoodSugar() + u.getBadSugar()
+        totalEgg = u.getBestEgg() + u.getGoodEgg() + u.getBadEgg()
+        totalDairy = u.getBestDairy() + u.getGoodDairy() + u.getBadDairy()
+
+        #auto replenish interval at 25
+        autoMeat = 27
+        autoFish = 27
+        autoVegetables = 27
+        autoFlour = 27
+        autoYeast = 27
+        autoSalt = 27
+        autoSpices = 27
+        autoSugar = 27
+        autoEgg = 27
+        autoDairy = 27
+
+        #put all variables into an array
+        totalList=[totalMeat, totalFish, totalVegetables, totalFlour, totalYeast, totalSalt, totalSpices, totalSugar, totalEgg, totalDairy ]
+        autoList =[autoMeat, autoFish, autoVegetables, autoFlour, autoYeast, autoSalt, autoSpices, autoSugar, autoEgg, autoDairy]
+
+        #loop through each and check if any inventory is needed
+        for i in range(len(totalList)):
+            if(int(totalList[i])<int(autoList[i])): #if the total amount is less than auto replenish
+                temp = int(autoList[i])-int(totalList[i])
+                self.item_check_list.addItem(SuppliesList[i].getName())
+                self.amount_check_list.addItem(str(temp))
+                self.items_required.addItem((SuppliesList[i].getName()))
+                self.amounts_required.addItem(str(temp))
+
 
 
 
