@@ -111,6 +111,18 @@ class Ui_CookWindow(object):
         # Current Warnings : (int 0, 1, 2, 3)
         self.currentWarningsLabel.setText(f"Current Warnings: {CurrentUser[0].getWarnings()}")
 
+        self.currentRatingLabel = QtWidgets.QLabel(self.page)
+        self.currentRatingLabel.setGeometry(QtCore.QRect(0, 120, 350, 40))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.currentRatingLabel.setFont(font)
+        self.currentRatingLabel.setObjectName("currentRatingLabel")
+
+        # Current Rating : ()
+        self.currentRatingLabel.setText(f"Current Rating: {CurrentUser[0].getRating()}")
+
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
