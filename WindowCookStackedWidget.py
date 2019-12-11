@@ -87,6 +87,30 @@ class Ui_CookWindow(object):
         # Pending orders : (list of orders)
         self.pendingOrdersLabel.setText(f"Pending orders: {len(PendingOrders)}")
 
+        self.cookSalaryLabel = QtWidgets.QLabel(self.page)
+        self.cookSalaryLabel.setGeometry(QtCore.QRect(0, 40, 350, 40))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.cookSalaryLabel.setFont(font)
+        self.cookSalaryLabel.setObjectName("cookSalaryLabel")
+
+        # Salary : (float)
+        self.cookSalaryLabel.setText(f"Current Salary: ${CurrentUser[0].getSalary()}")
+
+        self.currentWarningsLabel = QtWidgets.QLabel(self.page)
+        self.currentWarningsLabel.setGeometry(QtCore.QRect(0, 80, 350, 40))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.currentWarningsLabel.setFont(font)
+        self.currentWarningsLabel.setObjectName("currentWarningsLabel")
+
+        # Current Warnings : (int 0, 1, 2, 3)
+        #self.currentWarningsLabel.setText(f"Current Warnings: {CurrentUser[0].getWarning()}")
+
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
@@ -2064,6 +2088,8 @@ class Ui_CookWindow(object):
         self.rateSalespersonButton.setText(_translate("CookWindow", "Rate your Salesperson!"))
         self.cookNextOrderButton.setText(_translate("CookWindow", "Cook Next Order"))
         #self.pendingOrdersLabel.setText(_translate("CookWindow", "Pending orders:"))
+        #self.cookSalaryLabel.setText(_translate("CookWindow", "Salary:"))
+        #self.currentWarningsLabel.setText(_translate("CookWindow", "Current Warnings:"))
         self.suppliesReturnButton.setText(_translate("CookWindow", "Return"))
         self.suppliesLabel.setText(_translate("CookWindow", "Supplies Management"))
         self.viewBestButton.setText(_translate("CookWindow", "View Best Supplies"))
@@ -2968,8 +2994,8 @@ class Ui_CookWindow(object):
         #print(PendingOrders[0].getTotalCost())
         #print(len(PendingOrders[0].getCart()))
         print("test")
-        print(CurrentUser[0].getWarning())
-        print(CurrentUser[0].getSalary())
+        #print(CurrentUser[0].getWarning())
+        #print(CurrentUser[0].getSalary())
         self.stackedWidget.setCurrentIndex(0)
 
     # Backspace key shortcut to open logout confirmation
