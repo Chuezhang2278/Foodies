@@ -2225,6 +2225,256 @@ class Ui_CookWindow(object):
 
         self.Price_listWidget.setSortingEnabled(__sortingEnabled)
 
+##### Methods to obtain each supply name and quality's (Quantity) from the CartSupplies_ForCook list #####
+##### Best #####
+
+    # Function that gets the Best Meats
+    def getBestMeats(self):
+        self.bestMeats = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Meat'):
+                self.bestMeats += CartSupplies_ForCook[i].getQuantity()
+        return self.bestMeats
+    
+    # Function that gets the Best Fish
+    def getBestFish(self):
+        self.bestFish = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Fish'):
+                self.bestFish += CartSupplies_ForCook[i].getQuantity()
+        return self.bestFish
+
+    # Function that gets the Best Vegetables
+    def getBestVegetables(self):
+        self.bestVegetables = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Vegetables'):
+                self.bestVegetables += CartSupplies_ForCook[i].getQuantity()
+        return self.bestVegetables
+    
+    # Function that gets the Best Flour
+    def getBestFlour(self):
+        self.bestFlour = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Flour'):
+                self.bestFlour += CartSupplies_ForCook[i].getQuantity()
+        return self.bestFlour
+
+    # Function that gets the Best Yeast
+    def getBestYeast(self):
+        self.bestYeast = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Yeast'):
+                self.bestYeast += CartSupplies_ForCook[i].getQuantity()
+        return self.bestYeast
+    
+    # Function that gets the Best Salt
+    def getBestSalt(self):
+        self.bestSalt = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Salt'):
+                self.bestSalt += CartSupplies_ForCook[i].getQuantity()
+        return self.bestSalt
+
+    # Function that gets the Best Spices
+    def getBestSpices(self):
+        self.bestSpices = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Spices'):
+                self.bestSpices += CartSupplies_ForCook[i].getQuantity()
+        return self.bestSpices
+    
+    # Function that gets the Best Sugar
+    def getBestSugar(self):
+        self.bestSugar = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Sugar'):
+                self.bestSugar += CartSupplies_ForCook[i].getQuantity()
+        return self.bestSugar
+
+    # Function that gets the Best Egg
+    def getBestEgg(self):
+        self.bestEgg = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Egg'):
+                self.bestEgg += CartSupplies_ForCook[i].getQuantity()
+        return self.bestEgg
+    
+    # Function that gets the Best Dairy
+    def getBestDairy(self):
+        self.bestDairy = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Dairy'):
+                self.bestDairy += CartSupplies_ForCook[i].getQuantity()
+        return self.bestDairy
+
+##### Good #####
+
+    # Function that gets the Good Meats
+    def getGoodMeats(self):
+        self.goodMeats = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Meat'):
+                self.goodMeats += CartSupplies_ForCook[i].getQuantity()
+        return self.goodMeats
+    
+    # Function that gets the Good Fish
+    def getGoodFish(self):
+        self.goodFish = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Fish'):
+                self.goodFish += CartSupplies_ForCook[i].getQuantity()
+        return self.goodFish
+
+    # Function that gets the Good Vegetables
+    def getGoodVegetables(self):
+        self.goodVegetables = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Vegetables'):
+                self.goodVegetables += CartSupplies_ForCook[i].getQuantity()
+        return self.goodVegetables
+    
+    # Function that gets the Good Flour
+    def getGoodFlour(self):
+        self.goodFlour = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Flour'):
+                self.goodFlour += CartSupplies_ForCook[i].getQuantity()
+        return self.goodFlour
+
+    # Function that gets the Good Yeast
+    def getGoodYeast(self):
+        self.goodYeast = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Yeast'):
+                self.goodYeast += CartSupplies_ForCook[i].getQuantity()
+        return self.goodYeast
+    
+    # Function that gets the Good Salt
+    def getGoodSalt(self):
+        self.goodSalt = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Salt'):
+                self.goodSalt += CartSupplies_ForCook[i].getQuantity()
+        return self.goodSalt
+
+    # Function that gets the Good Spices
+    def getGoodSpices(self):
+        self.goodSpices = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Spices'):
+                self.goodSpices += CartSupplies_ForCook[i].getQuantity()
+        return self.goodSpices
+    
+    # Function that gets the Good Sugar
+    def getGoodSugar(self):
+        self.goodSugar = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Sugar'):
+                self.goodSugar += CartSupplies_ForCook[i].getQuantity()
+        return self.goodSugar
+
+    # Function that gets the Good Egg
+    def getGoodEgg(self):
+        self.goodEgg = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Egg'):
+                self.goodEgg += CartSupplies_ForCook[i].getQuantity()
+        return self.goodEgg
+    
+    # Function that gets the Good Dairy
+    def getGoodDairy(self):
+        self.goodDairy = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Dairy'):
+                self.goodDairy += CartSupplies_ForCook[i].getQuantity()
+        return self.goodDairy
+
+
+##### Bad #####
+
+    # Function that gets the Bad Meats
+    def getBadMeats(self):
+        self.badMeats = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Meat'):
+                self.badMeats += CartSupplies_ForCook[i].getQuantity()
+        return self.badMeats
+    
+    # Function that gets the Bad Fish
+    def getBadFish(self):
+        self.badFish = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Fish'):
+                self.badFish += CartSupplies_ForCook[i].getQuantity()
+        return self.badFish
+
+    # Function that gets the Bad Vegetables
+    def getBadVegetables(self):
+        self.badVegetables = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Vegetables'):
+                self.badVegetables += CartSupplies_ForCook[i].getQuantity()
+        return self.badVegetables
+    
+    # Function that gets the Bad Flour
+    def getBadFlour(self):
+        self.badFlour = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Flour'):
+                self.badFlour += CartSupplies_ForCook[i].getQuantity()
+        return self.badFlour
+
+    # Function that gets the Bad Yeast
+    def getBadYeast(self):
+        self.badYeast = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Yeast'):
+                self.badYeast += CartSupplies_ForCook[i].getQuantity()
+        return self.badYeast
+    
+    # Function that gets the Bad Salt
+    def getBadSalt(self):
+        self.badSalt = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Salt'):
+                self.badSalt += CartSupplies_ForCook[i].getQuantity()
+        return self.badSalt
+
+    # Function that gets the Bad Spices
+    def getBadSpices(self):
+        self.badSpices = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Spices'):
+                self.badSpices += CartSupplies_ForCook[i].getQuantity()
+        return self.badSpices
+    
+    # Function that gets the Bad Sugar
+    def getBadSugar(self):
+        self.badSugar = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Sugar'):
+                self.badSugar += CartSupplies_ForCook[i].getQuantity()
+        return self.badSugar
+
+    # Function that gets the Bad Egg
+    def getBadEgg(self):
+        self.badEgg = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Egg'):
+                self.badEgg += CartSupplies_ForCook[i].getQuantity()
+        return self.badEgg
+    
+    # Function that gets the Bad Dairy
+    def getBadDairy(self):
+        self.badDairy = 0
+        for i in range(len(CartSupplies_ForCook)):
+            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Dairy'):
+                self.badDairy += CartSupplies_ForCook[i].getQuantity()
+        return self.badDairy
+
+#####
+
     # Function that shows the "Chef Welcome" page (0)
     def open_cookWelcome(self):
         self.clearallFields()
@@ -2254,159 +2504,69 @@ class Ui_CookWindow(object):
             self.CookWindow.hide()
             self.LoginWindow.show()
 
+    # Function that cooks the next order in "Welcome Chef" page (0)
+    def cookNextOrder(self):
+        # Go through list of orders
+        # Send Cook's first name information to customer so they can be rated on the food
+        
+        # Check if there are enough supplies to make the order, if there isn't return
+        # If there is enough supplies, need to decrement it based on the food classification
+        # Pass the Order confirmation to Delivery guy
+
+        # Decrement pending orders by 1
+        if(len(PendingOrders) > 0):
+            PendingOrders[0].setCook(self)
+            addOrder2(PendingOrders[0])
+            PendingOrders.pop(0)
+            self.pendingOrdersLabel.setText(f"Pending orders: {len(PendingOrders)}")
+        else:
+            print("No pending orders currently")
+
     # Function that shows the "Supplies Management" page (1)
     def open_manageSupplies(self):
         self.stackedWidget.setCurrentIndex(1)
 
     # Function that shows the "Best Supplies" page (2)
-    def open_bestSupplies(self):
-        self.get_bestSupplies()
+    def open_bestSupplies(self):     
+        self.bestMeatsQuantityLabel.setText(str(self.getBestMeats()))
+        self.bestFishQuantityLabel.setText(str(self.getBestFish()))
+        self.bestVegetablesQuantityLabel.setText(str(self.getBestVegetables()))
+        self.bestFlourQuantityLabel.setText(str(self.getBestFlour()))
+        self.bestYeastQuantityLabel.setText(str(self.getBestYeast()))
+        self.bestSaltQuantityLabel.setText(str(self.getBestSalt()))
+        self.bestSpicesQuantityLabel.setText(str(self.getBestSpices()))
+        self.bestSugarQuantityLabel.setText(str(self.getBestSugar()))
+        self.bestEggQuantityLabel.setText(str(self.getBestEgg()))
+        self.bestDairyQuantityLabel.setText(str(self.getBestDairy()))
         self.stackedWidget.setCurrentIndex(2)
-
-    # Function that retrieves latest inventory data for "Best Supplies" page (2)
-    def get_bestSupplies(self):
-        bestMeats = 0
-        bestFish = 0
-        bestVegetables = 0
-        bestFlour = 0
-        bestYeast = 0
-        bestSalt = 0
-        bestSpices = 0
-        bestSugar = 0
-        bestEgg = 0
-        bestDairy = 0
-
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Meat'):
-                bestMeats += CartSupplies_ForCook[i].getQuantity()
-                self.bestMeatsQuantityLabel.setText(str(bestMeats))
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Fish'):
-                bestFish += CartSupplies_ForCook[i].getQuantity()
-                self.bestFishQuantityLabel.setText(str(bestFish))
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Vegetables'):
-                bestVegetables += CartSupplies_ForCook[i].getQuantity()
-                self.bestVegetablesQuantityLabel.setText(str(bestVegetables))
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Flour'):
-                bestFlour += CartSupplies_ForCook[i].getQuantity()
-                self.bestFlourQuantityLabel.setText(str(bestFlour))
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Yeast'):
-                bestYeast += CartSupplies_ForCook[i].getQuantity()
-                self.bestYeastQuantityLabel.setText(str(bestYeast))
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Salt'):
-                bestSalt += CartSupplies_ForCook[i].getQuantity()
-                self.bestSaltQuantityLabel.setText(str(bestSalt))
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Spices'):
-                bestSpices += CartSupplies_ForCook[i].getQuantity()
-                self.bestSpicesQuantityLabel.setText(str(bestSpices))
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Sugar'):
-                bestSugar += CartSupplies_ForCook[i].getQuantity()
-                self.bestSugarQuantityLabel.setText(str(bestSugar))
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Egg'):
-                bestEgg += CartSupplies_ForCook[i].getQuantity()
-                self.bestEggQuantityLabel.setText(str(bestEgg))
-            if(CartSupplies_ForCook[i].getQuality() == 'Best' and CartSupplies_ForCook[i].getName() == 'Dairy'):
-                bestDairy += CartSupplies_ForCook[i].getQuantity()
-                self.bestDairyQuantityLabel.setText(str(bestDairy))
 
     # Function that shows the "Good Supplies" page (3)
     def open_goodSupplies(self):
-        self.get_goodSupplies()
+        self.goodMeatsQuantityLabel.setText(str(self.getGoodMeats()))
+        self.goodFishQuantityLabel.setText(str(self.getGoodFish()))
+        self.goodVegetablesQuantityLabel.setText(str(self.getGoodVegetables()))
+        self.goodFlourQuantityLabel.setText(str(self.getGoodFlour()))
+        self.goodYeastQuantityLabel.setText(str(self.getGoodYeast()))
+        self.goodSaltQuantityLabel.setText(str(self.getGoodSalt()))
+        self.goodSpicesQuantityLabel.setText(str(self.getGoodSpices()))
+        self.goodSugarQuantityLabel.setText(str(self.getGoodSugar()))
+        self.goodEggQuantityLabel.setText(str(self.getGoodEgg()))
+        self.goodDairyQuantityLabel.setText(str(self.getGoodDairy()))
         self.stackedWidget.setCurrentIndex(3)
-
-    # Function that retrieves latest inventory data for "Good Supplies" page (3)
-    def get_goodSupplies(self):
-        goodMeats = 0
-        goodFish = 0
-        goodVegetables = 0
-        goodFlour = 0
-        goodYeast = 0
-        goodSalt = 0
-        goodSpices = 0
-        goodSugar = 0
-        goodEgg = 0
-        goodDairy = 0
-
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Meat'):
-                goodMeats += CartSupplies_ForCook[i].getQuantity()
-                self.goodMeatsQuantityLabel.setText(str(goodMeats))
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Fish'):
-                goodFish += CartSupplies_ForCook[i].getQuantity()           
-                self.goodFishQuantityLabel.setText(str(goodFish))
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Vegetables'):
-                goodVegetables += CartSupplies_ForCook[i].getQuantity()
-                self.goodVegetablesQuantityLabel.setText(str(goodVegetables))
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Flour'):
-                goodFlour += CartSupplies_ForCook[i].getQuantity()
-                self.goodFlourQuantityLabel.setText(str(goodFlour))
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Yeast'):
-                goodYeast += CartSupplies_ForCook[i].getQuantity()
-                self.goodYeastQuantityLabel.setText(str(goodYeast))
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Salt'):
-                goodSalt += CartSupplies_ForCook[i].getQuantity()
-                self.goodSaltQuantityLabel.setText(str(goodSalt))
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Spices'):
-                goodSpices += CartSupplies_ForCook[i].getQuantity()
-                self.goodSpicesQuantityLabel.setText(str(goodSpices))
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Sugar'):
-                goodSugar += CartSupplies_ForCook[i].getQuantity()
-                self.goodSugarQuantityLabel.setText(str(goodSugar))
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Egg'):
-                goodEgg += CartSupplies_ForCook[i].getQuantity()
-                self.goodEggQuantityLabel.setText(str(goodEgg))
-            if(CartSupplies_ForCook[i].getQuality() == 'Good' and CartSupplies_ForCook[i].getName() == 'Dairy'):
-                goodDairy += CartSupplies_ForCook[i].getQuantity()
-                self.goodDairyQuantityLabel.setText(str(goodDairy))
 
     # Function that shows the "Bad Supplies" page (4)
     def open_badSupplies(self):
-        self.get_badSupplies()
+        self.badMeatsQuantityLabel.setText(str(self.getBadMeats()))
+        self.badFishQuantityLabel.setText(str(self.getBadFish()))
+        self.badVegetablesQuantityLabel.setText(str(self.getBadVegetables()))
+        self.badFlourQuantityLabel.setText(str(self.getBadFlour()))
+        self.badYeastQuantityLabel.setText(str(self.getBadYeast()))
+        self.badSaltQuantityLabel.setText(str(self.getBadSalt()))
+        self.badSpicesQuantityLabel.setText(str(self.getBadSpices()))
+        self.badSugarQuantityLabel.setText(str(self.getBadSugar()))
+        self.badEggQuantityLabel.setText(str(self.getBadEgg()))
+        self.badDairyQuantityLabel.setText(str(self.getBadDairy()))
         self.stackedWidget.setCurrentIndex(4)
-
-    # Function that retrieves latest inventory data for "Bad Supplies" page (4)
-    def get_badSupplies(self):
-        badMeats = 0
-        badFish = 0
-        badVegetables = 0
-        badFlour = 0
-        badYeast = 0
-        badSalt = 0
-        badSpices = 0
-        badSugar = 0
-        badEgg = 0
-        badDairy = 0
-
-        for i in range(len(CartSupplies_ForCook)):
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Meat'):
-                badMeats += CartSupplies_ForCook[i].getQuantity()
-                self.badMeatsQuantityLabel.setText(str(badMeats))
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Fish'):
-                badFish += CartSupplies_ForCook[i].getQuantity()
-                self.badFishQuantityLabel.setText(str(badFish))
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Vegetables'):
-                badVegetables += CartSupplies_ForCook[i].getQuantity()
-                self.badVegetablesQuantityLabel.setText(str(badVegetables))
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Flour'):
-                badFlour += CartSupplies_ForCook[i].getQuantity()
-                self.badFlourQuantityLabel.setText(str(badFlour))
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Yeast'):
-                badYeast += CartSupplies_ForCook[i].getQuantity()
-                self.badYeastQuantityLabel.setText(str(badYeast))
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Salt'):
-                badSalt += CartSupplies_ForCook[i].getQuantity()
-                self.badSaltQuantityLabel.setText(str(badSalt))
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Spices'):
-                badSpices += CartSupplies_ForCook[i].getQuantity()
-                self.badSpicesQuantityLabel.setText(str(badSpices))
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Sugar'):
-                badSugar += CartSupplies_ForCook[i].getQuantity()
-                self.badSugarQuantityLabel.setText(str(badSugar))
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Egg'):
-                badEgg += CartSupplies_ForCook[i].getQuantity()
-                self.badEggQuantityLabel.setText(str(badEgg))
-            if(CartSupplies_ForCook[i].getQuality() == 'Bad' and CartSupplies_ForCook[i].getName() == 'Dairy'):
-                badDairy += CartSupplies_ForCook[i].getQuantity()
-                self.badDairyQuantityLabel.setText(str(badDairy))
 
     # Function that shows the "Rate your Salesperson" page (5)
     def open_rateSalesperson(self):
@@ -2592,24 +2752,6 @@ class Ui_CookWindow(object):
             self.Name_listWidget.addItem(Menu[i].getName())
             self.Price_listWidget.addItem(str(Menu[i].getPrice()))        
         self.stackedWidget.setCurrentIndex(7)
-
-    # Function that cooks the next order in "Welcome Chef" page (0)
-    def cookNextOrder(self):
-        # Go through list of orders
-        # Send Cook's first name information to customer so they can be rated on the food
-        
-        # Check if there are enough supplies to make the order, if there isn't return
-        # If there is enough supplies, need to decrement it based on the food classification
-        # Pass the Order confirmation to Delivery guy
-
-        # Decrement pending orders by 1
-        if(len(PendingOrders) > 0):
-            PendingOrders[0].setCook(self)
-            addOrder2(PendingOrders[0])
-            PendingOrders.pop(0)
-            self.pendingOrdersLabel.setText(f"Pending orders: {len(PendingOrders)}")
-        else:
-            print("No pending orders currently")
 
     # Function that clears all fields on page change
     def clearallFields(self):
