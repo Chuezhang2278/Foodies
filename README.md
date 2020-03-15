@@ -24,9 +24,9 @@
           where cp37 is your python version, then cd to directory with cmd and pip install PyAudio‑0.2.11‑cp37‑cp37m‑win_amd64.whl
           
 # Some of our features
-#### Simple Voice Recognition, Click for video
+#### Simple Voice Recognition (Video below)
 [![Voice Recognition](https://img.youtube.com/vi/SgdUDon4IP4/0.jpg)](https://www.youtube.com/watch?v=SgdUDon4IP4 "Voice Recognition")
 
-#### Use of GoogleMaps API, Click for video
+#### Use of GoogleMaps API (Video below)
 [![GoogleMaps](https://img.youtube.com/vi/9i7xZ5n21s8/0.jpg)](https://www.youtube.com/watch?v=9i7xZ5n21s8 "Google Maps")
 
