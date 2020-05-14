@@ -1,4 +1,6 @@
-# Installation 
+# Class Project for CSC322: Software Engineering w/ Professor Jie Wei, Fall 2019
+
+## Installation 
 ### Requirements
 > Internet access to use Google Maps
 
